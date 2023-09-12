@@ -29,6 +29,46 @@ generator client {
 
 //---------------------------------address----------------------------------
 
+//CRUD for UI
+/// Address adalah alamat dari user dan cabang
+model Address {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  latitude Float? //for google map
+
+  longitude Float? //for google map
+
+  label String
+
+  street String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+  Branch Branch?
+
+  user User? @relation(fields: [userId], references: [id])
+
+  userId String?
+
+  /// @Validator.IsNotEmpty()
+  subdistrict Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+
+  // @HideField({ match: 'AddressCreate*Input' })
+  subdistrictId Int
+
+  //-------------------------- m relations --------------------------------
+
+  platformOrder PlatformOrder[]
+
+  serviceOrder ServiceOrder[]
+
+  @@map("Addresses")
+}
+
 model Province {
   id Int @id @default(autoincrement())
 
@@ -141,6 +181,10 @@ model User {
 
   theme Theme @default(LIGHT)
 
+  ChatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+
+  chatRoomId Int?
+
   //-------------------------- m relations --------------------------------
 
   accounts Account[]
@@ -151,9 +195,22 @@ model User {
 
   notifications Notification[]
 
-  changedStatuses OrderStatusProgress[]
+  changedStatuses OrderStatus[]
+
+  messageSender Message[] @relation("MessageSender")
+
+  messageReceiver Message[] @relation("MessageReceiver")
 
   @@map("users")
+}
+
+enum UserRole {
+  OWNER
+  EMPLOYEE
+  CUSTOMER
+  SUPERUSER
+
+  @@map("UserRoles")
 }
 
 model Image {
@@ -204,6 +261,8 @@ enum FileType {
   JPG
   PNG
   PDF
+
+  @@map("FileTypes")
 }
 
 //No CRUD for UI
@@ -227,13 +286,6 @@ model Session {
   device    String
   ipAddress Float
   createdAt DateTime @default(now())
-}
-
-enum UserRole {
-  OWNER
-  EMPLOYEE
-  CUSTOMER
-  SUPERUSER
 }
 
 enum Gender {
@@ -351,9 +403,10 @@ model Employee {
 
   serviceOrder ServiceOrder[]
 
-  activities Activity[]
+  activities ItemActivity[]
 
   attendances Attendance[]
+  Delivery    Delivery[]
 
   @@map("Employees")
 }
@@ -362,9 +415,51 @@ enum EmployeeRole {
   CASHIER
   COURIER
   PRODUCTION
+
+  @@map("EmployeeRoles")
 }
 
-enum Activity {
+//CRUD for UI
+/// Address adalah alamat dari user dan cabang
+model Address {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  latitude Float? //for google map
+
+  longitude Float? //for google map
+
+  label String
+
+  street String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+  Branch Branch?
+
+  user User? @relation(fields: [userId], references: [id])
+
+  userId String?
+
+  /// @Validator.IsNotEmpty()
+  subdistrict Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+
+  // @HideField({ match: 'AddressCreate*Input' })
+  subdistrictId Int
+
+  //-------------------------- m relations --------------------------------
+
+  platformOrder PlatformOrder[]
+
+  serviceOrder ServiceOrder[]
+
+  @@map("Addresses")
+}
+
+enum ItemActivity {
   LABELLING
   SORTING
   CLEANING
@@ -374,6 +469,8 @@ enum Activity {
   IRONING
   FOLDING
   PACKING
+
+  @@map("ItemActivities")
 }
 
 //CRUD for UI
@@ -442,10 +539,12 @@ enum AccountCategory {
   BANK
   DEBT
   POINT
+
+  @@map("AccountCategories")
 }
 
 //Make Read only without update, delete
-///
+/// Penerapan double entry accounting
 model Transaction {
   //-------------------------- scalars --------------------------------
 
@@ -491,6 +590,10 @@ model Transaction {
 
   invoiceId Int?
 
+  Payment Payment?
+
+  paymentId Int?
+
   @@index([amount], name: "amount")
   @@index([fromAccountId], name: "from_account_id")
   @@index([toAccountId], name: "to_account_id")
@@ -507,6 +610,8 @@ enum TransactionCategory {
   REFUND
   RECONCILE
   COMISSION
+
+  @@map("TransactionCategories")
 }
 
 enum TransactionStatus {
@@ -515,6 +620,8 @@ enum TransactionStatus {
   FAILED
   CANCELLED
   COMPLETED
+
+  @@map("TransactionStatuses")
 }
 
 //Make CRU Available, cannot be deleted
@@ -538,11 +645,11 @@ model Invoice {
   /// @HideField({ output: false, input: true }) 
   createdAt DateTime @default(now())
 
+  updatedAt DateTime @updatedAt
+
   //-------------------------- 1 relations --------------------------------
 
-  payment Payment @relation(fields: [paymentId], references: [id])
-
-  paymentId Int @unique //must be full paid
+  status PaymentStatus
 
   /// @HideField({ match: 'InvoiceUpdate*Input' })
   serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
@@ -558,49 +665,23 @@ model Invoice {
 
   /// @HideField({ match: 'InvoiceUpdate*Input' })
   transactions Transaction[]
+
+  @@map("Invoices")
+}
+
+enum PaymentStatus {
+  PENDING
+  UNPAID
+  HALFPAID
+  FULLPAID
+  CANCELLED
+  FAILED
+  REFUNDED
+
+  @@map("PaymentStatuses")
 }
 
 //-----------------------------------Addresses--------------------------------------------
-
-//CRUD for UI
-/// Address adalah alamat dari user dan cabang
-model Address {
-  //-------------------------- scalars --------------------------------
-  id Int @id @default(autoincrement())
-
-  latitude Float? //for google map
-
-  longitude Float? //for google map
-
-  label String
-
-  street String
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
-
-  //-------------------------- 1 relations --------------------------------
-  Branch Branch?
-
-  user User? @relation(fields: [userId], references: [id])
-
-  userId String?
-
-  /// @Validator.IsNotEmpty()
-  subdistrict Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
-
-  // @HideField({ match: 'AddressCreate*Input' })
-  subdistrictId Int
-
-  //-------------------------- m relations --------------------------------
-
-  platformOrder PlatformOrder[]
-
-  serviceOrder ServiceOrder[]
-
-  @@map("Addresses")
-}
 
 //CRUD for UI
 //CRUD only available for owner user
@@ -708,9 +789,12 @@ model BranchLaundryItemService {
   cart Cart[]
 
   ///branch can decide what are the activities involved in this service
-  activities Activity[]
+  activities ItemActivity[]
 
   orderTypes OrderType[]
+
+  ///Untuk layanan homeservice, branch dapat menentukan item apa saja yang dapat dilayani area mana saja 
+  districtAreas District[]
 
   @@map("BranchLaundryItemServices")
 }
@@ -906,8 +990,8 @@ model PlatformItem {
   @@map("PlatformItems")
 }
 
-//Where the Owner ordering a product from platform
 //Can be created,read,edit but cannot be deleted by UI
+/// PlatformOrder adalah order yang dibuat oleh owner untuk membeli item dari platform seperti subscription, mesin, dll
 model PlatformOrder {
   //-------------------------- scalars --------------------------------
 
@@ -919,9 +1003,7 @@ model PlatformOrder {
 
   createdAt DateTime @default(now())
 
-  updatedAt DateTime
-
-  deletedAt DateTime? //implement softdelete
+  updatedAt DateTime @updatedAt
 
   /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
   raceConditionVersion Int @default(0)
@@ -936,7 +1018,7 @@ model PlatformOrder {
 
   Invoice Invoice[]
 
-  statusHistory OrderStatusProgress[]
+  status OrderStatus[]
 
   carts Cart[]
 
@@ -944,7 +1026,7 @@ model PlatformOrder {
 }
 
 //Only Read on UI
-model OrderStatusProgress {
+model OrderStatus {
   //-------------------------- scalars --------------------------------
 
   id Int @id @default(autoincrement())
@@ -953,7 +1035,7 @@ model OrderStatusProgress {
 
   //-------------------------- 1 relations --------------------------------
 
-  status OrderStatus
+  status OrderStatusEnum
 
   platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
 
@@ -1017,7 +1099,7 @@ model ServiceOrder {
 
   //-------------------------- m relations --------------------------------
 
-  statusProgress OrderStatusProgress[]
+  status OrderStatus[]
 
   cart Cart[]
 
@@ -1044,9 +1126,69 @@ model Delivery {
 
   updatedAt DateTime @updatedAt
 
+  //-------------------------- 1 relations --------------------------------
+
+  status DeliveryStatus @relation(fields: [deliveryStatusId], references: [id])
+
+  deliveryStatusId Int
+
+  assignedDriver Employee? @relation(fields: [assignedDriverId], references: [userId])
+
+  assignedDriverId String?
+
   //-------------------------- m relations --------------------------------
 
   ServiceOrder ServiceOrder[]
+
+  locationHistory DeliveryLocationHistory[]
+
+  @@map("Deliveries")
+}
+
+model DeliveryLocationHistory {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  latitude Float
+
+  longitude Float
+
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  delivery Delivery @relation(fields: [deliveryId], references: [id])
+
+  deliveryId Int
+
+  //-------------------------- m relations --------------------------------
+
+  @@map("DeliveryLocationHistories")
+}
+
+model DeliveryStatus {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  status DeliveryStatusEnum
+
+  Delivery Delivery[]
+
+  @@map("DeliveryStatuses")
+}
+
+enum DeliveryStatusEnum {
+  PENDING
+  ASSIGNED
+  PICKEDUP
+  DELIVERED
+  CANCELLED
+
+  @@map("DeliveryStatusEnums")
 }
 
 /// Cart adalah keranjang belanja user, Cart berisi item yang akan dibeli oleh user
@@ -1056,9 +1198,10 @@ model Cart {
   id Int @id @default(autoincrement())
 
   quantity Int
+
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  price    Float
+  price Float
 
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
@@ -1087,6 +1230,8 @@ model Cart {
   BranchLaundryItemService BranchLaundryItemService? @relation(fields: [branchLaundryItemServiceId], references: [id])
 
   branchLaundryItemServiceId Int?
+
+  @@map("Carts")
 }
 
 enum OrderType {
@@ -1098,7 +1243,7 @@ enum OrderType {
   @@map("OrderTypes")
 }
 
-enum OrderStatus {
+enum OrderStatusEnum {
   PENDING
   PROCESSING
   DONE
@@ -1107,7 +1252,7 @@ enum OrderStatus {
   CANCELLED
   RETURNED
 
-  @@map("OrderStatuses")
+  @@map("OrderStatusEnums")
 }
 
 //Create and read only, no delete and no update for UI
@@ -1129,9 +1274,9 @@ model Payment {
 
   status PaymentStatus
 
-  invoice Invoice?
+  transaction Transaction @relation(fields: [transactionId], references: [id])
 
-  invoiceId Int
+  transactionId Int @unique
 
   @@map("Payments")
 }
@@ -1148,50 +1293,101 @@ enum PaymentMethod {
   @@map("PaymentMethods")
 }
 
-enum PaymentStatus {
-  PENDING
-  UNPAID
-  HALFPAID
-  FULLPAID
-  CANCELLED
-  FAILED
-  REFUNDED
-}
-
 //CRUD for UI
 //Update, Delete disable for owner
+/// BranchReview adalah review yang diberikan oleh customer terhadap cabang
 model Review {
-  id               Int      @id @default(autoincrement())
-  images           Image[]
-  content          String
-  cleanlinessScore Float
-  speedScore       Float
-  qualityScore     Float
-  reviewBy         Customer @relation(fields: [reviewById], references: [userId])
-  reviewById       String
-  branch           Branch   @relation(fields: [branchId], references: [addressId])
-  branchId         Int
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  description String
+
+  cleanlinessScore scale
+
+  speedScore scale
+
+  qualityScore scale
+
+  priceScore scale
+
+  overallAverageScore scale
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  reviewBy Customer @relation(fields: [reviewById], references: [userId])
+
+  reviewById String
+
+  branch Branch @relation(fields: [branchId], references: [addressId])
+
+  branchId Int
+
+  //-------------------------- m relations --------------------------------
+
+  images Image[]
+
+  message Message[]
+
+  likes User[]
+
+  dislikes User[]
+
+  @@map("Reviews")
+}
+
+enum scale {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+
+  @@map("Scales")
 }
 
 //Create and Read only for UI
 model Attendance {
-  id            Int                      @id @default(autoincrement())
-  status        EmployeeAttendanceStatus
-  latitude      Float? //for google map
-  longitude     Float? //for google map
-  ImageUrl      String
-  employee      Employee                 @relation(fields: [employeeId], references: [userId])
-  employeeId    String
-  timeIn        DateTime
-  timeOut       DateTime
-  reason        String?
-  latePenalty   Int?
-  absentPenalty Int?
-  overtimeBonus Int?
-  createdAt     DateTime                 @default(now())
-  deletedAt     DateTime? //Implement softdelete
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  latitude Float
+
+  longitude Float
+
+  timeIn DateTime
+
+  timeOut DateTime
+
+  reason String?
+
+  latePenalty Float?
+
+  absentPenalty Float?
+
+  overtimeBonus Float?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  image Image? @relation(fields: [imageUrl], references: [url])
+
+  imageUrl String?
+
+  status EmployeeAttendanceStatus
+
+  employee Employee @relation(fields: [employeeId], references: [userId])
+
+  employeeId String
+
+  @@map("Attendances")
 }
 
 enum EmployeeAttendanceStatus {
@@ -1201,30 +1397,64 @@ enum EmployeeAttendanceStatus {
   LATE
   LEAVE
   HOLIDAY
+
+  @@map("EmployeeAttendanceStatuses")
 }
 
 //CRUD for UI
 //available for branch and owner only
+/// BranchSchedule adalah jadwal operasional dari cabang
 model Schedule {
-  id             Int      @id @default(autoincrement())
-  dayOfWeek      Int      @default(0)
-  openTime       String
-  closeTime      String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime
-  branch         Branch   @relation(fields: [branchId], references: [id])
-  branchId       Int
-  maxOrders      Int?
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  dayOfWeek Int @default(0)
+
+  openTime String
+
+  closeTime String
+
+  branchId Int
+
+  maxOrders Int?
+
   availableSlots Int?
-  isClosed       Boolean? @default(false) // flag indicating whether this schedule is closed or not
+
+  isClosed Boolean? @default(false)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  branch Branch @relation(fields: [branchId], references: [id])
+
+  createdBy Owner @relation(fields: [createdById], references: [userId])
+
+  createdById String
+
+  @@map("Schedules")
 }
 
 model BusinessHour {
-  id        Int      @id @default(autoincrement())
-  day       Day
-  openTime  DateTime
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  openTime DateTime
+
   closeTime DateTime
-  branch    Branch[]
+
+  //-------------------------- 1 relations --------------------------------
+
+  day Day
+
+  //-------------------------- m relations --------------------------------
+
+  branch Branch[]
+
+  @@map("BusinessHours")
 }
 
 enum Day {
@@ -1235,18 +1465,37 @@ enum Day {
   FRIDAY
   SATURDAY
   SUNDAY
+
+  @@map("Days")
 }
 
 model Notification {
-  id        Int              @id @default(autoincrement())
-  title     String
-  subTitle  String?
-  content   String
-  type      NotificationType
-  user      User             @relation(fields: [userId], references: [id])
-  createdAt DateTime         @default(now())
-  isRead    Boolean
-  userId    String
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  title String
+
+  subTitle String?
+
+  content String
+
+  createdAt DateTime @default(now())
+
+  isRead Boolean
+
+  fcmToken String?
+
+  //-------------------------- 1 relations --------------------------------
+
+  type NotificationType
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String
+
+  //-------------------------- m relations --------------------------------
+
+  @@map("Notifications")
 }
 
 enum NotificationType {
@@ -1254,31 +1503,65 @@ enum NotificationType {
   WASHINGMACHINESTATUS
   LAUNDRY
   DISCOUNT
+
+  @@map("NotificationTypes")
 }
 
 //CRUD only for branch
+///Machine adalah kumpulan mesin IOT yang ada pada cabang
 model Machine {
-  id         Int              @id @default(autoincrement())
-  status     MachineStatus
-  isOnline   Boolean          @default(false)
-  branch     Branch           @relation(fields: [branchId], references: [id])
-  capacity   Int // in kilogram
-  branchId   Int
-  category   MachineCategory? @relation(fields: [categoryId], references: [id])
+  //-------------------------- scalars --------------------------------
+
+  id string @id @default(uuid())
+
+  name String
+
+  description String?
+
+  isOnline Boolean @default(false)
+
+  capacity Int
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  capacityUnit UnitOfMeasure @relation(fields: [capacityUnitId], references: [id])
+
+  capacityUnitId Int
+
+  branch Branch @relation(fields: [branchId], references: [id])
+
+  branchId Int
+
+  status MachineStatus
+
+  category MachineCategory? @relation(fields: [categoryId], references: [id])
+
   categoryId Int?
-  createdAt  DateTime         @default(now())
-  updatedAt  DateTime
-  Image      Image?           @relation(fields: [imageUrl], references: [url])
-  imageUrl   String?
+
+  //-------------------------- m relations --------------------------------
+
+  Images Image[]
+
+  @@map("Machines")
 }
 
 //No CRUD UI
 model MachineCategory {
-  id        Int       @id @default(autoincrement())
-  name      String
-  machines  Machine[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id Int @id @default(autoincrement())
+
+  name String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  machines Machine[]
+
+  @@map("MachineCategories")
 }
 
 enum MachineStatus {
@@ -1287,29 +1570,114 @@ enum MachineStatus {
   MAINTENANCE
   BROKEN
   OTHER
+
+  @@map("MachineStatuses")
 }
 
 //CRUD for UI
 //Create, Read, Update for superUser, Read for Owner
+/// Voucher adalah promo yang diberikan oleh platform kepada customer 
+//TODO: Voucher dari platform, voucher dari cabang
 model Voucher {
-  id            Int            @id @default(autoincrement())
-  code          String         @unique
-  name          String
-  description   String?
-  image         String?
-  startDate     DateTime
-  endDate       DateTime
+  //-------------------------- scalars --------------------------------
+
+  /// Field ini diisi oleh 
+  code String @id
+
+  name String
+
+  description String?
+
+  startDate DateTime
+
+  endDate DateTime
+
   minOrderValue Int?
-  discountType  DiscountType
+
   discountValue Int
-  isActive      Boolean        @default(true)
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime
-  deletedAt     DateTime? //implement softdelete
-  serviceOrders ServiceOrder[] //the orders that used this voucher promo
+
+  customerQuota Int?
+
+  orderQuota Int?
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  discountType DiscountType
+
+  image Image @relation(fields: [imageId], references: [url])
+
+  imageId String
+
+  //-------------------------- m relations --------------------------------
+
+  /// Berisi order id yang menggunakan voucher ini
+  serviceOrders ServiceOrder[]
 }
 
 enum DiscountType {
   PERCENTAGE
   AMOUNT
+}
+
+model ChatRoom {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  name String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  endedAt DateTime?
+
+  //-------------------------- m relations --------------------------------
+
+  participants User[]
+
+  messages Message[]
+
+  @@map("ChatRooms")
+}
+
+model Message {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  content String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  sender User @relation("MessageSender", fields: [senderId], references: [id])
+
+  senderId String
+
+  receiver User @relation("MessageReceiver", fields: [receiverId], references: [id])
+
+  receiverId String
+
+  chatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+
+  chatRoomId Int?
+
+  //-------------------------- m relations --------------------------------
+
+  reads User[]
+
+  likes User[]
+
+  images Image[]
+
+  @@map("Messages")
 }
