@@ -179,7 +179,7 @@ model Image {
 
   LaundryItem LaundryItem? @relation(fields: [laundryItemId], references: [id])
 
-  laundryItemId String?
+  laundryItemId Int?
 
   //-------------------------- m relations --------------------------------
 
@@ -272,7 +272,8 @@ model Owner {
   platformOrders PlatformOrder[]
 
   /// 1 Owner dapat memiliki banyak cabang
-  branches Branch[]
+  branches           Branch[]
+  LaundryItemRequest LaundryItemRequest[]
 
   @@map("Owners")
 }
@@ -698,80 +699,171 @@ model BranchLaundryItemService {
 
   laundryItem LaundryItem @relation(fields: [laundryItemId], references: [id])
 
-  laundryItemId String
+  laundryItemId Int
 
   //-------------------------- m relations --------------------------------
+
   Images Image[]
 
   cart Cart[]
 
-  activities Activity[] //branch can decide what are the activities involved in this service
+  ///branch can decide what are the activities involved in this service
+  activities Activity[]
+
+  orderTypes OrderType[]
 
   @@map("BranchLaundryItemServices")
 }
 
 //no update nor delete operation for UI
 //CRUD only available to superUser
+/// LaundryItem adalah pilihan item yang disediakan platform untuk diterapkan oleh cabang
 model LaundryItem {
   //-------------------------- scalars --------------------------------
-  id                  String              @id @default(cuid())
-  name                String
-  description         String?
-  unitOfMeasure       UnitOfMeasure       @relation(fields: [unitOfMeasureId], references: [id])
-  unitOfMeasureId     Int
-  category            LaundryItemCategory @relation(fields: [categoryId], references: [id])
-  categoryId          Int
-  requiresDryCleaning Boolean             @default(false)
-  requiresIron        Boolean             @default(false) // whether the service requires ironing
-  requiresFold        Boolean             @default(false) // whether the service requires folding
-  requiresPack        Boolean             @default(false) // whether the service requires packing
-  requiresHang        Boolean             @default(false) // whether the service requires hanging
-  createdAt           DateTime            @default(now())
-  updatedAt           DateTime            @updatedAt
+  id Int @id @default(autoincrement())
+
+  name String
+
+  description String?
+
+  requiresDryCleaning Boolean? @default(false)
+
+  requiresIron Boolean? @default(false)
+
+  requiresFold Boolean? @default(false)
+
+  requiresPack Boolean? @default(false)
+
+  requiresHang Boolean? @default(false)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  category LaundryItemCategory @relation(fields: [categoryId], references: [id])
+
+  categoryId Int
+
+  unitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+
+  unitOfMeasureId Int
 
   //-------------------------- relations --------------------------------
 
-  images          Image[]
-  branchServices  BranchLaundryItemService[]
+  images Image[]
+
+  branchServices BranchLaundryItemService[]
+
   marketSalePrice MarketSalePriceHistory[]
 
   @@map("LaundryItems")
 }
 
+/// LaundryItemRequest adalah request dari cabang untuk menambahkan item laundry
+model LaundryItemRequest {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  name String
+
+  description String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  status LaundryItemRequestStatus
+
+  requestBy Owner @relation(fields: [requestById], references: [userId])
+
+  requestById String
+
+  category LaundryItemCategory @relation(fields: [categoryId], references: [id])
+
+  categoryId Int
+
+  @@map("LaundryItemRequests")
+}
+
+enum LaundryItemRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+
+  @@map("LaundryItemRequestStatuses")
+}
+
 //backend cron job auto calculate from average market price (BranchLaundryService model)
+/// MarketSalePriceHistory adalah history rata-rata harga jual di pasar dari item laundry
 model MarketSalePriceHistory {
-  id            Int         @id @default(autoincrement())
-  price         Int
-  laundry       LaundryItem @relation(fields: [laundryItemId], references: [id])
-  laundryItemId String
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @updatedAt
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  price Float
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  laundry LaundryItem @relation(fields: [laundryItemId], references: [id])
+
+  laundryItemId Int
 
   @@map("MarketSalePriceHistories")
 }
 
 //no update,delete operation for UI
 //CRUD only available to superUser
+/// LaundryItemCategory adalah kategori dari item laundry seperti pakaian, sepatu, tas, dll
 model LaundryItemCategory {
-  id        Int           @id @default(autoincrement())
-  name      String
-  items     LaundryItem[] //one category can have multiple items
-  createdAt DateTime      @default(now())
-  updatedAt DateTime      @updatedAt
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  name String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- m relations --------------------------------
+
+  items LaundryItem[]
+
+  LaundryItemRequest LaundryItemRequest[]
 
   @@map("LaundryItemCategories")
 }
 
 //no update,delete operation for UI
 //CRUD only available to superUser
+/// UnitOfMeasure adalah satuan dari item laundry seperti kg, pcs, dll
 model UnitOfMeasure {
-  id           Int           @id @default(autoincrement())
-  name         String
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  name String
+
   abbreviation String?
-  conversion   Float         @default(1.0)
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime
+
+  conversion Float @default(1.0)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- m relations --------------------------------
+
   laundryItems LaundryItem[]
+
+  platformItems PlatformItem[]
 
   @@map("UnitOfMeasures")
 }
@@ -792,14 +884,18 @@ model PlatformItem {
 
   description String?
 
+  /// Field ini juga digunakan backend sebagai penanda untuk mencegah race condition terjadi
   stock Int @default(0)
 
   createdAt DateTime @default(now())
 
   updatedAt DateTime @updatedAt
 
-  /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
-  raceConditionVersion Int @default(0)
+  //-------------------------- 1 relations --------------------------------
+
+  UnitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+
+  unitOfMeasureId Int
 
   //-------------------------- m relations --------------------------------
 
@@ -998,6 +1094,8 @@ enum OrderType {
   SELF
   DELIVERY
   HOME
+
+  @@map("OrderTypes")
 }
 
 enum OrderStatus {
@@ -1008,6 +1106,8 @@ enum OrderStatus {
   DELIVERED
   CANCELLED
   RETURNED
+
+  @@map("OrderStatuses")
 }
 
 //Create and read only, no delete and no update for UI
@@ -1044,6 +1144,8 @@ enum PaymentMethod {
   EWALLET
   PLATFORMWALLET
   BANKTRANSFER
+
+  @@map("PaymentMethods")
 }
 
 enum PaymentStatus {
