@@ -9,22 +9,22 @@ generator client {
   provider = "prisma-client-js"
 }
 
-generator custom_generator {
-  provider = "prisma-generator-fake-data"
-  output   = "./fake-data.ts"
-}
+// generator custom_generator {
+//   provider = "prisma-generator-fake-data"
+//   output   = "./fake-data.ts"
+// }
 
-generator nestgraphql {
-  provider                              = "node node_modules/prisma-nestjs-graphql"
-  output                                = "../src/@generated"
-  fields_Validator_from                 = "class-validator"
-  fields_Validator_input                = true
-  requireSingleFieldsInWhereUniqueInput = true
-  emitSingle                            = true
-  emitCompiled                          = true
-  purgeOutput                           = true
-  noTypeId                              = true
-}
+// generator nestgraphql {
+//   provider                              = "node node_modules/prisma-nestjs-graphql"
+//   output                                = "../src/@generated"
+//   fields_Validator_from                 = "class-validator"
+//   fields_Validator_input                = true
+//   requireSingleFieldsInWhereUniqueInput = true
+//   emitSingle                            = true
+//   emitCompiled                          = true
+//   purgeOutput                           = true
+//   noTypeId                              = true
+// }
 
 //---------------------------------address----------------------------------
 
@@ -76,41 +76,49 @@ model User {
   password           String
   whatsappVerifiedAt DateTime? //if null, then unverified 
   whatsapp           String    @unique
-  avatarImage        Images    @relation(fields: [avatarImageId], references: [url])
+  avatarImage        Image     @relation(fields: [avatarImageId], references: [url])
   avatarImageId      String
   gender             Gender
   birthDate          DateTime
   role               UserRole
-
-  language  Language  @default(ID)
-  theme     Theme     @default(LIGHT)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  deletedAt DateTime? //implement softdelete
+  customerInfo       Customer?
+  customerInfoId     String?
+  employeeInfo       Employee?
+  employeeInfoId     String?
+  ownerInfo          Owner?
+  ownerInfoId        String?
+  language           Language  @default(ID)
+  theme              Theme     @default(LIGHT)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  deletedAt          DateTime? //implement softdelete
 
   //-------------------------- relations --------------------------------
   accounts        Account[]
   addresses       Address[] //one customer can have multipe addresses, but one owner and employee can only have one address
   sessions        Session[] //one device login at a time for employee and owner
   notifications   Notification[]
-  customerInfo    Customer[]
-  employeeInfo    Employee[]
-  ownerInfo       Owner[]
   changedStatuses OrderStatusChange[]
 
   @@map("users")
 }
 
-model Images {
+model Image {
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  fileType  FileType?
+  fileType         FileType?
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  fileSize  Float?
-  url       String    @id
+  fileSize         Float?
+  url              String             @id
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  createdAt DateTime  @default(now())
-  User      User[]
+  createdAt        DateTime           @default(now())
+  User             User[]
+  PhoneCountryCode PhoneCountryCode[]
+  Branch           Branch[]
+  PlatformItem     PlatformItem?      @relation(fields: [platformItemId], references: [id])
+  platformItemId   String?
+
+  @@map("Images")
 }
 
 enum FileType {
@@ -125,7 +133,7 @@ enum FileType {
 //CRUD for superUser
 model PhoneCountryCode {
   id        Int    @id @default(autoincrement())
-  image     Images @relation(fields: [imageId], references: [url])
+  image     Image  @relation(fields: [imageId], references: [url])
   imageId   String
   country   String
   phoneCode Int    @unique
@@ -185,12 +193,12 @@ model Owner {
 //CRUD for UI
 model Customer {
   //-------------------------- scalars --------------------------------
-  user         User     @relation(fields: [userId], references: [id])
-  userId       String   @id
-  createdAt    DateTime @default(now())
+  user         User      @relation(fields: [userId], references: [id])
+  userId       String    @id
+  createdAt    DateTime  @default(now())
   updatedAt    DateTime
-  referralCode String   @unique
-  referredBy   User?    @relation("UserReferral", fields: [referredById], references: [id])
+  referralCode String    @unique
+  referredBy   Customer? @relation("CustomerReferral", fields: [referredById], references: [userId])
   /// @HideField({ output: false, input: true })   
   referredById String?
 
@@ -199,7 +207,7 @@ model Customer {
   favoriteBranches Branch[]
   reviews          Review[]
   creditCards      CreditCard[]
-  referredUsers    User[]         @relation("UserReferral")
+  referredUsers    Customer[]     @relation("CustomerReferral")
 
   @@map("customers")
 }
@@ -252,9 +260,9 @@ model CreditCard {
   isAccepted     Boolean
   lastChecked    DateTime?
   cardHolderName String
-  customer       Customer? @relation(fields: [customerId], references: [id])
+  customer       Customer? @relation(fields: [customerId], references: [userId])
   customerId     String?
-  owner          Owner?    @relation(fields: [ownerId], references: [id])
+  owner          Owner?    @relation(fields: [ownerId], references: [userId])
   ownerId        String?
   cardNumber     String    @unique
   expMonth       Int
@@ -288,8 +296,6 @@ model Account {
 }
 
 enum AccountCategory {
-  EQUITY
-  PROJECT
   COMISSION
   CASH
   PLATFORM
@@ -350,6 +356,29 @@ enum TransactionStatus {
   COMPLETED
 }
 
+//Make CRU Available, cannot be deleted
+model Invoice {
+  id              Int            @id @default(autoincrement())
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsNumber() 
+  adminFee        Float
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsNumber() 
+  amount          Float
+  /// @HideField({ output: false, input: true })   
+  uniqueCode      Int
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  serviceOrder    ServiceOrder?  @relation(fields: [serviceOrderId], references: [id])
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  platformOrder   PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  transactions    Transaction[]
+  /// @HideField({ output: false, input: true }) 
+  createdAt       DateTime       @default(now())
+  serviceOrderId  Int?
+  platformOrderId Int?
+}
+
 //-----------------------------------Addresses--------------------------------------------
 
 //CRUD for UI
@@ -363,43 +392,45 @@ model Address {
   subdistrict   Subdistrict     @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
   // @HideField({ match: 'AddressCreate*Input' })
   subdistrictId Int
-  user          User?
+  user          User?           @relation(fields: [userId], references: [id])
   Branch        Branch?
   platformOrder PlatformOrder[]
   serviceOrder  ServiceOrder[]
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
+  userId        String?
 }
 
 //CRUD for UI
 //CRUD only available for owner user
 model Branch {
-  id             Int                    @id @default(autoincrement())
+  id             Int                        @id @default(autoincrement())
   name           String
-  isActive       Boolean                @default(true)
+  isActive       Boolean                    @default(true)
   description    String?
-  image          String?
-  address        Address                @relation(fields: [addressId], references: [id])
-  addressId      Int                    @unique
+  image          Image                      @relation(fields: [imageId], references: [url])
+  imageId        String
+  address        Address                    @relation(fields: [addressId], references: [id])
+  addressId      Int                        @unique
   phone          String?
   email          String?
-  owner          Owner                  @relation(fields: [ownerId], references: [id])
+  owner          Owner                      @relation(fields: [ownerId], references: [userId])
   ownerId        String
   orders         ServiceOrder[]
   bussinessHours BusinessHour[]
   employees      Employee[]
   reviews        Review[]
   schedules      Schedule[]
-  services       BranchLaundryService[]
+  services       BranchLaundryItemService[]
   customers      Customer[]
   machines       Machine[]
-  createdAt      DateTime               @default(now())
+  createdAt      DateTime                   @default(now())
   updatedAt      DateTime
 }
 
 //CRUD for UI
 //CRUD Only available for branch owner
-model BranchLaundryService {
+model BranchLaundryItemService {
   id               Int            @id @default(autoincrement())
   name             String
   description      String?
@@ -423,22 +454,22 @@ model BranchLaundryService {
 //no update nor delete operation for UI
 //CRUD only available to superUser
 model LaundryItem {
-  id                  String                 @id @default(cuid())
+  id                  String                     @id @default(cuid())
   name                String
   description         String?
   imageUrls           String[]
   suggestedSalePrice  Int //backend cron job auto calculate from average market price (BranchLaundryService model)
-  unitOfMeasure       UnitOfMeasure          @relation(fields: [unitOfMeasureId], references: [id])
+  unitOfMeasure       UnitOfMeasure              @relation(fields: [unitOfMeasureId], references: [id])
   unitOfMeasureId     Int
-  category            LaundryItemCategory    @relation(fields: [categoryId], references: [id])
+  category            LaundryItemCategory        @relation(fields: [categoryId], references: [id])
   categoryId          Int
-  branchServices      BranchLaundryService[]
-  requiresDryCleaning Boolean                @default(false)
-  requiresIron        Boolean                @default(false) // whether the service requires ironing
-  requiresFold        Boolean                @default(false) // whether the service requires folding
-  requiresPack        Boolean                @default(false) // whether the service requires packing
-  requiresHang        Boolean                @default(false) // whether the service requires hanging
-  createdAt           DateTime               @default(now())
+  branchServices      BranchLaundryItemService[]
+  requiresDryCleaning Boolean                    @default(false)
+  requiresIron        Boolean                    @default(false) // whether the service requires ironing
+  requiresFold        Boolean                    @default(false) // whether the service requires folding
+  requiresPack        Boolean                    @default(false) // whether the service requires packing
+  requiresHang        Boolean                    @default(false) // whether the service requires hanging
+  createdAt           DateTime                   @default(now())
   updatedAt           DateTime
 }
 
@@ -472,7 +503,7 @@ model PlatformItem {
   name        String
   price       Int
   description String?
-  images      String[]
+  images      Image[]
   stock       Int?
   createdAt   DateTime        @default(now())
   updatedAt   DateTime
@@ -483,7 +514,7 @@ model PlatformItem {
 //Can be created,read,edit but cannot be deleted by UI
 model PlatformOrder {
   id        Int                 @id @default(autoincrement())
-  owner     Owner               @relation(fields: [ownerId], references: [id])
+  owner     Owner               @relation(fields: [ownerId], references: [userId])
   ownerId   String
   statuses  OrderStatusChange[] //to track statuses
   items     PlatformItem[]
@@ -494,6 +525,7 @@ model PlatformOrder {
   createdAt DateTime            @default(now())
   updatedAt DateTime
   deletedAt DateTime? //implement softdelete
+  Invoice   Invoice[]
 }
 
 //Only Read on UI
@@ -514,31 +546,32 @@ model OrderStatusChange {
 //Where the Customer ordering a product from Branch
 //Can be created,read,edit but cannot be deleted for UI
 model ServiceOrder {
-  id              Int                    @id @default(autoincrement())
+  id              Int                        @id @default(autoincrement())
   type            OrderType
-  customer        Customer               @relation(fields: [customerId], references: [id])
+  customer        Customer                   @relation(fields: [customerId], references: [userId])
   customerId      String
-  employee        Employee?              @relation(fields: [employeeId], references: [id])
+  employee        Employee?                  @relation(fields: [employeeId], references: [userId])
   employeeId      String?
-  voucher         Voucher?               @relation(fields: [voucherId], references: [id])
+  voucher         Voucher?                   @relation(fields: [voucherId], references: [id])
   voucherId       Int?
   statuses        OrderStatusChange[] //to track statuses
-  items           BranchLaundryService[]
+  items           BranchLaundryItemService[]
   platformFee     Int?
   discount        Int?
-  address         Address?               @relation(fields: [addressId], references: [id])
+  address         Address?                   @relation(fields: [addressId], references: [id])
   addressId       Int?
   pickupTime      DateTime? // estimated pickup time
   deliveryTime    DateTime? // estimated delivery time
   pickupMessage   String? // message for the pickup/delivery person
   deliveryMessage String? // message for the pickup/delivery person
   instructions    String? // additional instructions for the order
-  branch          Branch                 @relation(fields: [brandId], references: [id])
+  branch          Branch                     @relation(fields: [brandId], references: [id])
   brandId         Int
   payments        Payment[]
-  createdAt       DateTime               @default(now())
+  createdAt       DateTime                   @default(now())
   updatedAt       DateTime
   deletedAt       DateTime? //implement softdelete
+  Invoice         Invoice[]
 }
 
 enum OrderType {
@@ -592,21 +625,6 @@ enum PaymentStatus {
   PAYMENTREFUNDED
 }
 
-//Create and Read only for UI
-model PlatformWalletTransaction {
-  id          Int                               @id @default(autoincrement())
-  amount      Float // amount of the transaction in Indonesian Rupiah (IDR)
-  description String? // optional description of the transaction
-  status      PaymentStatus
-  type        PlatformWalletTransactionType
-  category    PlatformWalletTransactionCategory
-  user        User                              @relation(fields: [userId], references: [id])
-  userId      String
-  createdAt   DateTime                          @default(now())
-  updatedAt   DateTime                          @updatedAt
-  deletedAt   DateTime? //implement softdelete
-}
-
 enum PlatformWalletTransactionCategory {
   TOPUP
   WITHDRAWAL
@@ -628,9 +646,9 @@ model Review {
   cleanlinessScore Float
   speedScore       Float
   qualityScore     Float
-  reviewBy         Customer @relation(fields: [reviewById], references: [id])
+  reviewBy         Customer @relation(fields: [reviewById], references: [userId])
   reviewById       String
-  branch           Branch   @relation(fields: [branchId], references: [id])
+  branch           Branch   @relation(fields: [branchId], references: [addressId])
   branchId         Int
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
@@ -643,7 +661,7 @@ model Attendance {
   latitude      Float? //for google map
   longitude     Float? //for google map
   ImageUrl      String
-  employee      Employee                 @relation(fields: [employeeId], references: [id])
+  employee      Employee                 @relation(fields: [employeeId], references: [userId])
   employeeId    String
   timeIn        DateTime
   timeOut       DateTime
