@@ -1,45 +1,104 @@
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-//-----------------------------------User Category--------------------------------------------
+//---------------------------generator----------------------------------
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator custom_generator {
+  provider = "prisma-generator-fake-data"
+  output   = "./fake-data.ts"
+}
+
+generator nestgraphql {
+  provider                              = "node node_modules/prisma-nestjs-graphql"
+  output                                = "../src/@generated"
+  fields_Validator_from                 = "class-validator"
+  fields_Validator_input                = true
+  requireSingleFieldsInWhereUniqueInput = true
+  emitSingle                            = true
+  emitCompiled                          = true
+  purgeOutput                           = true
+  noTypeId                              = true
+}
+
+//---------------------------------address----------------------------------
+
+model Province {
+  id     Int    @id @default(autoincrement())
+  name   String @unique
+  /// @HideField()   
+  cities City[]
+}
+
+//Make CRUD Available
+model City {
+  id         Int        @id @default(autoincrement())
+  name       String
+  province   Province   @relation(fields: [provinceId], references: [id])
+  provinceId Int
+  districts  District[]
+}
+
+//Make CRUD Available
+model District {
+  id           Int           @id @default(autoincrement())
+  name         String
+  city         City          @relation(fields: [cityId], references: [id])
+  cityId       Int
+  subdistricts Subdistrict[]
+}
+
+model Subdistrict {
+  id         Int       @id @default(autoincrement())
+  name       String
+  district   District  @relation(fields: [districtId], references: [id])
+  districtId Int
+  postalCode String
+  /// @HideField()
+  address    Address[] @relation("SubdistrictAddress")
+}
+
+//-----------------------------------User--------------------------------------------
 
 //CRUD for UI
 model User {
-  id                        String                      @id @default(uuid())
-  fullName                  String
-  username                  String                      @unique
-  email                     String                      @unique //owner cannot be customer and employee, vice versa
-  emailVerifiedAt           DateTime? //if null, then unverified 
-  password                  String
-  phoneVerifiedAt           DateTime? //if null, then unverified 
-  phone                     String                      @unique
-  avatarImage               Images                      @relation(fields: [avatarImageId], references: [url])
-  avatarImageId             String
-  gender                    Gender
-  birthDate                 DateTime
-  role                      UserRole
-  addresses                 Address[] //one customer can have multipe addresses, but one owner and employee can only have one address
-  sessions                  Session[] //one device login at a time for employee and owner
-  notifications             Notification[]
-  customerInfo              Customer[]
-  employeeInfo              Employee[]
-  ownerInfo                 Owner[]
-  changedStatuses           OrderStatusChange[]
-  referralCode              String                      @unique
-  referee                   ReferralTransaction[]       @relation("Referee")
-  referrer                  ReferralTransaction[]       @relation("Referrer")
-  language                  Language                    @default(ID)
-  theme                     Theme                       @default(LIGHT)
-  createdAt                 DateTime                    @default(now())
-  updatedAt                 DateTime                    @updatedAt
-  imagesUrl                 String
-  PlatformWalletTransaction PlatformWalletTransaction[]
+  //-------------------------- scalars --------------------------------
+  id                 String    @id @default(uuid())
+  fullName           String
+  username           String    @unique
+  email              String    @unique //owner cannot be customer and employee, vice versa
+  emailVerifiedAt    DateTime? //if null, then unverified 
+  password           String
+  whatsappVerifiedAt DateTime? //if null, then unverified 
+  whatsapp           String    @unique
+  avatarImage        Images    @relation(fields: [avatarImageId], references: [url])
+  avatarImageId      String
+  gender             Gender
+  birthDate          DateTime
+  role               UserRole
+
+  language  Language  @default(ID)
+  theme     Theme     @default(LIGHT)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime? //implement softdelete
+
+  //-------------------------- relations --------------------------------
+  accounts        Account[]
+  addresses       Address[] //one customer can have multipe addresses, but one owner and employee can only have one address
+  sessions        Session[] //one device login at a time for employee and owner
+  notifications   Notification[]
+  customerInfo    Customer[]
+  employeeInfo    Employee[]
+  ownerInfo       Owner[]
+  changedStatuses OrderStatusChange[]
+
+  @@map("users")
 }
 
 model Images {
@@ -62,23 +121,12 @@ enum FileType {
   PDF
 }
 
-//no CRUD for UI
-model ReferralTransaction {
-  id               Int      @id @default(autoincrement())
-  referee          User     @relation("Referee", fields: [refereeId], references: [id])
-  refereeId        String
-  referrer         User     @relation("Referrer", fields: [referrerId], references: [id])
-  referrerId       String
-  referralCode     String
-  commissionAmount Float
-  createdAt        DateTime @default(now())
-}
-
 //No CRUD for UI
 //CRUD for superUser
 model PhoneCountryCode {
   id        Int    @id @default(autoincrement())
-  imageUrl  String //flag icon image  
+  image     Images @relation(fields: [imageId], references: [url])
+  imageId   String
   country   String
   phoneCode Int    @unique
 }
@@ -100,6 +148,7 @@ enum UserRole {
   OWNER
   EMPLOYEE
   CUSTOMER
+  SUPERUSER
 }
 
 enum Gender {
@@ -118,16 +167,83 @@ enum Language {
 }
 
 //CRUD for UI
+model Owner {
+  //-------------------------- scalars --------------------------------
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @id
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+
+  //-------------------------- relations --------------------------------
+  creditCard     CreditCard[]
+  platformOrders PlatformOrder[]
+  branches       Branch[]
+
+  @@map("Owners")
+}
+
+//CRUD for UI
 model Customer {
-  id               String         @id @default(uuid())
-  user             User           @relation(fields: [userId], references: [id])
-  userId           String
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime
+  //-------------------------- scalars --------------------------------
+  user         User     @relation(fields: [userId], references: [id])
+  userId       String   @id
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime
+  referralCode String   @unique
+  referredBy   User?    @relation("UserReferral", fields: [referredById], references: [id])
+  /// @HideField({ output: false, input: true })   
+  referredById String?
+
+  //-------------------------- relations --------------------------------
   orders           ServiceOrder[]
   favoriteBranches Branch[]
   reviews          Review[]
-  creditCard       CreditCard[]
+  creditCards      CreditCard[]
+  referredUsers    User[]         @relation("UserReferral")
+
+  @@map("customers")
+}
+
+//CRUD for UI
+model Employee {
+  //-------------------------- scalars --------------------------------
+
+  user            User     @relation(fields: [userId], references: [id])
+  userId          String   @id
+  salary          Int?
+  attendanceBonus Int? //per attendance
+  mealAllowance   Int?
+  branch          Branch   @relation(fields: [branchId], references: [id])
+  branchId        Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime
+
+  //-------------------------- relations --------------------------------
+
+  roles        EmployeeRole[] //one employee can be cashier, courier or production at the same time 
+  serviceOrder ServiceOrder[]
+  activities   Activity[]
+  attendances  Attendance[]
+
+  @@map("Employees")
+}
+
+enum EmployeeRole {
+  CASHIER
+  COURIER
+  PRODUCTION
+}
+
+enum Activity {
+  LABELLING
+  SORTING
+  CLEANING
+  SPOTTING
+  DETAILLING
+  DRYING
+  IRONING
+  FOLDING
+  PACKING
 }
 
 //CRUD for UI
@@ -148,52 +264,90 @@ model CreditCard {
   updatedAt      DateTime  @updatedAt
 }
 
-//CRUD for UI
-model Employee {
-  id              String         @id @default(uuid())
-  user            User           @relation(fields: [userId], references: [id])
-  userId          String
-  role            EmployeeRole[] //one employee can be cashier, courier or production at the same time
-  salary          Int?
-  attendanceBonus Int? //per attendance
-  mealAllowance   Int?
-  branch          Branch         @relation(fields: [branchId], references: [id])
-  branchId        Int
-  serviceOrder    ServiceOrder[]
-  activities      Activity[]
-  attendances     Attendance[]
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime
+//-----------------------------------Account----------------------------------------------
+
+model Account {
+  //---------------------------------
+  id                     Int             @id @default(autoincrement())
+  accountNumber          Float?
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlpha()
+  name                   String
+  /// @HideField({ output: false, input: true })
+  createdAt              DateTime        @default(now())
+  /// @HideField({ output: false, input: true })
+  updatedAt              DateTime        @updatedAt
+  user                   User            @relation(fields: [userId], references: [id])
+  userId                 String
+  accountCategory        AccountCategory
+  /// @HideField({ match: 'AccountCreate*Input' })
+  transactionOrigins     Transaction[]   @relation("origin")
+  /// @HideField({ match: 'AccountCreate*Input' })
+  transactionDestination Transaction[]   @relation("destination")
 }
 
-enum Activity {
-  LABELLING
-  SORTING
-  CLEANING
-  SPOTTING
-  DETAILLING
-  DRYING
-  IRONING
-  FOLDING
-  PACKING
+enum AccountCategory {
+  EQUITY
+  PROJECT
+  COMISSION
+  CASH
+  PLATFORM
+  BANK
+  DEBT
+  POINT
 }
 
-enum EmployeeRole {
-  CASHIER
-  COURIER
-  PRODUCTION
+//Make Read only without update, delete
+model Transaction {
+  id                  Int                 @id @default(autoincrement())
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  amount              Float
+  proofUrl            String?
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})     
+  status              TransactionStatus
+  transactionCategory TransactionCategory
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  fromAccount         Account             @relation("origin", fields: [fromAccountId], references: [id])
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+  fromAccountId       Int
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+  toAccount           Account             @relation("destination", fields: [toAccountId], references: [id])
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+  toAccountId         Int
+  invoice             Invoice?            @relation(fields: [invoiceId], references: [id])
+  invoiceId           Int?
+  /// @HideField({ match: 'TransactionUpdate*Input' })
+  withdrawalRequestId Int?                @unique
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  uniqueCode          Int?
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  createdAt           DateTime            @default(now())
+
+  @@index([amount], name: "amount")
+  @@index([fromAccountId], name: "from_account_id")
+  @@index([toAccountId], name: "to_account_id")
+  @@index([createdAt], name: "created_at")
 }
 
-//CRUD for UI
-model Owner {
-  id             String          @id @default(uuid())
-  user           User            @relation(fields: [userId], references: [id])
-  userId         String
-  creditCard     CreditCard[]
-  platformOrders PlatformOrder[]
-  branches       Branch[]
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime
+enum TransactionCategory {
+  INVESTMENT
+  INVESTMENT_RETURN
+  COMISSION_BONUS
+  WITHDRAWAL
+  MEMBER_REGISTRATION
+  STUDENT_REGISTRATION
+  REFERRING
+  REDEEMING
+}
+
+enum TransactionStatus {
+  PROCESSING
+  PENDING
+  FAILED
+  CANCELLED
+  COMPLETED
 }
 
 //-----------------------------------Addresses--------------------------------------------
@@ -205,36 +359,16 @@ model Address {
   longitude     Float? //for google map
   label         String
   street        String
-  city          City            @relation(fields: [cityId], references: [id])
-  cityId        String
-  zipcode       Zipcode         @relation(fields: [zipcodeId], references: [id])
-  zipcodeId     String
-  user          User            @relation(fields: [userId], references: [id])
-  userId        String
+  /// @Validator.IsNotEmpty()
+  subdistrict   Subdistrict     @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+  // @HideField({ match: 'AddressCreate*Input' })
+  subdistrictId Int
+  user          User?
   Branch        Branch?
   platformOrder PlatformOrder[]
   serviceOrder  ServiceOrder[]
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
-}
-
-//No CRUD for UI
-//CRUD available only for superUser
-model City {
-  id        String    @id @default(uuid())
-  name      String
-  zipcodes  Zipcode[]
-  addresses Address[]
-}
-
-//No CRUD for UI
-//CRUD available only for superUser
-model Zipcode {
-  id        String    @id @default(uuid())
-  code      String
-  city      City      @relation(fields: [cityId], references: [id])
-  cityId    String
-  addresses Address[]
 }
 
 //CRUD for UI
