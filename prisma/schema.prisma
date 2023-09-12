@@ -17,6 +17,7 @@ generator client {
 // generator nestgraphql {
 //   provider                              = "node node_modules/prisma-nestjs-graphql"
 //   output                                = "../src/@generated"
+//   reExport                              = Single
 //   fields_Validator_from                 = "class-validator"
 //   fields_Validator_input                = true
 //   requireSingleFieldsInWhereUniqueInput = true
@@ -66,6 +67,8 @@ model Subdistrict {
 //-----------------------------------User--------------------------------------------
 
 //CRUD for UI
+///User terdiri dari 4 role, Owner, Employee, Customer, SuperUser
+///Properti tiap role berbeda-beda, sehingga dibuat tabel terpisah
 model User {
   //-------------------------- scalars --------------------------------
   id                 String    @id @default(uuid())
@@ -81,7 +84,8 @@ model User {
   updatedAt          DateTime  @updatedAt
   deletedAt          DateTime? //implement softdelete
 
-  //-------------------------- 1 to 1 relations --------------------------------
+  //-------------------------- 1 relations --------------------------------
+
   role           UserRole
   gender         Gender
   avatarImage    Image     @relation(fields: [avatarImageId], references: [url])
@@ -95,7 +99,8 @@ model User {
   language       Language  @default(ID)
   theme          Theme     @default(LIGHT)
 
-  //-------------------------- m to m relations --------------------------------
+  //-------------------------- m relations --------------------------------
+
   accounts        Account[]
   addresses       Address[] //one customer can have multipe addresses, but one owner and employee can only have one address
   sessions        Session[] //one device login at a time for employee and owner
@@ -106,21 +111,33 @@ model User {
 }
 
 model Image {
+  //-------------------------- scalars --------------------------------
+
+  url       String    @id
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  fileType         FileType?
+  fileType  FileType?
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  fileSize         Float?
-  url              String             @id
+  fileSize  Float?
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  createdAt        DateTime           @default(now())
-  User             User[]
-  PhoneCountryCode PhoneCountryCode[]
-  Branch           Branch[]
-  PlatformItem     PlatformItem?      @relation(fields: [platformItemId], references: [id])
-  platformItemId   String?
-  LaundryItem      LaundryItem?       @relation(fields: [laundryItemId], references: [id])
-  laundryItemId    String?
+  createdAt DateTime  @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  PlatformItem   PlatformItem? @relation(fields: [platformItemId], references: [id])
+  platformItemId String?
+  LaundryItem    LaundryItem?  @relation(fields: [laundryItemId], references: [id])
+  laundryItemId  String?
+
+  //-------------------------- m relations --------------------------------
+
+  User                     User[]
+  PhoneCountryCode         PhoneCountryCode[]
+  Branch                   Branch[]
+  Review                   Review[]
+  Machine                  Machine[]
+  BranchLaundryItemService BranchLaundryItemService[]
+  Transaction              Transaction[]
 
   @@map("Images")
 }
@@ -136,11 +153,12 @@ enum FileType {
 //No CRUD for UI
 //CRUD for superUser
 model PhoneCountryCode {
-  id        Int    @id @default(autoincrement())
+  phoneCode Int    @id
   image     Image  @relation(fields: [imageId], references: [url])
   imageId   String
   country   String
-  phoneCode Int    @unique
+
+  @@map("PhoneCountryCodes")
 }
 
 //No CRUD for UI
@@ -181,32 +199,48 @@ enum Language {
 //CRUD for UI
 model Owner {
   //-------------------------- scalars --------------------------------
-  user      User     @relation(fields: [userId], references: [id])
-  userId    String   @id
+
   createdAt DateTime @default(now())
   updatedAt DateTime
 
-  //-------------------------- relations --------------------------------
+  //-------------------------- 1 relations --------------------------------
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @id
+
+  //-------------------------- m relations --------------------------------
+
   creditCard     CreditCard[]
   platformOrders PlatformOrder[]
-  branches       Branch[]
+
+  /// 1 Owner dapat memiliki banyak cabang
+  branches Branch[]
 
   @@map("Owners")
 }
 
 //CRUD for UI
+/// Customer adalah user yang menggunakan jasa laundry
+/// Customer bisa mereferensikan customer lain dan mendapatkan komisi
+/// Customer bisa mendapatkan poin dari setiap transaksi
+/// Customer bisa menukarkan poin dengan voucher
 model Customer {
   //-------------------------- scalars --------------------------------
-  user         User      @relation(fields: [userId], references: [id])
-  userId       String    @id
-  createdAt    DateTime  @default(now())
+
+  user         User     @relation(fields: [userId], references: [id])
+  userId       String   @id
+  createdAt    DateTime @default(now())
   updatedAt    DateTime
-  referralCode String    @unique
+  ///auto generate dari backend
+  referralCode String   @unique
+
+  //-------------------------- 1 relations --------------------------------
+
   referredBy   Customer? @relation("CustomerReferral", fields: [referredById], references: [userId])
   /// @HideField({ output: false, input: true })   
   referredById String?
 
-  //-------------------------- relations --------------------------------
+  //-------------------------- m relations --------------------------------
   orders           ServiceOrder[]
   favoriteBranches Branch[]
   reviews          Review[]
@@ -217,6 +251,8 @@ model Customer {
 }
 
 //CRUD for UI
+/// Employee adalah user yang bekerja di cabang
+/// Employee bisa memiliki beberapa role, misalnya cashier, courier, production
 model Employee {
   //-------------------------- scalars --------------------------------
 
@@ -225,12 +261,15 @@ model Employee {
   salary          Int?
   attendanceBonus Int? //per attendance
   mealAllowance   Int?
-  branch          Branch   @relation(fields: [branchId], references: [id])
-  branchId        Int
   createdAt       DateTime @default(now())
   updatedAt       DateTime
 
-  //-------------------------- relations --------------------------------
+  //-------------------------- 1 relations --------------------------------
+
+  branch   Branch @relation(fields: [branchId], references: [id])
+  branchId Int
+
+  //-------------------------- m relations --------------------------------
 
   roles        EmployeeRole[] //one employee can be cashier, courier or production at the same time 
   serviceOrder ServiceOrder[]
@@ -279,24 +318,39 @@ model CreditCard {
 //-----------------------------------Account----------------------------------------------
 
 model Account {
-  //---------------------------------
-  id                     Int             @id @default(autoincrement())
-  accountNumber          Float?
+  //-------------------------- scalars --------------------------------
+
+  id            Int    @id @default(autoincrement())
+  accountNumber Float?
+
   /// @Validator.MinLength(2)
   /// @Validator.MaxLength(20)
   /// @Validator.IsAlpha()
-  name                   String
+  name String
+
   /// @HideField({ output: false, input: true })
-  createdAt              DateTime        @default(now())
+  createdAt DateTime @default(now())
+
   /// @HideField({ output: false, input: true })
-  updatedAt              DateTime        @updatedAt
-  user                   User            @relation(fields: [userId], references: [id])
-  userId                 String
-  accountCategory        AccountCategory
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  accountCategory AccountCategory
+  user            User            @relation(fields: [userId], references: [id])
+  userId          String
+
+  //-------------------------- m relations --------------------------------
+
+  /// Field untuk menampung transaksi keluar (credit)
   /// @HideField({ match: 'AccountCreate*Input' })
-  transactionOrigins     Transaction[]   @relation("origin")
+  transactionOrigins Transaction[] @relation("origin")
+
+  /// Field untuk menampung transaksi masuk (debit)
   /// @HideField({ match: 'AccountCreate*Input' })
-  transactionDestination Transaction[]   @relation("destination")
+  transactionDestination Transaction[] @relation("destination")
+
+  @@map("Accounts")
 }
 
 enum AccountCategory {
@@ -309,31 +363,51 @@ enum AccountCategory {
 }
 
 //Make Read only without update, delete
+///
 model Transaction {
-  id                  Int                 @id @default(autoincrement())
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
   /// @Validator.IsNumber() 
   /// @Validator.IsNotEmpty()
-  amount              Float
-  proofUrl            String?
+  amount Float
+
+  proofImage   Image?  @relation(fields: [imageUrl], references: [url])
+  proofImageId String?
+
+  /// Kode unik akan diiisi oleh backend
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  uniqueCode Int?
+
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})     
-  status              TransactionStatus
+  status TransactionStatus
+
   transactionCategory TransactionCategory
+
+  /// Jika terisi dengan id transaksi yang sama, maka artinya transaksi ini adalah transaksi debit
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  fromAccount         Account             @relation("origin", fields: [fromAccountId], references: [id])
+  fromAccount Account @relation("origin", fields: [fromAccountId], references: [id])
+
+  /// Jika terisi dengan id transaksi yang sama, maka artinya transaksi ini adalah transaksi credit
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
-  fromAccountId       Int
+  fromAccountId Int
+
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
-  toAccount           Account             @relation("destination", fields: [toAccountId], references: [id])
+  toAccount Account @relation("destination", fields: [toAccountId], references: [id])
+
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
-  toAccountId         Int
-  invoice             Invoice?            @relation(fields: [invoiceId], references: [id])
-  invoiceId           Int?
-  /// @HideField({ match: 'TransactionUpdate*Input' })
-  withdrawalRequestId Int?                @unique
-  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  uniqueCode          Int?
-  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  createdAt           DateTime            @default(now())
+  toAccountId Int
+
+  invoice Invoice? @relation(fields: [invoiceId], references: [id])
+
+  invoiceId Int?
+  imageUrl  String?
 
   @@index([amount], name: "amount")
   @@index([fromAccountId], name: "from_account_id")
@@ -342,12 +416,9 @@ model Transaction {
 }
 
 enum TransactionCategory {
-  INVESTMENT
-  INVESTMENT_RETURN
-  COMISSION_BONUS
+  ORDER
   WITHDRAWAL
-  MEMBER_REGISTRATION
-  STUDENT_REGISTRATION
+  TOPUP
   REFERRING
   REDEEMING
 }
@@ -436,25 +507,34 @@ model Branch {
 //CRUD Only available for branch owner
 model BranchLaundryItemService {
   //-------------------------- scalars --------------------------------
-  id               Int            @id @default(autoincrement())
-  name             String
-  description      String?
-  branch           Branch         @relation(fields: [branchId], references: [id])
-  branchId         Int
-  laundryItem      LaundryItem    @relation(fields: [laundryItemId], references: [id])
-  laundryItemId    String
-  durationInMinute Int
-  maxWeight        Float?
-  minWeight        Float?
-  cost             Int?
-  salePrice        Int
-  isActive         Boolean        @default(true)
-  isOnSale         Boolean        @default(true)
-  createdAt        DateTime       @default(now())
-  updatedAt        DateTime       @updatedAt
-  //-------------------------- relations --------------------------------
-  orders           ServiceOrder[]
-  activities       Activity[] //branch can decide what are the activities involved in this service
+
+  id                   Int      @id @default(autoincrement())
+  name                 String
+  description          String?
+  durationInMinute     Int
+  maxWeight            Float?
+  minWeight            Float?
+  cost                 Int?
+  salePrice            Int
+  isActive             Boolean  @default(true)
+  isOnSale             Boolean  @default(true)
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  raceConditionVersion Int? //for optimistic concurrency control
+
+  //-------------------------- 1 relations --------------------------------
+
+  branch        Branch      @relation(fields: [branchId], references: [id])
+  branchId      Int
+  laundryItem   LaundryItem @relation(fields: [laundryItemId], references: [id])
+  laundryItemId String
+  Image         Image?      @relation(fields: [imageUrl], references: [url])
+  imageUrl      String?
+
+  //-------------------------- m relations --------------------------------
+
+  orders     ServiceOrder[]
+  activities Activity[] //branch can decide what are the activities involved in this service
 
   @@map("BranchLaundryItemServices")
 }
@@ -576,32 +656,61 @@ model OrderStatusChange {
 //Where the Customer ordering a product from Branch
 //Can be created,read,edit but cannot be deleted for UI
 model ServiceOrder {
-  id              Int                        @id @default(autoincrement())
-  type            OrderType
-  customer        Customer                   @relation(fields: [customerId], references: [userId])
-  customerId      String
-  employee        Employee?                  @relation(fields: [employeeId], references: [userId])
-  employeeId      String?
-  voucher         Voucher?                   @relation(fields: [voucherId], references: [id])
-  voucherId       Int?
-  statuses        OrderStatusChange[] //to track statuses
-  items           BranchLaundryItemService[]
+  //-------------------------- scalars --------------------------------
+
+  id              Int       @id @default(autoincrement())
   platformFee     Int?
   discount        Int?
-  address         Address?                   @relation(fields: [addressId], references: [id])
-  addressId       Int?
   pickupTime      DateTime? // estimated pickup time
   deliveryTime    DateTime? // estimated delivery time
   pickupMessage   String? // message for the pickup/delivery person
   deliveryMessage String? // message for the pickup/delivery person
   instructions    String? // additional instructions for the order
-  branch          Branch                     @relation(fields: [brandId], references: [id])
-  brandId         Int
-  payments        Payment[]
-  createdAt       DateTime                   @default(now())
+  createdAt       DateTime  @default(now())
   updatedAt       DateTime
   deletedAt       DateTime? //implement softdelete
-  Invoice         Invoice[]
+
+  //-------------------------- 1 relations --------------------------------
+
+  employee   Employee? @relation(fields: [employeeId], references: [userId])
+  employeeId String?
+  voucher    Voucher?  @relation(fields: [voucherId], references: [id])
+  voucherId  Int?
+  address    Address?  @relation(fields: [addressId], references: [id])
+  addressId  Int?
+  type       OrderType
+  customer   Customer  @relation(fields: [customerId], references: [userId])
+  customerId String
+  branch     Branch    @relation(fields: [brandId], references: [id])
+  brandId    Int
+
+  //-------------------------- m relations --------------------------------
+
+  statuses                   OrderStatusChange[] //to track statuses
+  orderCart                  Cart[]
+  payments                   Payment[]
+  Invoice                    Invoice[]
+  BranchLaundryItemService   BranchLaundryItemService? @relation(fields: [branchLaundryItemServiceId], references: [id])
+  branchLaundryItemServiceId Int?
+
+  @@map("ServiceOrders")
+}
+
+model Cart {
+  id             Int          @id @default(autoincrement())
+  serviceOrder   ServiceOrder @relation(fields: [serviceOrderId], references: [id])
+  serviceOrderId Int
+  quantity       Int
+  /// @Validator.IsNumber() 
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  price          Float
+  /// @Validator.IsNumber() 
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  cost           Float
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  createdAt      DateTime     @default(now())
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  updatedAt      DateTime     @updatedAt
 }
 
 enum OrderType {
@@ -671,7 +780,7 @@ enum PlatformWalletTransactionType {
 //Update, Delete disable for owner
 model Review {
   id               Int      @id @default(autoincrement())
-  imageUrls        String[]
+  images           Image[]
   content          String
   cleanlinessScore Float
   speedScore       Float
@@ -777,6 +886,8 @@ model Machine {
   categoryId Int?
   createdAt  DateTime         @default(now())
   updatedAt  DateTime
+  Image      Image?           @relation(fields: [imageUrl], references: [url])
+  imageUrl   String?
 }
 
 //No CRUD UI
