@@ -1,0 +1,640 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//-----------------------------------User Category--------------------------------------------
+
+//CRUD for UI
+model User {
+  id                        String                      @id @default(uuid())
+  fullName                  String
+  username                  String                      @unique
+  email                     String                      @unique //owner cannot be customer and employee, vice versa
+  emailVerifiedAt           DateTime? //if null, then unverified 
+  password                  String
+  phoneVerifiedAt           DateTime? //if null, then unverified 
+  phone                     String                      @unique
+  avatarImage               Images                      @relation(fields: [avatarImageId], references: [url])
+  avatarImageId             String
+  gender                    Gender
+  birthDate                 DateTime
+  role                      UserRole
+  addresses                 Address[] //one customer can have multipe addresses, but one owner and employee can only have one address
+  sessions                  Session[] //one device login at a time for employee and owner
+  notifications             Notification[]
+  customerInfo              Customer[]
+  employeeInfo              Employee[]
+  ownerInfo                 Owner[]
+  changedStatuses           OrderStatusChange[]
+  referralCode              String                      @unique
+  referee                   ReferralTransaction[]       @relation("Referee")
+  referrer                  ReferralTransaction[]       @relation("Referrer")
+  language                  Language                    @default(ID)
+  theme                     Theme                       @default(LIGHT)
+  createdAt                 DateTime                    @default(now())
+  updatedAt                 DateTime                    @updatedAt
+  imagesUrl                 String
+  PlatformWalletTransaction PlatformWalletTransaction[]
+}
+
+model Images {
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  fileType  FileType?
+  /// @Validator.IsNumber() 
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  fileSize  Float?
+  url       String    @id
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  createdAt DateTime  @default(now())
+  User      User[]
+}
+
+enum FileType {
+  UNKNOWN
+  MP4
+  JPG
+  PNG
+  PDF
+}
+
+//no CRUD for UI
+model ReferralTransaction {
+  id               Int      @id @default(autoincrement())
+  referee          User     @relation("Referee", fields: [refereeId], references: [id])
+  refereeId        String
+  referrer         User     @relation("Referrer", fields: [referrerId], references: [id])
+  referrerId       String
+  referralCode     String
+  commissionAmount Float
+  createdAt        DateTime @default(now())
+}
+
+//No CRUD for UI
+//CRUD for superUser
+model PhoneCountryCode {
+  id        Int    @id @default(autoincrement())
+  imageUrl  String //flag icon image  
+  country   String
+  phoneCode Int    @unique
+}
+
+//No CRUD for UI
+//Read Only for SuperUser
+model Session {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  device    String
+  ipAddress Float
+  createdAt DateTime @default(now())
+}
+
+enum UserRole {
+  OWNER
+  EMPLOYEE
+  CUSTOMER
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum Theme {
+  LIGHT
+  DARK
+}
+
+enum Language {
+  ID
+  EN
+}
+
+//CRUD for UI
+model Customer {
+  id               String         @id @default(uuid())
+  user             User           @relation(fields: [userId], references: [id])
+  userId           String
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime
+  orders           ServiceOrder[]
+  favoriteBranches Branch[]
+  reviews          Review[]
+  creditCard       CreditCard[]
+}
+
+//CRUD for UI
+model CreditCard {
+  id             Int       @id @default(autoincrement())
+  isAccepted     Boolean
+  lastChecked    DateTime?
+  cardHolderName String
+  customer       Customer? @relation(fields: [customerId], references: [id])
+  customerId     String?
+  owner          Owner?    @relation(fields: [ownerId], references: [id])
+  ownerId        String?
+  cardNumber     String    @unique
+  expMonth       Int
+  expYear        Int
+  cvv            String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+//CRUD for UI
+model Employee {
+  id              String         @id @default(uuid())
+  user            User           @relation(fields: [userId], references: [id])
+  userId          String
+  role            EmployeeRole[] //one employee can be cashier, courier or production at the same time
+  salary          Int?
+  attendanceBonus Int? //per attendance
+  mealAllowance   Int?
+  branch          Branch         @relation(fields: [branchId], references: [id])
+  branchId        Int
+  serviceOrder    ServiceOrder[]
+  activities      Activity[]
+  attendances     Attendance[]
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime
+}
+
+enum Activity {
+  LABELLING
+  SORTING
+  CLEANING
+  SPOTTING
+  DETAILLING
+  DRYING
+  IRONING
+  FOLDING
+  PACKING
+}
+
+enum EmployeeRole {
+  CASHIER
+  COURIER
+  PRODUCTION
+}
+
+//CRUD for UI
+model Owner {
+  id             String          @id @default(uuid())
+  user           User            @relation(fields: [userId], references: [id])
+  userId         String
+  creditCard     CreditCard[]
+  platformOrders PlatformOrder[]
+  branches       Branch[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime
+}
+
+//-----------------------------------Addresses--------------------------------------------
+
+//CRUD for UI
+model Address {
+  id            Int             @id @default(autoincrement())
+  latitude      Float? //for google map
+  longitude     Float? //for google map
+  label         String
+  street        String
+  city          City            @relation(fields: [cityId], references: [id])
+  cityId        String
+  zipcode       Zipcode         @relation(fields: [zipcodeId], references: [id])
+  zipcodeId     String
+  user          User            @relation(fields: [userId], references: [id])
+  userId        String
+  Branch        Branch?
+  platformOrder PlatformOrder[]
+  serviceOrder  ServiceOrder[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+//No CRUD for UI
+//CRUD available only for superUser
+model City {
+  id        String    @id @default(uuid())
+  name      String
+  zipcodes  Zipcode[]
+  addresses Address[]
+}
+
+//No CRUD for UI
+//CRUD available only for superUser
+model Zipcode {
+  id        String    @id @default(uuid())
+  code      String
+  city      City      @relation(fields: [cityId], references: [id])
+  cityId    String
+  addresses Address[]
+}
+
+//CRUD for UI
+//CRUD only available for owner user
+model Branch {
+  id             Int                    @id @default(autoincrement())
+  name           String
+  isActive       Boolean                @default(true)
+  description    String?
+  image          String?
+  address        Address                @relation(fields: [addressId], references: [id])
+  addressId      Int                    @unique
+  phone          String?
+  email          String?
+  owner          Owner                  @relation(fields: [ownerId], references: [id])
+  ownerId        String
+  orders         ServiceOrder[]
+  bussinessHours BusinessHour[]
+  employees      Employee[]
+  reviews        Review[]
+  schedules      Schedule[]
+  services       BranchLaundryService[]
+  customers      Customer[]
+  machines       Machine[]
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime
+}
+
+//CRUD for UI
+//CRUD Only available for branch owner
+model BranchLaundryService {
+  id               Int            @id @default(autoincrement())
+  name             String
+  description      String?
+  branch           Branch         @relation(fields: [branchId], references: [id])
+  branchId         Int
+  laundryItem      LaundryItem    @relation(fields: [laundryItemId], references: [id])
+  laundryItemId    String
+  activities       Activity[] //branch can decide what are the activities involved
+  durationInMinute Int
+  maxWeight        Float?
+  minWeight        Float?
+  cost             Int?
+  salePrice        Int
+  orders           ServiceOrder[]
+  isActive         Boolean        @default(true)
+  isOnSale         Boolean        @default(true)
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime
+}
+
+//no update nor delete operation for UI
+//CRUD only available to superUser
+model LaundryItem {
+  id                  String                 @id @default(cuid())
+  name                String
+  description         String?
+  imageUrls           String[]
+  suggestedSalePrice  Int //backend cron job auto calculate from average market price (BranchLaundryService model)
+  unitOfMeasure       UnitOfMeasure          @relation(fields: [unitOfMeasureId], references: [id])
+  unitOfMeasureId     Int
+  category            LaundryItemCategory    @relation(fields: [categoryId], references: [id])
+  categoryId          Int
+  branchServices      BranchLaundryService[]
+  requiresDryCleaning Boolean                @default(false)
+  requiresIron        Boolean                @default(false) // whether the service requires ironing
+  requiresFold        Boolean                @default(false) // whether the service requires folding
+  requiresPack        Boolean                @default(false) // whether the service requires packing
+  requiresHang        Boolean                @default(false) // whether the service requires hanging
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+model LaundryItemCategory {
+  id        Int           @id @default(autoincrement())
+  name      String
+  items     LaundryItem[] //one category can have multiple items
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+model UnitOfMeasure {
+  id           Int           @id @default(autoincrement())
+  name         String
+  abbreviation String?
+  conversion   Float         @default(1.0)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime
+  laundryItems LaundryItem[]
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+//items for selling to owner like platform subscription,machines, soaps etc
+model PlatformItem {
+  id          String          @id @default(cuid())
+  name        String
+  price       Int
+  description String?
+  images      String[]
+  stock       Int?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime
+  orders      PlatformOrder[]
+}
+
+//Where the Owner ordering a product from platform
+//Can be created,read,edit but cannot be deleted by UI
+model PlatformOrder {
+  id        Int                 @id @default(autoincrement())
+  owner     Owner               @relation(fields: [ownerId], references: [id])
+  ownerId   String
+  statuses  OrderStatusChange[] //to track statuses
+  items     PlatformItem[]
+  address   Address             @relation(fields: [addressId], references: [id])
+  addressId Int
+  payment   Payment             @relation(fields: [paymentId], references: [id])
+  paymentId Int                 @unique //must be full paid
+  createdAt DateTime            @default(now())
+  updatedAt DateTime
+  deletedAt DateTime? //implement softdelete
+}
+
+//Only Read on UI
+model OrderStatusChange {
+  id              Int            @id @default(autoincrement())
+  orderId         Int
+  oldStatus       OrderStatus
+  newStatus       OrderStatus
+  changedBy       User           @relation(fields: [changedById], references: [id])
+  changedById     String
+  platformOrder   PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+  platformOrderId Int?
+  ServiceOrder    ServiceOrder?  @relation(fields: [ServiceOrderId], references: [id])
+  ServiceOrderId  Int?
+  changedAt       DateTime       @default(now())
+}
+
+//Where the Customer ordering a product from Branch
+//Can be created,read,edit but cannot be deleted for UI
+model ServiceOrder {
+  id              Int                    @id @default(autoincrement())
+  type            OrderType
+  customer        Customer               @relation(fields: [customerId], references: [id])
+  customerId      String
+  employee        Employee?              @relation(fields: [employeeId], references: [id])
+  employeeId      String?
+  voucher         Voucher?               @relation(fields: [voucherId], references: [id])
+  voucherId       Int?
+  statuses        OrderStatusChange[] //to track statuses
+  items           BranchLaundryService[]
+  platformFee     Int?
+  discount        Int?
+  address         Address?               @relation(fields: [addressId], references: [id])
+  addressId       Int?
+  pickupTime      DateTime? // estimated pickup time
+  deliveryTime    DateTime? // estimated delivery time
+  pickupMessage   String? // message for the pickup/delivery person
+  deliveryMessage String? // message for the pickup/delivery person
+  instructions    String? // additional instructions for the order
+  branch          Branch                 @relation(fields: [brandId], references: [id])
+  brandId         Int
+  payments        Payment[]
+  createdAt       DateTime               @default(now())
+  updatedAt       DateTime
+  deletedAt       DateTime? //implement softdelete
+}
+
+enum OrderType {
+  DROPSERVICE
+  SELFSERVICE
+  DELIVERYSERVICE
+}
+
+enum OrderStatus {
+  ORDERPENDING
+  ORDERPROCESSING
+  ORDERDONE
+  ORDERSHIPPED
+  ORDERDELIVERED
+  ORDERCANCELLED
+  ORDERRETURNED
+}
+
+//Create and read only, no delete and no update for UI
+model Payment {
+  id              Int            @id @default(autoincrement())
+  amount          Int
+  serviceOrder    ServiceOrder?  @relation(fields: [serviceOrderId], references: [id])
+  serviceOrderId  Int?
+  platformOrder   PlatformOrder?
+  platformOrderId Int?
+  method          PaymentMethod
+  status          PaymentStatus
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime
+  deletedAt       DateTime? //implement softdelete
+}
+
+enum PaymentMethod {
+  CASH
+  QRIS
+  CREDITCARD
+  DEBITCARD
+  EWALLET
+  PLATFORMWALLET
+  BANKTRANSFER
+}
+
+enum PaymentStatus {
+  PAYMENTPENDING
+  PAYMENTUNPAID
+  PAYMENTHALFPAID
+  PAYMENTFULLPAID
+  PAYMENTCANCELLED
+  PAYMENTFAILED
+  PAYMENTREFUNDED
+}
+
+//Create and Read only for UI
+model PlatformWalletTransaction {
+  id          Int                               @id @default(autoincrement())
+  amount      Float // amount of the transaction in Indonesian Rupiah (IDR)
+  description String? // optional description of the transaction
+  status      PaymentStatus
+  type        PlatformWalletTransactionType
+  category    PlatformWalletTransactionCategory
+  user        User                              @relation(fields: [userId], references: [id])
+  userId      String
+  createdAt   DateTime                          @default(now())
+  updatedAt   DateTime                          @updatedAt
+  deletedAt   DateTime? //implement softdelete
+}
+
+enum PlatformWalletTransactionCategory {
+  TOPUP
+  WITHDRAWAL
+  ORDERPAYMENT
+  REFUND
+}
+
+enum PlatformWalletTransactionType {
+  DEBIT
+  CREDIT
+}
+
+//CRUD for UI
+//Update, Delete disable for owner
+model Review {
+  id               Int      @id @default(autoincrement())
+  imageUrls        String[]
+  content          String
+  cleanlinessScore Float
+  speedScore       Float
+  qualityScore     Float
+  reviewBy         Customer @relation(fields: [reviewById], references: [id])
+  reviewById       String
+  branch           Branch   @relation(fields: [branchId], references: [id])
+  branchId         Int
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+//Create and Read only for UI
+model Attendance {
+  id            Int                      @id @default(autoincrement())
+  status        EmployeeAttendanceStatus
+  latitude      Float? //for google map
+  longitude     Float? //for google map
+  ImageUrl      String
+  employee      Employee                 @relation(fields: [employeeId], references: [id])
+  employeeId    String
+  timeIn        DateTime
+  timeOut       DateTime
+  reason        String?
+  latePenalty   Int?
+  absentPenalty Int?
+  overtimeBonus Int?
+  createdAt     DateTime                 @default(now())
+  deletedAt     DateTime? //Implement softdelete
+}
+
+enum EmployeeAttendanceStatus {
+  PRESENT
+  ABSENT
+  OVERTIME
+  LATE
+  LEAVE
+  HOLIDAY
+}
+
+//CRUD for UI
+//available for branch and owner only
+model Schedule {
+  id             Int      @id @default(autoincrement())
+  dayOfWeek      Int      @default(0)
+  openTime       String
+  closeTime      String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime
+  branch         Branch   @relation(fields: [branchId], references: [id])
+  branchId       Int
+  maxOrders      Int?
+  availableSlots Int?
+  isClosed       Boolean? @default(false) // flag indicating whether this schedule is closed or not
+}
+
+model BusinessHour {
+  id        Int      @id @default(autoincrement())
+  day       Day
+  openTime  DateTime
+  closeTime DateTime
+  branch    Branch[]
+}
+
+enum Day {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+model Notification {
+  id        Int              @id @default(autoincrement())
+  title     String
+  subTitle  String?
+  content   String
+  type      NotificationType
+  user      User             @relation(fields: [userId], references: [id])
+  createdAt DateTime         @default(now())
+  isRead    Boolean
+  userId    String
+}
+
+enum NotificationType {
+  ORDERSTATUS
+  WASHINGMACHINESTATUS
+  LAUNDRY
+  DISCOUNT
+}
+
+//CRUD only for branch
+model Machine {
+  id         Int              @id @default(autoincrement())
+  status     MachineStatus
+  isOnline   Boolean          @default(false)
+  branch     Branch           @relation(fields: [branchId], references: [id])
+  capacity   Int // in kilogram
+  branchId   Int
+  category   MachineCategory? @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime
+}
+
+//No CRUD UI
+model MachineCategory {
+  id        Int       @id @default(autoincrement())
+  name      String
+  machines  Machine[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+enum MachineStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+  BROKEN
+  OTHER
+}
+
+//CRUD for UI
+//Create, Read, Update for superUser, Read for Owner
+model Voucher {
+  id            Int            @id @default(autoincrement())
+  code          String         @unique
+  name          String
+  description   String?
+  image         String?
+  startDate     DateTime
+  endDate       DateTime
+  minOrderValue Int?
+  discountType  DiscountType
+  discountValue Int
+  isActive      Boolean        @default(true)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime
+  deletedAt     DateTime? //implement softdelete
+  serviceOrders ServiceOrder[] //the orders that used this voucher promo
+}
+
+enum DiscountType {
+  PERCENTAGE
+  AMOUNT
+}
