@@ -76,24 +76,26 @@ model User {
   password           String
   whatsappVerifiedAt DateTime? //if null, then unverified 
   whatsapp           String    @unique
-  avatarImage        Image     @relation(fields: [avatarImageId], references: [url])
-  avatarImageId      String
-  gender             Gender
   birthDate          DateTime
-  role               UserRole
-  customerInfo       Customer?
-  customerInfoId     String?
-  employeeInfo       Employee?
-  employeeInfoId     String?
-  ownerInfo          Owner?
-  ownerInfoId        String?
-  language           Language  @default(ID)
-  theme              Theme     @default(LIGHT)
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
   deletedAt          DateTime? //implement softdelete
 
-  //-------------------------- relations --------------------------------
+  //-------------------------- 1 to 1 relations --------------------------------
+  role           UserRole
+  gender         Gender
+  avatarImage    Image     @relation(fields: [avatarImageId], references: [url])
+  avatarImageId  String
+  customerInfo   Customer?
+  customerInfoId String?
+  employeeInfo   Employee?
+  employeeInfoId String?
+  ownerInfo      Owner?
+  ownerInfoId    String?
+  language       Language  @default(ID)
+  theme          Theme     @default(LIGHT)
+
+  //-------------------------- m to m relations --------------------------------
   accounts        Account[]
   addresses       Address[] //one customer can have multipe addresses, but one owner and employee can only have one address
   sessions        Session[] //one device login at a time for employee and owner
@@ -117,6 +119,8 @@ model Image {
   Branch           Branch[]
   PlatformItem     PlatformItem?      @relation(fields: [platformItemId], references: [id])
   platformItemId   String?
+  LaundryItem      LaundryItem?       @relation(fields: [laundryItemId], references: [id])
+  laundryItemId    String?
 
   @@map("Images")
 }
@@ -431,6 +435,7 @@ model Branch {
 //CRUD for UI
 //CRUD Only available for branch owner
 model BranchLaundryItemService {
+  //-------------------------- scalars --------------------------------
   id               Int            @id @default(autoincrement())
   name             String
   description      String?
@@ -438,39 +443,60 @@ model BranchLaundryItemService {
   branchId         Int
   laundryItem      LaundryItem    @relation(fields: [laundryItemId], references: [id])
   laundryItemId    String
-  activities       Activity[] //branch can decide what are the activities involved
   durationInMinute Int
   maxWeight        Float?
   minWeight        Float?
   cost             Int?
   salePrice        Int
-  orders           ServiceOrder[]
   isActive         Boolean        @default(true)
   isOnSale         Boolean        @default(true)
   createdAt        DateTime       @default(now())
-  updatedAt        DateTime
+  updatedAt        DateTime       @updatedAt
+  //-------------------------- relations --------------------------------
+  orders           ServiceOrder[]
+  activities       Activity[] //branch can decide what are the activities involved in this service
+
+  @@map("BranchLaundryItemServices")
 }
 
 //no update nor delete operation for UI
 //CRUD only available to superUser
 model LaundryItem {
-  id                  String                     @id @default(cuid())
+  //-------------------------- scalars --------------------------------
+  id                  String              @id @default(cuid())
   name                String
   description         String?
-  imageUrls           String[]
-  suggestedSalePrice  Int //backend cron job auto calculate from average market price (BranchLaundryService model)
-  unitOfMeasure       UnitOfMeasure              @relation(fields: [unitOfMeasureId], references: [id])
+  unitOfMeasure       UnitOfMeasure       @relation(fields: [unitOfMeasureId], references: [id])
   unitOfMeasureId     Int
-  category            LaundryItemCategory        @relation(fields: [categoryId], references: [id])
+  category            LaundryItemCategory @relation(fields: [categoryId], references: [id])
   categoryId          Int
-  branchServices      BranchLaundryItemService[]
-  requiresDryCleaning Boolean                    @default(false)
-  requiresIron        Boolean                    @default(false) // whether the service requires ironing
-  requiresFold        Boolean                    @default(false) // whether the service requires folding
-  requiresPack        Boolean                    @default(false) // whether the service requires packing
-  requiresHang        Boolean                    @default(false) // whether the service requires hanging
-  createdAt           DateTime                   @default(now())
-  updatedAt           DateTime
+  requiresDryCleaning Boolean             @default(false)
+  requiresIron        Boolean             @default(false) // whether the service requires ironing
+  requiresFold        Boolean             @default(false) // whether the service requires folding
+  requiresPack        Boolean             @default(false) // whether the service requires packing
+  requiresHang        Boolean             @default(false) // whether the service requires hanging
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  //-------------------------- relations --------------------------------
+
+  images          Image[]
+  branchServices  BranchLaundryItemService[]
+  marketSalePrice MarketSalePriceHistory[]
+
+  @@map("LaundryItems")
+}
+
+//backend cron job auto calculate from average market price (BranchLaundryService model)
+model MarketSalePriceHistory {
+  id            Int         @id @default(autoincrement())
+  price         Int
+  laundry       LaundryItem @relation(fields: [laundryItemId], references: [id])
+  laundryItemId String
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@map("MarketSalePriceHistories")
 }
 
 //no update,delete operation for UI
@@ -481,6 +507,8 @@ model LaundryItemCategory {
   items     LaundryItem[] //one category can have multiple items
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
+
+  @@map("LaundryItemCategories")
 }
 
 //no update,delete operation for UI
@@ -493,6 +521,8 @@ model UnitOfMeasure {
   createdAt    DateTime      @default(now())
   updatedAt    DateTime
   laundryItems LaundryItem[]
+
+  @@map("UnitOfMeasures")
 }
 
 //no update,delete operation for UI
