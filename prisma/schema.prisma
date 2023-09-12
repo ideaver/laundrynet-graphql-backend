@@ -30,38 +30,53 @@ generator client {
 //---------------------------------address----------------------------------
 
 model Province {
-  id     Int    @id @default(autoincrement())
-  name   String @unique
+  id Int @id @default(autoincrement())
+
+  name String @unique
+
   /// @HideField()   
   cities City[]
 }
 
 //Make CRUD Available
 model City {
-  id         Int        @id @default(autoincrement())
-  name       String
-  province   Province   @relation(fields: [provinceId], references: [id])
+  id Int @id @default(autoincrement())
+
+  name String
+
+  province Province @relation(fields: [provinceId], references: [id])
+
   provinceId Int
-  districts  District[]
+
+  districts District[]
 }
 
 //Make CRUD Available
 model District {
-  id           Int           @id @default(autoincrement())
-  name         String
-  city         City          @relation(fields: [cityId], references: [id])
-  cityId       Int
+  id Int @id @default(autoincrement())
+
+  name String
+
+  city City @relation(fields: [cityId], references: [id])
+
+  cityId Int
+
   subdistricts Subdistrict[]
 }
 
 model Subdistrict {
-  id         Int       @id @default(autoincrement())
-  name       String
-  district   District  @relation(fields: [districtId], references: [id])
+  id Int @id @default(autoincrement())
+
+  name String
+
+  district District @relation(fields: [districtId], references: [id])
+
   districtId Int
+
   postalCode String
+
   /// @HideField()
-  address    Address[] @relation("SubdistrictAddress")
+  address Address[] @relation("SubdistrictAddress")
 }
 
 //-----------------------------------User--------------------------------------------
@@ -71,41 +86,72 @@ model Subdistrict {
 ///Properti tiap role berbeda-beda, sehingga dibuat tabel terpisah
 model User {
   //-------------------------- scalars --------------------------------
-  id                 String    @id @default(uuid())
-  fullName           String
-  username           String    @unique
-  email              String    @unique //owner cannot be customer and employee, vice versa
-  emailVerifiedAt    DateTime? //if null, then unverified 
-  password           String
-  whatsappVerifiedAt DateTime? //if null, then unverified 
-  whatsapp           String    @unique
-  birthDate          DateTime
-  createdAt          DateTime  @default(now())
-  updatedAt          DateTime  @updatedAt
-  deletedAt          DateTime? //implement softdelete
+
+  id String @id @default(uuid())
+
+  fullName String
+
+  username String @unique
+
+  email String @unique
+
+  emailVerifiedAt DateTime?
+
+  password String
+
+  whatsapp String @unique
+
+  whatsappVerifiedAt DateTime?
+
+  birthDate DateTime
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  deletedAt DateTime? //implement softdelete
 
   //-------------------------- 1 relations --------------------------------
 
-  role           UserRole
-  gender         Gender
-  avatarImage    Image     @relation(fields: [avatarImageId], references: [url])
-  avatarImageId  String
-  customerInfo   Customer?
+  PhoneCountryCode PhoneCountryCode @relation(fields: [phoneCountryCodeId], references: [phoneCode])
+
+  phoneCountryCodeId Int
+
+  role UserRole
+
+  gender Gender
+
+  avatarImage Image @relation(fields: [avatarImageId], references: [url])
+
+  avatarImageId String
+
+  customerInfo Customer?
+
   customerInfoId String?
-  employeeInfo   Employee?
+
+  employeeInfo Employee?
+
   employeeInfoId String?
-  ownerInfo      Owner?
-  ownerInfoId    String?
-  language       Language  @default(ID)
-  theme          Theme     @default(LIGHT)
+
+  ownerInfo Owner?
+
+  ownerInfoId String?
+
+  language Language @default(ID)
+
+  theme Theme @default(LIGHT)
 
   //-------------------------- m relations --------------------------------
 
-  accounts        Account[]
-  addresses       Address[] //one customer can have multipe addresses, but one owner and employee can only have one address
-  sessions        Session[] //one device login at a time for employee and owner
-  notifications   Notification[]
-  changedStatuses OrderStatusChange[]
+  accounts Account[]
+
+  addresses Address[]
+
+  sessions Session[]
+
+  notifications Notification[]
+
+  changedStatuses OrderStatusProgress[]
 
   @@map("users")
 }
@@ -113,31 +159,41 @@ model User {
 model Image {
   //-------------------------- scalars --------------------------------
 
-  url       String    @id
+  url String @id
+
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  fileType  FileType?
+  fileType FileType?
+
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  fileSize  Float?
+  fileSize Float?
+
   /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
-  createdAt DateTime  @default(now())
+  createdAt DateTime @default(now())
 
   //-------------------------- 1 relations --------------------------------
 
-  PlatformItem   PlatformItem? @relation(fields: [platformItemId], references: [id])
+  PlatformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
   platformItemId String?
-  LaundryItem    LaundryItem?  @relation(fields: [laundryItemId], references: [id])
-  laundryItemId  String?
+
+  LaundryItem LaundryItem? @relation(fields: [laundryItemId], references: [id])
+
+  laundryItemId String?
 
   //-------------------------- m relations --------------------------------
 
-  User                     User[]
-  PhoneCountryCode         PhoneCountryCode[]
-  Branch                   Branch[]
-  Review                   Review[]
-  Machine                  Machine[]
+  User User[]
+
+  Branch Branch[]
+
+  Review Review[]
+
+  Machine Machine[]
+
   BranchLaundryItemService BranchLaundryItemService[]
-  Transaction              Transaction[]
+
+  Transaction Transaction[]
 
   @@map("Images")
 }
@@ -154,9 +210,8 @@ enum FileType {
 //CRUD for superUser
 model PhoneCountryCode {
   phoneCode Int    @id
-  image     Image  @relation(fields: [imageId], references: [url])
-  imageId   String
   country   String
+  User      User[]
 
   @@map("PhoneCountryCodes")
 }
@@ -201,16 +256,19 @@ model Owner {
   //-------------------------- scalars --------------------------------
 
   createdAt DateTime @default(now())
+
   updatedAt DateTime
 
   //-------------------------- 1 relations --------------------------------
 
-  user   User   @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
   userId String @id
 
   //-------------------------- m relations --------------------------------
 
-  creditCard     CreditCard[]
+  creditCard CreditCard[]
+
   platformOrders PlatformOrder[]
 
   /// 1 Owner dapat memiliki banyak cabang
@@ -227,25 +285,35 @@ model Owner {
 model Customer {
   //-------------------------- scalars --------------------------------
 
-  user         User     @relation(fields: [userId], references: [id])
-  userId       String   @id
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime
+  user User @relation(fields: [userId], references: [id])
+
+  userId String @id
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
   ///auto generate dari backend
-  referralCode String   @unique
+  referralCode String @unique
 
   //-------------------------- 1 relations --------------------------------
 
-  referredBy   Customer? @relation("CustomerReferral", fields: [referredById], references: [userId])
+  referredBy Customer? @relation("CustomerReferral", fields: [referredById], references: [userId])
+
   /// @HideField({ output: false, input: true })   
   referredById String?
 
   //-------------------------- m relations --------------------------------
-  orders           ServiceOrder[]
+
+  orders ServiceOrder[]
+
   favoriteBranches Branch[]
-  reviews          Review[]
-  creditCards      CreditCard[]
-  referredUsers    Customer[]     @relation("CustomerReferral")
+
+  reviews Review[]
+
+  creditCards CreditCard[]
+
+  referredUsers Customer[] @relation("CustomerReferral")
 
   @@map("customers")
 }
@@ -256,25 +324,35 @@ model Customer {
 model Employee {
   //-------------------------- scalars --------------------------------
 
-  user            User     @relation(fields: [userId], references: [id])
-  userId          String   @id
-  salary          Int?
-  attendanceBonus Int? //per attendance
-  mealAllowance   Int?
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime
+  salary Int?
+
+  attendanceBonus Int?
+
+  mealAllowance Int?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
 
   //-------------------------- 1 relations --------------------------------
 
-  branch   Branch @relation(fields: [branchId], references: [id])
+  user User @relation(fields: [userId], references: [id])
+
+  userId String @id
+
+  branch Branch @relation(fields: [branchId], references: [id])
+
   branchId Int
 
   //-------------------------- m relations --------------------------------
 
-  roles        EmployeeRole[] //one employee can be cashier, courier or production at the same time 
+  roles EmployeeRole[] //one employee can be cashier, courier or production at the same time 
+
   serviceOrder ServiceOrder[]
-  activities   Activity[]
-  attendances  Attendance[]
+
+  activities Activity[]
+
+  attendances Attendance[]
 
   @@map("Employees")
 }
@@ -320,7 +398,8 @@ model CreditCard {
 model Account {
   //-------------------------- scalars --------------------------------
 
-  id            Int    @id @default(autoincrement())
+  id Int @id @default(autoincrement())
+
   accountNumber Float?
 
   /// @Validator.MinLength(2)
@@ -337,8 +416,10 @@ model Account {
   //-------------------------- 1 relations --------------------------------
 
   accountCategory AccountCategory
-  user            User            @relation(fields: [userId], references: [id])
-  userId          String
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String
 
   //-------------------------- m relations --------------------------------
 
@@ -373,9 +454,6 @@ model Transaction {
   /// @Validator.IsNotEmpty()
   amount Float
 
-  proofImage   Image?  @relation(fields: [imageUrl], references: [url])
-  proofImageId String?
-
   /// Kode unik akan diiisi oleh backend
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
   uniqueCode Int?
@@ -384,6 +462,10 @@ model Transaction {
   createdAt DateTime @default(now())
 
   //-------------------------- 1 relations --------------------------------
+
+  proofImage Image? @relation(fields: [proofImageId], references: [url])
+
+  proofImageId String?
 
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})     
   status TransactionStatus
@@ -407,12 +489,12 @@ model Transaction {
   invoice Invoice? @relation(fields: [invoiceId], references: [id])
 
   invoiceId Int?
-  imageUrl  String?
 
   @@index([amount], name: "amount")
   @@index([fromAccountId], name: "from_account_id")
   @@index([toAccountId], name: "to_account_id")
   @@index([createdAt], name: "created_at")
+  @@map("Transactions")
 }
 
 enum TransactionCategory {
@@ -421,6 +503,9 @@ enum TransactionCategory {
   TOPUP
   REFERRING
   REDEEMING
+  REFUND
+  RECONCILE
+  COMISSION
 }
 
 enum TransactionStatus {
@@ -432,108 +517,194 @@ enum TransactionStatus {
 }
 
 //Make CRU Available, cannot be deleted
+/// Invoice adalah tagihan yang harus dibayar oleh order
 model Invoice {
-  id              Int            @id @default(autoincrement())
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
   /// @Validator.IsNotEmpty()
   /// @Validator.IsNumber() 
-  adminFee        Float
+  adminFee Float
+
   /// @Validator.IsNotEmpty()
   /// @Validator.IsNumber() 
-  amount          Float
+  amount Float
+
   /// @HideField({ output: false, input: true })   
-  uniqueCode      Int
-  /// @HideField({ match: 'InvoiceUpdate*Input' })
-  serviceOrder    ServiceOrder?  @relation(fields: [serviceOrderId], references: [id])
-  /// @HideField({ match: 'InvoiceUpdate*Input' })
-  platformOrder   PlatformOrder? @relation(fields: [platformOrderId], references: [id])
-  /// @HideField({ match: 'InvoiceUpdate*Input' })
-  transactions    Transaction[]
+  uniqueCode Int
+
   /// @HideField({ output: false, input: true }) 
-  createdAt       DateTime       @default(now())
-  serviceOrderId  Int?
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  payment Payment @relation(fields: [paymentId], references: [id])
+
+  paymentId Int @unique //must be full paid
+
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+  serviceOrderId Int?
+
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
   platformOrderId Int?
+
+  //-------------------------- m relation --------------------------------
+
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  transactions Transaction[]
 }
 
 //-----------------------------------Addresses--------------------------------------------
 
 //CRUD for UI
+/// Address adalah alamat dari user dan cabang
 model Address {
-  id            Int             @id @default(autoincrement())
-  latitude      Float? //for google map
-  longitude     Float? //for google map
-  label         String
-  street        String
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  latitude Float? //for google map
+
+  longitude Float? //for google map
+
+  label String
+
+  street String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+  Branch Branch?
+
+  user User? @relation(fields: [userId], references: [id])
+
+  userId String?
+
   /// @Validator.IsNotEmpty()
-  subdistrict   Subdistrict     @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+  subdistrict Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+
   // @HideField({ match: 'AddressCreate*Input' })
   subdistrictId Int
-  user          User?           @relation(fields: [userId], references: [id])
-  Branch        Branch?
+
+  //-------------------------- m relations --------------------------------
+
   platformOrder PlatformOrder[]
-  serviceOrder  ServiceOrder[]
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
-  userId        String?
+
+  serviceOrder ServiceOrder[]
+
+  @@map("Addresses")
 }
 
 //CRUD for UI
 //CRUD only available for owner user
+/// Branch adalah cabang dari laundry
 model Branch {
-  id             Int                        @id @default(autoincrement())
-  name           String
-  isActive       Boolean                    @default(true)
-  description    String?
-  image          Image                      @relation(fields: [imageId], references: [url])
-  imageId        String
-  address        Address                    @relation(fields: [addressId], references: [id])
-  addressId      Int                        @unique
-  phone          String?
-  email          String?
-  owner          Owner                      @relation(fields: [ownerId], references: [userId])
-  ownerId        String
-  orders         ServiceOrder[]
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  name String
+
+  isActive Boolean @default(true)
+
+  description String?
+
+  phone String?
+
+  email String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  owner Owner @relation(fields: [ownerId], references: [userId])
+
+  ownerId String
+
+  address Address @relation(fields: [addressId], references: [id])
+
+  addressId Int @unique
+
+  //-------------------------- m relations --------------------------------
+
+  image Image[]
+
+  orders ServiceOrder[]
+
   bussinessHours BusinessHour[]
-  employees      Employee[]
-  reviews        Review[]
-  schedules      Schedule[]
-  services       BranchLaundryItemService[]
-  customers      Customer[]
-  machines       Machine[]
-  createdAt      DateTime                   @default(now())
-  updatedAt      DateTime
+
+  employees Employee[]
+
+  reviews Review[]
+
+  schedules Schedule[]
+
+  services BranchLaundryItemService[]
+
+  customers Customer[]
+
+  machines Machine[]
+
+  @@map("Branches")
 }
 
 //CRUD for UI
 //CRUD Only available for branch owner
+/// BranchLaundryItemService adalah layanan yang disediakan oleh cabang
 model BranchLaundryItemService {
   //-------------------------- scalars --------------------------------
 
-  id                   Int      @id @default(autoincrement())
-  name                 String
-  description          String?
-  durationInMinute     Int
-  maxWeight            Float?
-  minWeight            Float?
-  cost                 Int?
-  salePrice            Int
-  isActive             Boolean  @default(true)
-  isOnSale             Boolean  @default(true)
-  createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
-  raceConditionVersion Int? //for optimistic concurrency control
+  id Int @id @default(autoincrement())
+
+  name String
+
+  description String?
+
+  durationInMinute Int?
+
+  /// Maksimal berat per item dalam satuan sesuai unit of measure
+  maxWeight Float?
+
+  /// Minimal berat per item dalam satuan sesuai unit of measure
+  minWeight Float?
+
+  /// Harga pokok
+  cost Int?
+
+  /// Harga jual
+  salePrice Int
+
+  isActive Boolean @default(true)
+
+  isOnSale Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
 
   //-------------------------- 1 relations --------------------------------
 
-  branch        Branch      @relation(fields: [branchId], references: [id])
-  branchId      Int
-  laundryItem   LaundryItem @relation(fields: [laundryItemId], references: [id])
+  branch Branch @relation(fields: [branchId], references: [id])
+
+  branchId Int
+
+  laundryItem LaundryItem @relation(fields: [laundryItemId], references: [id])
+
   laundryItemId String
-  Image         Image?      @relation(fields: [imageUrl], references: [url])
-  imageUrl      String?
 
   //-------------------------- m relations --------------------------------
+  Images Image[]
 
-  orders     ServiceOrder[]
+  cart Cart[]
+
   activities Activity[] //branch can decide what are the activities involved in this service
 
   @@map("BranchLaundryItemServices")
@@ -609,139 +780,260 @@ model UnitOfMeasure {
 //CRUD only available to superUser
 //items for selling to owner like platform subscription,machines, soaps etc
 model PlatformItem {
-  id          String          @id @default(cuid())
-  name        String
-  price       Int
+  //-------------------------- scalars --------------------------------
+
+  id String @id @default(cuid())
+
+  name String
+
+  cost Float?
+
+  salePrice Float
+
   description String?
-  images      Image[]
-  stock       Int?
-  createdAt   DateTime        @default(now())
-  updatedAt   DateTime
-  orders      PlatformOrder[]
+
+  stock Int @default(0)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+  raceConditionVersion Int @default(0)
+
+  //-------------------------- m relations --------------------------------
+
+  carts Cart[]
+
+  images Image[]
+
+  @@map("PlatformItems")
 }
 
 //Where the Owner ordering a product from platform
 //Can be created,read,edit but cannot be deleted by UI
 model PlatformOrder {
-  id        Int                 @id @default(autoincrement())
-  owner     Owner               @relation(fields: [ownerId], references: [userId])
-  ownerId   String
-  statuses  OrderStatusChange[] //to track statuses
-  items     PlatformItem[]
-  address   Address             @relation(fields: [addressId], references: [id])
-  addressId Int
-  payment   Payment             @relation(fields: [paymentId], references: [id])
-  paymentId Int                 @unique //must be full paid
-  createdAt DateTime            @default(now())
-  updatedAt DateTime
-  deletedAt DateTime? //implement softdelete
-  Invoice   Invoice[]
-}
-
-//Only Read on UI
-model OrderStatusChange {
-  id              Int            @id @default(autoincrement())
-  orderId         Int
-  oldStatus       OrderStatus
-  newStatus       OrderStatus
-  changedBy       User           @relation(fields: [changedById], references: [id])
-  changedById     String
-  platformOrder   PlatformOrder? @relation(fields: [platformOrderId], references: [id])
-  platformOrderId Int?
-  ServiceOrder    ServiceOrder?  @relation(fields: [ServiceOrderId], references: [id])
-  ServiceOrderId  Int?
-  changedAt       DateTime       @default(now())
-}
-
-//Where the Customer ordering a product from Branch
-//Can be created,read,edit but cannot be deleted for UI
-model ServiceOrder {
   //-------------------------- scalars --------------------------------
 
-  id              Int       @id @default(autoincrement())
-  platformFee     Int?
-  discount        Int?
-  pickupTime      DateTime? // estimated pickup time
-  deliveryTime    DateTime? // estimated delivery time
-  pickupMessage   String? // message for the pickup/delivery person
-  deliveryMessage String? // message for the pickup/delivery person
-  instructions    String? // additional instructions for the order
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime
-  deletedAt       DateTime? //implement softdelete
+  id Int @id @default(autoincrement())
+
+  address Address @relation(fields: [addressId], references: [id])
+
+  addressId Int
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  deletedAt DateTime? //implement softdelete
+
+  /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+  raceConditionVersion Int @default(0)
 
   //-------------------------- 1 relations --------------------------------
 
-  employee   Employee? @relation(fields: [employeeId], references: [userId])
-  employeeId String?
-  voucher    Voucher?  @relation(fields: [voucherId], references: [id])
-  voucherId  Int?
-  address    Address?  @relation(fields: [addressId], references: [id])
-  addressId  Int?
-  type       OrderType
-  customer   Customer  @relation(fields: [customerId], references: [userId])
-  customerId String
-  branch     Branch    @relation(fields: [brandId], references: [id])
-  brandId    Int
+  orderBy Owner @relation(fields: [orderById], references: [userId])
+
+  orderById String
 
   //-------------------------- m relations --------------------------------
 
-  statuses                   OrderStatusChange[] //to track statuses
-  orderCart                  Cart[]
-  payments                   Payment[]
-  Invoice                    Invoice[]
-  BranchLaundryItemService   BranchLaundryItemService? @relation(fields: [branchLaundryItemServiceId], references: [id])
-  branchLaundryItemServiceId Int?
+  Invoice Invoice[]
+
+  statusHistory OrderStatusProgress[]
+
+  carts Cart[]
+
+  @@map("PlatformOrders")
+}
+
+//Only Read on UI
+model OrderStatusProgress {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  status OrderStatus
+
+  platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+  platformOrderId Int?
+
+  ServiceOrder ServiceOrder? @relation(fields: [ServiceOrderId], references: [id])
+
+  ServiceOrderId Int?
+
+  changedBy User @relation(fields: [changedById], references: [id])
+
+  changedById String
+
+  @@map("OrderStatuses")
+}
+
+//Can be created,read,edit but cannot be deleted for UI
+/// ServiceOrder adalah order yang dibuat oleh customer
+model ServiceOrder {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  platformFee Int
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+  /// Berkaitan dengan max order suatu branch tertentu
+  raceConditionVersion Int @default(0)
+
+  //-------------------------- 1 relations --------------------------------
+
+  handleBy Employee? @relation(fields: [handleById], references: [userId])
+
+  handleById String?
+
+  orderBy Customer @relation(fields: [orderById], references: [userId])
+
+  orderById String
+
+  voucher Voucher? @relation(fields: [voucherId], references: [id])
+
+  voucherId Int?
+
+  address Address? @relation(fields: [addressId], references: [id])
+
+  addressId Int?
+
+  delivery Delivery? @relation(fields: [deliveryId], references: [id])
+
+  deliveryId Int?
+
+  orderType OrderType
+
+  branch Branch @relation(fields: [brandId], references: [id])
+
+  brandId Int
+
+  //-------------------------- m relations --------------------------------
+
+  statusProgress OrderStatusProgress[]
+
+  cart Cart[]
+
+  Invoice Invoice[]
 
   @@map("ServiceOrders")
 }
 
+model Delivery {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  pickupTime DateTime?
+
+  deliveryTime DateTime?
+
+  pickupMessage String?
+
+  deliveryMessage String?
+
+  instructions String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- m relations --------------------------------
+
+  ServiceOrder ServiceOrder[]
+}
+
+/// Cart adalah keranjang belanja user, Cart berisi item yang akan dibeli oleh user
 model Cart {
-  id             Int          @id @default(autoincrement())
-  serviceOrder   ServiceOrder @relation(fields: [serviceOrderId], references: [id])
-  serviceOrderId Int
-  quantity       Int
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  quantity Int
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  price          Float
+  price    Float
+
   /// @Validator.IsNumber() 
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  cost           Float
+  cost Float
+
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  createdAt      DateTime     @default(now())
+  createdAt DateTime @default(now())
+
   /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
-  updatedAt      DateTime     @updatedAt
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+  serviceOrderId Int?
+
+  PlatformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+  platformOrderId Int?
+
+  PlatformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
+  platformItemId String?
+
+  BranchLaundryItemService BranchLaundryItemService? @relation(fields: [branchLaundryItemServiceId], references: [id])
+
+  branchLaundryItemServiceId Int?
 }
 
 enum OrderType {
-  DROPSERVICE
-  SELFSERVICE
-  DELIVERYSERVICE
+  DROP
+  SELF
+  DELIVERY
+  HOME
 }
 
 enum OrderStatus {
-  ORDERPENDING
-  ORDERPROCESSING
-  ORDERDONE
-  ORDERSHIPPED
-  ORDERDELIVERED
-  ORDERCANCELLED
-  ORDERRETURNED
+  PENDING
+  PROCESSING
+  DONE
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
 }
 
 //Create and read only, no delete and no update for UI
+/// Payment adalah pembayaran dari user untuk invoice
 model Payment {
-  id              Int            @id @default(autoincrement())
-  amount          Int
-  serviceOrder    ServiceOrder?  @relation(fields: [serviceOrderId], references: [id])
-  serviceOrderId  Int?
-  platformOrder   PlatformOrder?
-  platformOrderId Int?
-  method          PaymentMethod
-  status          PaymentStatus
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime
-  deletedAt       DateTime? //implement softdelete
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  amount Float
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  method PaymentMethod
+
+  status PaymentStatus
+
+  invoice Invoice?
+
+  invoiceId Int
+
+  @@map("Payments")
 }
 
 enum PaymentMethod {
@@ -755,25 +1047,13 @@ enum PaymentMethod {
 }
 
 enum PaymentStatus {
-  PAYMENTPENDING
-  PAYMENTUNPAID
-  PAYMENTHALFPAID
-  PAYMENTFULLPAID
-  PAYMENTCANCELLED
-  PAYMENTFAILED
-  PAYMENTREFUNDED
-}
-
-enum PlatformWalletTransactionCategory {
-  TOPUP
-  WITHDRAWAL
-  ORDERPAYMENT
-  REFUND
-}
-
-enum PlatformWalletTransactionType {
-  DEBIT
-  CREDIT
+  PENDING
+  UNPAID
+  HALFPAID
+  FULLPAID
+  CANCELLED
+  FAILED
+  REFUNDED
 }
 
 //CRUD for UI
