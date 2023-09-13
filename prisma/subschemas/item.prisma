@@ -3,7 +3,7 @@ import {User, Owner  } from "./user"
 import {Image  } from "./single"
 import {  Cart} from "./order"
 import {  District} from "./address"
-import {  ItemActivity, OrderType, LaundryItemRequestStatus} from "./enums"
+import {  ItemActivity, OrderType, LaundryItemRequestStatus, StockTransactionType} from "./enums"
 import {  VoucherSetting} from "./settings"
 import {  Machine} from "./machine"
 import { VoucherSetting } from "settings"
@@ -64,9 +64,9 @@ model OutletLaundryItemService {
     orderTypes OrderType[]
 
     ///Untuk layanan homeservice, outlet dapat menentukan item apa saja yang dapat dilayani area mana saja 
-    districtAreas           District[]
-    VoucherSetting          VoucherSetting? @relation(fields: [voucherSettingVoucherId], references: [voucherId])
-    voucherSettingVoucherId String?
+    districtAreas District[]
+
+    onVoucherSetting VoucherSetting[]
 
     @@map("OutletLaundryItemServices")
 }
@@ -237,7 +237,7 @@ model PlatformItem {
     description String?
 
     /// Field ini juga digunakan backend sebagai penanda untuk mencegah race condition terjadi
-    stock Int @default(0)
+    stockItems StockItem[]
 
     createdAt DateTime @default(now())
 
@@ -245,7 +245,7 @@ model PlatformItem {
 
     //-------------------------- 1 relations --------------------------------
 
-    UnitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+    unitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
 
     unitOfMeasureId Int
 
@@ -256,4 +256,44 @@ model PlatformItem {
     images Image[]
 
     @@map("PlatformItems")
+}
+
+model StockItem {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    quantity Int
+
+    createdAt DateTime @default(now())
+
+    // ------------------------- 1 relations --------------------------------
+
+    platformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
+    platformItemId String?
+
+    // ------------------------- m relations --------------------------------
+
+    transactions StockTransaction[]
+
+    @@map("StockItems")
+}
+
+model StockTransaction {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    quantity Int
+
+    createdAt DateTime @default(now())
+
+    // ------------------------- 1 relations --------------------------------
+
+    type StockTransactionType
+
+    stockItem StockItem @relation(fields: [stockItemId], references: [id])
+
+    stockItemId Int
+
+    @@map("StockTransactions")
 }

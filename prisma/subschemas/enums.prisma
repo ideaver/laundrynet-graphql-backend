@@ -1,5 +1,3 @@
-import {  User} from "./user"
-
 enum Gender {
     MALE
     FEMALE
@@ -211,4 +209,19 @@ enum DeliveryStatusType {
     CANCELLED
 
     @@map("DeliveryStatusEnums")
+}
+
+enum Period {
+    HOURLY
+    DAILY
+    WEEKLY
+    MONTHLY
+    YEARLY
+}
+
+enum StockTransactionType {
+    Sale
+    Restock
+
+    @@map("StockTransactionTypes")
 }

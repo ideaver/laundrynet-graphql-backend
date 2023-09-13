@@ -1,4 +1,4 @@
-import { AccountCategory, TransactionStatus, TransactionCategory,PaymentStatus,PaymentMethod,ItemActivity } from "./enums"
+import { AccountCategory, TransactionStatus, TransactionCategory,PaymentStatus,PaymentMethod,ItemActivity, Period } from "./enums"
 import {  User} from "./user"
 import { Image } from "./single"
 import { ServiceOrder, PlatformOrder } from "./order"
@@ -176,19 +176,25 @@ model Payment {
 
 /// EmployeeActivityComission adalah komisi yang didapatkan oleh employee dari setiap aktivitas yang dilakukan
 model EmployeeActivityComission {
+    //-------------------------- scalars --------------------------------
+
     id Int @id @default(autoincrement())
 
     activity ItemActivity
 
     comission Float
 
-    employee Employee @relation(fields: [employeeId], references: [userId])
-
-    employeeId String
-
     createdAt DateTime @default(now())
 
     updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    period Period
+
+    employee Employee @relation(fields: [employeeId], references: [userId])
+
+    employeeId String
 
     @@map("EmployeeActivityComissions")
 }

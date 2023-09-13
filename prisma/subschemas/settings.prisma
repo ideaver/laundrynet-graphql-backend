@@ -41,6 +41,10 @@ model OutletSetting {
 
     //-------------------------- 1 relations --------------------------------
 
+    printerSetting PrinterSetting @relation(fields: [printerSettingId], references: [id])
+
+    printerSettingId Int @unique
+
     outlet Outlet?
 
     outletId Int
@@ -62,9 +66,9 @@ model PrinterSetting {
 
     //-------------------------- 1 relations --------------------------------
 
-    outlet Outlet @relation(fields: [outletId], references: [id])
+    outletSetting OutletSetting?
 
-    outletId Int
+    outletSettingId Int?
 
     //-------------------------- m relations --------------------------------
 
@@ -122,7 +126,6 @@ model VoucherSetting {
 
     /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh metode pembayaran
     restrictToPaymentMethods PaymentMethod[]
-    voucherCode              String
 
     @@map("VoucherSettings")
 }

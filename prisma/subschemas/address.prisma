@@ -10,9 +10,11 @@ model Address {
     //-------------------------- scalars --------------------------------
     id Int @id @default(autoincrement())
 
-    latitude Float? //for google map
+    /// For Google Maps
+    latitude Float?
 
-    longitude Float? //for google map
+    /// For Google Maps
+    longitude Float?
 
     label String
 
@@ -71,11 +73,13 @@ model District {
 
     cityId Int
 
-    subdistricts               Subdistrict[]
-    OutletLaundryItemService   OutletLaundryItemService? @relation(fields: [outletLaundryItemServiceId], references: [id])
-    outletLaundryItemServiceId Int?
-    VoucherSetting             VoucherSetting?           @relation(fields: [voucherSettingVoucherId], references: [voucherId])
-    voucherSettingVoucherId    String?
+    subdistricts Subdistrict[]
+
+    ///Untuk layanan homeservice, outlet dapat menentukan item apa saja yang dapat dilayani area mana saja 
+    onOutletLaundryItemServiceArea OutletLaundryItemService[]
+
+    /// Untuk pengaturan voucher
+    onVoucherSetting VoucherSetting[]
 }
 
 model Province {

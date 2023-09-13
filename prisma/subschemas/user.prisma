@@ -241,12 +241,13 @@ model Owner {
     /// 1 Owner dapat memiliki banyak cabang
     outletes Outlet[]
 
-    laundryItemRequest LaundryItemRequest[]
+    laundryItemRequests LaundryItemRequest[]
 
-    scheduleCreated Schedule[]
+    schedulesCreated Schedule[]
 
-    TermOrFaqCreated TermOrFaq[]      @relation("creator")
-    VoucherSetting   VoucherSetting[]
+    TermOrFaqsCreated TermOrFaq[] @relation("creator")
+
+    onVoucherSetting VoucherSetting[]
 
     @@map("Owners")
 }

@@ -66,8 +66,7 @@ model Outlet {
 
     machines Machine[]
 
-    printerSetting PrinterSetting[]
-    OutletVoucher  OutletVoucher[]
+    outletVouchers OutletVoucher[]
 
     @@map("Outletes")
 }

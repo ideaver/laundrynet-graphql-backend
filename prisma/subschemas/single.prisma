@@ -58,21 +58,23 @@ model Image {
 
     //-------------------------- m relations --------------------------------
 
-    User User[]
+    users User[]
 
-    Outlet Outlet[]
+    outletes Outlet[]
 
-    Review Review[]
+    reviews Review[]
 
-    Machine Machine[]
+    machines Machine[]
 
-    OutletLaundryItemService OutletLaundryItemService[]
+    outletLaundryItemServices OutletLaundryItemService[]
 
-    Transaction Transaction[]
-    Attendance  Attendance[]
-    Voucher     Voucher[]
-    Message     Message?      @relation(fields: [messageId], references: [id])
-    messageId   Int?
+    transactions Transaction[]
+
+    attendances Attendance[]
+
+    vouchers Voucher[]
+
+    messages Message[]
 
     @@map("Images")
 }
