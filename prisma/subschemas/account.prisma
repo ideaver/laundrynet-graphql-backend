@@ -1,6 +1,6 @@
 import { AccountCategory, TransactionStatus, TransactionCategory,PaymentStatus,PaymentMethod,ItemActivity } from "./enums"
 import {  User} from "./user"
-import { Image } from "./base"
+import { Image } from "./single"
 import { ServiceOrder, PlatformOrder } from "./order"
 import {  Employee, Customer, Owner} from "./user"
 

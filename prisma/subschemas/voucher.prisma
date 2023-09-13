@@ -1,5 +1,5 @@
 import {VoucherSetting  } from "./settings"
-import {  Image} from "./base"
+import {  Image} from "./single"
 import {  TermOrFaq} from "./termsOrFaqs"
 import {  ServiceOrder} from "./order"
 import {  Customer} from "./user"

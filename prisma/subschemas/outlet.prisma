@@ -1,6 +1,6 @@
 import {  User,Employee,Owner,Customer} from "./user"
 import { Address } from "./address"
-import { Image } from "./base"
+import { Image } from "./single"
 import { ServiceOrder } from "./order"
 import { Day ,Scale} from "./enums"
 import {  BusinessHour} from "./outlet"

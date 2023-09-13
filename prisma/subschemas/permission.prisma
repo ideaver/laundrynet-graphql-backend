@@ -1,10 +1,14 @@
+import {  Employee} from "./user"
+
 //TODO
 model AccessRolePermission {
     id Int @id @default(autoincrement())
 
     createdAt DateTime @default(now())
 
-    updatedAt DateTime @updatedAt
+    updatedAt      DateTime  @updatedAt
+    Employee       Employee? @relation(fields: [employeeUserId], references: [userId])
+    employeeUserId String?
 
     @@map("AccessRolePermissions")
 }

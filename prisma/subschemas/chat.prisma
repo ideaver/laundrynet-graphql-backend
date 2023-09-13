@@ -1,5 +1,5 @@
 import {  User} from "./user"
-import {  Image} from "./base"
+import {  Image} from "./single"
 import {Review  } from "./outlet"
 
 model ChatRoom {

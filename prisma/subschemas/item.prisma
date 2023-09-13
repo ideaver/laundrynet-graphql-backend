@@ -1,6 +1,6 @@
 import {  Outlet} from "./outlet"
 import {User, Owner  } from "./user"
-import {Image  } from "./base"
+import {Image  } from "./single"
 import {  Cart} from "./order"
 import {  District} from "./address"
 import {  ItemActivity, OrderType, LaundryItemRequestStatus} from "./enums"

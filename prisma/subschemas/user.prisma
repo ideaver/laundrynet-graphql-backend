@@ -1,4 +1,4 @@
-import { PhoneCountryCode, Image, Session } from "base"
+import { PhoneCountryCode, Image, Session } from "single"
 import {  Gender, Language, Theme, EmployeeRole,ItemActivity } from "enums"
 import {  ChatRoom} from "chat"
 import {  Account, EmployeeActivityComission,CreditCard } from "account"

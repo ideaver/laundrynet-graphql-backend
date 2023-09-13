@@ -1,5 +1,5 @@
 import {Outlet  } from "./outlet"
-import {  Image} from "./base"
+import {  Image} from "./single"
 import {  UnitOfMeasure} from "./item"
 import {  MachineStatus} from "./enums"
 

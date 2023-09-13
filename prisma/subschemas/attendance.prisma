@@ -1,4 +1,4 @@
-import {  Image} from "./base"
+import {  Image} from "./single"
 import { EmployeeAttendanceStatus } from "./enums"
 import {  Employee} from "./user"
 

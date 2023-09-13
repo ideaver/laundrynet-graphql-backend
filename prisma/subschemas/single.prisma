@@ -1,0 +1,78 @@
+import {  User} from "./user"
+import {  FileType} from "./enums"
+import {  PlatformItem, LaundryItem, OutletLaundryItemService} from "./item"
+import {  Outlet, Review} from "./outlet"
+import {  Machine} from "./machine"
+import {  Transaction} from "./account"
+import {  Attendance} from "./attendance"
+import {  Voucher} from "./voucher"
+import {  Message} from "./chat"
+
+// No CRUD for UI
+// Read Only for SuperUser
+model Session {
+    id        Int      @id @default(autoincrement())
+    token     String   @unique
+    expiresAt DateTime
+    user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+    userId    String
+    device    String
+    ipAddress Float
+    createdAt DateTime @default(now())
+}
+
+// No CRUD for UI
+// CRUD for superUser
+model PhoneCountryCode {
+    phoneCode Int    @id
+    country   String
+    User      User[]
+
+    @@map("PhoneCountryCodes")
+}
+
+model Image {
+    //   -------------------------- scalars --------------------------------
+
+    url String @id
+
+    /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+    fileType FileType?
+
+    // / @Validator.IsNumber() 
+    /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+    fileSize Float?
+
+    /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+    createdAt DateTime @default(now())
+
+    //  -------------------------- 1 relations --------------------------------
+
+    PlatformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
+    platformItemId String?
+
+    LaundryItem LaundryItem? @relation(fields: [laundryItemId], references: [id])
+
+    laundryItemId Int?
+
+    //-------------------------- m relations --------------------------------
+
+    User User[]
+
+    Outlet Outlet[]
+
+    Review Review[]
+
+    Machine Machine[]
+
+    OutletLaundryItemService OutletLaundryItemService[]
+
+    Transaction Transaction[]
+    Attendance  Attendance[]
+    Voucher     Voucher[]
+    Message     Message?      @relation(fields: [messageId], references: [id])
+    messageId   Int?
+
+    @@map("Images")
+}
