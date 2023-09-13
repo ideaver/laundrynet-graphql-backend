@@ -1,0 +1,52 @@
+chatroom { ChatRoom } chatroom '@chatroom/chatroom';
+chatroom { ChatRoom } chatroom '@chatroom/chatroom';
+chatroom { ChatRoom } chatroom './chatroom.chatroom';
+
+@ChatRoom()
+chatroom chatroom ChatRoom {
+  chatroom(chatroom chatroom ChatRoom: ChatRoom) {}
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom chatroom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  }
+
+  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  }
+
+  chatroom chatroom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  }
+
+  chatroom chatroom(ChatRoom: ChatRoom.ChatRoom) {
+    chatroom chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  }
+}

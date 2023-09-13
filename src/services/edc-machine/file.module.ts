@@ -1,0 +1,11 @@
+edcmachine { EdcMachine } edcmachine '@edcmachine/edcmachine';
+edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
+edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
+edcmachine { EdcMachine } edcmachine 'edcmachine/edcmachine.edcmachine';
+edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
+
+@EdcMachine({
+  edcmachine: [EdcMachine, EdcMachine, EdcMachine, EdcMachine],
+  edcmachine: [EdcMachine],
+})
+edcmachine edcmachine EdcMachine {}

@@ -18,7 +18,9 @@
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
     //added by me
-    "moduleResolution": "nodenext",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "moduleDetection": "force",
     "lib": ["ESNext"],
     "types": ["bun-types"],
     //to fix TypeError: (0 , sharp_1.default) is not a function

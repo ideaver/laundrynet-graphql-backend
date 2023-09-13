@@ -16,7 +16,10 @@ function extractModelsFromSchema(schemaPath: string): string[] {
 
 // Function to convert a string to lowercase with hyphens
 function convertToLowerCaseWithHyphens(input: string) {
-  return input.toLowerCase().replace(/\s+/g, '-');
+  return input
+    .replace(/\s+/g, '-') // Replace spaces with hyphens
+    .replace(/([a-z])([A-Z])/g, '$1-$2') // Insert hyphen between lowercase and uppercase letters
+    .toLowerCase(); // Convert the entire string to lowercase
 }
 
 // Function to replace words in a string while maintaining casing
@@ -42,6 +45,18 @@ function replaceWords(input: string, modelName: string) {
 }
 
 // Function to duplicate a folder recursively
+// Updated function to duplicate a folder recursively
+function duplicateFile(
+  sourceFilePath: string,
+  targetFilePath: string,
+  modelName: string,
+) {
+  const fileContent = fs.readFileSync(sourceFilePath, 'utf8');
+  const replacedContent = replaceWords(fileContent, modelName);
+  fs.writeFileSync(targetFilePath, replacedContent);
+}
+
+// Updated function to duplicate a folder recursively
 function duplicateFolder(
   sourceDir: string,
   targetDir: string,
@@ -55,12 +70,10 @@ function duplicateFolder(
 
   for (const file of files) {
     const sourceFilePath = path.join(sourceDir, file);
-    const fileName =
-      convertToLowerCaseWithHyphens(modelName) + path.extname(file);
-    const targetFilePath = path.join(targetDir, fileName);
+    const targetFilePath = path.join(targetDir, file);
 
     if (fs.statSync(sourceFilePath).isDirectory()) {
-      duplicateFolder(sourceFilePath, targetFilePath, modelName);
+      duplicateFolder(sourceFilePath, targetDir, modelName);
     } else {
       const fileContent = fs.readFileSync(sourceFilePath, 'utf8');
       const replacedContent = replaceWords(fileContent, modelName);
@@ -70,19 +83,22 @@ function duplicateFolder(
 }
 
 // Example usage
-const schemaPath = '/path/to/prisma/schema.prisma'; // Replace with your Prisma schema path
-const sourceFolder = '/path/to/source/folder'; // Replace with your source folder path
-const outputBaseFolder = '/path/to/output/folders'; // Replace with your output base folder path
+const schemaPath = './prisma/schema.prisma'; // Replace with your Prisma schema path
+const sourceFolder = './prisma/template/file'; // Replace with your source folder path
+const outputBaseFolder = './src/services/'; // Replace with your output base folder path
 
 const prismaModels = extractModelsFromSchema(schemaPath);
-
+console.log(
+  prismaModels.length + ' Models found in Prisma schema:',
+  prismaModels,
+);
 for (const modelName of prismaModels) {
   const targetFolder = path.join(
     outputBaseFolder,
-    convertToLowerCaseWithHyphens(modelName),
+    convertToLowerCaseWithHyphens(modelName), // Use the updated function
   );
   duplicateFolder(sourceFolder, targetFolder, modelName);
-  console.log(`Duplicated folder for model ${modelName}`);
+  //   console.log(`Duplicated folder for model ${modelName}`);
 }
 
-console.log('Duplication completed.');
+console.log(prismaModels.length + ' Models Duplication completed.');
