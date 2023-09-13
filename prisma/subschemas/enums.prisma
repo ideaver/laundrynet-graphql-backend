@@ -1,0 +1,212 @@
+enum Gender {
+    MALE
+    FEMALE
+}
+
+enum Theme {
+    LIGHT
+    DARK
+}
+
+enum Language {
+    ID
+    EN
+}
+
+//No CRUD for UI
+//CRUD for superUser
+model PhoneCountryCode {
+    phoneCode Int    @id
+    country   String
+    User      User[]
+
+    @@map("PhoneCountryCodes")
+}
+
+enum FileType {
+    UNKNOWN
+    MP4
+    JPG
+    PNG
+    PDF
+
+    @@map("FileTypes")
+}
+
+enum Day {
+    MONDAY
+    TUESDAY
+    WEDNESDAY
+    THURSDAY
+    FRIDAY
+    SATURDAY
+    SUNDAY
+
+    @@map("Days")
+}
+
+enum EmployeeRole {
+    CASHIER
+    COURIER
+    PRODUCTION
+
+    @@map("EmployeeRoles")
+}
+
+enum ItemActivity {
+    LABELLING
+    SORTING
+    CLEANING
+    SPOTTING
+    DETAILLING
+    DRYING
+    IRONING
+    FOLDING
+    PACKING
+
+    @@map("ItemActivities")
+}
+
+enum AccountCategory {
+    COMISSION
+    CASH
+    PLATFORM
+    BANK
+    DEBT
+    POINT
+
+    @@map("AccountCategories")
+}
+
+enum PaymentStatus {
+    PENDING
+    UNPAID
+    HALFPAID
+    FULLPAID
+    CANCELLED
+    FAILED
+    REFUNDED
+
+    @@map("PaymentStatuses")
+}
+
+enum PaymentMethod {
+    CASH
+    QRIS
+    CREDITCARD
+    DEBITCARD
+    EWALLET
+    PLATFORMWALLET
+    BANKTRANSFER
+
+    @@map("PaymentMethods")
+}
+
+enum LaundryItemRequestStatus {
+    PENDING
+    APPROVED
+    REJECTED
+
+    @@map("LaundryItemRequestStatuses")
+}
+
+enum TransactionStatus {
+    PROCESSING
+    PENDING
+    FAILED
+    CANCELLED
+    COMPLETED
+
+    @@map("TransactionStatuses")
+}
+
+enum TransactionCategory {
+    ORDER
+    WITHDRAWAL
+    TOPUP
+    REFERRING
+    REDEEMING
+    REFUND
+    RECONCILE
+    COMISSION
+
+    @@map("TransactionCategories")
+}
+
+enum NotificationType {
+    ORDERSTATUS
+    WASHINGMACHINESTATUS
+    LAUNDRY
+    DISCOUNT
+
+    @@map("NotificationTypes")
+}
+
+enum TermOrFaqCategory {
+    FAQ
+    TERM
+    PRIVACY
+    POLICY
+
+    @@map("TermOrFaqCategories")
+}
+
+enum TermOrFaqType {
+    BRANCH
+    PLATFORM
+    VOUCHER
+
+    @@map("TermOrFaqTypes")
+}
+
+enum OrderType {
+    DROP
+    SELF
+    DELIVERY
+    HOME
+
+    @@map("OrderTypes")
+}
+
+enum OrderStatusEnum {
+    PENDING
+    PROCESSING
+    DONE
+    SHIPPED
+    DELIVERED
+    CANCELLED
+    RETURNED
+
+    @@map("OrderStatusEnums")
+}
+
+enum MachineStatus {
+    ACTIVE
+    INACTIVE
+    MAINTENANCE
+    BROKEN
+    OTHER
+
+    @@map("MachineStatuses")
+}
+
+enum EmployeeAttendanceStatus {
+    PRESENT
+    ABSENT
+    OVERTIME
+    LATE
+    LEAVE
+    HOLIDAY
+
+    @@map("EmployeeAttendanceStatuses")
+}
+
+enum Scale {
+    ONE
+    TWO
+    THREE
+    FOUR
+    FIVE
+
+    @@map("Scales")
+}

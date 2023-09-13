@@ -1,0 +1,163 @@
+//CRUD for UI
+//CRUD only available for owner user
+/// Outlet adalah cabang dari laundry
+model Outlet {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    name String
+
+    isActive Boolean @default(true)
+
+    description String?
+
+    phone String?
+
+    email String?
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime
+
+    //-------------------------- 1 relations --------------------------------
+
+    owner Owner @relation(fields: [ownerId], references: [userId])
+
+    ownerId String
+
+    address Address @relation(fields: [addressId], references: [id])
+
+    addressId Int @unique
+
+    setting OutletSetting @relation(fields: [settingId], references: [id])
+
+    settingId Int @unique
+
+    //-------------------------- m relations --------------------------------
+
+    image Image[]
+
+    orders ServiceOrder[]
+
+    bussinessHours BusinessHour[]
+
+    employees Employee[]
+
+    reviews Review[]
+
+    schedules Schedule[]
+
+    services OutletLaundryItemService[]
+
+    customers Customer[]
+
+    machines Machine[]
+
+    printerSetting PrinterSetting[]
+    OutletVoucher  OutletVoucher[]
+
+    @@map("Outletes")
+}
+
+model BusinessHour {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    openTime DateTime
+
+    closeTime DateTime
+
+    //-------------------------- 1 relations --------------------------------
+
+    day Day
+
+    //-------------------------- m relations --------------------------------
+
+    outlet Outlet[]
+
+    @@map("BusinessHours")
+}
+
+//CRUD for UI
+//available for outlet and owner only
+/// OutletSchedule adalah jadwal operasional dari cabang
+model Schedule {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    dayOfWeek Int @default(0)
+
+    openTime String
+
+    closeTime String
+
+    outletId Int
+
+    maxOrders Int?
+
+    availableSlots Int?
+
+    isClosed Boolean? @default(false)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime
+
+    //-------------------------- 1 relations --------------------------------
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    createdBy Owner @relation(fields: [createdById], references: [userId])
+
+    createdById String
+
+    @@map("Schedules")
+}
+
+//CRUD for UI
+//Update, Delete disable for owner
+/// OutletReview adalah review yang diberikan oleh customer terhadap cabang
+model Review {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    description String
+
+    cleanlinessScore Scale
+
+    speedScore Scale
+
+    qualityScore Scale
+
+    priceScore Scale
+
+    overallAverageScore Scale
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    reviewBy Customer @relation("ReviewBy", fields: [reviewById], references: [userId])
+
+    reviewById String
+
+    outlet Outlet @relation(fields: [outletId], references: [addressId])
+
+    outletId Int
+
+    //-------------------------- m relations --------------------------------
+
+    images Image[]
+
+    message Message[]
+
+    likes User[] @relation("ReviewLikes")
+
+    dislikes User[] @relation("ReviewDislikes")
+
+    @@map("Reviews")
+}

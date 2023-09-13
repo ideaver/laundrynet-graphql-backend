@@ -1,0 +1,120 @@
+//TODO:
+model AccountSetting {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    user User @relation(fields: [userId], references: [id])
+
+    userId String
+
+    //-------------------------- m relations --------------------------------
+
+    @@map("AccountSettings")
+}
+
+//TODO:
+model OutletSetting {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    /// Field ini digunakan untuk menampung radius area yang dapat dilayani oleh cabang
+    attendanceRadius Float? @default(2.0)
+
+    //-------------------------- 1 relations --------------------------------
+
+    outlet Outlet
+
+    outletId Int
+
+    //-------------------------- m relations --------------------------------
+
+    @@map("OutletSettings")
+}
+
+//TODO: tambahkan model printer
+model PrinterSetting {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    outletId Int
+
+    //-------------------------- m relations --------------------------------
+
+    @@map("PrinterSettings")
+}
+
+/// VoucherSetting adalah pengaturan untuk voucher
+model VoucherSetting {
+    //-------------------------- scalars --------------------------------
+
+    discountValue Int
+
+    minOrderTotalAmountValue Int?
+
+    maxOrderTotalAmountValue Int?
+
+    minOrderQuantityValue Int?
+
+    maxOrderQuantityValue Int?
+
+    customerQuota Int?
+
+    orderQuota Int?
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    voucher Voucher
+
+    voucherId String @id
+
+    createdBy Owner @relation(fields: [createdById], references: [userId])
+
+    createdById String
+
+    //-------------------------- m relations --------------------------------
+
+    /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh OrderType
+    restrictToOrderTypes OrderType[]
+
+    /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh OutletLaundryItemService
+    restrictToItems OutletLaundryItemService[]
+
+    /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh LaundryItemCategory
+    restrictToItemCategories LaundryItemCategory[]
+
+    /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh City
+    restrictToCities City[]
+
+    /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh District
+    restrictToDistricts District[]
+
+    /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh metode pembayaran
+    restrictToPaymentMethods PaymentMethod[]
+
+    @@map("VoucherSettings")
+}

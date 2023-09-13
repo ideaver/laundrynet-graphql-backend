@@ -1,0 +1,252 @@
+import { PhoneCountryCode, Image, Session } from "base"
+import {  Gender, Language, Theme, EmployeeRole,ItemActivity } from "enums"
+import {  ChatRoom} from "chat"
+import {  Account, EmployeeActivityComission,CreditCard } from "account"
+import {  Address } from "address"
+import {  Notification } from "notification"
+import {  OrderStatus, ServiceOrder, PlatformOrder } from "order"
+import {  Message } from "chat"
+import {  Review, Outlet,Schedule } from "outlet"
+import {  TermOrFaq } from "termsOrFaqs"
+import {  AccountSetting, VoucherSetting      } from "settings"
+import {  Attendance } from "attendance"
+import {  Delivery } from "delivery"
+import { AccessRolePermission } from "permission"
+import { OutletVoucher } from "voucher"
+import { LaundryItemRequest } from "item"
+
+//-----------------------------------User--------------------------------------------
+
+//CRUD for UI
+///User terdiri dari 4 role, Owner, Employee, Customer, SuperUser
+///Properti tiap role berbeda-beda, sehingga dibuat tabel terpisah
+model User {
+    //-------------------------- scalars --------------------------------
+
+    id String @id @default(uuid())
+
+    fullName String
+
+    username String @unique
+
+    email String @unique
+
+    emailVerifiedAt DateTime?
+
+    password String
+
+    whatsapp String @unique
+
+    whatsappVerifiedAt DateTime?
+
+    birthDate DateTime
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    deletedAt DateTime? //implement softdelete
+
+    //-------------------------- 1 relations --------------------------------
+
+    PhoneCountryCode PhoneCountryCode @relation(fields: [phoneCountryCodeId], references: [phoneCode])
+
+    phoneCountryCodeId Int
+
+    role UserRole
+
+    gender Gender
+
+    avatarImage Image @relation(fields: [avatarImageId], references: [url])
+
+    avatarImageId String
+
+    customerInfo Customer?
+
+    customerInfoId String?
+
+    employeeInfo Employee?
+
+    employeeInfoId String?
+
+    ownerInfo Owner?
+
+    ownerInfoId String?
+
+    language Language @default(ID)
+
+    theme Theme @default(LIGHT)
+
+    chatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+
+    chatRoomId Int?
+
+    //-------------------------- m relations --------------------------------
+
+    accounts Account[]
+
+    addresses Address[]
+
+    sessions Session[]
+
+    notifications Notification[]
+
+    changedStatuses OrderStatus[]
+
+    messageSender Message[] @relation("MessageSender")
+
+    messageReceiver Message[] @relation("MessageReceiver")
+
+    reviewLikes Review[] @relation("ReviewLikes")
+
+    reviewDislikes Review[] @relation("ReviewDislikes")
+
+    TermOrFaqReads TermOrFaq[] @relation("TermOrFaqReads")
+
+    accountSetting AccountSetting[]
+
+    messageReads Message[] @relation("MessageReads")
+
+    messageLikes Message[] @relation("MessageLikes")
+
+    @@map("users")
+}
+
+enum UserRole {
+    OWNER
+    EMPLOYEE
+    CUSTOMER
+    ADMIN
+    SUPERUSER
+
+    @@map("UserRoles")
+}
+
+//CRUD for UI
+/// Employee adalah user yang bekerja di cabang
+/// Employee bisa memiliki beberapa role, misalnya cashier, courier, production
+model Employee {
+    //-------------------------- scalars --------------------------------
+
+    salary Float?
+
+    attendanceBonus Float?
+
+    mealAllowance Float?
+
+    presenceBonus Float?
+
+    transportationAllowance Float?
+
+    overtimeBonus Float?
+
+    EmployeeRoleAllowance Float?
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    user User @relation(fields: [userId], references: [id])
+
+    userId String @id
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    outletId Int
+
+    //-------------------------- m relations --------------------------------
+
+    activityComissions EmployeeActivityComission[]
+
+    roles EmployeeRole[] //one employee can be cashier, courier or production at the same time 
+
+    accessRolePermissions AccessRolePermission[]
+
+    serviceOrder ServiceOrder[]
+
+    activities ItemActivity[]
+
+    attendances Attendance[]
+
+    deliveries Delivery[]
+
+    @@map("Employees")
+}
+
+//CRUD for UI
+/// Customer adalah user yang menggunakan jasa laundry
+/// Customer bisa mereferensikan customer lain dan mendapatkan komisi
+/// Customer bisa mendapatkan poin dari setiap transaksi
+/// Customer bisa menukarkan poin dengan voucher
+model Customer {
+    //-------------------------- scalars --------------------------------
+
+    user User @relation(fields: [userId], references: [id])
+
+    userId String @id
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime
+
+    ///auto generate dari backend
+    referralCode String @unique
+
+    //-------------------------- 1 relations --------------------------------
+
+    referredBy Customer? @relation("CustomerReferral", fields: [referredById], references: [userId])
+
+    /// @HideField({ output: false, input: true })   
+    referredById String?
+
+    //-------------------------- m relations --------------------------------
+
+    orders ServiceOrder[]
+
+    favoriteOutletes Outlet[]
+
+    reviews Review[] @relation("ReviewBy")
+
+    creditCards CreditCard[]
+
+    referredUsers Customer[] @relation("CustomerReferral")
+
+    vouchers OutletVoucher[] @relation("OutletVoucherUserOfCustomers")
+
+    @@map("customers")
+}
+
+//CRUD for UI
+model Owner {
+    //-------------------------- scalars --------------------------------
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime
+
+    //-------------------------- 1 relations --------------------------------
+
+    user User @relation(fields: [userId], references: [id])
+
+    userId String @id
+
+    //-------------------------- m relations --------------------------------
+
+    creditCard CreditCard[]
+
+    platformOrders PlatformOrder[]
+
+    /// 1 Owner dapat memiliki banyak cabang
+    outletes Outlet[]
+
+    laundryItemRequest LaundryItemRequest[]
+
+    scheduleCreated Schedule[]
+
+    TermOrFaqCreated TermOrFaq[]      @relation("creator")
+    VoucherSetting   VoucherSetting[]
+
+    @@map("Owners")
+}

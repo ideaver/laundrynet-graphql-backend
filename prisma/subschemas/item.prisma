@@ -1,0 +1,249 @@
+//CRUD for UI
+//CRUD Only available for outlet owner
+/// OutletLaundryItemService adalah layanan yang disediakan oleh cabang
+model OutletLaundryItemService {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    name String
+
+    description String?
+
+    durationInMinute Int?
+
+    /// Maksimal berat per item dalam satuan sesuai unit of measure
+    maxWeight Float?
+
+    /// Minimal berat per item dalam satuan sesuai unit of measure
+    minWeight Float?
+
+    /// Harga pokok
+    cost Int?
+
+    /// Harga jual
+    salePrice Int
+
+    isActive Boolean @default(true)
+
+    isOnSale Boolean @default(true)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    outletId Int
+
+    laundryItem LaundryItem @relation(fields: [laundryItemId], references: [id])
+
+    laundryItemId Int
+
+    //-------------------------- m relations --------------------------------
+
+    Images Image[]
+
+    cart Cart[]
+
+    ///outlet can decide what are the activities involved in this service
+    activities ItemActivity[]
+
+    orderTypes OrderType[]
+
+    ///Untuk layanan homeservice, outlet dapat menentukan item apa saja yang dapat dilayani area mana saja 
+    districtAreas           District[]
+    VoucherSetting          VoucherSetting? @relation(fields: [voucherSettingVoucherId], references: [voucherId])
+    voucherSettingVoucherId String?
+
+    @@map("OutletLaundryItemServices")
+}
+
+//no update nor delete operation for UI
+//CRUD only available to superUser
+/// LaundryItem adalah pilihan item yang disediakan platform untuk diterapkan oleh cabang
+model LaundryItem {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    name String
+
+    description String?
+
+    requiresDryCleaning Boolean? @default(false)
+
+    requiresIron Boolean? @default(false)
+
+    requiresFold Boolean? @default(false)
+
+    requiresPack Boolean? @default(false)
+
+    requiresHang Boolean? @default(false)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    category LaundryItemCategory @relation(fields: [categoryId], references: [id])
+
+    categoryId Int
+
+    unitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+
+    unitOfMeasureId Int
+
+    //-------------------------- relations --------------------------------
+
+    images Image[]
+
+    outletServices OutletLaundryItemService[]
+
+    marketSalePrice MarketSalePriceHistory[]
+
+    @@map("LaundryItems")
+}
+
+/// LaundryItemRequest adalah request dari cabang untuk menambahkan item laundry
+model LaundryItemRequest {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    name String
+
+    description String?
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    status LaundryItemRequestStatus
+
+    requestBy Owner @relation(fields: [requestById], references: [userId])
+
+    requestById String
+
+    category LaundryItemCategory @relation(fields: [categoryId], references: [id])
+
+    categoryId Int
+
+    @@map("LaundryItemRequests")
+}
+
+//backend cron job auto calculate from average market price (OutletLaundryService model)
+/// MarketSalePriceHistory adalah history rata-rata harga jual di pasar dari item laundry
+model MarketSalePriceHistory {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    price Float
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    laundry LaundryItem @relation(fields: [laundryItemId], references: [id])
+
+    laundryItemId Int
+
+    @@map("MarketSalePriceHistories")
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+/// LaundryItemCategory adalah kategori dari item laundry seperti pakaian, sepatu, tas, dll
+model LaundryItemCategory {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    name String
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- m relations --------------------------------
+
+    items LaundryItem[]
+
+    LaundryItemRequest      LaundryItemRequest[]
+    VoucherSetting          VoucherSetting?      @relation(fields: [voucherSettingVoucherId], references: [voucherId])
+    voucherSettingVoucherId String?
+
+    @@map("LaundryItemCategories")
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+/// UnitOfMeasure adalah satuan dari item laundry seperti kg, pcs, dll
+model UnitOfMeasure {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    name String
+
+    abbreviation String?
+
+    conversion Float @default(1.0)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime
+
+    //-------------------------- m relations --------------------------------
+
+    laundryItems LaundryItem[]
+
+    platformItems PlatformItem[]
+
+    machine Machine[]
+
+    @@map("UnitOfMeasures")
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+//items for selling to owner like platform subscription,machines, soaps etc
+model PlatformItem {
+    //-------------------------- scalars --------------------------------
+
+    id String @id @default(cuid())
+
+    name String
+
+    cost Float?
+
+    salePrice Float
+
+    description String?
+
+    /// Field ini juga digunakan backend sebagai penanda untuk mencegah race condition terjadi
+    stock Int @default(0)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    UnitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+
+    unitOfMeasureId Int
+
+    //-------------------------- m relations --------------------------------
+
+    carts Cart[]
+
+    images Image[]
+
+    @@map("PlatformItems")
+}

@@ -1,0 +1,99 @@
+//---------------------------------address----------------------------------
+
+//CRUD for UI
+/// Address adalah alamat dari user dan cabang
+model Address {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    latitude Float? //for google map
+
+    longitude Float? //for google map
+
+    label String
+
+    street String
+
+    isMain Boolean @default(false)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+    Outlet Outlet?
+
+    user User? @relation(fields: [userId], references: [id])
+
+    userId String?
+
+    /// @Validator.IsNotEmpty()
+    subdistrict Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+
+    // @HideField({ match: 'AddressCreate*Input' })
+    subdistrictId Int
+
+    //-------------------------- m relations --------------------------------
+
+    platformOrder PlatformOrder[]
+
+    serviceOrder ServiceOrder[]
+
+    @@map("Addresses")
+}
+
+//Make CRUD Available
+model City {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    province Province @relation(fields: [provinceId], references: [id])
+
+    provinceId Int
+
+    districts District[]
+
+    voucherSettings VoucherSetting[]
+}
+
+//Make CRUD Available
+model District {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    city City @relation(fields: [cityId], references: [id])
+
+    cityId Int
+
+    subdistricts               Subdistrict[]
+    OutletLaundryItemService   OutletLaundryItemService? @relation(fields: [outletLaundryItemServiceId], references: [id])
+    outletLaundryItemServiceId Int?
+    VoucherSetting             VoucherSetting?           @relation(fields: [voucherSettingVoucherId], references: [voucherId])
+    voucherSettingVoucherId    String?
+}
+
+model Province {
+    id Int @id @default(autoincrement())
+
+    name String @unique
+
+    /// @HideField()   
+    cities City[]
+}
+
+model Subdistrict {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    district District @relation(fields: [districtId], references: [id])
+
+    districtId Int
+
+    postalCode String
+
+    /// @HideField()
+    address Address[] @relation("SubdistrictAddress")
+}

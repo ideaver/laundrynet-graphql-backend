@@ -1,0 +1,56 @@
+//CRUD only for outlet
+///Machine adalah kumpulan mesin IOT yang ada pada cabang
+model Machine {
+    //-------------------------- scalars --------------------------------
+
+    id String @id @default(uuid())
+
+    name String
+
+    description String?
+
+    isOnline Boolean @default(false)
+
+    capacity Int
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    capacityUnit UnitOfMeasure @relation(fields: [capacityUnitId], references: [id])
+
+    capacityUnitId Int
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    outletId Int
+
+    status MachineStatus
+
+    category MachineCategory? @relation(fields: [categoryId], references: [id])
+
+    categoryId Int?
+
+    //-------------------------- m relations --------------------------------
+
+    Images Image[]
+
+    @@map("Machines")
+}
+
+//No CRUD UI
+model MachineCategory {
+    id Int @id @default(autoincrement())
+
+    name String
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    machines Machine[]
+
+    @@map("MachineCategories")
+}

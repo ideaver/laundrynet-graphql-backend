@@ -1,0 +1,18 @@
+//TODO
+model AccessRolePermission {
+    id Int @id @default(autoincrement())
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    accessRole AccessRole @relation(fields: [accessRoleId], references: [id])
+
+    accessRoleId Int
+
+    permission Permission @relation(fields: [permissionId], references: [id])
+
+    permissionId Int
+
+    @@map("AccessRolePermissions")
+}

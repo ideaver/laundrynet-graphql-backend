@@ -1,0 +1,28 @@
+model Notification {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    title String
+
+    subTitle String?
+
+    content String
+
+    createdAt DateTime @default(now())
+
+    isRead Boolean
+
+    fcmToken String?
+
+    //-------------------------- 1 relations --------------------------------
+
+    type NotificationType
+
+    user User @relation(fields: [userId], references: [id])
+
+    userId String
+
+    //-------------------------- m relations --------------------------------
+
+    @@map("Notifications")
+}

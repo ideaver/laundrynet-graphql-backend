@@ -1,0 +1,40 @@
+//Create and Read only for UI
+model Attendance {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    latitude Float
+
+    longitude Float
+
+    timeIn DateTime
+
+    timeOut DateTime
+
+    reason String?
+
+    latePenalty Float?
+
+    absentPenalty Float?
+
+    overtimeBonus Float?
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    image Image? @relation(fields: [imageUrl], references: [url])
+
+    imageUrl String?
+
+    status EmployeeAttendanceStatus
+
+    employee Employee @relation(fields: [employeeId], references: [userId])
+
+    employeeId String
+
+    @@map("Attendances")
+}

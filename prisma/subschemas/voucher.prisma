@@ -1,0 +1,118 @@
+//CRUD for UI
+//Create, Read, Update for superUser, Read for Owner
+///Voucher adalah promo yang diberikan oleh platform atau outlet kepada customer 
+//TODO: Voucher dari platform, voucher dari cabang
+model Voucher {
+    //-------------------------- scalars --------------------------------
+
+    /// Field ini diisi oleh user dengan verifikasi dari backend
+    code String @id
+
+    name String
+
+    description String?
+
+    startDate DateTime
+
+    endDate DateTime
+
+    isHighlight Boolean @default(false)
+
+    isActive Boolean @default(true)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    type VoucherType
+
+    outletVoucher OutletVoucher?
+
+    outletVoucherId Int?
+
+    platformVoucher PlatformVoucher?
+
+    platformVoucherId Int?
+
+    settings VoucherSetting @relation(fields: [settingsId], references: [voucherId])
+
+    settingsId String @unique
+
+    discountType DiscountType
+
+    image Image @relation(fields: [imageId], references: [url])
+
+    imageId String
+
+    //-------------------------- m relations --------------------------------
+
+    /// Berisi order id yang menggunakan voucher ini
+    /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+    serviceOrders ServiceOrder[]
+
+    termsAndFaqs TermOrFaq[]
+
+    @@map("Vouchers")
+}
+
+enum VoucherType {
+    PLATFORM
+    OUTLET
+
+    @@map("VoucherTypes")
+}
+
+model OutletVoucher {
+    //-------------------------- scalars --------------------------------
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    voucher Voucher @relation(fields: [voucherId], references: [code])
+
+    voucherId String @id
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    outletId Int
+
+    //-------------------------- m relations --------------------------------
+
+    customers Customer[] @relation("OutletVoucherUserOfCustomers")
+
+    /// Data voucher yang digunakan oleh outlet dari platform
+    platforms PlatformVoucher[] @relation("PlatformVoucherOutletOfOutlets")
+
+    @@map("OutletVouchers")
+}
+
+model PlatformVoucher {
+    //-------------------------- scalars --------------------------------
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    voucher Voucher @relation(fields: [voucherId], references: [code])
+
+    voucherId String @id
+
+    //-------------------------- m relations --------------------------------
+
+    /// Data outlet yang menerapkan voucher dari platform
+    outlets OutletVoucher[] @relation("PlatformVoucherOutletOfOutlets")
+
+    @@map("PlatformVouchers")
+}
+
+enum DiscountType {
+    PERCENTAGE
+    AMOUNT
+}

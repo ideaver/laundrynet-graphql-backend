@@ -1,0 +1,160 @@
+//Only Read on UI
+model OrderStatus {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    createdAt DateTime @default(now())
+
+    //-------------------------- 1 relations --------------------------------
+
+    status OrderStatusEnum
+
+    platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+    platformOrderId Int?
+
+    ServiceOrder ServiceOrder? @relation(fields: [ServiceOrderId], references: [id])
+
+    ServiceOrderId Int?
+
+    changedBy User @relation(fields: [changedById], references: [id])
+
+    changedById String
+
+    @@map("OrderStatuses")
+}
+
+//Can be created,read,edit but cannot be deleted for UI
+/// ServiceOrder adalah order yang dibuat oleh customer
+model ServiceOrder {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    platformFee Int
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+    /// Berkaitan dengan max order suatu outlet tertentu
+    raceConditionVersion Int @default(0)
+
+    //-------------------------- 1 relations --------------------------------
+
+    handleBy Employee? @relation(fields: [handleById], references: [userId])
+
+    handleById String?
+
+    orderBy Customer @relation(fields: [orderById], references: [userId])
+
+    orderById String
+
+    voucher Voucher? @relation(fields: [voucherId], references: [code])
+
+    voucherId String?
+
+    address Address? @relation(fields: [addressId], references: [id])
+
+    addressId Int?
+
+    delivery Delivery? @relation(fields: [deliveryId], references: [id])
+
+    deliveryId Int?
+
+    orderType OrderType
+
+    outlet Outlet @relation(fields: [brandId], references: [id])
+
+    brandId Int
+
+    //-------------------------- m relations --------------------------------
+
+    status OrderStatus[]
+
+    cart Cart[]
+
+    Invoice Invoice[]
+
+    @@map("ServiceOrders")
+}
+
+//Can be created,read,edit but cannot be deleted by UI
+/// PlatformOrder adalah order yang dibuat oleh owner untuk membeli item dari platform seperti subscription, mesin, dll
+model PlatformOrder {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    address Address @relation(fields: [addressId], references: [id])
+
+    addressId Int
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+    raceConditionVersion Int @default(0)
+
+    //-------------------------- 1 relations --------------------------------
+
+    orderBy Owner @relation(fields: [orderById], references: [userId])
+
+    orderById String
+
+    //-------------------------- m relations --------------------------------
+
+    Invoice Invoice[]
+
+    status OrderStatus[]
+
+    carts Cart[]
+
+    @@map("PlatformOrders")
+}
+
+/// Cart adalah keranjang belanja user, Cart berisi item yang akan dibeli oleh user
+model Cart {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    quantity Int
+
+    /// @Validator.IsNumber() 
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+    price Float
+
+    /// @Validator.IsNumber() 
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+    cost Float
+
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+    createdAt DateTime @default(now())
+
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+    serviceOrderId Int?
+
+    PlatformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+    platformOrderId Int?
+
+    PlatformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
+    platformItemId String?
+
+    OutletLaundryItemService OutletLaundryItemService? @relation(fields: [outletLaundryItemServiceId], references: [id])
+
+    outletLaundryItemServiceId Int?
+
+    @@map("Carts")
+}

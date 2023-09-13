@@ -1,0 +1,60 @@
+model ChatRoom {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    name String
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    endedAt DateTime?
+
+    //-------------------------- m relations --------------------------------
+
+    participants User[]
+
+    messages Message[]
+
+    @@map("ChatRooms")
+}
+
+model Message {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    content String
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    sender User @relation("MessageSender", fields: [senderId], references: [id])
+
+    senderId String
+
+    receiver User @relation("MessageReceiver", fields: [receiverId], references: [id])
+
+    receiverId String
+
+    chatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+
+    chatRoomId Int?
+
+    //-------------------------- m relations --------------------------------
+
+    reads User[] @relation("MessageReads")
+
+    likes User[] @relation("MessageLikes")
+
+    images Image[]
+
+    Review Review? @relation(fields: [reviewId], references: [id])
+
+    reviewId Int?
+
+    @@map("Messages")
+}

@@ -1,0 +1,209 @@
+import { AccountCategory, TransactionStatus } from "./enums"
+import {  User} from "./user"
+
+//-----------------------------------Account----------------------------------------------
+
+model Account {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    accountNumber Float?
+
+    /// @Validator.MinLength(2)
+    /// @Validator.MaxLength(20)
+    /// @Validator.IsAlpha()
+    name String
+
+    /// @HideField({ output: false, input: true })
+    createdAt DateTime @default(now())
+
+    /// @HideField({ output: false, input: true })
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    accountCategory AccountCategory
+
+    user User @relation(fields: [userId], references: [id])
+
+    userId String
+
+    //-------------------------- m relations --------------------------------
+
+    /// Field untuk menampung transaksi keluar (credit)
+    /// @HideField({ match: 'AccountCreate*Input' })
+    transactionOrigins Transaction[] @relation("origin")
+
+    /// Field untuk menampung transaksi masuk (debit)
+    /// @HideField({ match: 'AccountCreate*Input' })
+    transactionDestination Transaction[] @relation("destination")
+
+    @@map("Accounts")
+}
+
+//Make Read only without update, delete
+/// Penerapan double entry accounting
+model Transaction {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    /// @Validator.IsNumber() 
+    /// @Validator.IsNotEmpty()
+    amount Float
+
+    /// Kode unik akan diiisi oleh backend
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+    uniqueCode Int?
+
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+    createdAt DateTime @default(now())
+
+    //-------------------------- 1 relations --------------------------------
+
+    proofImage Image? @relation(fields: [proofImageId], references: [url])
+
+    proofImageId String?
+
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})     
+    status TransactionStatus
+
+    transactionCategory TransactionCategory
+
+    /// Jika terisi dengan id transaksi yang sama, maka artinya transaksi ini adalah transaksi debit
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+    fromAccount Account @relation("origin", fields: [fromAccountId], references: [id])
+
+    /// Jika terisi dengan id transaksi yang sama, maka artinya transaksi ini adalah transaksi credit
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+    fromAccountId Int
+
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+    toAccount Account @relation("destination", fields: [toAccountId], references: [id])
+
+    /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+    toAccountId Int
+
+    invoice Invoice? @relation(fields: [invoiceId], references: [id])
+
+    invoiceId Int?
+
+    Payment Payment?
+
+    paymentId Int?
+
+    @@index([amount], name: "amount")
+    @@index([fromAccountId], name: "from_account_id")
+    @@index([toAccountId], name: "to_account_id")
+    @@index([createdAt], name: "created_at")
+    @@map("Transactions")
+}
+
+//Make CRU Available, cannot be deleted
+/// Invoice adalah tagihan yang harus dibayar oleh order
+model Invoice {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    /// @Validator.IsNotEmpty()
+    /// @Validator.IsNumber() 
+    adminFee Float
+
+    /// @Validator.IsNotEmpty()
+    /// @Validator.IsNumber() 
+    amount Float
+
+    /// @HideField({ output: false, input: true })   
+    uniqueCode Int
+
+    /// @HideField({ output: false, input: true }) 
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    status PaymentStatus
+
+    /// @HideField({ match: 'InvoiceUpdate*Input' })
+    serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+    serviceOrderId Int?
+
+    /// @HideField({ match: 'InvoiceUpdate*Input' })
+    platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+    platformOrderId Int?
+
+    //-------------------------- m relation --------------------------------
+
+    /// @HideField({ match: 'InvoiceUpdate*Input' })
+    transactions Transaction[]
+
+    @@map("Invoices")
+}
+
+//Create and read only, no delete and no update for UI
+/// Payment adalah pembayaran dari user untuk invoice
+model Payment {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    amount Float
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime
+
+    //-------------------------- 1 relations --------------------------------
+
+    method PaymentMethod
+
+    status PaymentStatus
+
+    transaction Transaction @relation(fields: [transactionId], references: [id])
+
+    transactionId Int @unique
+
+    @@map("Payments")
+}
+
+/// EmployeeActivityComission adalah komisi yang didapatkan oleh employee dari setiap aktivitas yang dilakukan
+model EmployeeActivityComission {
+    id Int @id @default(autoincrement())
+
+    activity ItemActivity
+
+    comission Float
+
+    employee Employee @relation(fields: [employeeId], references: [userId])
+
+    employeeId String
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    @@map("EmployeeActivityComissions")
+}
+
+//CRUD for UI
+model CreditCard {
+    id             Int       @id @default(autoincrement())
+    isAccepted     Boolean
+    lastChecked    DateTime?
+    cardHolderName String
+    customer       Customer? @relation(fields: [customerId], references: [userId])
+    customerId     String?
+    owner          Owner?    @relation(fields: [ownerId], references: [userId])
+    ownerId        String?
+    cardNumber     String    @unique
+    expMonth       Int
+    expYear        Int
+    cvv            String
+    createdAt      DateTime  @default(now())
+    updatedAt      DateTime  @updatedAt
+}

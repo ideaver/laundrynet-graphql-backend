@@ -1,0 +1,32 @@
+model TermOrFaq {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    title String
+
+    content String
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    category TermOrFaqCategory
+
+    type TermOrFaqType
+
+    createdBy Owner @relation("creator", fields: [createdById], references: [userId])
+
+    createdById String
+
+    //-------------------------- m relations --------------------------------
+
+    /// field ini digunakan untuk menampung user yang sudah membaca/menyetujui term atau faq ini
+    readBy      User[]   @relation("TermOrFaqReads")
+    Voucher     Voucher? @relation(fields: [voucherCode], references: [code])
+    voucherCode String?
+
+    @@map("TermOrFaqs")
+}

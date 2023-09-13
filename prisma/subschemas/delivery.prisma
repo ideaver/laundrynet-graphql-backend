@@ -1,0 +1,82 @@
+model Delivery {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    pickupTime DateTime?
+
+    deliveryTime DateTime?
+
+    pickupMessage String?
+
+    deliveryMessage String?
+
+    instructions String?
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    status DeliveryStatus @relation(fields: [deliveryStatusId], references: [id])
+
+    deliveryStatusId Int
+
+    assignedDriver Employee? @relation(fields: [assignedDriverId], references: [userId])
+
+    assignedDriverId String?
+
+    //-------------------------- m relations --------------------------------
+
+    ServiceOrder ServiceOrder[]
+
+    locationHistory DeliveryLocationHistory[]
+
+    @@map("Deliveries")
+}
+
+model DeliveryLocationHistory {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    latitude Float
+
+    longitude Float
+
+    createdAt DateTime @default(now())
+
+    //-------------------------- 1 relations --------------------------------
+
+    delivery Delivery @relation(fields: [deliveryId], references: [id])
+
+    deliveryId Int
+
+    //-------------------------- m relations --------------------------------
+
+    @@map("DeliveryLocationHistories")
+}
+
+model DeliveryStatus {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    createdAt DateTime @default(now())
+
+    //-------------------------- 1 relations --------------------------------
+
+    status DeliveryStatusType
+
+    Delivery Delivery[]
+
+    @@map("DeliveryStatuses")
+}
+
+enum DeliveryStatusType {
+    PENDING
+    ASSIGNED
+    PICKEDUP
+    DELIVERED
+    CANCELLED
+
+    @@map("DeliveryStatusEnums")
+}
