@@ -1,0 +1,33 @@
+install REDIS
+
+docker run --name my-redis -p 6379:6379 -d redis
+
+install postgress
+
+create host directory
+
+sudo usermod -aG docker $USER
+chmod 0777 /usr/src/docker/data
+
+docker run -itd -e POSTGRES_USER=laundrynet -e POSTGRES_PASSWORD=laundrynet123456 -p 5432:5432 -v /usr/src/docker/data/postgres:/var/lib/postgresql/data --name postgresql postgres
+
+    The `docker run` command you've provided is used to run a Docker container with the PostgreSQL image. Let's break down the command and explain each part:
+
+    1. `docker run`: This is the command to create and start a new Docker container.
+
+    2. `-itd`: These are command-line flags:
+    - `-i`: Keeps STDIN open even if not attached.
+    - `-t`: Allocates a pseudo-TTY.
+    - `-d`: Runs the container in detached mode (in the background).
+
+    3. `-e POSTGRES_USER=laundrynet` and `-e POSTGRES_PASSWORD=laundrynet123456`: These are environment variable declarations for the PostgreSQL container. They set the username and password for the PostgreSQL database. In this case, the username is "laundrynet" and the password is "laundrynet123456".
+
+    4. `-p 5432:5432`: This maps port 5432 from the host to port 5432 inside the container. PostgreSQL typically listens on port 5432, so this allows you to access the PostgreSQL database running inside the container on the host's port 5432.
+
+    5. `-v /data:/var/lib/postgresql/data`: This is a volume mapping. It maps the host directory `/data` to the container's directory `/var/lib/postgresql/data`. This is done to persist the PostgreSQL data outside the container, so that data is not lost when the container is removed.
+
+    6. `--name postgresql`: This sets the name of the container to "postgresql" for easier reference.
+
+    7. `postgres`: This is the name of the Docker image you are using. It specifies that you want to create a container based on the official PostgreSQL image.
+
+    So, when you run this command, it creates a detached Docker container named "postgresql" based on the PostgreSQL image. This container will have the specified environment variables for the PostgreSQL username and password, and it will be accessible on the host's port 5432. The PostgreSQL data will be stored in the `/data` directory on the host.

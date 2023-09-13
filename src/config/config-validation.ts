@@ -27,30 +27,30 @@ class EnvironmentVariables {
   APP_NAME: string;
 
   /* DATA CONFIG */
-  @IsDefined()
-  @IsNumberString()
-  @MinLength(1)
-  DATABASE_PORT: string;
+  // @IsDefined()
+  // @IsNumberString()
+  // @MinLength(1)
+  // DATABASE_PORT: string;
 
-  @IsDefined()
-  @IsString()
-  @MinLength(1)
-  DATABASE_HOST: string;
+  // @IsDefined()
+  // @IsString()
+  // @MinLength(1)
+  // DATABASE_HOST: string;
 
-  @IsDefined()
-  @IsAlpha()
-  @MinLength(1)
-  DATABASE_USERNAME: string;
+  // @IsDefined()
+  // @IsAlpha()
+  // @MinLength(1)
+  // DATABASE_USERNAME: string;
 
-  @IsDefined()
-  @IsString()
-  @MinLength(1)
-  DATABASE_PASSWORD: string;
+  // @IsDefined()
+  // @IsString()
+  // @MinLength(1)
+  // DATABASE_PASSWORD: string;
 
-  @IsDefined()
-  @IsString()
-  @MinLength(1)
-  DATABASE: string;
+  // @IsDefined()
+  // @IsString()
+  // @MinLength(1)
+  // DATABASE: string;
 
   /* REDIS CONFIG */
   @IsDefined()
