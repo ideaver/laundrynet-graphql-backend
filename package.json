@@ -9,8 +9,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
-    "unify": "npx prisma-multischema",
-    "generate": "bunx prisma generate",
+    "generate": "npx prisma-multischema && bunx prisma generate",
     "build": "bun nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "bun dist/main.js",
