@@ -16,19 +16,19 @@
 //generator client {
 //    provider = "prisma-client-js"
 //}
-//generator custom_generator {
+//generator fake_data {
 //    provider = "prisma-generator-fake-data"
 //    output   = "./fake-data.ts"
 //}
-/// generator nestgraphql {
-///     provider                              = "node node_modules/prisma-nestjs-graphql"
-///     output                                = "../src/@generated"
-///     reExport                              = Single
-///     fields_Validator_from                 = "class-validator"
-///     fields_Validator_input                = true
-///     requireSingleFieldsInWhereUniqueInput = true
-///     emitSingle                            = true
-///     emitCompiled                          = true
-///     purgeOutput                           = true
-///     noTypeId                              = true
-/// }
+//generator nestgraphql {
+//    provider                              = "node node_modules/prisma-nestjs-graphql"
+//    output                                = "../src/@generated"
+//    reExport                              = Single
+//    fields_Validator_from                 = "class-validator"
+//    fields_Validator_input                = true
+//    requireSingleFieldsInWhereUniqueInput = true
+//    emitSingle                            = true
+//    emitCompiled                          = true
+//    purgeOutput                           = true
+//    noTypeId                              = true
+//}
