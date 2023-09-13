@@ -44,7 +44,6 @@ function replaceWords(input: string, modelName: string) {
   return replacedInput;
 }
 
-// Function to duplicate a folder recursively
 // Updated function to duplicate a folder recursively
 function duplicateFile(
   sourceFilePath: string,
@@ -68,9 +67,16 @@ function duplicateFolder(
 
   const files = fs.readdirSync(sourceDir);
 
+  const lastFolderName = path.basename(sourceDir);
+
   for (const file of files) {
     const sourceFilePath = path.join(sourceDir, file);
-    const targetFilePath = path.join(targetDir, file);
+    const targetFilePath = path.join(
+      targetDir,
+      convertToLowerCaseWithHyphens(modelName) +
+        '.' +
+        file.split('.').slice(1).join('.'),
+    );
 
     if (fs.statSync(sourceFilePath).isDirectory()) {
       duplicateFolder(sourceFilePath, targetDir, modelName);
@@ -85,9 +91,14 @@ function duplicateFolder(
 // Example usage
 const schemaPath = './prisma/schema.prisma'; // Replace with your Prisma schema path
 const sourceFolder = './prisma/template/file'; // Replace with your source folder path
-const outputBaseFolder = './src/services/'; // Replace with your output base folder path
-
+const outputBaseFolder = './src/services'; // Replace with your output base folder path
 const prismaModels = extractModelsFromSchema(schemaPath);
+
+// Check if the output base folder exists, and create it if it doesn't
+if (!fs.existsSync(outputBaseFolder)) {
+  fs.mkdirSync(outputBaseFolder, { recursive: true });
+}
+
 console.log(
   prismaModels.length + ' Models found in Prisma schema:',
   prismaModels,
