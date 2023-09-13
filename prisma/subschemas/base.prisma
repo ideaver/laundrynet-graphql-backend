@@ -8,31 +8,27 @@
 ///// ≡≡≡≡≡≡≡≡≡     ▼△▼△ 𝙲𝙷𝙰𝙽𝙶𝙴 𝐎𝐍𝐋𝐘 𝙱𝙴𝙻𝙾𝚆 𝚃𝙷𝙸𝚂 𝙻𝙸𝙽𝙴 ▼△▼△	    ≡≡≡≡≡≡≡≡≡≡≡≡≡≡/////
 //////////////////////////////////////////////////////////////////////////////////////
 
-datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
-}
-
----------------------------generator----------------------------------
-
-generator client {
-    provider = "prisma-client-js"
-}
-
-generator custom_generator {
-    provider = "prisma-generator-fake-data"
-    output   = "./fake-data.ts"
-}
-
-// generator nestgraphql {
-//     provider                              = "node node_modules/prisma-nestjs-graphql"
-//     output                                = "../src/@generated"
-//     reExport                              = Single
-//     fields_Validator_from                 = "class-validator"
-//     fields_Validator_input                = true
-//     requireSingleFieldsInWhereUniqueInput = true
-//     emitSingle                            = true
-//     emitCompiled                          = true
-//     purgeOutput                           = true
-//     noTypeId                              = true
-// }
+//
+//datasource db {
+//    provider = "postgresql"
+//    url      = env("DATABASE_URL")
+//}
+//generator client {
+//    provider = "prisma-client-js"
+//}
+//generator custom_generator {
+//    provider = "prisma-generator-fake-data"
+//    output   = "./fake-data.ts"
+//}
+/// generator nestgraphql {
+///     provider                              = "node node_modules/prisma-nestjs-graphql"
+///     output                                = "../src/@generated"
+///     reExport                              = Single
+///     fields_Validator_from                 = "class-validator"
+///     fields_Validator_input                = true
+///     requireSingleFieldsInWhereUniqueInput = true
+///     emitSingle                            = true
+///     emitCompiled                          = true
+///     purgeOutput                           = true
+///     noTypeId                              = true
+/// }

@@ -41,7 +41,7 @@ model OutletSetting {
 
     //-------------------------- 1 relations --------------------------------
 
-    outlet Outlet
+    outlet Outlet?
 
     outletId Int
 

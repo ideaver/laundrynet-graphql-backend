@@ -15,16 +15,6 @@ enum Language {
     EN
 }
 
-//No CRUD for UI
-//CRUD for superUser
-model PhoneCountryCode {
-    phoneCode Int    @id
-    country   String
-    User      User[]
-
-    @@map("PhoneCountryCodes")
-}
-
 enum FileType {
     UNKNOWN
     MP4

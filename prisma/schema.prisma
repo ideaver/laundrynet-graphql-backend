@@ -1,0 +1,1974 @@
+//🧩Don't Edit this file.✨Generated in Wed Sep 13 2023 11:54:13 GMT+0700 (Western Indonesia Time)✨
+
+//-----------------------------------Account----------------------------------------------
+
+model Account {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  accountNumber Float?
+
+  /// @Validator.MinLength(2)
+  /// @Validator.MaxLength(20)
+  /// @Validator.IsAlpha()
+  name String
+
+  /// @HideField({ output: false, input: true })
+  createdAt DateTime @default(now())
+
+  /// @HideField({ output: false, input: true })
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  accountCategory AccountCategory
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String
+
+  //-------------------------- m relations --------------------------------
+
+  /// Field untuk menampung transaksi keluar (credit)
+  /// @HideField({ match: 'AccountCreate*Input' })
+  transactionOrigins Transaction[] @relation("origin")
+
+  /// Field untuk menampung transaksi masuk (debit)
+  /// @HideField({ match: 'AccountCreate*Input' })
+  transactionDestination Transaction[] @relation("destination")
+
+  @@map("Accounts")
+}
+
+//Make Read only without update, delete
+/// Penerapan double entry accounting
+model Transaction {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  /// @Validator.IsNumber() 
+  /// @Validator.IsNotEmpty()
+  amount Float
+
+  /// Kode unik akan diiisi oleh backend
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  uniqueCode Int?
+
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  proofImage Image? @relation(fields: [proofImageId], references: [url])
+
+  proofImageId String?
+
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})     
+  status TransactionStatus
+
+  transactionCategory TransactionCategory
+
+  /// Jika terisi dengan id transaksi yang sama, maka artinya transaksi ini adalah transaksi debit
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  fromAccount Account @relation("origin", fields: [fromAccountId], references: [id])
+
+  /// Jika terisi dengan id transaksi yang sama, maka artinya transaksi ini adalah transaksi credit
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+  fromAccountId Int
+
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+  toAccount Account @relation("destination", fields: [toAccountId], references: [id])
+
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})  
+  toAccountId Int
+
+  invoice Invoice? @relation(fields: [invoiceId], references: [id])
+
+  invoiceId Int?
+
+  Payment Payment?
+
+  paymentId Int?
+
+  @@index([amount], name: "amount")
+  @@index([fromAccountId], name: "from_account_id")
+  @@index([toAccountId], name: "to_account_id")
+  @@index([createdAt], name: "created_at")
+  @@map("Transactions")
+}
+
+//Make CRU Available, cannot be deleted
+/// Invoice adalah tagihan yang harus dibayar oleh order
+model Invoice {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsNumber() 
+  adminFee Float
+
+  /// @Validator.IsNotEmpty()
+  /// @Validator.IsNumber() 
+  amount Float
+
+  /// @HideField({ output: false, input: true })   
+  uniqueCode Int
+
+  /// @HideField({ output: false, input: true }) 
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  status PaymentStatus
+
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+  serviceOrderId Int?
+
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+  platformOrderId Int?
+
+  //-------------------------- m relation --------------------------------
+
+  /// @HideField({ match: 'InvoiceUpdate*Input' })
+  transactions Transaction[]
+
+  @@map("Invoices")
+}
+
+//Create and read only, no delete and no update for UI
+/// Payment adalah pembayaran dari user untuk invoice
+model Payment {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  amount Float
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  method PaymentMethod
+
+  status PaymentStatus
+
+  transaction Transaction @relation(fields: [transactionId], references: [id])
+
+  transactionId Int @unique
+
+  @@map("Payments")
+}
+
+/// EmployeeActivityComission adalah komisi yang didapatkan oleh employee dari setiap aktivitas yang dilakukan
+model EmployeeActivityComission {
+  id Int @id @default(autoincrement())
+
+  activity ItemActivity
+
+  comission Float
+
+  employee Employee @relation(fields: [employeeId], references: [userId])
+
+  employeeId String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  @@map("EmployeeActivityComissions")
+}
+
+//CRUD for UI
+model CreditCard {
+  id             Int       @id @default(autoincrement())
+  isAccepted     Boolean
+  lastChecked    DateTime?
+  cardHolderName String
+  customer       Customer? @relation(fields: [customerId], references: [userId])
+  customerId     String?
+  owner          Owner?    @relation(fields: [ownerId], references: [userId])
+  ownerId        String?
+  cardNumber     String    @unique
+  expMonth       Int
+  expYear        Int
+  cvv            String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+//CRUD for UI
+/// Address adalah alamat dari user dan cabang
+model Address {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  latitude Float? //for google map
+
+  longitude Float? //for google map
+
+  label String
+
+  street String
+
+  isMain Boolean @default(false)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+  Outlet Outlet?
+
+  user User? @relation(fields: [userId], references: [id])
+
+  userId String?
+
+  /// @Validator.IsNotEmpty()
+  subdistrict Subdistrict @relation("SubdistrictAddress", fields: [subdistrictId], references: [id])
+
+  // @HideField({ match: 'AddressCreate*Input' })
+  subdistrictId Int
+
+  //-------------------------- m relations --------------------------------
+
+  platformOrder PlatformOrder[]
+
+  serviceOrder ServiceOrder[]
+
+  @@map("Addresses")
+}
+
+//Make CRUD Available
+model City {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  province Province @relation(fields: [provinceId], references: [id])
+
+  provinceId Int
+
+  districts District[]
+
+  voucherSettings VoucherSetting[]
+}
+
+//Make CRUD Available
+model District {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  city City @relation(fields: [cityId], references: [id])
+
+  cityId Int
+
+  subdistricts               Subdistrict[]
+  OutletLaundryItemService   OutletLaundryItemService? @relation(fields: [outletLaundryItemServiceId], references: [id])
+  outletLaundryItemServiceId Int?
+  VoucherSetting             VoucherSetting?           @relation(fields: [voucherSettingVoucherId], references: [voucherId])
+  voucherSettingVoucherId    String?
+}
+
+model Province {
+  id Int @id @default(autoincrement())
+
+  name String @unique
+
+  /// @HideField()   
+  cities City[]
+}
+
+model Subdistrict {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  district District @relation(fields: [districtId], references: [id])
+
+  districtId Int
+
+  postalCode String
+
+  /// @HideField()
+  address Address[] @relation("SubdistrictAddress")
+}
+
+//Create and Read only for UI
+model Attendance {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  latitude Float
+
+  longitude Float
+
+  timeIn DateTime
+
+  timeOut DateTime
+
+  reason String?
+
+  latePenalty Float?
+
+  absentPenalty Float?
+
+  overtimeBonus Float?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  image Image? @relation(fields: [imageUrl], references: [url])
+
+  imageUrl String?
+
+  status EmployeeAttendanceStatus
+
+  employee Employee @relation(fields: [employeeId], references: [userId])
+
+  employeeId String
+
+  @@map("Attendances")
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator custom_generator {
+  provider = "prisma-generator-fake-data"
+  output   = "./fake-data.ts"
+}
+
+generator nestgraphql {
+  provider                              = "node node_modules/prisma-nestjs-graphql"
+  output                                = "../src/@generated"
+  reExport                              = Single
+  fields_Validator_from                 = "class-validator"
+  fields_Validator_input                = true
+  requireSingleFieldsInWhereUniqueInput = true
+  emitSingle                            = true
+  emitCompiled                          = true
+  purgeOutput                           = true
+  noTypeId                              = true
+}
+
+model ChatRoom {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  name String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  endedAt DateTime?
+
+  //-------------------------- m relations --------------------------------
+
+  participants User[]
+
+  messages Message[]
+
+  @@map("ChatRooms")
+}
+
+model Message {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  content String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  sender User @relation("MessageSender", fields: [senderId], references: [id])
+
+  senderId String
+
+  receiver User @relation("MessageReceiver", fields: [receiverId], references: [id])
+
+  receiverId String
+
+  chatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+
+  chatRoomId Int?
+
+  //-------------------------- m relations --------------------------------
+
+  reads User[] @relation("MessageReads")
+
+  likes User[] @relation("MessageLikes")
+
+  images Image[]
+
+  Review Review? @relation(fields: [reviewId], references: [id])
+
+  reviewId Int?
+
+  @@map("Messages")
+}
+
+model Delivery {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  pickupTime DateTime?
+
+  deliveryTime DateTime?
+
+  pickupMessage String?
+
+  deliveryMessage String?
+
+  instructions String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  status DeliveryStatus @relation(fields: [deliveryStatusId], references: [id])
+
+  deliveryStatusId Int
+
+  assignedDriver Employee? @relation(fields: [assignedDriverId], references: [userId])
+
+  assignedDriverId String?
+
+  //-------------------------- m relations --------------------------------
+
+  ServiceOrder ServiceOrder[]
+
+  locationHistory DeliveryLocationHistory[]
+
+  @@map("Deliveries")
+}
+
+model DeliveryLocationHistory {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  latitude Float
+
+  longitude Float
+
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  delivery Delivery @relation(fields: [deliveryId], references: [id])
+
+  deliveryId Int
+
+  //-------------------------- m relations --------------------------------
+
+  @@map("DeliveryLocationHistories")
+}
+
+model DeliveryStatus {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  status DeliveryStatusType
+
+  Delivery Delivery[]
+
+  @@map("DeliveryStatuses")
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum Theme {
+  LIGHT
+  DARK
+}
+
+enum Language {
+  ID
+  EN
+}
+
+enum FileType {
+  UNKNOWN
+  MP4
+  JPG
+  PNG
+  PDF
+
+  @@map("FileTypes")
+}
+
+enum Day {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+
+  @@map("Days")
+}
+
+enum EmployeeRole {
+  CASHIER
+  COURIER
+  PRODUCTION
+
+  @@map("EmployeeRoles")
+}
+
+enum ItemActivity {
+  LABELLING
+  SORTING
+  CLEANING
+  SPOTTING
+  DETAILLING
+  DRYING
+  IRONING
+  FOLDING
+  PACKING
+
+  @@map("ItemActivities")
+}
+
+enum AccountCategory {
+  COMISSION
+  CASH
+  PLATFORM
+  BANK
+  DEBT
+  POINT
+
+  @@map("AccountCategories")
+}
+
+enum PaymentStatus {
+  PENDING
+  UNPAID
+  HALFPAID
+  FULLPAID
+  CANCELLED
+  FAILED
+  REFUNDED
+
+  @@map("PaymentStatuses")
+}
+
+enum PaymentMethod {
+  CASH
+  QRIS
+  CREDITCARD
+  DEBITCARD
+  EWALLET
+  PLATFORMWALLET
+  BANKTRANSFER
+
+  @@map("PaymentMethods")
+}
+
+enum LaundryItemRequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+
+  @@map("LaundryItemRequestStatuses")
+}
+
+enum TransactionStatus {
+  PROCESSING
+  PENDING
+  FAILED
+  CANCELLED
+  COMPLETED
+
+  @@map("TransactionStatuses")
+}
+
+enum TransactionCategory {
+  ORDER
+  WITHDRAWAL
+  TOPUP
+  REFERRING
+  REDEEMING
+  REFUND
+  RECONCILE
+  COMISSION
+
+  @@map("TransactionCategories")
+}
+
+enum NotificationType {
+  ORDERSTATUS
+  WASHINGMACHINESTATUS
+  LAUNDRY
+  DISCOUNT
+
+  @@map("NotificationTypes")
+}
+
+enum TermOrFaqCategory {
+  FAQ
+  TERM
+  PRIVACY
+  POLICY
+
+  @@map("TermOrFaqCategories")
+}
+
+enum TermOrFaqType {
+  BRANCH
+  PLATFORM
+  VOUCHER
+
+  @@map("TermOrFaqTypes")
+}
+
+enum OrderType {
+  DROP
+  SELF
+  DELIVERY
+  HOME
+
+  @@map("OrderTypes")
+}
+
+enum OrderStatusEnum {
+  PENDING
+  PROCESSING
+  DONE
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  RETURNED
+
+  @@map("OrderStatusEnums")
+}
+
+enum MachineStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+  BROKEN
+  OTHER
+
+  @@map("MachineStatuses")
+}
+
+enum EmployeeAttendanceStatus {
+  PRESENT
+  ABSENT
+  OVERTIME
+  LATE
+  LEAVE
+  HOLIDAY
+
+  @@map("EmployeeAttendanceStatuses")
+}
+
+enum Scale {
+  ONE
+  TWO
+  THREE
+  FOUR
+  FIVE
+
+  @@map("Scales")
+}
+
+enum DeliveryStatusType {
+  PENDING
+  ASSIGNED
+  PICKEDUP
+  DELIVERED
+  CANCELLED
+
+  @@map("DeliveryStatusEnums")
+}
+
+//CRUD for UI
+//CRUD Only available for outlet owner
+/// OutletLaundryItemService adalah layanan yang disediakan oleh cabang
+model OutletLaundryItemService {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  name String
+
+  description String?
+
+  durationInMinute Int?
+
+  /// Maksimal berat per item dalam satuan sesuai unit of measure
+  maxWeight Float?
+
+  /// Minimal berat per item dalam satuan sesuai unit of measure
+  minWeight Float?
+
+  /// Harga pokok
+  cost Int?
+
+  /// Harga jual
+  salePrice Int
+
+  isActive Boolean @default(true)
+
+  isOnSale Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  outletId Int
+
+  laundryItem LaundryItem @relation(fields: [laundryItemId], references: [id])
+
+  laundryItemId Int
+
+  //-------------------------- m relations --------------------------------
+
+  Images Image[]
+
+  cart Cart[]
+
+  ///outlet can decide what are the activities involved in this service
+  activities ItemActivity[]
+
+  orderTypes OrderType[]
+
+  ///Untuk layanan homeservice, outlet dapat menentukan item apa saja yang dapat dilayani area mana saja 
+  districtAreas           District[]
+  VoucherSetting          VoucherSetting? @relation(fields: [voucherSettingVoucherId], references: [voucherId])
+  voucherSettingVoucherId String?
+
+  @@map("OutletLaundryItemServices")
+}
+
+//no update nor delete operation for UI
+//CRUD only available to superUser
+/// LaundryItem adalah pilihan item yang disediakan platform untuk diterapkan oleh cabang
+model LaundryItem {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  name String
+
+  description String?
+
+  requiresDryCleaning Boolean? @default(false)
+
+  requiresIron Boolean? @default(false)
+
+  requiresFold Boolean? @default(false)
+
+  requiresPack Boolean? @default(false)
+
+  requiresHang Boolean? @default(false)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  category LaundryItemCategory @relation(fields: [categoryId], references: [id])
+
+  categoryId Int
+
+  unitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+
+  unitOfMeasureId Int
+
+  //-------------------------- relations --------------------------------
+
+  images Image[]
+
+  outletServices OutletLaundryItemService[]
+
+  marketSalePrice MarketSalePriceHistory[]
+
+  @@map("LaundryItems")
+}
+
+/// LaundryItemRequest adalah request dari cabang untuk menambahkan item laundry
+model LaundryItemRequest {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  name String
+
+  description String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  status LaundryItemRequestStatus
+
+  requestBy Owner @relation(fields: [requestById], references: [userId])
+
+  requestById String
+
+  category LaundryItemCategory @relation(fields: [categoryId], references: [id])
+
+  categoryId Int
+
+  @@map("LaundryItemRequests")
+}
+
+//backend cron job auto calculate from average market price (OutletLaundryService model)
+/// MarketSalePriceHistory adalah history rata-rata harga jual di pasar dari item laundry
+model MarketSalePriceHistory {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  price Float
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  laundry LaundryItem @relation(fields: [laundryItemId], references: [id])
+
+  laundryItemId Int
+
+  @@map("MarketSalePriceHistories")
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+/// LaundryItemCategory adalah kategori dari item laundry seperti pakaian, sepatu, tas, dll
+model LaundryItemCategory {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  name String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- m relations --------------------------------
+
+  items LaundryItem[]
+
+  LaundryItemRequest LaundryItemRequest[]
+
+  voucherSetting VoucherSetting[]
+
+  @@map("LaundryItemCategories")
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+/// UnitOfMeasure adalah satuan dari item laundry seperti kg, pcs, dll
+model UnitOfMeasure {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  name String
+
+  abbreviation String?
+
+  conversion Float @default(1.0)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- m relations --------------------------------
+
+  laundryItems LaundryItem[]
+
+  platformItems PlatformItem[]
+
+  machine Machine[]
+
+  @@map("UnitOfMeasures")
+}
+
+//no update,delete operation for UI
+//CRUD only available to superUser
+//items for selling to owner like platform subscription,machines, soaps etc
+model PlatformItem {
+  //-------------------------- scalars --------------------------------
+
+  id String @id @default(cuid())
+
+  name String
+
+  cost Float?
+
+  salePrice Float
+
+  description String?
+
+  /// Field ini juga digunakan backend sebagai penanda untuk mencegah race condition terjadi
+  stock Int @default(0)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  UnitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+
+  unitOfMeasureId Int
+
+  //-------------------------- m relations --------------------------------
+
+  carts Cart[]
+
+  images Image[]
+
+  @@map("PlatformItems")
+}
+
+//CRUD only for outlet
+///Machine adalah kumpulan mesin IOT yang ada pada cabang
+model Machine {
+  //-------------------------- scalars --------------------------------
+
+  id String @id @default(uuid())
+
+  name String
+
+  description String?
+
+  isOnline Boolean @default(false)
+
+  capacity Int
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  capacityUnit UnitOfMeasure @relation(fields: [capacityUnitId], references: [id])
+
+  capacityUnitId Int
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  outletId Int
+
+  status MachineStatus
+
+  category MachineCategory? @relation(fields: [categoryId], references: [id])
+
+  categoryId Int?
+
+  //-------------------------- m relations --------------------------------
+
+  Images Image[]
+
+  @@map("Machines")
+}
+
+//No CRUD UI
+model MachineCategory {
+  id Int @id @default(autoincrement())
+
+  name String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  machines Machine[]
+
+  @@map("MachineCategories")
+}
+
+model Notification {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  title String
+
+  subTitle String?
+
+  content String
+
+  createdAt DateTime @default(now())
+
+  isRead Boolean
+
+  fcmToken String?
+
+  //-------------------------- 1 relations --------------------------------
+
+  type NotificationType
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String
+
+  //-------------------------- m relations --------------------------------
+
+  @@map("Notifications")
+}
+
+//Only Read on UI
+model OrderStatus {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  status OrderStatusEnum
+
+  platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+  platformOrderId Int?
+
+  ServiceOrder ServiceOrder? @relation(fields: [ServiceOrderId], references: [id])
+
+  ServiceOrderId Int?
+
+  changedBy User @relation(fields: [changedById], references: [id])
+
+  changedById String
+
+  @@map("OrderStatuses")
+}
+
+//Can be created,read,edit but cannot be deleted for UI
+/// ServiceOrder adalah order yang dibuat oleh customer
+model ServiceOrder {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  platformFee Int
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+  /// Berkaitan dengan max order suatu outlet tertentu
+  raceConditionVersion Int @default(0)
+
+  //-------------------------- 1 relations --------------------------------
+
+  handleBy Employee? @relation(fields: [handleById], references: [userId])
+
+  handleById String?
+
+  orderBy Customer @relation(fields: [orderById], references: [userId])
+
+  orderById String
+
+  voucher Voucher? @relation(fields: [voucherId], references: [code])
+
+  voucherId String?
+
+  address Address? @relation(fields: [addressId], references: [id])
+
+  addressId Int?
+
+  delivery Delivery? @relation(fields: [deliveryId], references: [id])
+
+  deliveryId Int?
+
+  orderType OrderType
+
+  outlet Outlet @relation(fields: [brandId], references: [id])
+
+  brandId Int
+
+  //-------------------------- m relations --------------------------------
+
+  status OrderStatus[]
+
+  cart Cart[]
+
+  Invoice Invoice[]
+
+  @@map("ServiceOrders")
+}
+
+//Can be created,read,edit but cannot be deleted by UI
+/// PlatformOrder adalah order yang dibuat oleh owner untuk membeli item dari platform seperti subscription, mesin, dll
+model PlatformOrder {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  address Address @relation(fields: [addressId], references: [id])
+
+  addressId Int
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+  raceConditionVersion Int @default(0)
+
+  //-------------------------- 1 relations --------------------------------
+
+  orderBy Owner @relation(fields: [orderById], references: [userId])
+
+  orderById String
+
+  //-------------------------- m relations --------------------------------
+
+  Invoice Invoice[]
+
+  status OrderStatus[]
+
+  carts Cart[]
+
+  @@map("PlatformOrders")
+}
+
+/// Cart adalah keranjang belanja user, Cart berisi item yang akan dibeli oleh user
+model Cart {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  quantity Int
+
+  /// @Validator.IsNumber() 
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  price Float
+
+  /// @Validator.IsNumber() 
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  cost Float
+
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  createdAt DateTime @default(now())
+
+  /// @HideField({ match: ['TransactionCreate*Input','TransactionUpdate*Input']})   
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+  serviceOrderId Int?
+
+  PlatformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+  platformOrderId Int?
+
+  PlatformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
+  platformItemId String?
+
+  OutletLaundryItemService OutletLaundryItemService? @relation(fields: [outletLaundryItemServiceId], references: [id])
+
+  outletLaundryItemServiceId Int?
+
+  @@map("Carts")
+}
+
+//CRUD for UI
+//CRUD only available for owner user
+/// Outlet adalah cabang dari laundry
+model Outlet {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  name String
+
+  isActive Boolean @default(true)
+
+  description String?
+
+  phone String?
+
+  email String?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  owner Owner @relation(fields: [ownerId], references: [userId])
+
+  ownerId String
+
+  address Address @relation(fields: [addressId], references: [id])
+
+  addressId Int @unique
+
+  setting OutletSetting @relation(fields: [settingId], references: [id])
+
+  settingId Int @unique
+
+  //-------------------------- m relations --------------------------------
+
+  image Image[]
+
+  orders ServiceOrder[]
+
+  bussinessHours BusinessHour[]
+
+  employees Employee[]
+
+  reviews Review[]
+
+  schedules Schedule[]
+
+  services OutletLaundryItemService[]
+
+  customers Customer[]
+
+  machines Machine[]
+
+  printerSetting PrinterSetting[]
+  OutletVoucher  OutletVoucher[]
+
+  @@map("Outletes")
+}
+
+model BusinessHour {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  openTime DateTime
+
+  closeTime DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  day Day
+
+  //-------------------------- m relations --------------------------------
+
+  outlet Outlet[]
+
+  @@map("BusinessHours")
+}
+
+//CRUD for UI
+//available for outlet and owner only
+/// OutletSchedule adalah jadwal operasional dari cabang
+model Schedule {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  dayOfWeek Int @default(0)
+
+  openTime String
+
+  closeTime String
+
+  outletId Int
+
+  maxOrders Int?
+
+  availableSlots Int?
+
+  isClosed Boolean? @default(false)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  createdBy Owner @relation(fields: [createdById], references: [userId])
+
+  createdById String
+
+  @@map("Schedules")
+}
+
+//CRUD for UI
+//Update, Delete disable for owner
+/// OutletReview adalah review yang diberikan oleh customer terhadap cabang
+model Review {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  description String
+
+  cleanlinessScore Scale
+
+  speedScore Scale
+
+  qualityScore Scale
+
+  priceScore Scale
+
+  overallAverageScore Scale
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  reviewBy Customer @relation("ReviewBy", fields: [reviewById], references: [userId])
+
+  reviewById String
+
+  outlet Outlet @relation(fields: [outletId], references: [addressId])
+
+  outletId Int
+
+  //-------------------------- m relations --------------------------------
+
+  images Image[]
+
+  message Message[]
+
+  likes User[] @relation("ReviewLikes")
+
+  dislikes User[] @relation("ReviewDislikes")
+
+  @@map("Reviews")
+}
+
+//TODO
+model AccessRolePermission {
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  updatedAt      DateTime  @updatedAt
+  Employee       Employee? @relation(fields: [employeeUserId], references: [userId])
+  employeeUserId String?
+
+  @@map("AccessRolePermissions")
+}
+
+//TODO:
+model AccountSetting {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String
+
+  //-------------------------- m relations --------------------------------
+
+  @@map("AccountSettings")
+}
+
+//TODO:
+model OutletSetting {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  /// Field ini digunakan untuk menampung radius area yang dapat dilayani oleh cabang
+  attendanceRadius Float? @default(2.0)
+
+  //-------------------------- 1 relations --------------------------------
+
+  outlet Outlet?
+
+  outletId Int
+
+  //-------------------------- m relations --------------------------------
+
+  @@map("OutletSettings")
+}
+
+//TODO: tambahkan model printer
+model PrinterSetting {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  outletId Int
+
+  //-------------------------- m relations --------------------------------
+
+  @@map("PrinterSettings")
+}
+
+/// VoucherSetting adalah pengaturan untuk voucher
+model VoucherSetting {
+  //-------------------------- scalars --------------------------------
+
+  discountValue Int
+
+  minOrderTotalAmountValue Int?
+
+  maxOrderTotalAmountValue Int?
+
+  minOrderQuantityValue Int?
+
+  maxOrderQuantityValue Int?
+
+  customerQuota Int?
+
+  orderQuota Int?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  voucher Voucher?
+
+  voucherId String @id
+
+  createdBy Owner @relation(fields: [createdById], references: [userId])
+
+  createdById String
+
+  //-------------------------- m relations --------------------------------
+
+  /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh OrderType
+  restrictToOrderTypes OrderType[]
+
+  /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh OutletLaundryItemService
+  restrictToItems OutletLaundryItemService[]
+
+  /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh LaundryItemCategory
+  restrictToItemCategories LaundryItemCategory[]
+
+  /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh City
+  restrictToCities City[]
+
+  /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh District
+  restrictToDistricts District[]
+
+  /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh metode pembayaran
+  restrictToPaymentMethods PaymentMethod[]
+  voucherCode              String
+
+  @@map("VoucherSettings")
+}
+
+// No CRUD for UI
+// Read Only for SuperUser
+model Session {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String
+  device    String
+  ipAddress Float
+  createdAt DateTime @default(now())
+}
+
+// No CRUD for UI
+// CRUD for superUser
+model PhoneCountryCode {
+  phoneCode Int    @id
+  country   String
+  User      User[]
+
+  @@map("PhoneCountryCodes")
+}
+
+model Image {
+  //   -------------------------- scalars --------------------------------
+
+  url String @id
+
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  fileType FileType?
+
+  // / @Validator.IsNumber() 
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  fileSize Float?
+
+  /// @HideField({ match: ['ImagesCreate*Input','ImagesUpdate*Input']})
+  createdAt DateTime @default(now())
+
+  //  -------------------------- 1 relations --------------------------------
+
+  PlatformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
+  platformItemId String?
+
+  LaundryItem LaundryItem? @relation(fields: [laundryItemId], references: [id])
+
+  laundryItemId Int?
+
+  //-------------------------- m relations --------------------------------
+
+  User User[]
+
+  Outlet Outlet[]
+
+  Review Review[]
+
+  Machine Machine[]
+
+  OutletLaundryItemService OutletLaundryItemService[]
+
+  Transaction Transaction[]
+  Attendance  Attendance[]
+  Voucher     Voucher[]
+  Message     Message?      @relation(fields: [messageId], references: [id])
+  messageId   Int?
+
+  @@map("Images")
+}
+
+model TermOrFaq {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  title String
+
+  content String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  category TermOrFaqCategory
+
+  type TermOrFaqType
+
+  createdBy Owner @relation("creator", fields: [createdById], references: [userId])
+
+  createdById String
+
+  //-------------------------- m relations --------------------------------
+
+  /// field ini digunakan untuk menampung user yang sudah membaca/menyetujui term atau faq ini
+  readBy      User[]   @relation("TermOrFaqReads")
+  Voucher     Voucher? @relation(fields: [voucherCode], references: [code])
+  voucherCode String?
+
+  @@map("TermOrFaqs")
+}
+
+//-----------------------------------User--------------------------------------------
+
+//CRUD for UI
+///User terdiri dari 4 role, Owner, Employee, Customer, SuperUser
+///Properti tiap role berbeda-beda, sehingga dibuat tabel terpisah
+model User {
+  //-------------------------- scalars --------------------------------
+
+  id String @id @default(uuid())
+
+  fullName String
+
+  username String @unique
+
+  email String @unique
+
+  emailVerifiedAt DateTime?
+
+  password String
+
+  whatsapp String @unique
+
+  whatsappVerifiedAt DateTime?
+
+  birthDate DateTime
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  deletedAt DateTime? //implement softdelete
+
+  //-------------------------- 1 relations --------------------------------
+
+  PhoneCountryCode PhoneCountryCode @relation(fields: [phoneCountryCodeId], references: [phoneCode])
+
+  phoneCountryCodeId Int
+
+  role UserRole
+
+  gender Gender
+
+  avatarImage Image @relation(fields: [avatarImageId], references: [url])
+
+  avatarImageId String
+
+  customerInfo Customer?
+
+  customerInfoId String?
+
+  employeeInfo Employee?
+
+  employeeInfoId String?
+
+  ownerInfo Owner?
+
+  ownerInfoId String?
+
+  language Language @default(ID)
+
+  theme Theme @default(LIGHT)
+
+  chatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+
+  chatRoomId Int?
+
+  //-------------------------- m relations --------------------------------
+
+  accounts Account[]
+
+  addresses Address[]
+
+  sessions Session[]
+
+  notifications Notification[]
+
+  changedStatuses OrderStatus[]
+
+  messageSender Message[] @relation("MessageSender")
+
+  messageReceiver Message[] @relation("MessageReceiver")
+
+  reviewLikes Review[] @relation("ReviewLikes")
+
+  reviewDislikes Review[] @relation("ReviewDislikes")
+
+  TermOrFaqReads TermOrFaq[] @relation("TermOrFaqReads")
+
+  accountSetting AccountSetting[]
+
+  messageReads Message[] @relation("MessageReads")
+
+  messageLikes Message[] @relation("MessageLikes")
+
+  @@map("users")
+}
+
+enum UserRole {
+  OWNER
+  EMPLOYEE
+  CUSTOMER
+  ADMIN
+  SUPERUSER
+
+  @@map("UserRoles")
+}
+
+//CRUD for UI
+/// Employee adalah user yang bekerja di cabang
+/// Employee bisa memiliki beberapa role, misalnya cashier, courier, production
+model Employee {
+  //-------------------------- scalars --------------------------------
+
+  salary Float?
+
+  attendanceBonus Float?
+
+  mealAllowance Float?
+
+  presenceBonus Float?
+
+  transportationAllowance Float?
+
+  overtimeBonus Float?
+
+  EmployeeRoleAllowance Float?
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String @id
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  outletId Int
+
+  //-------------------------- m relations --------------------------------
+
+  activityComissions EmployeeActivityComission[]
+
+  roles EmployeeRole[] //one employee can be cashier, courier or production at the same time 
+
+  accessRolePermissions AccessRolePermission[]
+
+  serviceOrder ServiceOrder[]
+
+  activities ItemActivity[]
+
+  attendances Attendance[]
+
+  deliveries Delivery[]
+
+  @@map("Employees")
+}
+
+//CRUD for UI
+/// Customer adalah user yang menggunakan jasa laundry
+/// Customer bisa mereferensikan customer lain dan mendapatkan komisi
+/// Customer bisa mendapatkan poin dari setiap transaksi
+/// Customer bisa menukarkan poin dengan voucher
+model Customer {
+  //-------------------------- scalars --------------------------------
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String @id
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  ///auto generate dari backend
+  referralCode String @unique
+
+  //-------------------------- 1 relations --------------------------------
+
+  referredBy Customer? @relation("CustomerReferral", fields: [referredById], references: [userId])
+
+  /// @HideField({ output: false, input: true })   
+  referredById String?
+
+  //-------------------------- m relations --------------------------------
+
+  orders ServiceOrder[]
+
+  favoriteOutletes Outlet[]
+
+  reviews Review[] @relation("ReviewBy")
+
+  creditCards CreditCard[]
+
+  referredUsers Customer[] @relation("CustomerReferral")
+
+  vouchers OutletVoucher[] @relation("OutletVoucherUserOfCustomers")
+
+  @@map("customers")
+}
+
+//CRUD for UI
+model Owner {
+  //-------------------------- scalars --------------------------------
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime
+
+  //-------------------------- 1 relations --------------------------------
+
+  user User @relation(fields: [userId], references: [id])
+
+  userId String @id
+
+  //-------------------------- m relations --------------------------------
+
+  creditCard CreditCard[]
+
+  platformOrders PlatformOrder[]
+
+  /// 1 Owner dapat memiliki banyak cabang
+  outletes Outlet[]
+
+  laundryItemRequest LaundryItemRequest[]
+
+  scheduleCreated Schedule[]
+
+  TermOrFaqCreated TermOrFaq[]      @relation("creator")
+  VoucherSetting   VoucherSetting[]
+
+  @@map("Owners")
+}
+
+//CRUD for UI
+//Create, Read, Update for superUser, Read for Owner
+///Voucher adalah promo yang diberikan oleh platform atau outlet kepada customer 
+//TODO: Voucher dari platform, voucher dari cabang
+model Voucher {
+  //-------------------------- scalars --------------------------------
+
+  /// Field ini diisi oleh user dengan verifikasi dari backend
+  code String @id
+
+  name String
+
+  description String?
+
+  startDate DateTime
+
+  endDate DateTime
+
+  isHighlight Boolean @default(false)
+
+  isActive Boolean @default(true)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  type VoucherType
+
+  outletVoucher OutletVoucher?
+
+  outletVoucherId Int?
+
+  platformVoucher PlatformVoucher?
+
+  platformVoucherId Int?
+
+  settings VoucherSetting @relation(fields: [settingsId], references: [voucherId])
+
+  settingsId String @unique
+
+  discountType DiscountType
+
+  image Image @relation(fields: [imageId], references: [url])
+
+  imageId String
+
+  //-------------------------- m relations --------------------------------
+
+  /// Berisi order id yang menggunakan voucher ini
+  /// Field ini digunakan backend sebagai penanda untuk mencegah race condition terjadi
+  serviceOrders ServiceOrder[]
+
+  termsAndFaqs TermOrFaq[]
+
+  @@map("Vouchers")
+}
+
+enum VoucherType {
+  PLATFORM
+  OUTLET
+
+  @@map("VoucherTypes")
+}
+
+model OutletVoucher {
+  //-------------------------- scalars --------------------------------
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  voucher Voucher @relation(fields: [voucherId], references: [code])
+
+  voucherId String @id
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  outletId Int
+
+  //-------------------------- m relations --------------------------------
+
+  customers Customer[] @relation("OutletVoucherUserOfCustomers")
+
+  /// Data voucher yang digunakan oleh outlet dari platform
+  platforms PlatformVoucher[] @relation("PlatformVoucherOutletOfOutlets")
+
+  @@map("OutletVouchers")
+}
+
+model PlatformVoucher {
+  //-------------------------- scalars --------------------------------
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  voucher Voucher @relation(fields: [voucherId], references: [code])
+
+  voucherId String @id
+
+  //-------------------------- m relations --------------------------------
+
+  /// Data outlet yang menerapkan voucher dari platform
+  outlets OutletVoucher[] @relation("PlatformVoucherOutletOfOutlets")
+
+  @@map("PlatformVouchers")
+}
+
+enum DiscountType {
+  PERCENTAGE
+  AMOUNT
+}
