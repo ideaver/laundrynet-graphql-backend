@@ -95,13 +95,11 @@ model User {
 
     messageSender Message[] @relation("MessageSender")
 
-    messageReceiver Message[] @relation("MessageReceiver")
-
     reviewLikes Review[] @relation("ReviewLikes")
 
     reviewDislikes Review[] @relation("ReviewDislikes")
 
-    TermOrFaqReads TermOrFaq[] @relation("TermOrFaqReads")
+    termOrFaqReads TermOrFaq[] @relation("TermOrFaqReads")
 
     accountSetting AccountSetting[]
 

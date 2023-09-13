@@ -88,6 +88,8 @@ enum PaymentMethod {
     EWALLET
     PLATFORMWALLET
     BANKTRANSFER
+    EDC
+    POINT
 
     @@map("PaymentMethods")
 }
@@ -217,6 +219,8 @@ enum Period {
     WEEKLY
     MONTHLY
     YEARLY
+
+    @@map("Periods")
 }
 
 enum StockTransactionType {
@@ -224,4 +228,11 @@ enum StockTransactionType {
     Restock
 
     @@map("StockTransactionTypes")
+}
+
+enum DiscountType {
+    PERCENTAGE
+    AMOUNT
+
+    @@map("DiscountTypes")
 }

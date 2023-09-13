@@ -85,7 +85,8 @@ model ServiceOrder {
 
     cart Cart[]
 
-    Invoice Invoice[]
+    Invoice  Invoice[]
+    Complain Complain[]
 
     @@map("ServiceOrders")
 }
@@ -120,7 +121,8 @@ model PlatformOrder {
 
     status OrderStatus[]
 
-    carts Cart[]
+    carts    Cart[]
+    Complain Complain[]
 
     @@map("PlatformOrders")
 }
@@ -166,4 +168,28 @@ model Cart {
     outletLaundryItemServiceId Int?
 
     @@map("Carts")
+}
+
+model Complain {
+    //-------------------------- scalars --------------------------------
+
+    id Int @id @default(autoincrement())
+
+    complain String
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+    serviceOrderId Int?
+
+    platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+    platformOrderId Int?
+
+    @@map("Complains")
 }

@@ -9,6 +9,7 @@ import {  OutletLaundryItemService} from "./item"
 import {  OutletSetting, PrinterSetting} from "./settings"
 import {  Machine} from "./machine"
 import {  Message} from "./chat"
+import { EdcMachine, PrinterMachine } from "machine"
 
 //CRUD for UI
 //CRUD only available for owner user
@@ -66,11 +67,16 @@ model Outlet {
 
     machines Machine[]
 
+    edcMachines EdcMachine[]
+
+    printerMachines PrinterMachine[]
+
     outletVouchers OutletVoucher[]
 
     @@map("Outletes")
 }
 
+/// BussinessHour adalah jadwal operasional dari outlet
 model BusinessHour {
     //-------------------------- scalars --------------------------------
     id Int @id @default(autoincrement())

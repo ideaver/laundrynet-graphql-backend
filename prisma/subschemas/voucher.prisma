@@ -4,6 +4,7 @@ import {  TermOrFaq} from "./termsOrFaqs"
 import {  ServiceOrder} from "./order"
 import {  Customer} from "./user"
 import {  Outlet} from "./outlet"
+import {  DiscountType} from "./enums"
 
 //CRUD for UI
 //Create, Read, Update for superUser, Read for Owner
@@ -117,9 +118,4 @@ model PlatformVoucher {
     outlets OutletVoucher[] @relation("PlatformVoucherOutletOfOutlets")
 
     @@map("PlatformVouchers")
-}
-
-enum DiscountType {
-    PERCENTAGE
-    AMOUNT
 }

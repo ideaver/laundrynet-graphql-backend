@@ -2,19 +2,29 @@ import {Outlet  } from "./outlet"
 import {  Image} from "./single"
 import {  UnitOfMeasure} from "./item"
 import {  MachineStatus} from "./enums"
+import {  MachineSettings,PrinterSetting} from "./settings"
+import {  Payment} from "./account"
+import {  Outlet} from "./outlet"
+import {  Account} from "./account"
+import { IndonesianBank } from "account"
 
 //CRUD only for outlet
-///Machine adalah kumpulan mesin IOT yang ada pada cabang
+/// Machine adalah kumpulan mesin IOT yang ada pada outlet
 model Machine {
     //-------------------------- scalars --------------------------------
 
-    id String @id @default(uuid())
+    /// Generate oleh backend
+    id String @id
 
     name String
 
     description String?
 
     isOnline Boolean @default(false)
+
+    lastOffline DateTime?
+
+    lastOnline DateTime?
 
     capacity Int
 
@@ -38,6 +48,10 @@ model Machine {
 
     categoryId Int?
 
+    setting MachineSettings @relation(fields: [settingId], references: [id])
+
+    settingId String @unique
+
     //-------------------------- m relations --------------------------------
 
     Images Image[]
@@ -46,7 +60,10 @@ model Machine {
 }
 
 //No CRUD UI
+/// Machine category adalah kategori mesin yang ada pada outlet
 model MachineCategory {
+    //-------------------------- scalars --------------------------------
+
     id Int @id @default(autoincrement())
 
     name String
@@ -55,7 +72,65 @@ model MachineCategory {
 
     updatedAt DateTime @updatedAt
 
+    //-------------------------- m relations --------------------------------
+
     machines Machine[]
 
     @@map("MachineCategories")
+}
+
+/// EDC machine adalah mesin EDC yang ada pada outlet
+model EdcMachine {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    name String
+
+    isActive Boolean @default(true)
+
+    serialNumber String @unique
+
+    settlementAccount Account @relation(fields: [settlementAccountId], references: [id])
+
+    settlementAccountId Int
+
+    //-------------------------- 1 relations --------------------------------
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    outletId Int
+
+    //-------------------------- m relations --------------------------------
+
+    payments Payment[]
+
+    @@map("EDCMachines")
+}
+
+/// Printer machine adalah mesin printer yang ada pada outlet
+model PrinterMachine {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    serialNumber String @unique
+
+    //-------------------------- 1 relations --------------------------------
+
+    provider IndonesianBank @relation(fields: [providerId], references: [id])
+
+    providerId Int
+
+    outlet Outlet @relation(fields: [outletId], references: [id])
+
+    outletId Int
+
+    printerSettings PrinterSetting @relation(fields: [printerSettingsId], references: [id])
+
+    printerSettingsId Int @unique
+
+    //-------------------------- m relations --------------------------------
+
+    //========================== m relations ================================
+
+    @@map("PrinterMachines")
 }

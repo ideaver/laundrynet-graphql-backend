@@ -4,6 +4,7 @@ import {Outlet  } from "./outlet"
 import {Voucher  } from "./voucher"
 import {  OrderType, PaymentMethod} from "./enums"
 import {  OutletLaundryItemService,LaundryItemCategory} from "./item"
+import {  Machine, PrinterMachine} from "./machine"
 
 //TODO:
 model AccountSetting {
@@ -54,7 +55,7 @@ model OutletSetting {
     @@map("OutletSettings")
 }
 
-//TODO: tambahkan model printer
+/// PrinterSetting adalah pengaturan untuk satu printer
 model PrinterSetting {
     //-------------------------- scalars --------------------------------
 
@@ -66,6 +67,10 @@ model PrinterSetting {
 
     //-------------------------- 1 relations --------------------------------
 
+    printer PrinterMachine?
+
+    printerId String @unique
+
     outletSetting OutletSetting?
 
     outletSettingId Int?
@@ -73,6 +78,25 @@ model PrinterSetting {
     //-------------------------- m relations --------------------------------
 
     @@map("PrinterSettings")
+}
+
+model MachineSettings {
+    //-------------------------- scalars --------------------------------
+    id String @id
+
+    onTurnOnPrice Float? @default(0)
+
+    createdAt DateTime @default(now())
+
+    updatedAt DateTime @updatedAt
+
+    //-------------------------- 1 relations --------------------------------
+
+    machine Machine?
+
+    machineId String @unique
+
+    @@map("MachineSettings")
 }
 
 /// VoucherSetting adalah pengaturan untuk voucher

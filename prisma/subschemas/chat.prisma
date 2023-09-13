@@ -1,6 +1,7 @@
 import {  User} from "./user"
 import {  Image} from "./single"
 import {Review  } from "./outlet"
+import { File } from "single"
 
 model ChatRoom {
     //-------------------------- scalars --------------------------------
@@ -40,13 +41,13 @@ model Message {
 
     senderId String
 
-    receiver User @relation("MessageReceiver", fields: [receiverId], references: [id])
+    chatRoom ChatRoom @relation(fields: [chatRoomId], references: [id])
 
-    receiverId String
+    chatRoomId Int
 
-    chatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+    review Review? @relation(fields: [reviewId], references: [id])
 
-    chatRoomId Int?
+    reviewId Int?
 
     //-------------------------- m relations --------------------------------
 
@@ -56,9 +57,7 @@ model Message {
 
     images Image[]
 
-    Review Review? @relation(fields: [reviewId], references: [id])
-
-    reviewId Int?
+    files File[]
 
     @@map("Messages")
 }

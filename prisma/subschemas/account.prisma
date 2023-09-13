@@ -3,6 +3,7 @@ import {  User} from "./user"
 import { Image } from "./single"
 import { ServiceOrder, PlatformOrder } from "./order"
 import {  Employee, Customer, Owner} from "./user"
+import { EdcMachine, PrinterMachine } from "./machine"
 
 //-----------------------------------Account----------------------------------------------
 
@@ -41,6 +42,7 @@ model Account {
     /// Field untuk menampung transaksi masuk (debit)
     /// @HideField({ match: 'AccountCreate*Input' })
     transactionDestination Transaction[] @relation("destination")
+    EdcMachine             EdcMachine[]
 
     @@map("Accounts")
 }
@@ -171,6 +173,10 @@ model Payment {
 
     transactionId Int @unique
 
+    edcMachine EdcMachine? @relation(fields: [edcMachineId], references: [id])
+
+    edcMachineId Int?
+
     @@map("Payments")
 }
 
@@ -215,4 +221,25 @@ model CreditCard {
     cvv            String
     createdAt      DateTime  @default(now())
     updatedAt      DateTime  @updatedAt
+}
+
+model IndonesianBank {
+    //-------------------------- scalars --------------------------------
+    id Int @id @default(autoincrement())
+
+    name String
+
+    code String? @unique
+
+    createdAt DateTime @default(now())
+
+    //-------------------------- 1 relations --------------------------------
+
+    image Image @relation(fields: [imageId], references: [url])
+
+    imageId String
+
+    printerMachine PrinterMachine[]
+
+    @@map("IndonesianBanks")
 }
