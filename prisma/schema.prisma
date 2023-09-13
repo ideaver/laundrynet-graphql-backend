@@ -1,4 +1,4 @@
-//🧩Don't Edit this file.✨Generated in Wed Sep 13 2023 11:54:13 GMT+0700 (Western Indonesia Time)✨
+//🧩Don't Edit this file.✨Generated in Wed Sep 13 2023 13:57:43 GMT+0700 (Western Indonesia Time)✨
 
 //-----------------------------------Account----------------------------------------------
 
@@ -37,6 +37,7 @@ model Account {
   /// Field untuk menampung transaksi masuk (debit)
   /// @HideField({ match: 'AccountCreate*Input' })
   transactionDestination Transaction[] @relation("destination")
+  EdcMachine             EdcMachine[]
 
   @@map("Accounts")
 }
@@ -167,24 +168,34 @@ model Payment {
 
   transactionId Int @unique
 
+  edcMachine EdcMachine? @relation(fields: [edcMachineId], references: [id])
+
+  edcMachineId Int?
+
   @@map("Payments")
 }
 
 /// EmployeeActivityComission adalah komisi yang didapatkan oleh employee dari setiap aktivitas yang dilakukan
 model EmployeeActivityComission {
+  //-------------------------- scalars --------------------------------
+
   id Int @id @default(autoincrement())
 
   activity ItemActivity
 
   comission Float
 
-  employee Employee @relation(fields: [employeeId], references: [userId])
-
-  employeeId String
-
   createdAt DateTime @default(now())
 
   updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  period Period
+
+  employee Employee @relation(fields: [employeeId], references: [userId])
+
+  employeeId String
 
   @@map("EmployeeActivityComissions")
 }
@@ -207,15 +218,38 @@ model CreditCard {
   updatedAt      DateTime  @updatedAt
 }
 
+model IndonesianBank {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  name String
+
+  code String? @unique
+
+  createdAt DateTime @default(now())
+
+  //-------------------------- 1 relations --------------------------------
+
+  image Image @relation(fields: [imageId], references: [url])
+
+  imageId String
+
+  printerMachine PrinterMachine[]
+
+  @@map("IndonesianBanks")
+}
+
 //CRUD for UI
 /// Address adalah alamat dari user dan cabang
 model Address {
   //-------------------------- scalars --------------------------------
   id Int @id @default(autoincrement())
 
-  latitude Float? //for google map
+  /// For Google Maps
+  latitude Float?
 
-  longitude Float? //for google map
+  /// For Google Maps
+  longitude Float?
 
   label String
 
@@ -274,11 +308,13 @@ model District {
 
   cityId Int
 
-  subdistricts               Subdistrict[]
-  OutletLaundryItemService   OutletLaundryItemService? @relation(fields: [outletLaundryItemServiceId], references: [id])
-  outletLaundryItemServiceId Int?
-  VoucherSetting             VoucherSetting?           @relation(fields: [voucherSettingVoucherId], references: [voucherId])
-  voucherSettingVoucherId    String?
+  subdistricts Subdistrict[]
+
+  ///Untuk layanan homeservice, outlet dapat menentukan item apa saja yang dapat dilayani area mana saja 
+  onOutletLaundryItemServiceArea OutletLaundryItemService[]
+
+  /// Untuk pengaturan voucher
+  onVoucherSetting VoucherSetting[]
 }
 
 model Province {
@@ -411,13 +447,13 @@ model Message {
 
   senderId String
 
-  receiver User @relation("MessageReceiver", fields: [receiverId], references: [id])
+  chatRoom ChatRoom @relation(fields: [chatRoomId], references: [id])
 
-  receiverId String
+  chatRoomId Int
 
-  chatRoom ChatRoom? @relation(fields: [chatRoomId], references: [id])
+  review Review? @relation(fields: [reviewId], references: [id])
 
-  chatRoomId Int?
+  reviewId Int?
 
   //-------------------------- m relations --------------------------------
 
@@ -427,9 +463,7 @@ model Message {
 
   images Image[]
 
-  Review Review? @relation(fields: [reviewId], references: [id])
-
-  reviewId Int?
+  files File[]
 
   @@map("Messages")
 }
@@ -597,6 +631,8 @@ enum PaymentMethod {
   EWALLET
   PLATFORMWALLET
   BANKTRANSFER
+  EDC
+  POINT
 
   @@map("PaymentMethods")
 }
@@ -720,6 +756,30 @@ enum DeliveryStatusType {
   @@map("DeliveryStatusEnums")
 }
 
+enum Period {
+  HOURLY
+  DAILY
+  WEEKLY
+  MONTHLY
+  YEARLY
+
+  @@map("Periods")
+}
+
+enum StockTransactionType {
+  Sale
+  Restock
+
+  @@map("StockTransactionTypes")
+}
+
+enum DiscountType {
+  PERCENTAGE
+  AMOUNT
+
+  @@map("DiscountTypes")
+}
+
 //CRUD for UI
 //CRUD Only available for outlet owner
 /// OutletLaundryItemService adalah layanan yang disediakan oleh cabang
@@ -776,9 +836,9 @@ model OutletLaundryItemService {
   orderTypes OrderType[]
 
   ///Untuk layanan homeservice, outlet dapat menentukan item apa saja yang dapat dilayani area mana saja 
-  districtAreas           District[]
-  VoucherSetting          VoucherSetting? @relation(fields: [voucherSettingVoucherId], references: [voucherId])
-  voucherSettingVoucherId String?
+  districtAreas District[]
+
+  onVoucherSetting VoucherSetting[]
 
   @@map("OutletLaundryItemServices")
 }
@@ -949,7 +1009,7 @@ model PlatformItem {
   description String?
 
   /// Field ini juga digunakan backend sebagai penanda untuk mencegah race condition terjadi
-  stock Int @default(0)
+  stockItems StockItem[]
 
   createdAt DateTime @default(now())
 
@@ -957,7 +1017,7 @@ model PlatformItem {
 
   //-------------------------- 1 relations --------------------------------
 
-  UnitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
+  unitOfMeasure UnitOfMeasure @relation(fields: [unitOfMeasureId], references: [id])
 
   unitOfMeasureId Int
 
@@ -970,18 +1030,63 @@ model PlatformItem {
   @@map("PlatformItems")
 }
 
+model StockItem {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  quantity Int
+
+  createdAt DateTime @default(now())
+
+  // ------------------------- 1 relations --------------------------------
+
+  platformItem PlatformItem? @relation(fields: [platformItemId], references: [id])
+
+  platformItemId String?
+
+  // ------------------------- m relations --------------------------------
+
+  transactions StockTransaction[]
+
+  @@map("StockItems")
+}
+
+model StockTransaction {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  quantity Int
+
+  createdAt DateTime @default(now())
+
+  // ------------------------- 1 relations --------------------------------
+
+  type StockTransactionType
+
+  stockItem StockItem @relation(fields: [stockItemId], references: [id])
+
+  stockItemId Int
+
+  @@map("StockTransactions")
+}
+
 //CRUD only for outlet
-///Machine adalah kumpulan mesin IOT yang ada pada cabang
+/// Machine adalah kumpulan mesin IOT yang ada pada outlet
 model Machine {
   //-------------------------- scalars --------------------------------
 
-  id String @id @default(uuid())
+  /// Generate oleh backend
+  id String @id
 
   name String
 
   description String?
 
   isOnline Boolean @default(false)
+
+  lastOffline DateTime?
+
+  lastOnline DateTime?
 
   capacity Int
 
@@ -1005,6 +1110,10 @@ model Machine {
 
   categoryId Int?
 
+  setting MachineSettings @relation(fields: [settingId], references: [id])
+
+  settingId String @unique
+
   //-------------------------- m relations --------------------------------
 
   Images Image[]
@@ -1013,7 +1122,10 @@ model Machine {
 }
 
 //No CRUD UI
+/// Machine category adalah kategori mesin yang ada pada outlet
 model MachineCategory {
+  //-------------------------- scalars --------------------------------
+
   id Int @id @default(autoincrement())
 
   name String
@@ -1022,9 +1134,67 @@ model MachineCategory {
 
   updatedAt DateTime @updatedAt
 
+  //-------------------------- m relations --------------------------------
+
   machines Machine[]
 
   @@map("MachineCategories")
+}
+
+/// EDC machine adalah mesin EDC yang ada pada outlet
+model EdcMachine {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  name String
+
+  isActive Boolean @default(true)
+
+  serialNumber String @unique
+
+  settlementAccount Account @relation(fields: [settlementAccountId], references: [id])
+
+  settlementAccountId Int
+
+  //-------------------------- 1 relations --------------------------------
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  outletId Int
+
+  //-------------------------- m relations --------------------------------
+
+  payments Payment[]
+
+  @@map("EDCMachines")
+}
+
+/// Printer machine adalah mesin printer yang ada pada outlet
+model PrinterMachine {
+  //-------------------------- scalars --------------------------------
+  id Int @id @default(autoincrement())
+
+  serialNumber String @unique
+
+  //-------------------------- 1 relations --------------------------------
+
+  provider IndonesianBank @relation(fields: [providerId], references: [id])
+
+  providerId Int
+
+  outlet Outlet @relation(fields: [outletId], references: [id])
+
+  outletId Int
+
+  printerSettings PrinterSetting @relation(fields: [printerSettingsId], references: [id])
+
+  printerSettingsId Int @unique
+
+  //-------------------------- m relations --------------------------------
+
+  //========================== m relations ================================
+
+  @@map("PrinterMachines")
 }
 
 model Notification {
@@ -1134,7 +1304,8 @@ model ServiceOrder {
 
   cart Cart[]
 
-  Invoice Invoice[]
+  Invoice  Invoice[]
+  Complain Complain[]
 
   @@map("ServiceOrders")
 }
@@ -1169,7 +1340,8 @@ model PlatformOrder {
 
   status OrderStatus[]
 
-  carts Cart[]
+  carts    Cart[]
+  Complain Complain[]
 
   @@map("PlatformOrders")
 }
@@ -1215,6 +1387,30 @@ model Cart {
   outletLaundryItemServiceId Int?
 
   @@map("Carts")
+}
+
+model Complain {
+  //-------------------------- scalars --------------------------------
+
+  id Int @id @default(autoincrement())
+
+  complain String
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  serviceOrder ServiceOrder? @relation(fields: [serviceOrderId], references: [id])
+
+  serviceOrderId Int?
+
+  platformOrder PlatformOrder? @relation(fields: [platformOrderId], references: [id])
+
+  platformOrderId Int?
+
+  @@map("Complains")
 }
 
 //CRUD for UI
@@ -1273,12 +1469,16 @@ model Outlet {
 
   machines Machine[]
 
-  printerSetting PrinterSetting[]
-  OutletVoucher  OutletVoucher[]
+  edcMachines EdcMachine[]
+
+  printerMachines PrinterMachine[]
+
+  outletVouchers OutletVoucher[]
 
   @@map("Outletes")
 }
 
+/// BussinessHour adalah jadwal operasional dari outlet
 model BusinessHour {
   //-------------------------- scalars --------------------------------
   id Int @id @default(autoincrement())
@@ -1430,6 +1630,10 @@ model OutletSetting {
 
   //-------------------------- 1 relations --------------------------------
 
+  printerSetting PrinterSetting @relation(fields: [printerSettingId], references: [id])
+
+  printerSettingId Int @unique
+
   outlet Outlet?
 
   outletId Int
@@ -1439,7 +1643,7 @@ model OutletSetting {
   @@map("OutletSettings")
 }
 
-//TODO: tambahkan model printer
+/// PrinterSetting adalah pengaturan untuk satu printer
 model PrinterSetting {
   //-------------------------- scalars --------------------------------
 
@@ -1451,13 +1655,36 @@ model PrinterSetting {
 
   //-------------------------- 1 relations --------------------------------
 
-  outlet Outlet @relation(fields: [outletId], references: [id])
+  printer PrinterMachine?
 
-  outletId Int
+  printerId String @unique
+
+  outletSetting OutletSetting?
+
+  outletSettingId Int?
 
   //-------------------------- m relations --------------------------------
 
   @@map("PrinterSettings")
+}
+
+model MachineSettings {
+  //-------------------------- scalars --------------------------------
+  id String @id
+
+  onTurnOnPrice Float? @default(0)
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  //-------------------------- 1 relations --------------------------------
+
+  machine Machine?
+
+  machineId String @unique
+
+  @@map("MachineSettings")
 }
 
 /// VoucherSetting adalah pengaturan untuk voucher
@@ -1511,7 +1738,6 @@ model VoucherSetting {
 
   /// jika bernilai null, maka voucher ini dapat berlaku untuk seluruh metode pembayaran
   restrictToPaymentMethods PaymentMethod[]
-  voucherCode              String
 
   @@map("VoucherSettings")
 }
@@ -1566,23 +1792,54 @@ model Image {
 
   //-------------------------- m relations --------------------------------
 
-  User User[]
+  users User[]
 
-  Outlet Outlet[]
+  outletes Outlet[]
 
-  Review Review[]
+  reviews Review[]
 
-  Machine Machine[]
+  machines Machine[]
 
-  OutletLaundryItemService OutletLaundryItemService[]
+  outletLaundryItemServices OutletLaundryItemService[]
 
-  Transaction Transaction[]
-  Attendance  Attendance[]
-  Voucher     Voucher[]
-  Message     Message?      @relation(fields: [messageId], references: [id])
-  messageId   Int?
+  transactions Transaction[]
+
+  attendances Attendance[]
+
+  vouchers Voucher[]
+
+  messages Message[]
+
+  indonesianBanks IndonesianBank[]
+
+  files File[]
 
   @@map("Images")
+}
+
+model File {
+  //   -------------------------- scalars --------------------------------
+
+  url String @id
+
+  /// @HideField({ match: ['FilesCreate*Input','FilesUpdate*Input']})
+  fileType FileType?
+
+  /// @HideField({ match: ['FilesCreate*Input','FilesUpdate*Input']})
+  fileSize Float?
+
+  /// @HideField({ match: ['FilesCreate*Input','FilesUpdate*Input']})
+  createdAt DateTime @default(now())
+
+  //  -------------------------- 1 relations --------------------------------
+  image Image? @relation(fields: [url], references: [url])
+
+  message Message @relation(fields: [messageId], references: [id])
+
+  messageId Int
+  //-------------------------- m relations --------------------------------
+
+  @@map("Files")
 }
 
 model TermOrFaq {
@@ -1698,13 +1955,11 @@ model User {
 
   messageSender Message[] @relation("MessageSender")
 
-  messageReceiver Message[] @relation("MessageReceiver")
-
   reviewLikes Review[] @relation("ReviewLikes")
 
   reviewDislikes Review[] @relation("ReviewDislikes")
 
-  TermOrFaqReads TermOrFaq[] @relation("TermOrFaqReads")
+  termOrFaqReads TermOrFaq[] @relation("TermOrFaqReads")
 
   accountSetting AccountSetting[]
 
@@ -1844,12 +2099,13 @@ model Owner {
   /// 1 Owner dapat memiliki banyak cabang
   outletes Outlet[]
 
-  laundryItemRequest LaundryItemRequest[]
+  laundryItemRequests LaundryItemRequest[]
 
-  scheduleCreated Schedule[]
+  schedulesCreated Schedule[]
 
-  TermOrFaqCreated TermOrFaq[]      @relation("creator")
-  VoucherSetting   VoucherSetting[]
+  TermOrFaqsCreated TermOrFaq[] @relation("creator")
+
+  onVoucherSetting VoucherSetting[]
 
   @@map("Owners")
 }
@@ -1966,9 +2222,4 @@ model PlatformVoucher {
   outlets OutletVoucher[] @relation("PlatformVoucherOutletOfOutlets")
 
   @@map("PlatformVouchers")
-}
-
-enum DiscountType {
-  PERCENTAGE
-  AMOUNT
 }
