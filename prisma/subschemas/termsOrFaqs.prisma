@@ -1,3 +1,8 @@
+import {  TermOrFaq} from "./termsOrFaqs"
+import { TermOrFaqCategory,TermOrFaqType } from "./enums"
+import {  User,Owner} from "./user"
+import {  Voucher} from "./voucher"
+
 model TermOrFaq {
     //-------------------------- scalars --------------------------------
 

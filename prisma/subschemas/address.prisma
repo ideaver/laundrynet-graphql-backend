@@ -1,4 +1,8 @@
-//---------------------------------address----------------------------------
+import {  Outlet} from "./outlet"
+import {  User} from "./user"
+import {  PlatformOrder, ServiceOrder} from "./order"
+import {  VoucherSetting} from "./settings"
+import {  OutletLaundryItemService} from "./item"
 
 //CRUD for UI
 /// Address adalah alamat dari user dan cabang

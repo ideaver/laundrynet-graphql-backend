@@ -1,3 +1,10 @@
+import {VoucherSetting  } from "./settings"
+import {  Image} from "./base"
+import {  TermOrFaq} from "./termsOrFaqs"
+import {  ServiceOrder} from "./order"
+import {  Customer} from "./user"
+import {  Outlet} from "./outlet"
+
 //CRUD for UI
 //Create, Read, Update for superUser, Read for Owner
 ///Voucher adalah promo yang diberikan oleh platform atau outlet kepada customer 

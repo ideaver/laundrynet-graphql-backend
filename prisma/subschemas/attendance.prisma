@@ -1,3 +1,7 @@
+import {  Image} from "./base"
+import { EmployeeAttendanceStatus } from "./enums"
+import {  Employee} from "./user"
+
 //Create and Read only for UI
 model Attendance {
     //-------------------------- scalars --------------------------------

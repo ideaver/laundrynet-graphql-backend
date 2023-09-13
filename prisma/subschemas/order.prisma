@@ -1,3 +1,12 @@
+import {OrderStatusEnum,OrderType  } from "./enums"
+import {  User,Employee,Owner,Customer} from "./user"
+import {  PlatformItem,OutletLaundryItemService} from "./item"
+import {  Address} from "./address"
+import {  Voucher} from "./voucher"
+import {  Delivery} from "./delivery"
+import {  Outlet} from "./outlet"
+import {  Invoice} from "./account"
+
 //Only Read on UI
 model OrderStatus {
     //-------------------------- scalars --------------------------------

@@ -1,3 +1,7 @@
+import {  Employee} from "./user"
+import { ServiceOrder } from "./order"
+import {DeliveryStatusType  } from "./enums"
+
 model Delivery {
     //-------------------------- scalars --------------------------------
     id Int @id @default(autoincrement())
@@ -69,14 +73,4 @@ model DeliveryStatus {
     Delivery Delivery[]
 
     @@map("DeliveryStatuses")
-}
-
-enum DeliveryStatusType {
-    PENDING
-    ASSIGNED
-    PICKEDUP
-    DELIVERED
-    CANCELLED
-
-    @@map("DeliveryStatusEnums")
 }

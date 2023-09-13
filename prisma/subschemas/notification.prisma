@@ -1,3 +1,6 @@
+import {NotificationType  } from "./enums"
+import { User } from "./user"
+
 model Notification {
     //-------------------------- scalars --------------------------------
     id Int @id @default(autoincrement())

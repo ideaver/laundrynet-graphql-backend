@@ -1,3 +1,8 @@
+import {Outlet  } from "./outlet"
+import {  Image} from "./base"
+import {  UnitOfMeasure} from "./item"
+import {  MachineStatus} from "./enums"
+
 //CRUD only for outlet
 ///Machine adalah kumpulan mesin IOT yang ada pada cabang
 model Machine {

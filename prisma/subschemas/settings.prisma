@@ -1,3 +1,10 @@
+import {  User, Owner} from "./user"
+import {  District,City} from "./address"
+import {Outlet  } from "./outlet"
+import {Voucher  } from "./voucher"
+import {  OrderType, PaymentMethod} from "./enums"
+import {  OutletLaundryItemService,LaundryItemCategory} from "./item"
+
 //TODO:
 model AccountSetting {
     //-------------------------- scalars --------------------------------

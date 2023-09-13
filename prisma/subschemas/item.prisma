@@ -1,3 +1,13 @@
+import {  Outlet} from "./outlet"
+import {User, Owner  } from "./user"
+import {Image  } from "./base"
+import {  Cart} from "./order"
+import {  District} from "./address"
+import {  ItemActivity, OrderType, LaundryItemRequestStatus} from "./enums"
+import {  VoucherSetting} from "./settings"
+import {  Machine} from "./machine"
+import { VoucherSetting } from "settings"
+
 //CRUD for UI
 //CRUD Only available for outlet owner
 /// OutletLaundryItemService adalah layanan yang disediakan oleh cabang
@@ -174,9 +184,9 @@ model LaundryItemCategory {
 
     items LaundryItem[]
 
-    LaundryItemRequest      LaundryItemRequest[]
-    VoucherSetting          VoucherSetting?      @relation(fields: [voucherSettingVoucherId], references: [voucherId])
-    voucherSettingVoucherId String?
+    LaundryItemRequest LaundryItemRequest[]
+
+    voucherSetting VoucherSetting[]
 
     @@map("LaundryItemCategories")
 }

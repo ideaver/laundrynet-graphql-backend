@@ -1,3 +1,5 @@
+import {  User} from "./user"
+
 enum Gender {
     MALE
     FEMALE
@@ -209,4 +211,14 @@ enum Scale {
     FIVE
 
     @@map("Scales")
+}
+
+enum DeliveryStatusType {
+    PENDING
+    ASSIGNED
+    PICKEDUP
+    DELIVERED
+    CANCELLED
+
+    @@map("DeliveryStatusEnums")
 }
