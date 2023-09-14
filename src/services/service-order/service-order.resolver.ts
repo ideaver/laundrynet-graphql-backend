@@ -1,160 +1,160 @@
-// @serviceorder-serviceorder
-serviceorder { ServiceOrder, ServiceOrder, ServiceOrder, ServiceOrder, ServiceOrder } serviceorder '@serviceorder/serviceorder';
-serviceorder { ServiceOrder } serviceorder '@serviceorder/serviceorder';
-serviceorder { ServiceOrder } serviceorder 'serviceorder/serviceorder/serviceorder.serviceorder';
-serviceorder {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateServiceOrder,
+  CreateManyServiceOrderArgs,
+  CreateOneServiceOrderArgs,
+  DeleteManyServiceOrderArgs,
+  DeleteOneServiceOrderArgs,
+  FindFirstServiceOrderArgs,
+  FindManyServiceOrderArgs,
+  FindUniqueServiceOrderArgs,
   ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-  ServiceOrder,
-} serviceorder 'serviceorder/@serviceorder';
-serviceorder { ServiceOrder } serviceorder './serviceorder.serviceorder';
-serviceorder { ServiceOrder } serviceorder 'serviceorder/serviceorder/serviceorder-serviceorder-serviceorder-serviceorder.serviceorder';
-serviceorder ServiceOrder serviceorder 'serviceorder/serviceorder/serviceorder-serviceorder.serviceorder';
+  ServiceOrderAggregateArgs,
+  UpdateManyServiceOrderArgs,
+  UpdateOneServiceOrderArgs,
+} from 'src/@generated';
+import { ServiceOrderController } from './serviceOrder.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-serviceorder ServiceOrder {
-  serviceorder: ServiceOrder.ServiceOrder;
+interface ServiceOrderSelect {
+  select: Prisma.ServiceOrderSelect;
 }
 
-@ServiceOrder(() => ServiceOrder)
-serviceorder serviceorder ServiceOrder {
-  serviceorder(serviceorder serviceorder ServiceOrder: ServiceOrder) {}
+@Resolver(() => ServiceOrder)
+export class ServiceOrderResolver {
+  constructor(private readonly serviceOrderController: ServiceOrderController) {}
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Mutation(() => ServiceOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  serviceorder ServiceOrder(
-    @ServiceOrder()
-    ServiceOrder: ServiceOrder,
-    @ServiceOrder() serviceorder: ServiceOrder,
-  ): ServiceOrder<ServiceOrder | serviceorder> {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder({
-      ...ServiceOrder,
-      serviceorder: serviceorder.serviceorder,
+  async serviceOrderCreateOne(
+    @Args()
+    serviceOrderCreateArgs: CreateOneServiceOrderArgs,
+    @Relations() relations: ServiceOrderSelect,
+  ): Promise<ServiceOrder | void> {
+    return await this.serviceOrderController.createOne({
+      ...serviceOrderCreateArgs,
+      select: relations.select,
     });
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  serviceorder ServiceOrder(
-    @ServiceOrder()
-    ServiceOrder: ServiceOrder,
+  async serviceOrderCreateMany(
+    @Args()
+    createManyServiceOrderArgs: CreateManyServiceOrderArgs,
   ) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+    return await this.serviceOrderController.createMany(createManyServiceOrderArgs);
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Query(() => ServiceOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ServiceOrder(
-    @ServiceOrder()
-    ServiceOrder: ServiceOrder,
-    @ServiceOrder() serviceorder: ServiceOrder,
-  ): ServiceOrder<ServiceOrder | serviceorder> {
-    serviceorder serviceorder.ServiceOrder.ServiceOrder({
-      ...ServiceOrder,
-      serviceorder: serviceorder.serviceorder,
+  serviceOrderFindOne(
+    @Args()
+    serviceOrderFindUniqueArgs: FindUniqueServiceOrderArgs,
+    @Relations() relations: ServiceOrderSelect,
+  ): Promise<ServiceOrder | void> {
+    return this.serviceOrderController.findOne({
+      ...serviceOrderFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @ServiceOrder(() => [ServiceOrder], {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Query(() => [ServiceOrder], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ServiceOrder(
-    @ServiceOrder() ServiceOrder: ServiceOrder,
-    @ServiceOrder() serviceorder: ServiceOrder,
+  serviceOrderFindMany(
+    @Args() serviceOrderFindManyArgs: FindManyServiceOrderArgs,
+    @Relations() relations: ServiceOrderSelect,
   ) {
-    serviceorder serviceorder.ServiceOrder.ServiceOrder({
-      ...ServiceOrder,
-      serviceorder: serviceorder.serviceorder,
+    return this.serviceOrderController.findMany({
+      ...serviceOrderFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Query(() => ServiceOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ServiceOrder(
-    @ServiceOrder()
-    ServiceOrder: ServiceOrder,
-    @ServiceOrder() serviceorder: ServiceOrder,
-  ): ServiceOrder<ServiceOrder | serviceorder> {
-    serviceorder serviceorder.ServiceOrder.ServiceOrder({
-      ...ServiceOrder,
-      serviceorder: serviceorder.serviceorder,
+  serviceOrderFindFirst(
+    @Args()
+    findFirstServiceOrderArgs: FindFirstServiceOrderArgs,
+    @Relations() relations: ServiceOrderSelect,
+  ): Promise<ServiceOrder | void> {
+    return this.serviceOrderController.findFirst({
+      ...findFirstServiceOrderArgs,
+      select: relations.select,
     });
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Mutation(() => ServiceOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  serviceorder ServiceOrder(
-    @ServiceOrder() ServiceOrder: ServiceOrder,
-    @ServiceOrder() serviceorder: ServiceOrder,
+  async serviceOrderUpdateOne(
+    @Args() serviceOrderUpdateOneArgs: UpdateOneServiceOrderArgs,
+    @Relations() relations: ServiceOrderSelect,
   ) {
-    serviceorder serviceorder.ServiceOrder.ServiceOrder({
-      ...ServiceOrder(ServiceOrder),
-      serviceorder: serviceorder.serviceorder,
+    return this.serviceOrderController.updateOne({
+      ...replaceNullWithUndefined(serviceOrderUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Mutation(() => ServiceOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  serviceorder ServiceOrder(@ServiceOrder() ServiceOrder: ServiceOrder) {
-    serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async serviceOrderUpdateMany(@Args() updateManyServiceOrderArgs: UpdateManyServiceOrderArgs) {
+    return this.serviceOrderController.updateMany(updateManyServiceOrderArgs);
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  serviceorder ServiceOrder(
-    @ServiceOrder() ServiceOrder: ServiceOrder,
-    @ServiceOrder() serviceorder: ServiceOrder,
+  async serviceOrderDelete(
+    @Args() deleteOneServiceOrderArgs: DeleteOneServiceOrderArgs,
+    @Relations() relations: ServiceOrderSelect,
   ) {
-    serviceorder serviceorder.ServiceOrder.serviceorder({
-      ...ServiceOrder,
-      serviceorder: serviceorder.serviceorder,
+    return this.serviceOrderController.delete({
+      ...deleteOneServiceOrderArgs,
+      select: relations.select,
     });
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  serviceorder ServiceOrder(@ServiceOrder() ServiceOrder: ServiceOrder) {
-    serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async serviceOrderDeleteMany(@Args() deleteManyServiceOrderArgs: DeleteManyServiceOrderArgs) {
+    return this.serviceOrderController.deleteMany(deleteManyServiceOrderArgs);
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Query(() => AggregateServiceOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ServiceOrder(@ServiceOrder() ServiceOrder: ServiceOrder) {
-    serviceorder serviceorder.ServiceOrder.serviceorder(ServiceOrder);
+  serviceOrderAggregate(@Args() serviceOrderAggregateArgs: ServiceOrderAggregateArgs) {
+    return this.serviceOrderController.aggregate(serviceOrderAggregateArgs);
   }
 
-  @ServiceOrder(() => ServiceOrder, {
-    serviceorder: serviceorder,
-    serviceorder: 'ServiceOrder serviceorder serviceorder serviceorder',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ServiceOrder(@ServiceOrder() ServiceOrder: ServiceOrder) {
-    serviceorder serviceorder.ServiceOrder.serviceorder(ServiceOrder);
+  serviceOrderCount(@Args() serviceOrderCountAggregateInput: FindManyServiceOrderArgs) {
+    return this.serviceOrderController.count(serviceOrderCountAggregateInput);
   }
 }

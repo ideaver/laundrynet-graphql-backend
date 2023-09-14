@@ -1,160 +1,160 @@
-// @employeeactivitycomission-employeeactivitycomission
-employeeactivitycomission { EmployeeActivityComission, EmployeeActivityComission, EmployeeActivityComission, EmployeeActivityComission, EmployeeActivityComission } employeeactivitycomission '@employeeactivitycomission/employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission '@employeeactivitycomission/employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission 'employeeactivitycomission/employeeactivitycomission/employeeactivitycomission.employeeactivitycomission';
-employeeactivitycomission {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateEmployeeActivityComission,
+  CreateManyEmployeeActivityComissionArgs,
+  CreateOneEmployeeActivityComissionArgs,
+  DeleteManyEmployeeActivityComissionArgs,
+  DeleteOneEmployeeActivityComissionArgs,
+  FindFirstEmployeeActivityComissionArgs,
+  FindManyEmployeeActivityComissionArgs,
+  FindUniqueEmployeeActivityComissionArgs,
   EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-  EmployeeActivityComission,
-} employeeactivitycomission 'employeeactivitycomission/@employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission './employeeactivitycomission.employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission 'employeeactivitycomission/employeeactivitycomission/employeeactivitycomission-employeeactivitycomission-employeeactivitycomission-employeeactivitycomission.employeeactivitycomission';
-employeeactivitycomission EmployeeActivityComission employeeactivitycomission 'employeeactivitycomission/employeeactivitycomission/employeeactivitycomission-employeeactivitycomission.employeeactivitycomission';
+  EmployeeActivityComissionAggregateArgs,
+  UpdateManyEmployeeActivityComissionArgs,
+  UpdateOneEmployeeActivityComissionArgs,
+} from 'src/@generated';
+import { EmployeeActivityComissionController } from './employeeActivityComission.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-employeeactivitycomission EmployeeActivityComission {
-  employeeactivitycomission: EmployeeActivityComission.EmployeeActivityComission;
+interface EmployeeActivityComissionSelect {
+  select: Prisma.EmployeeActivityComissionSelect;
 }
 
-@EmployeeActivityComission(() => EmployeeActivityComission)
-employeeactivitycomission employeeactivitycomission EmployeeActivityComission {
-  employeeactivitycomission(employeeactivitycomission employeeactivitycomission EmployeeActivityComission: EmployeeActivityComission) {}
+@Resolver(() => EmployeeActivityComission)
+export class EmployeeActivityComissionResolver {
+  constructor(private readonly employeeActivityComissionController: EmployeeActivityComissionController) {}
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Mutation(() => EmployeeActivityComission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employeeactivitycomission EmployeeActivityComission(
-    @EmployeeActivityComission()
-    EmployeeActivityComission: EmployeeActivityComission,
-    @EmployeeActivityComission() employeeactivitycomission: EmployeeActivityComission,
-  ): EmployeeActivityComission<EmployeeActivityComission | employeeactivitycomission> {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission({
-      ...EmployeeActivityComission,
-      employeeactivitycomission: employeeactivitycomission.employeeactivitycomission,
+  async employeeActivityComissionCreateOne(
+    @Args()
+    employeeActivityComissionCreateArgs: CreateOneEmployeeActivityComissionArgs,
+    @Relations() relations: EmployeeActivityComissionSelect,
+  ): Promise<EmployeeActivityComission | void> {
+    return await this.employeeActivityComissionController.createOne({
+      ...employeeActivityComissionCreateArgs,
+      select: relations.select,
     });
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employeeactivitycomission EmployeeActivityComission(
-    @EmployeeActivityComission()
-    EmployeeActivityComission: EmployeeActivityComission,
+  async employeeActivityComissionCreateMany(
+    @Args()
+    createManyEmployeeActivityComissionArgs: CreateManyEmployeeActivityComissionArgs,
   ) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+    return await this.employeeActivityComissionController.createMany(createManyEmployeeActivityComissionArgs);
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Query(() => EmployeeActivityComission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EmployeeActivityComission(
-    @EmployeeActivityComission()
-    EmployeeActivityComission: EmployeeActivityComission,
-    @EmployeeActivityComission() employeeactivitycomission: EmployeeActivityComission,
-  ): EmployeeActivityComission<EmployeeActivityComission | employeeactivitycomission> {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission({
-      ...EmployeeActivityComission,
-      employeeactivitycomission: employeeactivitycomission.employeeactivitycomission,
+  employeeActivityComissionFindOne(
+    @Args()
+    employeeActivityComissionFindUniqueArgs: FindUniqueEmployeeActivityComissionArgs,
+    @Relations() relations: EmployeeActivityComissionSelect,
+  ): Promise<EmployeeActivityComission | void> {
+    return this.employeeActivityComissionController.findOne({
+      ...employeeActivityComissionFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @EmployeeActivityComission(() => [EmployeeActivityComission], {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Query(() => [EmployeeActivityComission], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EmployeeActivityComission(
-    @EmployeeActivityComission() EmployeeActivityComission: EmployeeActivityComission,
-    @EmployeeActivityComission() employeeactivitycomission: EmployeeActivityComission,
+  employeeActivityComissionFindMany(
+    @Args() employeeActivityComissionFindManyArgs: FindManyEmployeeActivityComissionArgs,
+    @Relations() relations: EmployeeActivityComissionSelect,
   ) {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission({
-      ...EmployeeActivityComission,
-      employeeactivitycomission: employeeactivitycomission.employeeactivitycomission,
+    return this.employeeActivityComissionController.findMany({
+      ...employeeActivityComissionFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Query(() => EmployeeActivityComission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EmployeeActivityComission(
-    @EmployeeActivityComission()
-    EmployeeActivityComission: EmployeeActivityComission,
-    @EmployeeActivityComission() employeeactivitycomission: EmployeeActivityComission,
-  ): EmployeeActivityComission<EmployeeActivityComission | employeeactivitycomission> {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission({
-      ...EmployeeActivityComission,
-      employeeactivitycomission: employeeactivitycomission.employeeactivitycomission,
+  employeeActivityComissionFindFirst(
+    @Args()
+    findFirstEmployeeActivityComissionArgs: FindFirstEmployeeActivityComissionArgs,
+    @Relations() relations: EmployeeActivityComissionSelect,
+  ): Promise<EmployeeActivityComission | void> {
+    return this.employeeActivityComissionController.findFirst({
+      ...findFirstEmployeeActivityComissionArgs,
+      select: relations.select,
     });
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Mutation(() => EmployeeActivityComission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employeeactivitycomission EmployeeActivityComission(
-    @EmployeeActivityComission() EmployeeActivityComission: EmployeeActivityComission,
-    @EmployeeActivityComission() employeeactivitycomission: EmployeeActivityComission,
+  async employeeActivityComissionUpdateOne(
+    @Args() employeeActivityComissionUpdateOneArgs: UpdateOneEmployeeActivityComissionArgs,
+    @Relations() relations: EmployeeActivityComissionSelect,
   ) {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission({
-      ...EmployeeActivityComission(EmployeeActivityComission),
-      employeeactivitycomission: employeeactivitycomission.employeeactivitycomission,
+    return this.employeeActivityComissionController.updateOne({
+      ...replaceNullWithUndefined(employeeActivityComissionUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Mutation(() => EmployeeActivityComission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employeeactivitycomission EmployeeActivityComission(@EmployeeActivityComission() EmployeeActivityComission: EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async employeeActivityComissionUpdateMany(@Args() updateManyEmployeeActivityComissionArgs: UpdateManyEmployeeActivityComissionArgs) {
+    return this.employeeActivityComissionController.updateMany(updateManyEmployeeActivityComissionArgs);
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  employeeactivitycomission EmployeeActivityComission(
-    @EmployeeActivityComission() EmployeeActivityComission: EmployeeActivityComission,
-    @EmployeeActivityComission() employeeactivitycomission: EmployeeActivityComission,
+  async employeeActivityComissionDelete(
+    @Args() deleteOneEmployeeActivityComissionArgs: DeleteOneEmployeeActivityComissionArgs,
+    @Relations() relations: EmployeeActivityComissionSelect,
   ) {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.employeeactivitycomission({
-      ...EmployeeActivityComission,
-      employeeactivitycomission: employeeactivitycomission.employeeactivitycomission,
+    return this.employeeActivityComissionController.delete({
+      ...deleteOneEmployeeActivityComissionArgs,
+      select: relations.select,
     });
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  employeeactivitycomission EmployeeActivityComission(@EmployeeActivityComission() EmployeeActivityComission: EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async employeeActivityComissionDeleteMany(@Args() deleteManyEmployeeActivityComissionArgs: DeleteManyEmployeeActivityComissionArgs) {
+    return this.employeeActivityComissionController.deleteMany(deleteManyEmployeeActivityComissionArgs);
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Query(() => AggregateEmployeeActivityComission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EmployeeActivityComission(@EmployeeActivityComission() EmployeeActivityComission: EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.employeeactivitycomission(EmployeeActivityComission);
+  employeeActivityComissionAggregate(@Args() employeeActivityComissionAggregateArgs: EmployeeActivityComissionAggregateArgs) {
+    return this.employeeActivityComissionController.aggregate(employeeActivityComissionAggregateArgs);
   }
 
-  @EmployeeActivityComission(() => EmployeeActivityComission, {
-    employeeactivitycomission: employeeactivitycomission,
-    employeeactivitycomission: 'EmployeeActivityComission employeeactivitycomission employeeactivitycomission employeeactivitycomission',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EmployeeActivityComission(@EmployeeActivityComission() EmployeeActivityComission: EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.employeeactivitycomission(EmployeeActivityComission);
+  employeeActivityComissionCount(@Args() employeeActivityComissionCountAggregateInput: FindManyEmployeeActivityComissionArgs) {
+    return this.employeeActivityComissionController.count(employeeActivityComissionCountAggregateInput);
   }
 }

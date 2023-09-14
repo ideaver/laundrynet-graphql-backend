@@ -1,11 +1,11 @@
-notification { Notification } notification '@notification/notification';
-notification { Notification } notification './notification.notification';
-notification { Notification } notification './notification.notification';
-notification { Notification } notification 'notification/notification.notification';
-notification { Notification } notification './notification.notification';
+import { Module } from '@nestjs/common';
+import { NotificationService } from './notification.service';
+import { NotificationResolver } from './notification.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { NotificationController } from './notification.controller';
 
-@Notification({
-  notification: [Notification, Notification, Notification, Notification],
-  notification: [Notification],
+@Module({
+  providers: [PrismaService, NotificationResolver, NotificationController, NotificationService],
+  exports: [NotificationController],
 })
-notification notification Notification {}
+export class NotificationModule {}

@@ -1,160 +1,160 @@
-// @deliverystatus-deliverystatus
-deliverystatus { DeliveryStatus, DeliveryStatus, DeliveryStatus, DeliveryStatus, DeliveryStatus } deliverystatus '@deliverystatus/deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus '@deliverystatus/deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus 'deliverystatus/deliverystatus/deliverystatus.deliverystatus';
-deliverystatus {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateDeliveryStatus,
+  CreateManyDeliveryStatusArgs,
+  CreateOneDeliveryStatusArgs,
+  DeleteManyDeliveryStatusArgs,
+  DeleteOneDeliveryStatusArgs,
+  FindFirstDeliveryStatusArgs,
+  FindManyDeliveryStatusArgs,
+  FindUniqueDeliveryStatusArgs,
   DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-  DeliveryStatus,
-} deliverystatus 'deliverystatus/@deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus './deliverystatus.deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus 'deliverystatus/deliverystatus/deliverystatus-deliverystatus-deliverystatus-deliverystatus.deliverystatus';
-deliverystatus DeliveryStatus deliverystatus 'deliverystatus/deliverystatus/deliverystatus-deliverystatus.deliverystatus';
+  DeliveryStatusAggregateArgs,
+  UpdateManyDeliveryStatusArgs,
+  UpdateOneDeliveryStatusArgs,
+} from 'src/@generated';
+import { DeliveryStatusController } from './deliveryStatus.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-deliverystatus DeliveryStatus {
-  deliverystatus: DeliveryStatus.DeliveryStatus;
+interface DeliveryStatusSelect {
+  select: Prisma.DeliveryStatusSelect;
 }
 
-@DeliveryStatus(() => DeliveryStatus)
-deliverystatus deliverystatus DeliveryStatus {
-  deliverystatus(deliverystatus deliverystatus DeliveryStatus: DeliveryStatus) {}
+@Resolver(() => DeliveryStatus)
+export class DeliveryStatusResolver {
+  constructor(private readonly deliveryStatusController: DeliveryStatusController) {}
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Mutation(() => DeliveryStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverystatus DeliveryStatus(
-    @DeliveryStatus()
-    DeliveryStatus: DeliveryStatus,
-    @DeliveryStatus() deliverystatus: DeliveryStatus,
-  ): DeliveryStatus<DeliveryStatus | deliverystatus> {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus({
-      ...DeliveryStatus,
-      deliverystatus: deliverystatus.deliverystatus,
+  async deliveryStatusCreateOne(
+    @Args()
+    deliveryStatusCreateArgs: CreateOneDeliveryStatusArgs,
+    @Relations() relations: DeliveryStatusSelect,
+  ): Promise<DeliveryStatus | void> {
+    return await this.deliveryStatusController.createOne({
+      ...deliveryStatusCreateArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverystatus DeliveryStatus(
-    @DeliveryStatus()
-    DeliveryStatus: DeliveryStatus,
+  async deliveryStatusCreateMany(
+    @Args()
+    createManyDeliveryStatusArgs: CreateManyDeliveryStatusArgs,
   ) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+    return await this.deliveryStatusController.createMany(createManyDeliveryStatusArgs);
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Query(() => DeliveryStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryStatus(
-    @DeliveryStatus()
-    DeliveryStatus: DeliveryStatus,
-    @DeliveryStatus() deliverystatus: DeliveryStatus,
-  ): DeliveryStatus<DeliveryStatus | deliverystatus> {
-    deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus({
-      ...DeliveryStatus,
-      deliverystatus: deliverystatus.deliverystatus,
+  deliveryStatusFindOne(
+    @Args()
+    deliveryStatusFindUniqueArgs: FindUniqueDeliveryStatusArgs,
+    @Relations() relations: DeliveryStatusSelect,
+  ): Promise<DeliveryStatus | void> {
+    return this.deliveryStatusController.findOne({
+      ...deliveryStatusFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryStatus(() => [DeliveryStatus], {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Query(() => [DeliveryStatus], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryStatus(
-    @DeliveryStatus() DeliveryStatus: DeliveryStatus,
-    @DeliveryStatus() deliverystatus: DeliveryStatus,
+  deliveryStatusFindMany(
+    @Args() deliveryStatusFindManyArgs: FindManyDeliveryStatusArgs,
+    @Relations() relations: DeliveryStatusSelect,
   ) {
-    deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus({
-      ...DeliveryStatus,
-      deliverystatus: deliverystatus.deliverystatus,
+    return this.deliveryStatusController.findMany({
+      ...deliveryStatusFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Query(() => DeliveryStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryStatus(
-    @DeliveryStatus()
-    DeliveryStatus: DeliveryStatus,
-    @DeliveryStatus() deliverystatus: DeliveryStatus,
-  ): DeliveryStatus<DeliveryStatus | deliverystatus> {
-    deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus({
-      ...DeliveryStatus,
-      deliverystatus: deliverystatus.deliverystatus,
+  deliveryStatusFindFirst(
+    @Args()
+    findFirstDeliveryStatusArgs: FindFirstDeliveryStatusArgs,
+    @Relations() relations: DeliveryStatusSelect,
+  ): Promise<DeliveryStatus | void> {
+    return this.deliveryStatusController.findFirst({
+      ...findFirstDeliveryStatusArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Mutation(() => DeliveryStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverystatus DeliveryStatus(
-    @DeliveryStatus() DeliveryStatus: DeliveryStatus,
-    @DeliveryStatus() deliverystatus: DeliveryStatus,
+  async deliveryStatusUpdateOne(
+    @Args() deliveryStatusUpdateOneArgs: UpdateOneDeliveryStatusArgs,
+    @Relations() relations: DeliveryStatusSelect,
   ) {
-    deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus({
-      ...DeliveryStatus(DeliveryStatus),
-      deliverystatus: deliverystatus.deliverystatus,
+    return this.deliveryStatusController.updateOne({
+      ...replaceNullWithUndefined(deliveryStatusUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Mutation(() => DeliveryStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverystatus DeliveryStatus(@DeliveryStatus() DeliveryStatus: DeliveryStatus) {
-    deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async deliveryStatusUpdateMany(@Args() updateManyDeliveryStatusArgs: UpdateManyDeliveryStatusArgs) {
+    return this.deliveryStatusController.updateMany(updateManyDeliveryStatusArgs);
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverystatus DeliveryStatus(
-    @DeliveryStatus() DeliveryStatus: DeliveryStatus,
-    @DeliveryStatus() deliverystatus: DeliveryStatus,
+  async deliveryStatusDelete(
+    @Args() deleteOneDeliveryStatusArgs: DeleteOneDeliveryStatusArgs,
+    @Relations() relations: DeliveryStatusSelect,
   ) {
-    deliverystatus deliverystatus.DeliveryStatus.deliverystatus({
-      ...DeliveryStatus,
-      deliverystatus: deliverystatus.deliverystatus,
+    return this.deliveryStatusController.delete({
+      ...deleteOneDeliveryStatusArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverystatus DeliveryStatus(@DeliveryStatus() DeliveryStatus: DeliveryStatus) {
-    deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async deliveryStatusDeleteMany(@Args() deleteManyDeliveryStatusArgs: DeleteManyDeliveryStatusArgs) {
+    return this.deliveryStatusController.deleteMany(deleteManyDeliveryStatusArgs);
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Query(() => AggregateDeliveryStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryStatus(@DeliveryStatus() DeliveryStatus: DeliveryStatus) {
-    deliverystatus deliverystatus.DeliveryStatus.deliverystatus(DeliveryStatus);
+  deliveryStatusAggregate(@Args() deliveryStatusAggregateArgs: DeliveryStatusAggregateArgs) {
+    return this.deliveryStatusController.aggregate(deliveryStatusAggregateArgs);
   }
 
-  @DeliveryStatus(() => DeliveryStatus, {
-    deliverystatus: deliverystatus,
-    deliverystatus: 'DeliveryStatus deliverystatus deliverystatus deliverystatus',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryStatus(@DeliveryStatus() DeliveryStatus: DeliveryStatus) {
-    deliverystatus deliverystatus.DeliveryStatus.deliverystatus(DeliveryStatus);
+  deliveryStatusCount(@Args() deliveryStatusCountAggregateInput: FindManyDeliveryStatusArgs) {
+    return this.deliveryStatusController.count(deliveryStatusCountAggregateInput);
   }
 }

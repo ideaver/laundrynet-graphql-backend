@@ -1,11 +1,11 @@
-outletvoucher { OutletVoucher } outletvoucher '@outletvoucher/outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher './outletvoucher.outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher './outletvoucher.outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher 'outletvoucher/outletvoucher.outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher './outletvoucher.outletvoucher';
+import { Module } from '@nestjs/common';
+import { OutletVoucherService } from './outletVoucher.service';
+import { OutletVoucherResolver } from './outletVoucher.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { OutletVoucherController } from './outletVoucher.controller';
 
-@OutletVoucher({
-  outletvoucher: [OutletVoucher, OutletVoucher, OutletVoucher, OutletVoucher],
-  outletvoucher: [OutletVoucher],
+@Module({
+  providers: [PrismaService, OutletVoucherResolver, OutletVoucherController, OutletVoucherService],
+  exports: [OutletVoucherController],
 })
-outletvoucher outletvoucher OutletVoucher {}
+export class OutletVoucherModule {}

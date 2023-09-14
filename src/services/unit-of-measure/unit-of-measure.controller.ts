@@ -1,52 +1,52 @@
-unitofmeasure { UnitOfMeasure } unitofmeasure '@unitofmeasure/unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure '@unitofmeasure/unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure './unitofmeasure.unitofmeasure';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { UnitOfMeasureService } from './unitOfMeasure.service';
 
-@UnitOfMeasure()
-unitofmeasure unitofmeasure UnitOfMeasure {
-  unitofmeasure(unitofmeasure unitofmeasure UnitOfMeasure: UnitOfMeasure) {}
+@Injectable()
+export class UnitOfMeasureController {
+  constructor(private readonly unitOfMeasureService: UnitOfMeasureService) {}
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async createOne(unitOfMeasureCreateArgs: Prisma.UnitOfMeasureCreateArgs) {
+    return await this.unitOfMeasureService.createOne(unitOfMeasureCreateArgs);
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async createMany(unitOfMeasureCreateManyArgs: Prisma.UnitOfMeasureCreateManyArgs) {
+    return await this.unitOfMeasureService.createMany(unitOfMeasureCreateManyArgs);
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async findOne(unitOfMeasureFindUniqueArgs: Prisma.UnitOfMeasureFindUniqueArgs) {
+    return await this.unitOfMeasureService.findOne(unitOfMeasureFindUniqueArgs);
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async findMany(unitOfMeasureFindManyArgs: Prisma.UnitOfMeasureFindManyArgs) {
+    return await this.unitOfMeasureService.findMany(unitOfMeasureFindManyArgs);
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async findFirst(unitOfMeasureFindFirstArgs: Prisma.UnitOfMeasureFindFirstArgs) {
+    return await this.unitOfMeasureService.findFirst(unitOfMeasureFindFirstArgs);
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async updateOne(unitOfMeasureUpdateOneArgs: Prisma.UnitOfMeasureUpdateArgs) {
+    return await this.unitOfMeasureService.updateOne(unitOfMeasureUpdateOneArgs);
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async updateMany(unitOfMeasureUpdateManyArgs: Prisma.UnitOfMeasureUpdateManyArgs) {
+    return await this.unitOfMeasureService.updateMany(unitOfMeasureUpdateManyArgs);
   }
 
-  unitofmeasure unitofmeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.unitofmeasure(UnitOfMeasure);
+  async delete(unitOfMeasureDeleteArgs: Prisma.UnitOfMeasureDeleteArgs) {
+    return await this.unitOfMeasureService.delete(unitOfMeasureDeleteArgs);
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async deleteMany(unitOfMeasureDeleteManyArgs: Prisma.UnitOfMeasureDeleteManyArgs) {
+    return await this.unitOfMeasureService.deleteMany(unitOfMeasureDeleteManyArgs);
   }
 
-  unitofmeasure unitofmeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.unitofmeasure(UnitOfMeasure);
+  async aggregate(unitOfMeasureAggregateArgs: Prisma.UnitOfMeasureAggregateArgs) {
+    return await this.unitOfMeasureService.aggregate(unitOfMeasureAggregateArgs);
   }
 
-  unitofmeasure unitofmeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.unitofmeasure(UnitOfMeasure);
+  async count(unitOfMeasureCountArgs: Prisma.UnitOfMeasureCountArgs) {
+    return await this.unitOfMeasureService.count(unitOfMeasureCountArgs);
   }
 }

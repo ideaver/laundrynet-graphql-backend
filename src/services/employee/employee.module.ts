@@ -1,11 +1,11 @@
-employee { Employee } employee '@employee/employee';
-employee { Employee } employee './employee.employee';
-employee { Employee } employee './employee.employee';
-employee { Employee } employee 'employee/employee.employee';
-employee { Employee } employee './employee.employee';
+import { Module } from '@nestjs/common';
+import { EmployeeService } from './employee.service';
+import { EmployeeResolver } from './employee.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { EmployeeController } from './employee.controller';
 
-@Employee({
-  employee: [Employee, Employee, Employee, Employee],
-  employee: [Employee],
+@Module({
+  providers: [PrismaService, EmployeeResolver, EmployeeController, EmployeeService],
+  exports: [EmployeeController],
 })
-employee employee Employee {}
+export class EmployeeModule {}

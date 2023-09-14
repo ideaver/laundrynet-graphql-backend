@@ -1,52 +1,52 @@
-message { Message } message '@message/message';
-message { Message } message '@message/message';
-message { Message } message './message.message';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { MessageService } from './message.service';
 
-@Message()
-message message Message {
-  message(message message Message: Message) {}
+@Injectable()
+export class MessageController {
+  constructor(private readonly messageService: MessageService) {}
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async createOne(messageCreateArgs: Prisma.MessageCreateArgs) {
+    return await this.messageService.createOne(messageCreateArgs);
   }
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async createMany(messageCreateManyArgs: Prisma.MessageCreateManyArgs) {
+    return await this.messageService.createMany(messageCreateManyArgs);
   }
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async findOne(messageFindUniqueArgs: Prisma.MessageFindUniqueArgs) {
+    return await this.messageService.findOne(messageFindUniqueArgs);
   }
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async findMany(messageFindManyArgs: Prisma.MessageFindManyArgs) {
+    return await this.messageService.findMany(messageFindManyArgs);
   }
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async findFirst(messageFindFirstArgs: Prisma.MessageFindFirstArgs) {
+    return await this.messageService.findFirst(messageFindFirstArgs);
   }
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async updateOne(messageUpdateOneArgs: Prisma.MessageUpdateArgs) {
+    return await this.messageService.updateOne(messageUpdateOneArgs);
   }
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async updateMany(messageUpdateManyArgs: Prisma.MessageUpdateManyArgs) {
+    return await this.messageService.updateMany(messageUpdateManyArgs);
   }
 
-  message message(Message: Message.Message) {
-    message message message.Message.message(Message);
+  async delete(messageDeleteArgs: Prisma.MessageDeleteArgs) {
+    return await this.messageService.delete(messageDeleteArgs);
   }
 
-  message Message(Message: Message.Message) {
-    message message message.Message.Message(Message);
+  async deleteMany(messageDeleteManyArgs: Prisma.MessageDeleteManyArgs) {
+    return await this.messageService.deleteMany(messageDeleteManyArgs);
   }
 
-  message message(Message: Message.Message) {
-    message message message.Message.message(Message);
+  async aggregate(messageAggregateArgs: Prisma.MessageAggregateArgs) {
+    return await this.messageService.aggregate(messageAggregateArgs);
   }
 
-  message message(Message: Message.Message) {
-    message message message.Message.message(Message);
+  async count(messageCountArgs: Prisma.MessageCountArgs) {
+    return await this.messageService.count(messageCountArgs);
   }
 }

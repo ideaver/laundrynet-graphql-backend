@@ -1,52 +1,52 @@
-deliverystatus { DeliveryStatus } deliverystatus '@deliverystatus/deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus '@deliverystatus/deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus './deliverystatus.deliverystatus';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { DeliveryStatusService } from './deliveryStatus.service';
 
-@DeliveryStatus()
-deliverystatus deliverystatus DeliveryStatus {
-  deliverystatus(deliverystatus deliverystatus DeliveryStatus: DeliveryStatus) {}
+@Injectable()
+export class DeliveryStatusController {
+  constructor(private readonly deliveryStatusService: DeliveryStatusService) {}
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async createOne(deliveryStatusCreateArgs: Prisma.DeliveryStatusCreateArgs) {
+    return await this.deliveryStatusService.createOne(deliveryStatusCreateArgs);
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async createMany(deliveryStatusCreateManyArgs: Prisma.DeliveryStatusCreateManyArgs) {
+    return await this.deliveryStatusService.createMany(deliveryStatusCreateManyArgs);
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async findOne(deliveryStatusFindUniqueArgs: Prisma.DeliveryStatusFindUniqueArgs) {
+    return await this.deliveryStatusService.findOne(deliveryStatusFindUniqueArgs);
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async findMany(deliveryStatusFindManyArgs: Prisma.DeliveryStatusFindManyArgs) {
+    return await this.deliveryStatusService.findMany(deliveryStatusFindManyArgs);
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async findFirst(deliveryStatusFindFirstArgs: Prisma.DeliveryStatusFindFirstArgs) {
+    return await this.deliveryStatusService.findFirst(deliveryStatusFindFirstArgs);
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async updateOne(deliveryStatusUpdateOneArgs: Prisma.DeliveryStatusUpdateArgs) {
+    return await this.deliveryStatusService.updateOne(deliveryStatusUpdateOneArgs);
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async updateMany(deliveryStatusUpdateManyArgs: Prisma.DeliveryStatusUpdateManyArgs) {
+    return await this.deliveryStatusService.updateMany(deliveryStatusUpdateManyArgs);
   }
 
-  deliverystatus deliverystatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.deliverystatus(DeliveryStatus);
+  async delete(deliveryStatusDeleteArgs: Prisma.DeliveryStatusDeleteArgs) {
+    return await this.deliveryStatusService.delete(deliveryStatusDeleteArgs);
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.DeliveryStatus(DeliveryStatus);
+  async deleteMany(deliveryStatusDeleteManyArgs: Prisma.DeliveryStatusDeleteManyArgs) {
+    return await this.deliveryStatusService.deleteMany(deliveryStatusDeleteManyArgs);
   }
 
-  deliverystatus deliverystatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.deliverystatus(DeliveryStatus);
+  async aggregate(deliveryStatusAggregateArgs: Prisma.DeliveryStatusAggregateArgs) {
+    return await this.deliveryStatusService.aggregate(deliveryStatusAggregateArgs);
   }
 
-  deliverystatus deliverystatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus deliverystatus deliverystatus.DeliveryStatus.deliverystatus(DeliveryStatus);
+  async count(deliveryStatusCountArgs: Prisma.DeliveryStatusCountArgs) {
+    return await this.deliveryStatusService.count(deliveryStatusCountArgs);
   }
 }

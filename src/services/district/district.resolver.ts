@@ -1,160 +1,160 @@
-// @district-district
-district { District, District, District, District, District } district '@district/district';
-district { District } district '@district/district';
-district { District } district 'district/district/district.district';
-district {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateDistrict,
+  CreateManyDistrictArgs,
+  CreateOneDistrictArgs,
+  DeleteManyDistrictArgs,
+  DeleteOneDistrictArgs,
+  FindFirstDistrictArgs,
+  FindManyDistrictArgs,
+  FindUniqueDistrictArgs,
   District,
-  District,
-  District,
-  District,
-  District,
-  District,
-  District,
-  District,
-  District,
-  District,
-  District,
-  District,
-} district 'district/@district';
-district { District } district './district.district';
-district { District } district 'district/district/district-district-district-district.district';
-district District district 'district/district/district-district.district';
+  DistrictAggregateArgs,
+  UpdateManyDistrictArgs,
+  UpdateOneDistrictArgs,
+} from 'src/@generated';
+import { DistrictController } from './district.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-district District {
-  district: District.District;
+interface DistrictSelect {
+  select: Prisma.DistrictSelect;
 }
 
-@District(() => District)
-district district District {
-  district(district district District: District) {}
+@Resolver(() => District)
+export class DistrictResolver {
+  constructor(private readonly districtController: DistrictController) {}
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Mutation(() => District, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  district District(
-    @District()
-    District: District,
-    @District() district: District,
-  ): District<District | district> {
-    district district district.District.District({
-      ...District,
-      district: district.district,
+  async districtCreateOne(
+    @Args()
+    districtCreateArgs: CreateOneDistrictArgs,
+    @Relations() relations: DistrictSelect,
+  ): Promise<District | void> {
+    return await this.districtController.createOne({
+      ...districtCreateArgs,
+      select: relations.select,
     });
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  district District(
-    @District()
-    District: District,
+  async districtCreateMany(
+    @Args()
+    createManyDistrictArgs: CreateManyDistrictArgs,
   ) {
-    district district district.District.District(District);
+    return await this.districtController.createMany(createManyDistrictArgs);
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Query(() => District, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  District(
-    @District()
-    District: District,
-    @District() district: District,
-  ): District<District | district> {
-    district district.District.District({
-      ...District,
-      district: district.district,
+  districtFindOne(
+    @Args()
+    districtFindUniqueArgs: FindUniqueDistrictArgs,
+    @Relations() relations: DistrictSelect,
+  ): Promise<District | void> {
+    return this.districtController.findOne({
+      ...districtFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @District(() => [District], {
-    district: district,
-    district: 'District district district district',
+  @Query(() => [District], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  District(
-    @District() District: District,
-    @District() district: District,
+  districtFindMany(
+    @Args() districtFindManyArgs: FindManyDistrictArgs,
+    @Relations() relations: DistrictSelect,
   ) {
-    district district.District.District({
-      ...District,
-      district: district.district,
+    return this.districtController.findMany({
+      ...districtFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Query(() => District, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  District(
-    @District()
-    District: District,
-    @District() district: District,
-  ): District<District | district> {
-    district district.District.District({
-      ...District,
-      district: district.district,
+  districtFindFirst(
+    @Args()
+    findFirstDistrictArgs: FindFirstDistrictArgs,
+    @Relations() relations: DistrictSelect,
+  ): Promise<District | void> {
+    return this.districtController.findFirst({
+      ...findFirstDistrictArgs,
+      select: relations.select,
     });
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Mutation(() => District, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  district District(
-    @District() District: District,
-    @District() district: District,
+  async districtUpdateOne(
+    @Args() districtUpdateOneArgs: UpdateOneDistrictArgs,
+    @Relations() relations: DistrictSelect,
   ) {
-    district district.District.District({
-      ...District(District),
-      district: district.district,
+    return this.districtController.updateOne({
+      ...replaceNullWithUndefined(districtUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Mutation(() => District, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  district District(@District() District: District) {
-    district district.District.District(District);
+  async districtUpdateMany(@Args() updateManyDistrictArgs: UpdateManyDistrictArgs) {
+    return this.districtController.updateMany(updateManyDistrictArgs);
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  district District(
-    @District() District: District,
-    @District() district: District,
+  async districtDelete(
+    @Args() deleteOneDistrictArgs: DeleteOneDistrictArgs,
+    @Relations() relations: DistrictSelect,
   ) {
-    district district.District.district({
-      ...District,
-      district: district.district,
+    return this.districtController.delete({
+      ...deleteOneDistrictArgs,
+      select: relations.select,
     });
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  district District(@District() District: District) {
-    district district.District.District(District);
+  async districtDeleteMany(@Args() deleteManyDistrictArgs: DeleteManyDistrictArgs) {
+    return this.districtController.deleteMany(deleteManyDistrictArgs);
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Query(() => AggregateDistrict, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  District(@District() District: District) {
-    district district.District.district(District);
+  districtAggregate(@Args() districtAggregateArgs: DistrictAggregateArgs) {
+    return this.districtController.aggregate(districtAggregateArgs);
   }
 
-  @District(() => District, {
-    district: district,
-    district: 'District district district district',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  District(@District() District: District) {
-    district district.District.district(District);
+  districtCount(@Args() districtCountAggregateInput: FindManyDistrictArgs) {
+    return this.districtController.count(districtCountAggregateInput);
   }
 }

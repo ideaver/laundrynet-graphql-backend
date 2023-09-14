@@ -1,160 +1,160 @@
-// @cart-cart
-cart { Cart, Cart, Cart, Cart, Cart } cart '@cart/cart';
-cart { Cart } cart '@cart/cart';
-cart { Cart } cart 'cart/cart/cart.cart';
-cart {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateCart,
+  CreateManyCartArgs,
+  CreateOneCartArgs,
+  DeleteManyCartArgs,
+  DeleteOneCartArgs,
+  FindFirstCartArgs,
+  FindManyCartArgs,
+  FindUniqueCartArgs,
   Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-  Cart,
-} cart 'cart/@cart';
-cart { Cart } cart './cart.cart';
-cart { Cart } cart 'cart/cart/cart-cart-cart-cart.cart';
-cart Cart cart 'cart/cart/cart-cart.cart';
+  CartAggregateArgs,
+  UpdateManyCartArgs,
+  UpdateOneCartArgs,
+} from 'src/@generated';
+import { CartController } from './cart.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-cart Cart {
-  cart: Cart.Cart;
+interface CartSelect {
+  select: Prisma.CartSelect;
 }
 
-@Cart(() => Cart)
-cart cart Cart {
-  cart(cart cart Cart: Cart) {}
+@Resolver(() => Cart)
+export class CartResolver {
+  constructor(private readonly cartController: CartController) {}
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Mutation(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  cart Cart(
-    @Cart()
-    Cart: Cart,
-    @Cart() cart: Cart,
-  ): Cart<Cart | cart> {
-    cart cart cart.Cart.Cart({
-      ...Cart,
-      cart: cart.cart,
+  async cartCreateOne(
+    @Args()
+    cartCreateArgs: CreateOneCartArgs,
+    @Relations() relations: CartSelect,
+  ): Promise<Cart | void> {
+    return await this.cartController.createOne({
+      ...cartCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  cart Cart(
-    @Cart()
-    Cart: Cart,
+  async cartCreateMany(
+    @Args()
+    createManyCartArgs: CreateManyCartArgs,
   ) {
-    cart cart cart.Cart.Cart(Cart);
+    return await this.cartController.createMany(createManyCartArgs);
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Query(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Cart(
-    @Cart()
-    Cart: Cart,
-    @Cart() cart: Cart,
-  ): Cart<Cart | cart> {
-    cart cart.Cart.Cart({
-      ...Cart,
-      cart: cart.cart,
+  cartFindOne(
+    @Args()
+    cartFindUniqueArgs: FindUniqueCartArgs,
+    @Relations() relations: CartSelect,
+  ): Promise<Cart | void> {
+    return this.cartController.findOne({
+      ...cartFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Cart(() => [Cart], {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Query(() => [Cart], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Cart(
-    @Cart() Cart: Cart,
-    @Cart() cart: Cart,
+  cartFindMany(
+    @Args() cartFindManyArgs: FindManyCartArgs,
+    @Relations() relations: CartSelect,
   ) {
-    cart cart.Cart.Cart({
-      ...Cart,
-      cart: cart.cart,
+    return this.cartController.findMany({
+      ...cartFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Query(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Cart(
-    @Cart()
-    Cart: Cart,
-    @Cart() cart: Cart,
-  ): Cart<Cart | cart> {
-    cart cart.Cart.Cart({
-      ...Cart,
-      cart: cart.cart,
+  cartFindFirst(
+    @Args()
+    findFirstCartArgs: FindFirstCartArgs,
+    @Relations() relations: CartSelect,
+  ): Promise<Cart | void> {
+    return this.cartController.findFirst({
+      ...findFirstCartArgs,
+      select: relations.select,
     });
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Mutation(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  cart Cart(
-    @Cart() Cart: Cart,
-    @Cart() cart: Cart,
+  async cartUpdateOne(
+    @Args() cartUpdateOneArgs: UpdateOneCartArgs,
+    @Relations() relations: CartSelect,
   ) {
-    cart cart.Cart.Cart({
-      ...Cart(Cart),
-      cart: cart.cart,
+    return this.cartController.updateOne({
+      ...replaceNullWithUndefined(cartUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Mutation(() => Cart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  cart Cart(@Cart() Cart: Cart) {
-    cart cart.Cart.Cart(Cart);
+  async cartUpdateMany(@Args() updateManyCartArgs: UpdateManyCartArgs) {
+    return this.cartController.updateMany(updateManyCartArgs);
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  cart Cart(
-    @Cart() Cart: Cart,
-    @Cart() cart: Cart,
+  async cartDelete(
+    @Args() deleteOneCartArgs: DeleteOneCartArgs,
+    @Relations() relations: CartSelect,
   ) {
-    cart cart.Cart.cart({
-      ...Cart,
-      cart: cart.cart,
+    return this.cartController.delete({
+      ...deleteOneCartArgs,
+      select: relations.select,
     });
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  cart Cart(@Cart() Cart: Cart) {
-    cart cart.Cart.Cart(Cart);
+  async cartDeleteMany(@Args() deleteManyCartArgs: DeleteManyCartArgs) {
+    return this.cartController.deleteMany(deleteManyCartArgs);
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Query(() => AggregateCart, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Cart(@Cart() Cart: Cart) {
-    cart cart.Cart.cart(Cart);
+  cartAggregate(@Args() cartAggregateArgs: CartAggregateArgs) {
+    return this.cartController.aggregate(cartAggregateArgs);
   }
 
-  @Cart(() => Cart, {
-    cart: cart,
-    cart: 'Cart cart cart cart',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Cart(@Cart() Cart: Cart) {
-    cart cart.Cart.cart(Cart);
+  cartCount(@Args() cartCountAggregateInput: FindManyCartArgs) {
+    return this.cartController.count(cartCountAggregateInput);
   }
 }

@@ -1,11 +1,11 @@
-platformvoucher { PlatformVoucher } platformvoucher '@platformvoucher/platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher './platformvoucher.platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher './platformvoucher.platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher 'platformvoucher/platformvoucher.platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher './platformvoucher.platformvoucher';
+import { Module } from '@nestjs/common';
+import { PlatformVoucherService } from './platformVoucher.service';
+import { PlatformVoucherResolver } from './platformVoucher.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { PlatformVoucherController } from './platformVoucher.controller';
 
-@PlatformVoucher({
-  platformvoucher: [PlatformVoucher, PlatformVoucher, PlatformVoucher, PlatformVoucher],
-  platformvoucher: [PlatformVoucher],
+@Module({
+  providers: [PrismaService, PlatformVoucherResolver, PlatformVoucherController, PlatformVoucherService],
+  exports: [PlatformVoucherController],
 })
-platformvoucher platformvoucher PlatformVoucher {}
+export class PlatformVoucherModule {}

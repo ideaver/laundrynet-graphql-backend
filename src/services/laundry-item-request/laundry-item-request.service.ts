@@ -1,99 +1,99 @@
-laundryitemrequest { LaundryItemRequest } laundryitemrequest '@laundryitemrequest/laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest 'laundryitemrequest/laundryitemrequest.laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest 'laundryitemrequest/laundryitemrequest/laundryitemrequest/laundryitemrequest-laundryitemrequest-laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest '@laundryitemrequest/laundryitemrequest';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@LaundryItemRequest()
-laundryitemrequest laundryitemrequest LaundryItemRequest {
-  laundryitemrequest(laundryitemrequest laundryitemrequest: LaundryItemRequest) {}
+@Injectable()
+export class LaundryItemRequestService {
+  constructor(private prisma: PrismaService) {}
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.laundryitemrequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async createOne(laundryItemRequestCreateArgs: Prisma.LaundryItemRequestCreateArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.create(laundryItemRequestCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.LaundryItemRequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async createMany(laundryItemRequestCreateManyArgs: Prisma.LaundryItemRequestCreateManyArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.createMany(laundryItemRequestCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.LaundryItemRequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async findOne(laundryItemRequestFindUniqueArgs: Prisma.LaundryItemRequestFindUniqueArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.findUnique(laundryItemRequestFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.LaundryItemRequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async findMany(laundryItemRequestFindManyArgs: Prisma.LaundryItemRequestFindManyArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.findMany(laundryItemRequestFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.LaundryItemRequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async findFirst(laundryItemRequestFindFirstArgs: Prisma.LaundryItemRequestFindFirstArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.findFirst(laundryItemRequestFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.laundryitemrequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async updateOne(laundryItemRequestUpdateOneArgs: Prisma.LaundryItemRequestUpdateArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.update(laundryItemRequestUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.LaundryItemRequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async updateMany(laundryItemRequestUpdateManyArgs: Prisma.LaundryItemRequestUpdateManyArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.updateMany(laundryItemRequestUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest laundryitemrequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.laundryitemrequest(LaundryItemRequest);
-      laundryitemrequest laundryitemrequest;
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async delete(laundryItemRequestDeleteArgs: Prisma.LaundryItemRequestDeleteArgs) {
+    try {
+      await this.prisma.laundryItemRequest.delete(laundryItemRequestDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.LaundryItemRequest(LaundryItemRequest);
-      laundryitemrequest laundryitemrequest;
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async deleteMany(laundryItemRequestDeleteManyArgs: Prisma.LaundryItemRequestDeleteManyArgs) {
+    try {
+      await this.prisma.laundryItemRequest.deleteMany(laundryItemRequestDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest laundryitemrequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.laundryitemrequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async aggregate(laundryItemRequestAggregateArgs: Prisma.LaundryItemRequestAggregateArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.aggregate(laundryItemRequestAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemrequest laundryitemrequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest {
-      laundryitemrequest laundryitemrequest laundryitemrequest.laundryitemrequest.laundryitemrequest.laundryitemrequest(LaundryItemRequest);
-    } laundryitemrequest (laundryitemrequest) {
-      laundryitemrequest laundryitemrequest LaundryItemRequest({ laundryitemrequest: laundryitemrequest, laundryitemrequest: laundryitemrequest });
+  async count(laundryItemRequestCountArgs: Prisma.LaundryItemRequestCountArgs) {
+    try {
+      return await this.prisma.laundryItemRequest.count(laundryItemRequestCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

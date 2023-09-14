@@ -1,52 +1,52 @@
-city { City } city '@city/city';
-city { City } city '@city/city';
-city { City } city './city.city';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { CityService } from './city.service';
 
-@City()
-city city City {
-  city(city city City: City) {}
+@Injectable()
+export class CityController {
+  constructor(private readonly cityService: CityService) {}
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async createOne(cityCreateArgs: Prisma.CityCreateArgs) {
+    return await this.cityService.createOne(cityCreateArgs);
   }
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async createMany(cityCreateManyArgs: Prisma.CityCreateManyArgs) {
+    return await this.cityService.createMany(cityCreateManyArgs);
   }
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async findOne(cityFindUniqueArgs: Prisma.CityFindUniqueArgs) {
+    return await this.cityService.findOne(cityFindUniqueArgs);
   }
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async findMany(cityFindManyArgs: Prisma.CityFindManyArgs) {
+    return await this.cityService.findMany(cityFindManyArgs);
   }
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async findFirst(cityFindFirstArgs: Prisma.CityFindFirstArgs) {
+    return await this.cityService.findFirst(cityFindFirstArgs);
   }
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async updateOne(cityUpdateOneArgs: Prisma.CityUpdateArgs) {
+    return await this.cityService.updateOne(cityUpdateOneArgs);
   }
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async updateMany(cityUpdateManyArgs: Prisma.CityUpdateManyArgs) {
+    return await this.cityService.updateMany(cityUpdateManyArgs);
   }
 
-  city city(City: City.City) {
-    city city city.City.city(City);
+  async delete(cityDeleteArgs: Prisma.CityDeleteArgs) {
+    return await this.cityService.delete(cityDeleteArgs);
   }
 
-  city City(City: City.City) {
-    city city city.City.City(City);
+  async deleteMany(cityDeleteManyArgs: Prisma.CityDeleteManyArgs) {
+    return await this.cityService.deleteMany(cityDeleteManyArgs);
   }
 
-  city city(City: City.City) {
-    city city city.City.city(City);
+  async aggregate(cityAggregateArgs: Prisma.CityAggregateArgs) {
+    return await this.cityService.aggregate(cityAggregateArgs);
   }
 
-  city city(City: City.City) {
-    city city city.City.city(City);
+  async count(cityCountArgs: Prisma.CityCountArgs) {
+    return await this.cityService.count(cityCountArgs);
   }
 }

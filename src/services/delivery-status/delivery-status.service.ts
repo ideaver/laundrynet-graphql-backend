@@ -1,99 +1,99 @@
-deliverystatus { DeliveryStatus } deliverystatus '@deliverystatus/deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus 'deliverystatus/deliverystatus.deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus 'deliverystatus/deliverystatus/deliverystatus/deliverystatus-deliverystatus-deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus '@deliverystatus/deliverystatus';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@DeliveryStatus()
-deliverystatus deliverystatus DeliveryStatus {
-  deliverystatus(deliverystatus deliverystatus: DeliveryStatus) {}
+@Injectable()
+export class DeliveryStatusService {
+  constructor(private prisma: PrismaService) {}
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.deliverystatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async createOne(deliveryStatusCreateArgs: Prisma.DeliveryStatusCreateArgs) {
+    try {
+      return await this.prisma.deliveryStatus.create(deliveryStatusCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.DeliveryStatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async createMany(deliveryStatusCreateManyArgs: Prisma.DeliveryStatusCreateManyArgs) {
+    try {
+      return await this.prisma.deliveryStatus.createMany(deliveryStatusCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.DeliveryStatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async findOne(deliveryStatusFindUniqueArgs: Prisma.DeliveryStatusFindUniqueArgs) {
+    try {
+      return await this.prisma.deliveryStatus.findUnique(deliveryStatusFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.DeliveryStatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async findMany(deliveryStatusFindManyArgs: Prisma.DeliveryStatusFindManyArgs) {
+    try {
+      return await this.prisma.deliveryStatus.findMany(deliveryStatusFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.DeliveryStatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async findFirst(deliveryStatusFindFirstArgs: Prisma.DeliveryStatusFindFirstArgs) {
+    try {
+      return await this.prisma.deliveryStatus.findFirst(deliveryStatusFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.deliverystatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async updateOne(deliveryStatusUpdateOneArgs: Prisma.DeliveryStatusUpdateArgs) {
+    try {
+      return await this.prisma.deliveryStatus.update(deliveryStatusUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.DeliveryStatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async updateMany(deliveryStatusUpdateManyArgs: Prisma.DeliveryStatusUpdateManyArgs) {
+    try {
+      return await this.prisma.deliveryStatus.updateMany(deliveryStatusUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus deliverystatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus.deliverystatus.deliverystatus.deliverystatus(DeliveryStatus);
-      deliverystatus deliverystatus;
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async delete(deliveryStatusDeleteArgs: Prisma.DeliveryStatusDeleteArgs) {
+    try {
+      await this.prisma.deliveryStatus.delete(deliveryStatusDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus DeliveryStatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus.deliverystatus.deliverystatus.DeliveryStatus(DeliveryStatus);
-      deliverystatus deliverystatus;
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async deleteMany(deliveryStatusDeleteManyArgs: Prisma.DeliveryStatusDeleteManyArgs) {
+    try {
+      await this.prisma.deliveryStatus.deleteMany(deliveryStatusDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus deliverystatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.deliverystatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async aggregate(deliveryStatusAggregateArgs: Prisma.DeliveryStatusAggregateArgs) {
+    try {
+      return await this.prisma.deliveryStatus.aggregate(deliveryStatusAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  deliverystatus deliverystatus(DeliveryStatus: DeliveryStatus.DeliveryStatus) {
-    deliverystatus {
-      deliverystatus deliverystatus deliverystatus.deliverystatus.deliverystatus.deliverystatus(DeliveryStatus);
-    } deliverystatus (deliverystatus) {
-      deliverystatus deliverystatus DeliveryStatus({ deliverystatus: deliverystatus, deliverystatus: deliverystatus });
+  async count(deliveryStatusCountArgs: Prisma.DeliveryStatusCountArgs) {
+    try {
+      return await this.prisma.deliveryStatus.count(deliveryStatusCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

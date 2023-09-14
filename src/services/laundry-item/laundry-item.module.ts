@@ -1,11 +1,11 @@
-laundryitem { LaundryItem } laundryitem '@laundryitem/laundryitem';
-laundryitem { LaundryItem } laundryitem './laundryitem.laundryitem';
-laundryitem { LaundryItem } laundryitem './laundryitem.laundryitem';
-laundryitem { LaundryItem } laundryitem 'laundryitem/laundryitem.laundryitem';
-laundryitem { LaundryItem } laundryitem './laundryitem.laundryitem';
+import { Module } from '@nestjs/common';
+import { LaundryItemService } from './laundryItem.service';
+import { LaundryItemResolver } from './laundryItem.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { LaundryItemController } from './laundryItem.controller';
 
-@LaundryItem({
-  laundryitem: [LaundryItem, LaundryItem, LaundryItem, LaundryItem],
-  laundryitem: [LaundryItem],
+@Module({
+  providers: [PrismaService, LaundryItemResolver, LaundryItemController, LaundryItemService],
+  exports: [LaundryItemController],
 })
-laundryitem laundryitem LaundryItem {}
+export class LaundryItemModule {}

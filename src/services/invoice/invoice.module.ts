@@ -1,11 +1,11 @@
-invoice { Invoice } invoice '@invoice/invoice';
-invoice { Invoice } invoice './invoice.invoice';
-invoice { Invoice } invoice './invoice.invoice';
-invoice { Invoice } invoice 'invoice/invoice.invoice';
-invoice { Invoice } invoice './invoice.invoice';
+import { Module } from '@nestjs/common';
+import { InvoiceService } from './invoice.service';
+import { InvoiceResolver } from './invoice.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { InvoiceController } from './invoice.controller';
 
-@Invoice({
-  invoice: [Invoice, Invoice, Invoice, Invoice],
-  invoice: [Invoice],
+@Module({
+  providers: [PrismaService, InvoiceResolver, InvoiceController, InvoiceService],
+  exports: [InvoiceController],
 })
-invoice invoice Invoice {}
+export class InvoiceModule {}

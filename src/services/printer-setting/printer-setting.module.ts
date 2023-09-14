@@ -1,11 +1,11 @@
-printersetting { PrinterSetting } printersetting '@printersetting/printersetting';
-printersetting { PrinterSetting } printersetting './printersetting.printersetting';
-printersetting { PrinterSetting } printersetting './printersetting.printersetting';
-printersetting { PrinterSetting } printersetting 'printersetting/printersetting.printersetting';
-printersetting { PrinterSetting } printersetting './printersetting.printersetting';
+import { Module } from '@nestjs/common';
+import { PrinterSettingService } from './printerSetting.service';
+import { PrinterSettingResolver } from './printerSetting.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { PrinterSettingController } from './printerSetting.controller';
 
-@PrinterSetting({
-  printersetting: [PrinterSetting, PrinterSetting, PrinterSetting, PrinterSetting],
-  printersetting: [PrinterSetting],
+@Module({
+  providers: [PrismaService, PrinterSettingResolver, PrinterSettingController, PrinterSettingService],
+  exports: [PrinterSettingController],
 })
-printersetting printersetting PrinterSetting {}
+export class PrinterSettingModule {}

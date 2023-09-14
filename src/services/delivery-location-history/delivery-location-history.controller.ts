@@ -1,52 +1,52 @@
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory '@deliverylocationhistory/deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory '@deliverylocationhistory/deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory './deliverylocationhistory.deliverylocationhistory';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { DeliveryLocationHistoryService } from './deliveryLocationHistory.service';
 
-@DeliveryLocationHistory()
-deliverylocationhistory deliverylocationhistory DeliveryLocationHistory {
-  deliverylocationhistory(deliverylocationhistory deliverylocationhistory DeliveryLocationHistory: DeliveryLocationHistory) {}
+@Injectable()
+export class DeliveryLocationHistoryController {
+  constructor(private readonly deliveryLocationHistoryService: DeliveryLocationHistoryService) {}
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async createOne(deliveryLocationHistoryCreateArgs: Prisma.DeliveryLocationHistoryCreateArgs) {
+    return await this.deliveryLocationHistoryService.createOne(deliveryLocationHistoryCreateArgs);
   }
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async createMany(deliveryLocationHistoryCreateManyArgs: Prisma.DeliveryLocationHistoryCreateManyArgs) {
+    return await this.deliveryLocationHistoryService.createMany(deliveryLocationHistoryCreateManyArgs);
   }
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async findOne(deliveryLocationHistoryFindUniqueArgs: Prisma.DeliveryLocationHistoryFindUniqueArgs) {
+    return await this.deliveryLocationHistoryService.findOne(deliveryLocationHistoryFindUniqueArgs);
   }
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async findMany(deliveryLocationHistoryFindManyArgs: Prisma.DeliveryLocationHistoryFindManyArgs) {
+    return await this.deliveryLocationHistoryService.findMany(deliveryLocationHistoryFindManyArgs);
   }
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async findFirst(deliveryLocationHistoryFindFirstArgs: Prisma.DeliveryLocationHistoryFindFirstArgs) {
+    return await this.deliveryLocationHistoryService.findFirst(deliveryLocationHistoryFindFirstArgs);
   }
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async updateOne(deliveryLocationHistoryUpdateOneArgs: Prisma.DeliveryLocationHistoryUpdateArgs) {
+    return await this.deliveryLocationHistoryService.updateOne(deliveryLocationHistoryUpdateOneArgs);
   }
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async updateMany(deliveryLocationHistoryUpdateManyArgs: Prisma.DeliveryLocationHistoryUpdateManyArgs) {
+    return await this.deliveryLocationHistoryService.updateMany(deliveryLocationHistoryUpdateManyArgs);
   }
 
-  deliverylocationhistory deliverylocationhistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.deliverylocationhistory(DeliveryLocationHistory);
+  async delete(deliveryLocationHistoryDeleteArgs: Prisma.DeliveryLocationHistoryDeleteArgs) {
+    return await this.deliveryLocationHistoryService.delete(deliveryLocationHistoryDeleteArgs);
   }
 
-  deliverylocationhistory DeliveryLocationHistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async deleteMany(deliveryLocationHistoryDeleteManyArgs: Prisma.DeliveryLocationHistoryDeleteManyArgs) {
+    return await this.deliveryLocationHistoryService.deleteMany(deliveryLocationHistoryDeleteManyArgs);
   }
 
-  deliverylocationhistory deliverylocationhistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.deliverylocationhistory(DeliveryLocationHistory);
+  async aggregate(deliveryLocationHistoryAggregateArgs: Prisma.DeliveryLocationHistoryAggregateArgs) {
+    return await this.deliveryLocationHistoryService.aggregate(deliveryLocationHistoryAggregateArgs);
   }
 
-  deliverylocationhistory deliverylocationhistory(DeliveryLocationHistory: DeliveryLocationHistory.DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.deliverylocationhistory(DeliveryLocationHistory);
+  async count(deliveryLocationHistoryCountArgs: Prisma.DeliveryLocationHistoryCountArgs) {
+    return await this.deliveryLocationHistoryService.count(deliveryLocationHistoryCountArgs);
   }
 }

@@ -1,52 +1,52 @@
-address { Address } address '@address/address';
-address { Address } address '@address/address';
-address { Address } address './address.address';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { AddressService } from './address.service';
 
-@Address()
-address address Address {
-  address(address address Address: Address) {}
+@Injectable()
+export class AddressController {
+  constructor(private readonly addressService: AddressService) {}
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async createOne(addressCreateArgs: Prisma.AddressCreateArgs) {
+    return await this.addressService.createOne(addressCreateArgs);
   }
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async createMany(addressCreateManyArgs: Prisma.AddressCreateManyArgs) {
+    return await this.addressService.createMany(addressCreateManyArgs);
   }
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async findOne(addressFindUniqueArgs: Prisma.AddressFindUniqueArgs) {
+    return await this.addressService.findOne(addressFindUniqueArgs);
   }
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async findMany(addressFindManyArgs: Prisma.AddressFindManyArgs) {
+    return await this.addressService.findMany(addressFindManyArgs);
   }
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async findFirst(addressFindFirstArgs: Prisma.AddressFindFirstArgs) {
+    return await this.addressService.findFirst(addressFindFirstArgs);
   }
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async updateOne(addressUpdateOneArgs: Prisma.AddressUpdateArgs) {
+    return await this.addressService.updateOne(addressUpdateOneArgs);
   }
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async updateMany(addressUpdateManyArgs: Prisma.AddressUpdateManyArgs) {
+    return await this.addressService.updateMany(addressUpdateManyArgs);
   }
 
-  address address(Address: Address.Address) {
-    address address address.Address.address(Address);
+  async delete(addressDeleteArgs: Prisma.AddressDeleteArgs) {
+    return await this.addressService.delete(addressDeleteArgs);
   }
 
-  address Address(Address: Address.Address) {
-    address address address.Address.Address(Address);
+  async deleteMany(addressDeleteManyArgs: Prisma.AddressDeleteManyArgs) {
+    return await this.addressService.deleteMany(addressDeleteManyArgs);
   }
 
-  address address(Address: Address.Address) {
-    address address address.Address.address(Address);
+  async aggregate(addressAggregateArgs: Prisma.AddressAggregateArgs) {
+    return await this.addressService.aggregate(addressAggregateArgs);
   }
 
-  address address(Address: Address.Address) {
-    address address address.Address.address(Address);
+  async count(addressCountArgs: Prisma.AddressCountArgs) {
+    return await this.addressService.count(addressCountArgs);
   }
 }

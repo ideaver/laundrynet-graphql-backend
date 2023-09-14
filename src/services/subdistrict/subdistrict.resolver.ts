@@ -1,160 +1,160 @@
-// @subdistrict-subdistrict
-subdistrict { Subdistrict, Subdistrict, Subdistrict, Subdistrict, Subdistrict } subdistrict '@subdistrict/subdistrict';
-subdistrict { Subdistrict } subdistrict '@subdistrict/subdistrict';
-subdistrict { Subdistrict } subdistrict 'subdistrict/subdistrict/subdistrict.subdistrict';
-subdistrict {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateSubdistrict,
+  CreateManySubdistrictArgs,
+  CreateOneSubdistrictArgs,
+  DeleteManySubdistrictArgs,
+  DeleteOneSubdistrictArgs,
+  FindFirstSubdistrictArgs,
+  FindManySubdistrictArgs,
+  FindUniqueSubdistrictArgs,
   Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-  Subdistrict,
-} subdistrict 'subdistrict/@subdistrict';
-subdistrict { Subdistrict } subdistrict './subdistrict.subdistrict';
-subdistrict { Subdistrict } subdistrict 'subdistrict/subdistrict/subdistrict-subdistrict-subdistrict-subdistrict.subdistrict';
-subdistrict Subdistrict subdistrict 'subdistrict/subdistrict/subdistrict-subdistrict.subdistrict';
+  SubdistrictAggregateArgs,
+  UpdateManySubdistrictArgs,
+  UpdateOneSubdistrictArgs,
+} from 'src/@generated';
+import { SubdistrictController } from './subdistrict.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-subdistrict Subdistrict {
-  subdistrict: Subdistrict.Subdistrict;
+interface SubdistrictSelect {
+  select: Prisma.SubdistrictSelect;
 }
 
-@Subdistrict(() => Subdistrict)
-subdistrict subdistrict Subdistrict {
-  subdistrict(subdistrict subdistrict Subdistrict: Subdistrict) {}
+@Resolver(() => Subdistrict)
+export class SubdistrictResolver {
+  constructor(private readonly subdistrictController: SubdistrictController) {}
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Mutation(() => Subdistrict, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  subdistrict Subdistrict(
-    @Subdistrict()
-    Subdistrict: Subdistrict,
-    @Subdistrict() subdistrict: Subdistrict,
-  ): Subdistrict<Subdistrict | subdistrict> {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict({
-      ...Subdistrict,
-      subdistrict: subdistrict.subdistrict,
+  async subdistrictCreateOne(
+    @Args()
+    subdistrictCreateArgs: CreateOneSubdistrictArgs,
+    @Relations() relations: SubdistrictSelect,
+  ): Promise<Subdistrict | void> {
+    return await this.subdistrictController.createOne({
+      ...subdistrictCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  subdistrict Subdistrict(
-    @Subdistrict()
-    Subdistrict: Subdistrict,
+  async subdistrictCreateMany(
+    @Args()
+    createManySubdistrictArgs: CreateManySubdistrictArgs,
   ) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+    return await this.subdistrictController.createMany(createManySubdistrictArgs);
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Query(() => Subdistrict, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Subdistrict(
-    @Subdistrict()
-    Subdistrict: Subdistrict,
-    @Subdistrict() subdistrict: Subdistrict,
-  ): Subdistrict<Subdistrict | subdistrict> {
-    subdistrict subdistrict.Subdistrict.Subdistrict({
-      ...Subdistrict,
-      subdistrict: subdistrict.subdistrict,
+  subdistrictFindOne(
+    @Args()
+    subdistrictFindUniqueArgs: FindUniqueSubdistrictArgs,
+    @Relations() relations: SubdistrictSelect,
+  ): Promise<Subdistrict | void> {
+    return this.subdistrictController.findOne({
+      ...subdistrictFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Subdistrict(() => [Subdistrict], {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Query(() => [Subdistrict], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Subdistrict(
-    @Subdistrict() Subdistrict: Subdistrict,
-    @Subdistrict() subdistrict: Subdistrict,
+  subdistrictFindMany(
+    @Args() subdistrictFindManyArgs: FindManySubdistrictArgs,
+    @Relations() relations: SubdistrictSelect,
   ) {
-    subdistrict subdistrict.Subdistrict.Subdistrict({
-      ...Subdistrict,
-      subdistrict: subdistrict.subdistrict,
+    return this.subdistrictController.findMany({
+      ...subdistrictFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Query(() => Subdistrict, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Subdistrict(
-    @Subdistrict()
-    Subdistrict: Subdistrict,
-    @Subdistrict() subdistrict: Subdistrict,
-  ): Subdistrict<Subdistrict | subdistrict> {
-    subdistrict subdistrict.Subdistrict.Subdistrict({
-      ...Subdistrict,
-      subdistrict: subdistrict.subdistrict,
+  subdistrictFindFirst(
+    @Args()
+    findFirstSubdistrictArgs: FindFirstSubdistrictArgs,
+    @Relations() relations: SubdistrictSelect,
+  ): Promise<Subdistrict | void> {
+    return this.subdistrictController.findFirst({
+      ...findFirstSubdistrictArgs,
+      select: relations.select,
     });
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Mutation(() => Subdistrict, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  subdistrict Subdistrict(
-    @Subdistrict() Subdistrict: Subdistrict,
-    @Subdistrict() subdistrict: Subdistrict,
+  async subdistrictUpdateOne(
+    @Args() subdistrictUpdateOneArgs: UpdateOneSubdistrictArgs,
+    @Relations() relations: SubdistrictSelect,
   ) {
-    subdistrict subdistrict.Subdistrict.Subdistrict({
-      ...Subdistrict(Subdistrict),
-      subdistrict: subdistrict.subdistrict,
+    return this.subdistrictController.updateOne({
+      ...replaceNullWithUndefined(subdistrictUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Mutation(() => Subdistrict, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  subdistrict Subdistrict(@Subdistrict() Subdistrict: Subdistrict) {
-    subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async subdistrictUpdateMany(@Args() updateManySubdistrictArgs: UpdateManySubdistrictArgs) {
+    return this.subdistrictController.updateMany(updateManySubdistrictArgs);
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  subdistrict Subdistrict(
-    @Subdistrict() Subdistrict: Subdistrict,
-    @Subdistrict() subdistrict: Subdistrict,
+  async subdistrictDelete(
+    @Args() deleteOneSubdistrictArgs: DeleteOneSubdistrictArgs,
+    @Relations() relations: SubdistrictSelect,
   ) {
-    subdistrict subdistrict.Subdistrict.subdistrict({
-      ...Subdistrict,
-      subdistrict: subdistrict.subdistrict,
+    return this.subdistrictController.delete({
+      ...deleteOneSubdistrictArgs,
+      select: relations.select,
     });
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  subdistrict Subdistrict(@Subdistrict() Subdistrict: Subdistrict) {
-    subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async subdistrictDeleteMany(@Args() deleteManySubdistrictArgs: DeleteManySubdistrictArgs) {
+    return this.subdistrictController.deleteMany(deleteManySubdistrictArgs);
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Query(() => AggregateSubdistrict, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Subdistrict(@Subdistrict() Subdistrict: Subdistrict) {
-    subdistrict subdistrict.Subdistrict.subdistrict(Subdistrict);
+  subdistrictAggregate(@Args() subdistrictAggregateArgs: SubdistrictAggregateArgs) {
+    return this.subdistrictController.aggregate(subdistrictAggregateArgs);
   }
 
-  @Subdistrict(() => Subdistrict, {
-    subdistrict: subdistrict,
-    subdistrict: 'Subdistrict subdistrict subdistrict subdistrict',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Subdistrict(@Subdistrict() Subdistrict: Subdistrict) {
-    subdistrict subdistrict.Subdistrict.subdistrict(Subdistrict);
+  subdistrictCount(@Args() subdistrictCountAggregateInput: FindManySubdistrictArgs) {
+    return this.subdistrictController.count(subdistrictCountAggregateInput);
   }
 }

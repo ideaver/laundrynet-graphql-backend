@@ -1,52 +1,52 @@
-review { Review } review '@review/review';
-review { Review } review '@review/review';
-review { Review } review './review.review';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ReviewService } from './review.service';
 
-@Review()
-review review Review {
-  review(review review Review: Review) {}
+@Injectable()
+export class ReviewController {
+  constructor(private readonly reviewService: ReviewService) {}
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async createOne(reviewCreateArgs: Prisma.ReviewCreateArgs) {
+    return await this.reviewService.createOne(reviewCreateArgs);
   }
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async createMany(reviewCreateManyArgs: Prisma.ReviewCreateManyArgs) {
+    return await this.reviewService.createMany(reviewCreateManyArgs);
   }
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async findOne(reviewFindUniqueArgs: Prisma.ReviewFindUniqueArgs) {
+    return await this.reviewService.findOne(reviewFindUniqueArgs);
   }
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async findMany(reviewFindManyArgs: Prisma.ReviewFindManyArgs) {
+    return await this.reviewService.findMany(reviewFindManyArgs);
   }
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async findFirst(reviewFindFirstArgs: Prisma.ReviewFindFirstArgs) {
+    return await this.reviewService.findFirst(reviewFindFirstArgs);
   }
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async updateOne(reviewUpdateOneArgs: Prisma.ReviewUpdateArgs) {
+    return await this.reviewService.updateOne(reviewUpdateOneArgs);
   }
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async updateMany(reviewUpdateManyArgs: Prisma.ReviewUpdateManyArgs) {
+    return await this.reviewService.updateMany(reviewUpdateManyArgs);
   }
 
-  review review(Review: Review.Review) {
-    review review review.Review.review(Review);
+  async delete(reviewDeleteArgs: Prisma.ReviewDeleteArgs) {
+    return await this.reviewService.delete(reviewDeleteArgs);
   }
 
-  review Review(Review: Review.Review) {
-    review review review.Review.Review(Review);
+  async deleteMany(reviewDeleteManyArgs: Prisma.ReviewDeleteManyArgs) {
+    return await this.reviewService.deleteMany(reviewDeleteManyArgs);
   }
 
-  review review(Review: Review.Review) {
-    review review review.Review.review(Review);
+  async aggregate(reviewAggregateArgs: Prisma.ReviewAggregateArgs) {
+    return await this.reviewService.aggregate(reviewAggregateArgs);
   }
 
-  review review(Review: Review.Review) {
-    review review review.Review.review(Review);
+  async count(reviewCountArgs: Prisma.ReviewCountArgs) {
+    return await this.reviewService.count(reviewCountArgs);
   }
 }

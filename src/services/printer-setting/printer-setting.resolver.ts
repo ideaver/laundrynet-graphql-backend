@@ -1,160 +1,160 @@
-// @printersetting-printersetting
-printersetting { PrinterSetting, PrinterSetting, PrinterSetting, PrinterSetting, PrinterSetting } printersetting '@printersetting/printersetting';
-printersetting { PrinterSetting } printersetting '@printersetting/printersetting';
-printersetting { PrinterSetting } printersetting 'printersetting/printersetting/printersetting.printersetting';
-printersetting {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregatePrinterSetting,
+  CreateManyPrinterSettingArgs,
+  CreateOnePrinterSettingArgs,
+  DeleteManyPrinterSettingArgs,
+  DeleteOnePrinterSettingArgs,
+  FindFirstPrinterSettingArgs,
+  FindManyPrinterSettingArgs,
+  FindUniquePrinterSettingArgs,
   PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-  PrinterSetting,
-} printersetting 'printersetting/@printersetting';
-printersetting { PrinterSetting } printersetting './printersetting.printersetting';
-printersetting { PrinterSetting } printersetting 'printersetting/printersetting/printersetting-printersetting-printersetting-printersetting.printersetting';
-printersetting PrinterSetting printersetting 'printersetting/printersetting/printersetting-printersetting.printersetting';
+  PrinterSettingAggregateArgs,
+  UpdateManyPrinterSettingArgs,
+  UpdateOnePrinterSettingArgs,
+} from 'src/@generated';
+import { PrinterSettingController } from './printerSetting.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-printersetting PrinterSetting {
-  printersetting: PrinterSetting.PrinterSetting;
+interface PrinterSettingSelect {
+  select: Prisma.PrinterSettingSelect;
 }
 
-@PrinterSetting(() => PrinterSetting)
-printersetting printersetting PrinterSetting {
-  printersetting(printersetting printersetting PrinterSetting: PrinterSetting) {}
+@Resolver(() => PrinterSetting)
+export class PrinterSettingResolver {
+  constructor(private readonly printerSettingController: PrinterSettingController) {}
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Mutation(() => PrinterSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printersetting PrinterSetting(
-    @PrinterSetting()
-    PrinterSetting: PrinterSetting,
-    @PrinterSetting() printersetting: PrinterSetting,
-  ): PrinterSetting<PrinterSetting | printersetting> {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting({
-      ...PrinterSetting,
-      printersetting: printersetting.printersetting,
+  async printerSettingCreateOne(
+    @Args()
+    printerSettingCreateArgs: CreateOnePrinterSettingArgs,
+    @Relations() relations: PrinterSettingSelect,
+  ): Promise<PrinterSetting | void> {
+    return await this.printerSettingController.createOne({
+      ...printerSettingCreateArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printersetting PrinterSetting(
-    @PrinterSetting()
-    PrinterSetting: PrinterSetting,
+  async printerSettingCreateMany(
+    @Args()
+    createManyPrinterSettingArgs: CreateManyPrinterSettingArgs,
   ) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+    return await this.printerSettingController.createMany(createManyPrinterSettingArgs);
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Query(() => PrinterSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterSetting(
-    @PrinterSetting()
-    PrinterSetting: PrinterSetting,
-    @PrinterSetting() printersetting: PrinterSetting,
-  ): PrinterSetting<PrinterSetting | printersetting> {
-    printersetting printersetting.PrinterSetting.PrinterSetting({
-      ...PrinterSetting,
-      printersetting: printersetting.printersetting,
+  printerSettingFindOne(
+    @Args()
+    printerSettingFindUniqueArgs: FindUniquePrinterSettingArgs,
+    @Relations() relations: PrinterSettingSelect,
+  ): Promise<PrinterSetting | void> {
+    return this.printerSettingController.findOne({
+      ...printerSettingFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterSetting(() => [PrinterSetting], {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Query(() => [PrinterSetting], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterSetting(
-    @PrinterSetting() PrinterSetting: PrinterSetting,
-    @PrinterSetting() printersetting: PrinterSetting,
+  printerSettingFindMany(
+    @Args() printerSettingFindManyArgs: FindManyPrinterSettingArgs,
+    @Relations() relations: PrinterSettingSelect,
   ) {
-    printersetting printersetting.PrinterSetting.PrinterSetting({
-      ...PrinterSetting,
-      printersetting: printersetting.printersetting,
+    return this.printerSettingController.findMany({
+      ...printerSettingFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Query(() => PrinterSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterSetting(
-    @PrinterSetting()
-    PrinterSetting: PrinterSetting,
-    @PrinterSetting() printersetting: PrinterSetting,
-  ): PrinterSetting<PrinterSetting | printersetting> {
-    printersetting printersetting.PrinterSetting.PrinterSetting({
-      ...PrinterSetting,
-      printersetting: printersetting.printersetting,
+  printerSettingFindFirst(
+    @Args()
+    findFirstPrinterSettingArgs: FindFirstPrinterSettingArgs,
+    @Relations() relations: PrinterSettingSelect,
+  ): Promise<PrinterSetting | void> {
+    return this.printerSettingController.findFirst({
+      ...findFirstPrinterSettingArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Mutation(() => PrinterSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printersetting PrinterSetting(
-    @PrinterSetting() PrinterSetting: PrinterSetting,
-    @PrinterSetting() printersetting: PrinterSetting,
+  async printerSettingUpdateOne(
+    @Args() printerSettingUpdateOneArgs: UpdateOnePrinterSettingArgs,
+    @Relations() relations: PrinterSettingSelect,
   ) {
-    printersetting printersetting.PrinterSetting.PrinterSetting({
-      ...PrinterSetting(PrinterSetting),
-      printersetting: printersetting.printersetting,
+    return this.printerSettingController.updateOne({
+      ...replaceNullWithUndefined(printerSettingUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Mutation(() => PrinterSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printersetting PrinterSetting(@PrinterSetting() PrinterSetting: PrinterSetting) {
-    printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async printerSettingUpdateMany(@Args() updateManyPrinterSettingArgs: UpdateManyPrinterSettingArgs) {
+    return this.printerSettingController.updateMany(updateManyPrinterSettingArgs);
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  printersetting PrinterSetting(
-    @PrinterSetting() PrinterSetting: PrinterSetting,
-    @PrinterSetting() printersetting: PrinterSetting,
+  async printerSettingDelete(
+    @Args() deleteOnePrinterSettingArgs: DeleteOnePrinterSettingArgs,
+    @Relations() relations: PrinterSettingSelect,
   ) {
-    printersetting printersetting.PrinterSetting.printersetting({
-      ...PrinterSetting,
-      printersetting: printersetting.printersetting,
+    return this.printerSettingController.delete({
+      ...deleteOnePrinterSettingArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  printersetting PrinterSetting(@PrinterSetting() PrinterSetting: PrinterSetting) {
-    printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async printerSettingDeleteMany(@Args() deleteManyPrinterSettingArgs: DeleteManyPrinterSettingArgs) {
+    return this.printerSettingController.deleteMany(deleteManyPrinterSettingArgs);
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Query(() => AggregatePrinterSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterSetting(@PrinterSetting() PrinterSetting: PrinterSetting) {
-    printersetting printersetting.PrinterSetting.printersetting(PrinterSetting);
+  printerSettingAggregate(@Args() printerSettingAggregateArgs: PrinterSettingAggregateArgs) {
+    return this.printerSettingController.aggregate(printerSettingAggregateArgs);
   }
 
-  @PrinterSetting(() => PrinterSetting, {
-    printersetting: printersetting,
-    printersetting: 'PrinterSetting printersetting printersetting printersetting',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterSetting(@PrinterSetting() PrinterSetting: PrinterSetting) {
-    printersetting printersetting.PrinterSetting.printersetting(PrinterSetting);
+  printerSettingCount(@Args() printerSettingCountAggregateInput: FindManyPrinterSettingArgs) {
+    return this.printerSettingController.count(printerSettingCountAggregateInput);
   }
 }

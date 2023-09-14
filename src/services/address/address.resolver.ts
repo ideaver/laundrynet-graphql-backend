@@ -1,160 +1,160 @@
-// @address-address
-address { Address, Address, Address, Address, Address } address '@address/address';
-address { Address } address '@address/address';
-address { Address } address 'address/address/address.address';
-address {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateAddress,
+  CreateManyAddressArgs,
+  CreateOneAddressArgs,
+  DeleteManyAddressArgs,
+  DeleteOneAddressArgs,
+  FindFirstAddressArgs,
+  FindManyAddressArgs,
+  FindUniqueAddressArgs,
   Address,
-  Address,
-  Address,
-  Address,
-  Address,
-  Address,
-  Address,
-  Address,
-  Address,
-  Address,
-  Address,
-  Address,
-} address 'address/@address';
-address { Address } address './address.address';
-address { Address } address 'address/address/address-address-address-address.address';
-address Address address 'address/address/address-address.address';
+  AddressAggregateArgs,
+  UpdateManyAddressArgs,
+  UpdateOneAddressArgs,
+} from 'src/@generated';
+import { AddressController } from './address.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-address Address {
-  address: Address.Address;
+interface AddressSelect {
+  select: Prisma.AddressSelect;
 }
 
-@Address(() => Address)
-address address Address {
-  address(address address Address: Address) {}
+@Resolver(() => Address)
+export class AddressResolver {
+  constructor(private readonly addressController: AddressController) {}
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Mutation(() => Address, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  address Address(
-    @Address()
-    Address: Address,
-    @Address() address: Address,
-  ): Address<Address | address> {
-    address address address.Address.Address({
-      ...Address,
-      address: address.address,
+  async addressCreateOne(
+    @Args()
+    addressCreateArgs: CreateOneAddressArgs,
+    @Relations() relations: AddressSelect,
+  ): Promise<Address | void> {
+    return await this.addressController.createOne({
+      ...addressCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  address Address(
-    @Address()
-    Address: Address,
+  async addressCreateMany(
+    @Args()
+    createManyAddressArgs: CreateManyAddressArgs,
   ) {
-    address address address.Address.Address(Address);
+    return await this.addressController.createMany(createManyAddressArgs);
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Query(() => Address, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Address(
-    @Address()
-    Address: Address,
-    @Address() address: Address,
-  ): Address<Address | address> {
-    address address.Address.Address({
-      ...Address,
-      address: address.address,
+  addressFindOne(
+    @Args()
+    addressFindUniqueArgs: FindUniqueAddressArgs,
+    @Relations() relations: AddressSelect,
+  ): Promise<Address | void> {
+    return this.addressController.findOne({
+      ...addressFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Address(() => [Address], {
-    address: address,
-    address: 'Address address address address',
+  @Query(() => [Address], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Address(
-    @Address() Address: Address,
-    @Address() address: Address,
+  addressFindMany(
+    @Args() addressFindManyArgs: FindManyAddressArgs,
+    @Relations() relations: AddressSelect,
   ) {
-    address address.Address.Address({
-      ...Address,
-      address: address.address,
+    return this.addressController.findMany({
+      ...addressFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Query(() => Address, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Address(
-    @Address()
-    Address: Address,
-    @Address() address: Address,
-  ): Address<Address | address> {
-    address address.Address.Address({
-      ...Address,
-      address: address.address,
+  addressFindFirst(
+    @Args()
+    findFirstAddressArgs: FindFirstAddressArgs,
+    @Relations() relations: AddressSelect,
+  ): Promise<Address | void> {
+    return this.addressController.findFirst({
+      ...findFirstAddressArgs,
+      select: relations.select,
     });
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Mutation(() => Address, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  address Address(
-    @Address() Address: Address,
-    @Address() address: Address,
+  async addressUpdateOne(
+    @Args() addressUpdateOneArgs: UpdateOneAddressArgs,
+    @Relations() relations: AddressSelect,
   ) {
-    address address.Address.Address({
-      ...Address(Address),
-      address: address.address,
+    return this.addressController.updateOne({
+      ...replaceNullWithUndefined(addressUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Mutation(() => Address, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  address Address(@Address() Address: Address) {
-    address address.Address.Address(Address);
+  async addressUpdateMany(@Args() updateManyAddressArgs: UpdateManyAddressArgs) {
+    return this.addressController.updateMany(updateManyAddressArgs);
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  address Address(
-    @Address() Address: Address,
-    @Address() address: Address,
+  async addressDelete(
+    @Args() deleteOneAddressArgs: DeleteOneAddressArgs,
+    @Relations() relations: AddressSelect,
   ) {
-    address address.Address.address({
-      ...Address,
-      address: address.address,
+    return this.addressController.delete({
+      ...deleteOneAddressArgs,
+      select: relations.select,
     });
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  address Address(@Address() Address: Address) {
-    address address.Address.Address(Address);
+  async addressDeleteMany(@Args() deleteManyAddressArgs: DeleteManyAddressArgs) {
+    return this.addressController.deleteMany(deleteManyAddressArgs);
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Query(() => AggregateAddress, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Address(@Address() Address: Address) {
-    address address.Address.address(Address);
+  addressAggregate(@Args() addressAggregateArgs: AddressAggregateArgs) {
+    return this.addressController.aggregate(addressAggregateArgs);
   }
 
-  @Address(() => Address, {
-    address: address,
-    address: 'Address address address address',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Address(@Address() Address: Address) {
-    address address.Address.address(Address);
+  addressCount(@Args() addressCountAggregateInput: FindManyAddressArgs) {
+    return this.addressController.count(addressCountAggregateInput);
   }
 }

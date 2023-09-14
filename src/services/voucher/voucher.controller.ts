@@ -1,52 +1,52 @@
-voucher { Voucher } voucher '@voucher/voucher';
-voucher { Voucher } voucher '@voucher/voucher';
-voucher { Voucher } voucher './voucher.voucher';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { VoucherService } from './voucher.service';
 
-@Voucher()
-voucher voucher Voucher {
-  voucher(voucher voucher Voucher: Voucher) {}
+@Injectable()
+export class VoucherController {
+  constructor(private readonly voucherService: VoucherService) {}
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async createOne(voucherCreateArgs: Prisma.VoucherCreateArgs) {
+    return await this.voucherService.createOne(voucherCreateArgs);
   }
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async createMany(voucherCreateManyArgs: Prisma.VoucherCreateManyArgs) {
+    return await this.voucherService.createMany(voucherCreateManyArgs);
   }
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async findOne(voucherFindUniqueArgs: Prisma.VoucherFindUniqueArgs) {
+    return await this.voucherService.findOne(voucherFindUniqueArgs);
   }
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async findMany(voucherFindManyArgs: Prisma.VoucherFindManyArgs) {
+    return await this.voucherService.findMany(voucherFindManyArgs);
   }
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async findFirst(voucherFindFirstArgs: Prisma.VoucherFindFirstArgs) {
+    return await this.voucherService.findFirst(voucherFindFirstArgs);
   }
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async updateOne(voucherUpdateOneArgs: Prisma.VoucherUpdateArgs) {
+    return await this.voucherService.updateOne(voucherUpdateOneArgs);
   }
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async updateMany(voucherUpdateManyArgs: Prisma.VoucherUpdateManyArgs) {
+    return await this.voucherService.updateMany(voucherUpdateManyArgs);
   }
 
-  voucher voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.voucher(Voucher);
+  async delete(voucherDeleteArgs: Prisma.VoucherDeleteArgs) {
+    return await this.voucherService.delete(voucherDeleteArgs);
   }
 
-  voucher Voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+  async deleteMany(voucherDeleteManyArgs: Prisma.VoucherDeleteManyArgs) {
+    return await this.voucherService.deleteMany(voucherDeleteManyArgs);
   }
 
-  voucher voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.voucher(Voucher);
+  async aggregate(voucherAggregateArgs: Prisma.VoucherAggregateArgs) {
+    return await this.voucherService.aggregate(voucherAggregateArgs);
   }
 
-  voucher voucher(Voucher: Voucher.Voucher) {
-    voucher voucher voucher.Voucher.voucher(Voucher);
+  async count(voucherCountArgs: Prisma.VoucherCountArgs) {
+    return await this.voucherService.count(voucherCountArgs);
   }
 }

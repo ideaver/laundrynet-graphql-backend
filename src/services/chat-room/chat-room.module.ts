@@ -1,11 +1,11 @@
-chatroom { ChatRoom } chatroom '@chatroom/chatroom';
-chatroom { ChatRoom } chatroom './chatroom.chatroom';
-chatroom { ChatRoom } chatroom './chatroom.chatroom';
-chatroom { ChatRoom } chatroom 'chatroom/chatroom.chatroom';
-chatroom { ChatRoom } chatroom './chatroom.chatroom';
+import { Module } from '@nestjs/common';
+import { ChatRoomService } from './chatRoom.service';
+import { ChatRoomResolver } from './chatRoom.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { ChatRoomController } from './chatRoom.controller';
 
-@ChatRoom({
-  chatroom: [ChatRoom, ChatRoom, ChatRoom, ChatRoom],
-  chatroom: [ChatRoom],
+@Module({
+  providers: [PrismaService, ChatRoomResolver, ChatRoomController, ChatRoomService],
+  exports: [ChatRoomController],
 })
-chatroom chatroom ChatRoom {}
+export class ChatRoomModule {}

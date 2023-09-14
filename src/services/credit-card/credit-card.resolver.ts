@@ -1,160 +1,160 @@
-// @creditcard-creditcard
-creditcard { CreditCard, CreditCard, CreditCard, CreditCard, CreditCard } creditcard '@creditcard/creditcard';
-creditcard { CreditCard } creditcard '@creditcard/creditcard';
-creditcard { CreditCard } creditcard 'creditcard/creditcard/creditcard.creditcard';
-creditcard {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateCreditCard,
+  CreateManyCreditCardArgs,
+  CreateOneCreditCardArgs,
+  DeleteManyCreditCardArgs,
+  DeleteOneCreditCardArgs,
+  FindFirstCreditCardArgs,
+  FindManyCreditCardArgs,
+  FindUniqueCreditCardArgs,
   CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-  CreditCard,
-} creditcard 'creditcard/@creditcard';
-creditcard { CreditCard } creditcard './creditcard.creditcard';
-creditcard { CreditCard } creditcard 'creditcard/creditcard/creditcard-creditcard-creditcard-creditcard.creditcard';
-creditcard CreditCard creditcard 'creditcard/creditcard/creditcard-creditcard.creditcard';
+  CreditCardAggregateArgs,
+  UpdateManyCreditCardArgs,
+  UpdateOneCreditCardArgs,
+} from 'src/@generated';
+import { CreditCardController } from './creditCard.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-creditcard CreditCard {
-  creditcard: CreditCard.CreditCard;
+interface CreditCardSelect {
+  select: Prisma.CreditCardSelect;
 }
 
-@CreditCard(() => CreditCard)
-creditcard creditcard CreditCard {
-  creditcard(creditcard creditcard CreditCard: CreditCard) {}
+@Resolver(() => CreditCard)
+export class CreditCardResolver {
+  constructor(private readonly creditCardController: CreditCardController) {}
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Mutation(() => CreditCard, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  creditcard CreditCard(
-    @CreditCard()
-    CreditCard: CreditCard,
-    @CreditCard() creditcard: CreditCard,
-  ): CreditCard<CreditCard | creditcard> {
-    creditcard creditcard creditcard.CreditCard.CreditCard({
-      ...CreditCard,
-      creditcard: creditcard.creditcard,
+  async creditCardCreateOne(
+    @Args()
+    creditCardCreateArgs: CreateOneCreditCardArgs,
+    @Relations() relations: CreditCardSelect,
+  ): Promise<CreditCard | void> {
+    return await this.creditCardController.createOne({
+      ...creditCardCreateArgs,
+      select: relations.select,
     });
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  creditcard CreditCard(
-    @CreditCard()
-    CreditCard: CreditCard,
+  async creditCardCreateMany(
+    @Args()
+    createManyCreditCardArgs: CreateManyCreditCardArgs,
   ) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+    return await this.creditCardController.createMany(createManyCreditCardArgs);
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Query(() => CreditCard, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  CreditCard(
-    @CreditCard()
-    CreditCard: CreditCard,
-    @CreditCard() creditcard: CreditCard,
-  ): CreditCard<CreditCard | creditcard> {
-    creditcard creditcard.CreditCard.CreditCard({
-      ...CreditCard,
-      creditcard: creditcard.creditcard,
+  creditCardFindOne(
+    @Args()
+    creditCardFindUniqueArgs: FindUniqueCreditCardArgs,
+    @Relations() relations: CreditCardSelect,
+  ): Promise<CreditCard | void> {
+    return this.creditCardController.findOne({
+      ...creditCardFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @CreditCard(() => [CreditCard], {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Query(() => [CreditCard], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  CreditCard(
-    @CreditCard() CreditCard: CreditCard,
-    @CreditCard() creditcard: CreditCard,
+  creditCardFindMany(
+    @Args() creditCardFindManyArgs: FindManyCreditCardArgs,
+    @Relations() relations: CreditCardSelect,
   ) {
-    creditcard creditcard.CreditCard.CreditCard({
-      ...CreditCard,
-      creditcard: creditcard.creditcard,
+    return this.creditCardController.findMany({
+      ...creditCardFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Query(() => CreditCard, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  CreditCard(
-    @CreditCard()
-    CreditCard: CreditCard,
-    @CreditCard() creditcard: CreditCard,
-  ): CreditCard<CreditCard | creditcard> {
-    creditcard creditcard.CreditCard.CreditCard({
-      ...CreditCard,
-      creditcard: creditcard.creditcard,
+  creditCardFindFirst(
+    @Args()
+    findFirstCreditCardArgs: FindFirstCreditCardArgs,
+    @Relations() relations: CreditCardSelect,
+  ): Promise<CreditCard | void> {
+    return this.creditCardController.findFirst({
+      ...findFirstCreditCardArgs,
+      select: relations.select,
     });
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Mutation(() => CreditCard, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  creditcard CreditCard(
-    @CreditCard() CreditCard: CreditCard,
-    @CreditCard() creditcard: CreditCard,
+  async creditCardUpdateOne(
+    @Args() creditCardUpdateOneArgs: UpdateOneCreditCardArgs,
+    @Relations() relations: CreditCardSelect,
   ) {
-    creditcard creditcard.CreditCard.CreditCard({
-      ...CreditCard(CreditCard),
-      creditcard: creditcard.creditcard,
+    return this.creditCardController.updateOne({
+      ...replaceNullWithUndefined(creditCardUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Mutation(() => CreditCard, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  creditcard CreditCard(@CreditCard() CreditCard: CreditCard) {
-    creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async creditCardUpdateMany(@Args() updateManyCreditCardArgs: UpdateManyCreditCardArgs) {
+    return this.creditCardController.updateMany(updateManyCreditCardArgs);
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  creditcard CreditCard(
-    @CreditCard() CreditCard: CreditCard,
-    @CreditCard() creditcard: CreditCard,
+  async creditCardDelete(
+    @Args() deleteOneCreditCardArgs: DeleteOneCreditCardArgs,
+    @Relations() relations: CreditCardSelect,
   ) {
-    creditcard creditcard.CreditCard.creditcard({
-      ...CreditCard,
-      creditcard: creditcard.creditcard,
+    return this.creditCardController.delete({
+      ...deleteOneCreditCardArgs,
+      select: relations.select,
     });
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  creditcard CreditCard(@CreditCard() CreditCard: CreditCard) {
-    creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async creditCardDeleteMany(@Args() deleteManyCreditCardArgs: DeleteManyCreditCardArgs) {
+    return this.creditCardController.deleteMany(deleteManyCreditCardArgs);
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Query(() => AggregateCreditCard, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  CreditCard(@CreditCard() CreditCard: CreditCard) {
-    creditcard creditcard.CreditCard.creditcard(CreditCard);
+  creditCardAggregate(@Args() creditCardAggregateArgs: CreditCardAggregateArgs) {
+    return this.creditCardController.aggregate(creditCardAggregateArgs);
   }
 
-  @CreditCard(() => CreditCard, {
-    creditcard: creditcard,
-    creditcard: 'CreditCard creditcard creditcard creditcard',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  CreditCard(@CreditCard() CreditCard: CreditCard) {
-    creditcard creditcard.CreditCard.creditcard(CreditCard);
+  creditCardCount(@Args() creditCardCountAggregateInput: FindManyCreditCardArgs) {
+    return this.creditCardController.count(creditCardCountAggregateInput);
   }
 }

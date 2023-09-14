@@ -1,160 +1,160 @@
-// @stocktransaction-stocktransaction
-stocktransaction { StockTransaction, StockTransaction, StockTransaction, StockTransaction, StockTransaction } stocktransaction '@stocktransaction/stocktransaction';
-stocktransaction { StockTransaction } stocktransaction '@stocktransaction/stocktransaction';
-stocktransaction { StockTransaction } stocktransaction 'stocktransaction/stocktransaction/stocktransaction.stocktransaction';
-stocktransaction {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateStockTransaction,
+  CreateManyStockTransactionArgs,
+  CreateOneStockTransactionArgs,
+  DeleteManyStockTransactionArgs,
+  DeleteOneStockTransactionArgs,
+  FindFirstStockTransactionArgs,
+  FindManyStockTransactionArgs,
+  FindUniqueStockTransactionArgs,
   StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-  StockTransaction,
-} stocktransaction 'stocktransaction/@stocktransaction';
-stocktransaction { StockTransaction } stocktransaction './stocktransaction.stocktransaction';
-stocktransaction { StockTransaction } stocktransaction 'stocktransaction/stocktransaction/stocktransaction-stocktransaction-stocktransaction-stocktransaction.stocktransaction';
-stocktransaction StockTransaction stocktransaction 'stocktransaction/stocktransaction/stocktransaction-stocktransaction.stocktransaction';
+  StockTransactionAggregateArgs,
+  UpdateManyStockTransactionArgs,
+  UpdateOneStockTransactionArgs,
+} from 'src/@generated';
+import { StockTransactionController } from './stockTransaction.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-stocktransaction StockTransaction {
-  stocktransaction: StockTransaction.StockTransaction;
+interface StockTransactionSelect {
+  select: Prisma.StockTransactionSelect;
 }
 
-@StockTransaction(() => StockTransaction)
-stocktransaction stocktransaction StockTransaction {
-  stocktransaction(stocktransaction stocktransaction StockTransaction: StockTransaction) {}
+@Resolver(() => StockTransaction)
+export class StockTransactionResolver {
+  constructor(private readonly stockTransactionController: StockTransactionController) {}
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Mutation(() => StockTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stocktransaction StockTransaction(
-    @StockTransaction()
-    StockTransaction: StockTransaction,
-    @StockTransaction() stocktransaction: StockTransaction,
-  ): StockTransaction<StockTransaction | stocktransaction> {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction({
-      ...StockTransaction,
-      stocktransaction: stocktransaction.stocktransaction,
+  async stockTransactionCreateOne(
+    @Args()
+    stockTransactionCreateArgs: CreateOneStockTransactionArgs,
+    @Relations() relations: StockTransactionSelect,
+  ): Promise<StockTransaction | void> {
+    return await this.stockTransactionController.createOne({
+      ...stockTransactionCreateArgs,
+      select: relations.select,
     });
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stocktransaction StockTransaction(
-    @StockTransaction()
-    StockTransaction: StockTransaction,
+  async stockTransactionCreateMany(
+    @Args()
+    createManyStockTransactionArgs: CreateManyStockTransactionArgs,
   ) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+    return await this.stockTransactionController.createMany(createManyStockTransactionArgs);
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Query(() => StockTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockTransaction(
-    @StockTransaction()
-    StockTransaction: StockTransaction,
-    @StockTransaction() stocktransaction: StockTransaction,
-  ): StockTransaction<StockTransaction | stocktransaction> {
-    stocktransaction stocktransaction.StockTransaction.StockTransaction({
-      ...StockTransaction,
-      stocktransaction: stocktransaction.stocktransaction,
+  stockTransactionFindOne(
+    @Args()
+    stockTransactionFindUniqueArgs: FindUniqueStockTransactionArgs,
+    @Relations() relations: StockTransactionSelect,
+  ): Promise<StockTransaction | void> {
+    return this.stockTransactionController.findOne({
+      ...stockTransactionFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @StockTransaction(() => [StockTransaction], {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Query(() => [StockTransaction], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockTransaction(
-    @StockTransaction() StockTransaction: StockTransaction,
-    @StockTransaction() stocktransaction: StockTransaction,
+  stockTransactionFindMany(
+    @Args() stockTransactionFindManyArgs: FindManyStockTransactionArgs,
+    @Relations() relations: StockTransactionSelect,
   ) {
-    stocktransaction stocktransaction.StockTransaction.StockTransaction({
-      ...StockTransaction,
-      stocktransaction: stocktransaction.stocktransaction,
+    return this.stockTransactionController.findMany({
+      ...stockTransactionFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Query(() => StockTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockTransaction(
-    @StockTransaction()
-    StockTransaction: StockTransaction,
-    @StockTransaction() stocktransaction: StockTransaction,
-  ): StockTransaction<StockTransaction | stocktransaction> {
-    stocktransaction stocktransaction.StockTransaction.StockTransaction({
-      ...StockTransaction,
-      stocktransaction: stocktransaction.stocktransaction,
+  stockTransactionFindFirst(
+    @Args()
+    findFirstStockTransactionArgs: FindFirstStockTransactionArgs,
+    @Relations() relations: StockTransactionSelect,
+  ): Promise<StockTransaction | void> {
+    return this.stockTransactionController.findFirst({
+      ...findFirstStockTransactionArgs,
+      select: relations.select,
     });
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Mutation(() => StockTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stocktransaction StockTransaction(
-    @StockTransaction() StockTransaction: StockTransaction,
-    @StockTransaction() stocktransaction: StockTransaction,
+  async stockTransactionUpdateOne(
+    @Args() stockTransactionUpdateOneArgs: UpdateOneStockTransactionArgs,
+    @Relations() relations: StockTransactionSelect,
   ) {
-    stocktransaction stocktransaction.StockTransaction.StockTransaction({
-      ...StockTransaction(StockTransaction),
-      stocktransaction: stocktransaction.stocktransaction,
+    return this.stockTransactionController.updateOne({
+      ...replaceNullWithUndefined(stockTransactionUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Mutation(() => StockTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stocktransaction StockTransaction(@StockTransaction() StockTransaction: StockTransaction) {
-    stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async stockTransactionUpdateMany(@Args() updateManyStockTransactionArgs: UpdateManyStockTransactionArgs) {
+    return this.stockTransactionController.updateMany(updateManyStockTransactionArgs);
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  stocktransaction StockTransaction(
-    @StockTransaction() StockTransaction: StockTransaction,
-    @StockTransaction() stocktransaction: StockTransaction,
+  async stockTransactionDelete(
+    @Args() deleteOneStockTransactionArgs: DeleteOneStockTransactionArgs,
+    @Relations() relations: StockTransactionSelect,
   ) {
-    stocktransaction stocktransaction.StockTransaction.stocktransaction({
-      ...StockTransaction,
-      stocktransaction: stocktransaction.stocktransaction,
+    return this.stockTransactionController.delete({
+      ...deleteOneStockTransactionArgs,
+      select: relations.select,
     });
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  stocktransaction StockTransaction(@StockTransaction() StockTransaction: StockTransaction) {
-    stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async stockTransactionDeleteMany(@Args() deleteManyStockTransactionArgs: DeleteManyStockTransactionArgs) {
+    return this.stockTransactionController.deleteMany(deleteManyStockTransactionArgs);
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Query(() => AggregateStockTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockTransaction(@StockTransaction() StockTransaction: StockTransaction) {
-    stocktransaction stocktransaction.StockTransaction.stocktransaction(StockTransaction);
+  stockTransactionAggregate(@Args() stockTransactionAggregateArgs: StockTransactionAggregateArgs) {
+    return this.stockTransactionController.aggregate(stockTransactionAggregateArgs);
   }
 
-  @StockTransaction(() => StockTransaction, {
-    stocktransaction: stocktransaction,
-    stocktransaction: 'StockTransaction stocktransaction stocktransaction stocktransaction',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockTransaction(@StockTransaction() StockTransaction: StockTransaction) {
-    stocktransaction stocktransaction.StockTransaction.stocktransaction(StockTransaction);
+  stockTransactionCount(@Args() stockTransactionCountAggregateInput: FindManyStockTransactionArgs) {
+    return this.stockTransactionController.count(stockTransactionCountAggregateInput);
   }
 }

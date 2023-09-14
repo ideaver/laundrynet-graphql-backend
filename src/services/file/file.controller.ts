@@ -1,52 +1,52 @@
-file { File } file '@file/file';
-file { File } file '@file/file';
-file { File } file './file.file';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { FileService } from './file.service';
 
-@File()
-file file File {
-  file(file file File: File) {}
+@Injectable()
+export class FileController {
+  constructor(private readonly fileService: FileService) {}
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async createOne(fileCreateArgs: Prisma.FileCreateArgs) {
+    return await this.fileService.createOne(fileCreateArgs);
   }
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async createMany(fileCreateManyArgs: Prisma.FileCreateManyArgs) {
+    return await this.fileService.createMany(fileCreateManyArgs);
   }
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async findOne(fileFindUniqueArgs: Prisma.FileFindUniqueArgs) {
+    return await this.fileService.findOne(fileFindUniqueArgs);
   }
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async findMany(fileFindManyArgs: Prisma.FileFindManyArgs) {
+    return await this.fileService.findMany(fileFindManyArgs);
   }
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async findFirst(fileFindFirstArgs: Prisma.FileFindFirstArgs) {
+    return await this.fileService.findFirst(fileFindFirstArgs);
   }
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async updateOne(fileUpdateOneArgs: Prisma.FileUpdateArgs) {
+    return await this.fileService.updateOne(fileUpdateOneArgs);
   }
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async updateMany(fileUpdateManyArgs: Prisma.FileUpdateManyArgs) {
+    return await this.fileService.updateMany(fileUpdateManyArgs);
   }
 
-  file file(File: File.File) {
-    file file file.File.file(File);
+  async delete(fileDeleteArgs: Prisma.FileDeleteArgs) {
+    return await this.fileService.delete(fileDeleteArgs);
   }
 
-  file File(File: File.File) {
-    file file file.File.File(File);
+  async deleteMany(fileDeleteManyArgs: Prisma.FileDeleteManyArgs) {
+    return await this.fileService.deleteMany(fileDeleteManyArgs);
   }
 
-  file file(File: File.File) {
-    file file file.File.file(File);
+  async aggregate(fileAggregateArgs: Prisma.FileAggregateArgs) {
+    return await this.fileService.aggregate(fileAggregateArgs);
   }
 
-  file file(File: File.File) {
-    file file file.File.file(File);
+  async count(fileCountArgs: Prisma.FileCountArgs) {
+    return await this.fileService.count(fileCountArgs);
   }
 }

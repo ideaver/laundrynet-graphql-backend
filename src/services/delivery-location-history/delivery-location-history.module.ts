@@ -1,11 +1,11 @@
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory '@deliverylocationhistory/deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory './deliverylocationhistory.deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory './deliverylocationhistory.deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory 'deliverylocationhistory/deliverylocationhistory.deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory './deliverylocationhistory.deliverylocationhistory';
+import { Module } from '@nestjs/common';
+import { DeliveryLocationHistoryService } from './deliveryLocationHistory.service';
+import { DeliveryLocationHistoryResolver } from './deliveryLocationHistory.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { DeliveryLocationHistoryController } from './deliveryLocationHistory.controller';
 
-@DeliveryLocationHistory({
-  deliverylocationhistory: [DeliveryLocationHistory, DeliveryLocationHistory, DeliveryLocationHistory, DeliveryLocationHistory],
-  deliverylocationhistory: [DeliveryLocationHistory],
+@Module({
+  providers: [PrismaService, DeliveryLocationHistoryResolver, DeliveryLocationHistoryController, DeliveryLocationHistoryService],
+  exports: [DeliveryLocationHistoryController],
 })
-deliverylocationhistory deliverylocationhistory DeliveryLocationHistory {}
+export class DeliveryLocationHistoryModule {}

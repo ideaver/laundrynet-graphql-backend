@@ -1,11 +1,11 @@
-laundryitemcategory { LaundryItemCategory } laundryitemcategory '@laundryitemcategory/laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory './laundryitemcategory.laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory './laundryitemcategory.laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory 'laundryitemcategory/laundryitemcategory.laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory './laundryitemcategory.laundryitemcategory';
+import { Module } from '@nestjs/common';
+import { LaundryItemCategoryService } from './laundryItemCategory.service';
+import { LaundryItemCategoryResolver } from './laundryItemCategory.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { LaundryItemCategoryController } from './laundryItemCategory.controller';
 
-@LaundryItemCategory({
-  laundryitemcategory: [LaundryItemCategory, LaundryItemCategory, LaundryItemCategory, LaundryItemCategory],
-  laundryitemcategory: [LaundryItemCategory],
+@Module({
+  providers: [PrismaService, LaundryItemCategoryResolver, LaundryItemCategoryController, LaundryItemCategoryService],
+  exports: [LaundryItemCategoryController],
 })
-laundryitemcategory laundryitemcategory LaundryItemCategory {}
+export class LaundryItemCategoryModule {}

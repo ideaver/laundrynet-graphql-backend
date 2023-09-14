@@ -1,11 +1,11 @@
-account { Account } account '@account/account';
-account { Account } account './account.account';
-account { Account } account './account.account';
-account { Account } account 'account/account.account';
-account { Account } account './account.account';
+import { Module } from '@nestjs/common';
+import { AccountService } from './account.service';
+import { AccountResolver } from './account.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { AccountController } from './account.controller';
 
-@Account({
-  account: [Account, Account, Account, Account],
-  account: [Account],
+@Module({
+  providers: [PrismaService, AccountResolver, AccountController, AccountService],
+  exports: [AccountController],
 })
-account account Account {}
+export class AccountModule {}

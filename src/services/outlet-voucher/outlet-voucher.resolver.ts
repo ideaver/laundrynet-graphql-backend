@@ -1,160 +1,160 @@
-// @outletvoucher-outletvoucher
-outletvoucher { OutletVoucher, OutletVoucher, OutletVoucher, OutletVoucher, OutletVoucher } outletvoucher '@outletvoucher/outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher '@outletvoucher/outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher 'outletvoucher/outletvoucher/outletvoucher.outletvoucher';
-outletvoucher {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateOutletVoucher,
+  CreateManyOutletVoucherArgs,
+  CreateOneOutletVoucherArgs,
+  DeleteManyOutletVoucherArgs,
+  DeleteOneOutletVoucherArgs,
+  FindFirstOutletVoucherArgs,
+  FindManyOutletVoucherArgs,
+  FindUniqueOutletVoucherArgs,
   OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-  OutletVoucher,
-} outletvoucher 'outletvoucher/@outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher './outletvoucher.outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher 'outletvoucher/outletvoucher/outletvoucher-outletvoucher-outletvoucher-outletvoucher.outletvoucher';
-outletvoucher OutletVoucher outletvoucher 'outletvoucher/outletvoucher/outletvoucher-outletvoucher.outletvoucher';
+  OutletVoucherAggregateArgs,
+  UpdateManyOutletVoucherArgs,
+  UpdateOneOutletVoucherArgs,
+} from 'src/@generated';
+import { OutletVoucherController } from './outletVoucher.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-outletvoucher OutletVoucher {
-  outletvoucher: OutletVoucher.OutletVoucher;
+interface OutletVoucherSelect {
+  select: Prisma.OutletVoucherSelect;
 }
 
-@OutletVoucher(() => OutletVoucher)
-outletvoucher outletvoucher OutletVoucher {
-  outletvoucher(outletvoucher outletvoucher OutletVoucher: OutletVoucher) {}
+@Resolver(() => OutletVoucher)
+export class OutletVoucherResolver {
+  constructor(private readonly outletVoucherController: OutletVoucherController) {}
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Mutation(() => OutletVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletvoucher OutletVoucher(
-    @OutletVoucher()
-    OutletVoucher: OutletVoucher,
-    @OutletVoucher() outletvoucher: OutletVoucher,
-  ): OutletVoucher<OutletVoucher | outletvoucher> {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher({
-      ...OutletVoucher,
-      outletvoucher: outletvoucher.outletvoucher,
+  async outletVoucherCreateOne(
+    @Args()
+    outletVoucherCreateArgs: CreateOneOutletVoucherArgs,
+    @Relations() relations: OutletVoucherSelect,
+  ): Promise<OutletVoucher | void> {
+    return await this.outletVoucherController.createOne({
+      ...outletVoucherCreateArgs,
+      select: relations.select,
     });
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletvoucher OutletVoucher(
-    @OutletVoucher()
-    OutletVoucher: OutletVoucher,
+  async outletVoucherCreateMany(
+    @Args()
+    createManyOutletVoucherArgs: CreateManyOutletVoucherArgs,
   ) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+    return await this.outletVoucherController.createMany(createManyOutletVoucherArgs);
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Query(() => OutletVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletVoucher(
-    @OutletVoucher()
-    OutletVoucher: OutletVoucher,
-    @OutletVoucher() outletvoucher: OutletVoucher,
-  ): OutletVoucher<OutletVoucher | outletvoucher> {
-    outletvoucher outletvoucher.OutletVoucher.OutletVoucher({
-      ...OutletVoucher,
-      outletvoucher: outletvoucher.outletvoucher,
+  outletVoucherFindOne(
+    @Args()
+    outletVoucherFindUniqueArgs: FindUniqueOutletVoucherArgs,
+    @Relations() relations: OutletVoucherSelect,
+  ): Promise<OutletVoucher | void> {
+    return this.outletVoucherController.findOne({
+      ...outletVoucherFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @OutletVoucher(() => [OutletVoucher], {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Query(() => [OutletVoucher], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletVoucher(
-    @OutletVoucher() OutletVoucher: OutletVoucher,
-    @OutletVoucher() outletvoucher: OutletVoucher,
+  outletVoucherFindMany(
+    @Args() outletVoucherFindManyArgs: FindManyOutletVoucherArgs,
+    @Relations() relations: OutletVoucherSelect,
   ) {
-    outletvoucher outletvoucher.OutletVoucher.OutletVoucher({
-      ...OutletVoucher,
-      outletvoucher: outletvoucher.outletvoucher,
+    return this.outletVoucherController.findMany({
+      ...outletVoucherFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Query(() => OutletVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletVoucher(
-    @OutletVoucher()
-    OutletVoucher: OutletVoucher,
-    @OutletVoucher() outletvoucher: OutletVoucher,
-  ): OutletVoucher<OutletVoucher | outletvoucher> {
-    outletvoucher outletvoucher.OutletVoucher.OutletVoucher({
-      ...OutletVoucher,
-      outletvoucher: outletvoucher.outletvoucher,
+  outletVoucherFindFirst(
+    @Args()
+    findFirstOutletVoucherArgs: FindFirstOutletVoucherArgs,
+    @Relations() relations: OutletVoucherSelect,
+  ): Promise<OutletVoucher | void> {
+    return this.outletVoucherController.findFirst({
+      ...findFirstOutletVoucherArgs,
+      select: relations.select,
     });
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Mutation(() => OutletVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletvoucher OutletVoucher(
-    @OutletVoucher() OutletVoucher: OutletVoucher,
-    @OutletVoucher() outletvoucher: OutletVoucher,
+  async outletVoucherUpdateOne(
+    @Args() outletVoucherUpdateOneArgs: UpdateOneOutletVoucherArgs,
+    @Relations() relations: OutletVoucherSelect,
   ) {
-    outletvoucher outletvoucher.OutletVoucher.OutletVoucher({
-      ...OutletVoucher(OutletVoucher),
-      outletvoucher: outletvoucher.outletvoucher,
+    return this.outletVoucherController.updateOne({
+      ...replaceNullWithUndefined(outletVoucherUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Mutation(() => OutletVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletvoucher OutletVoucher(@OutletVoucher() OutletVoucher: OutletVoucher) {
-    outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async outletVoucherUpdateMany(@Args() updateManyOutletVoucherArgs: UpdateManyOutletVoucherArgs) {
+    return this.outletVoucherController.updateMany(updateManyOutletVoucherArgs);
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletvoucher OutletVoucher(
-    @OutletVoucher() OutletVoucher: OutletVoucher,
-    @OutletVoucher() outletvoucher: OutletVoucher,
+  async outletVoucherDelete(
+    @Args() deleteOneOutletVoucherArgs: DeleteOneOutletVoucherArgs,
+    @Relations() relations: OutletVoucherSelect,
   ) {
-    outletvoucher outletvoucher.OutletVoucher.outletvoucher({
-      ...OutletVoucher,
-      outletvoucher: outletvoucher.outletvoucher,
+    return this.outletVoucherController.delete({
+      ...deleteOneOutletVoucherArgs,
+      select: relations.select,
     });
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletvoucher OutletVoucher(@OutletVoucher() OutletVoucher: OutletVoucher) {
-    outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async outletVoucherDeleteMany(@Args() deleteManyOutletVoucherArgs: DeleteManyOutletVoucherArgs) {
+    return this.outletVoucherController.deleteMany(deleteManyOutletVoucherArgs);
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Query(() => AggregateOutletVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletVoucher(@OutletVoucher() OutletVoucher: OutletVoucher) {
-    outletvoucher outletvoucher.OutletVoucher.outletvoucher(OutletVoucher);
+  outletVoucherAggregate(@Args() outletVoucherAggregateArgs: OutletVoucherAggregateArgs) {
+    return this.outletVoucherController.aggregate(outletVoucherAggregateArgs);
   }
 
-  @OutletVoucher(() => OutletVoucher, {
-    outletvoucher: outletvoucher,
-    outletvoucher: 'OutletVoucher outletvoucher outletvoucher outletvoucher',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletVoucher(@OutletVoucher() OutletVoucher: OutletVoucher) {
-    outletvoucher outletvoucher.OutletVoucher.outletvoucher(OutletVoucher);
+  outletVoucherCount(@Args() outletVoucherCountAggregateInput: FindManyOutletVoucherArgs) {
+    return this.outletVoucherController.count(outletVoucherCountAggregateInput);
   }
 }

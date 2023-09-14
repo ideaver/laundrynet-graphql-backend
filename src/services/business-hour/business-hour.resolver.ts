@@ -1,160 +1,160 @@
-// @businesshour-businesshour
-businesshour { BusinessHour, BusinessHour, BusinessHour, BusinessHour, BusinessHour } businesshour '@businesshour/businesshour';
-businesshour { BusinessHour } businesshour '@businesshour/businesshour';
-businesshour { BusinessHour } businesshour 'businesshour/businesshour/businesshour.businesshour';
-businesshour {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateBusinessHour,
+  CreateManyBusinessHourArgs,
+  CreateOneBusinessHourArgs,
+  DeleteManyBusinessHourArgs,
+  DeleteOneBusinessHourArgs,
+  FindFirstBusinessHourArgs,
+  FindManyBusinessHourArgs,
+  FindUniqueBusinessHourArgs,
   BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-  BusinessHour,
-} businesshour 'businesshour/@businesshour';
-businesshour { BusinessHour } businesshour './businesshour.businesshour';
-businesshour { BusinessHour } businesshour 'businesshour/businesshour/businesshour-businesshour-businesshour-businesshour.businesshour';
-businesshour BusinessHour businesshour 'businesshour/businesshour/businesshour-businesshour.businesshour';
+  BusinessHourAggregateArgs,
+  UpdateManyBusinessHourArgs,
+  UpdateOneBusinessHourArgs,
+} from 'src/@generated';
+import { BusinessHourController } from './businessHour.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-businesshour BusinessHour {
-  businesshour: BusinessHour.BusinessHour;
+interface BusinessHourSelect {
+  select: Prisma.BusinessHourSelect;
 }
 
-@BusinessHour(() => BusinessHour)
-businesshour businesshour BusinessHour {
-  businesshour(businesshour businesshour BusinessHour: BusinessHour) {}
+@Resolver(() => BusinessHour)
+export class BusinessHourResolver {
+  constructor(private readonly businessHourController: BusinessHourController) {}
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Mutation(() => BusinessHour, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  businesshour BusinessHour(
-    @BusinessHour()
-    BusinessHour: BusinessHour,
-    @BusinessHour() businesshour: BusinessHour,
-  ): BusinessHour<BusinessHour | businesshour> {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour({
-      ...BusinessHour,
-      businesshour: businesshour.businesshour,
+  async businessHourCreateOne(
+    @Args()
+    businessHourCreateArgs: CreateOneBusinessHourArgs,
+    @Relations() relations: BusinessHourSelect,
+  ): Promise<BusinessHour | void> {
+    return await this.businessHourController.createOne({
+      ...businessHourCreateArgs,
+      select: relations.select,
     });
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  businesshour BusinessHour(
-    @BusinessHour()
-    BusinessHour: BusinessHour,
+  async businessHourCreateMany(
+    @Args()
+    createManyBusinessHourArgs: CreateManyBusinessHourArgs,
   ) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+    return await this.businessHourController.createMany(createManyBusinessHourArgs);
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Query(() => BusinessHour, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  BusinessHour(
-    @BusinessHour()
-    BusinessHour: BusinessHour,
-    @BusinessHour() businesshour: BusinessHour,
-  ): BusinessHour<BusinessHour | businesshour> {
-    businesshour businesshour.BusinessHour.BusinessHour({
-      ...BusinessHour,
-      businesshour: businesshour.businesshour,
+  businessHourFindOne(
+    @Args()
+    businessHourFindUniqueArgs: FindUniqueBusinessHourArgs,
+    @Relations() relations: BusinessHourSelect,
+  ): Promise<BusinessHour | void> {
+    return this.businessHourController.findOne({
+      ...businessHourFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @BusinessHour(() => [BusinessHour], {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Query(() => [BusinessHour], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  BusinessHour(
-    @BusinessHour() BusinessHour: BusinessHour,
-    @BusinessHour() businesshour: BusinessHour,
+  businessHourFindMany(
+    @Args() businessHourFindManyArgs: FindManyBusinessHourArgs,
+    @Relations() relations: BusinessHourSelect,
   ) {
-    businesshour businesshour.BusinessHour.BusinessHour({
-      ...BusinessHour,
-      businesshour: businesshour.businesshour,
+    return this.businessHourController.findMany({
+      ...businessHourFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Query(() => BusinessHour, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  BusinessHour(
-    @BusinessHour()
-    BusinessHour: BusinessHour,
-    @BusinessHour() businesshour: BusinessHour,
-  ): BusinessHour<BusinessHour | businesshour> {
-    businesshour businesshour.BusinessHour.BusinessHour({
-      ...BusinessHour,
-      businesshour: businesshour.businesshour,
+  businessHourFindFirst(
+    @Args()
+    findFirstBusinessHourArgs: FindFirstBusinessHourArgs,
+    @Relations() relations: BusinessHourSelect,
+  ): Promise<BusinessHour | void> {
+    return this.businessHourController.findFirst({
+      ...findFirstBusinessHourArgs,
+      select: relations.select,
     });
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Mutation(() => BusinessHour, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  businesshour BusinessHour(
-    @BusinessHour() BusinessHour: BusinessHour,
-    @BusinessHour() businesshour: BusinessHour,
+  async businessHourUpdateOne(
+    @Args() businessHourUpdateOneArgs: UpdateOneBusinessHourArgs,
+    @Relations() relations: BusinessHourSelect,
   ) {
-    businesshour businesshour.BusinessHour.BusinessHour({
-      ...BusinessHour(BusinessHour),
-      businesshour: businesshour.businesshour,
+    return this.businessHourController.updateOne({
+      ...replaceNullWithUndefined(businessHourUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Mutation(() => BusinessHour, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  businesshour BusinessHour(@BusinessHour() BusinessHour: BusinessHour) {
-    businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async businessHourUpdateMany(@Args() updateManyBusinessHourArgs: UpdateManyBusinessHourArgs) {
+    return this.businessHourController.updateMany(updateManyBusinessHourArgs);
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  businesshour BusinessHour(
-    @BusinessHour() BusinessHour: BusinessHour,
-    @BusinessHour() businesshour: BusinessHour,
+  async businessHourDelete(
+    @Args() deleteOneBusinessHourArgs: DeleteOneBusinessHourArgs,
+    @Relations() relations: BusinessHourSelect,
   ) {
-    businesshour businesshour.BusinessHour.businesshour({
-      ...BusinessHour,
-      businesshour: businesshour.businesshour,
+    return this.businessHourController.delete({
+      ...deleteOneBusinessHourArgs,
+      select: relations.select,
     });
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  businesshour BusinessHour(@BusinessHour() BusinessHour: BusinessHour) {
-    businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async businessHourDeleteMany(@Args() deleteManyBusinessHourArgs: DeleteManyBusinessHourArgs) {
+    return this.businessHourController.deleteMany(deleteManyBusinessHourArgs);
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Query(() => AggregateBusinessHour, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  BusinessHour(@BusinessHour() BusinessHour: BusinessHour) {
-    businesshour businesshour.BusinessHour.businesshour(BusinessHour);
+  businessHourAggregate(@Args() businessHourAggregateArgs: BusinessHourAggregateArgs) {
+    return this.businessHourController.aggregate(businessHourAggregateArgs);
   }
 
-  @BusinessHour(() => BusinessHour, {
-    businesshour: businesshour,
-    businesshour: 'BusinessHour businesshour businesshour businesshour',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  BusinessHour(@BusinessHour() BusinessHour: BusinessHour) {
-    businesshour businesshour.BusinessHour.businesshour(BusinessHour);
+  businessHourCount(@Args() businessHourCountAggregateInput: FindManyBusinessHourArgs) {
+    return this.businessHourController.count(businessHourCountAggregateInput);
   }
 }

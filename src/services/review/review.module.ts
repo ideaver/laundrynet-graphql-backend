@@ -1,11 +1,11 @@
-review { Review } review '@review/review';
-review { Review } review './review.review';
-review { Review } review './review.review';
-review { Review } review 'review/review.review';
-review { Review } review './review.review';
+import { Module } from '@nestjs/common';
+import { ReviewService } from './review.service';
+import { ReviewResolver } from './review.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { ReviewController } from './review.controller';
 
-@Review({
-  review: [Review, Review, Review, Review],
-  review: [Review],
+@Module({
+  providers: [PrismaService, ReviewResolver, ReviewController, ReviewService],
+  exports: [ReviewController],
 })
-review review Review {}
+export class ReviewModule {}

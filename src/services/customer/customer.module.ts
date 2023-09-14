@@ -1,11 +1,11 @@
-customer { Customer } customer '@customer/customer';
-customer { Customer } customer './customer.customer';
-customer { Customer } customer './customer.customer';
-customer { Customer } customer 'customer/customer.customer';
-customer { Customer } customer './customer.customer';
+import { Module } from '@nestjs/common';
+import { CustomerService } from './customer.service';
+import { CustomerResolver } from './customer.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { CustomerController } from './customer.controller';
 
-@Customer({
-  customer: [Customer, Customer, Customer, Customer],
-  customer: [Customer],
+@Module({
+  providers: [PrismaService, CustomerResolver, CustomerController, CustomerService],
+  exports: [CustomerController],
 })
-customer customer Customer {}
+export class CustomerModule {}

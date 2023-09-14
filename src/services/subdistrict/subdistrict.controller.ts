@@ -1,52 +1,52 @@
-subdistrict { Subdistrict } subdistrict '@subdistrict/subdistrict';
-subdistrict { Subdistrict } subdistrict '@subdistrict/subdistrict';
-subdistrict { Subdistrict } subdistrict './subdistrict.subdistrict';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { SubdistrictService } from './subdistrict.service';
 
-@Subdistrict()
-subdistrict subdistrict Subdistrict {
-  subdistrict(subdistrict subdistrict Subdistrict: Subdistrict) {}
+@Injectable()
+export class SubdistrictController {
+  constructor(private readonly subdistrictService: SubdistrictService) {}
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async createOne(subdistrictCreateArgs: Prisma.SubdistrictCreateArgs) {
+    return await this.subdistrictService.createOne(subdistrictCreateArgs);
   }
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async createMany(subdistrictCreateManyArgs: Prisma.SubdistrictCreateManyArgs) {
+    return await this.subdistrictService.createMany(subdistrictCreateManyArgs);
   }
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async findOne(subdistrictFindUniqueArgs: Prisma.SubdistrictFindUniqueArgs) {
+    return await this.subdistrictService.findOne(subdistrictFindUniqueArgs);
   }
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async findMany(subdistrictFindManyArgs: Prisma.SubdistrictFindManyArgs) {
+    return await this.subdistrictService.findMany(subdistrictFindManyArgs);
   }
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async findFirst(subdistrictFindFirstArgs: Prisma.SubdistrictFindFirstArgs) {
+    return await this.subdistrictService.findFirst(subdistrictFindFirstArgs);
   }
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async updateOne(subdistrictUpdateOneArgs: Prisma.SubdistrictUpdateArgs) {
+    return await this.subdistrictService.updateOne(subdistrictUpdateOneArgs);
   }
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async updateMany(subdistrictUpdateManyArgs: Prisma.SubdistrictUpdateManyArgs) {
+    return await this.subdistrictService.updateMany(subdistrictUpdateManyArgs);
   }
 
-  subdistrict subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.subdistrict(Subdistrict);
+  async delete(subdistrictDeleteArgs: Prisma.SubdistrictDeleteArgs) {
+    return await this.subdistrictService.delete(subdistrictDeleteArgs);
   }
 
-  subdistrict Subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.Subdistrict(Subdistrict);
+  async deleteMany(subdistrictDeleteManyArgs: Prisma.SubdistrictDeleteManyArgs) {
+    return await this.subdistrictService.deleteMany(subdistrictDeleteManyArgs);
   }
 
-  subdistrict subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.subdistrict(Subdistrict);
+  async aggregate(subdistrictAggregateArgs: Prisma.SubdistrictAggregateArgs) {
+    return await this.subdistrictService.aggregate(subdistrictAggregateArgs);
   }
 
-  subdistrict subdistrict(Subdistrict: Subdistrict.Subdistrict) {
-    subdistrict subdistrict subdistrict.Subdistrict.subdistrict(Subdistrict);
+  async count(subdistrictCountArgs: Prisma.SubdistrictCountArgs) {
+    return await this.subdistrictService.count(subdistrictCountArgs);
   }
 }

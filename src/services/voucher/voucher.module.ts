@@ -1,11 +1,11 @@
-voucher { Voucher } voucher '@voucher/voucher';
-voucher { Voucher } voucher './voucher.voucher';
-voucher { Voucher } voucher './voucher.voucher';
-voucher { Voucher } voucher 'voucher/voucher.voucher';
-voucher { Voucher } voucher './voucher.voucher';
+import { Module } from '@nestjs/common';
+import { VoucherService } from './voucher.service';
+import { VoucherResolver } from './voucher.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { VoucherController } from './voucher.controller';
 
-@Voucher({
-  voucher: [Voucher, Voucher, Voucher, Voucher],
-  voucher: [Voucher],
+@Module({
+  providers: [PrismaService, VoucherResolver, VoucherController, VoucherService],
+  exports: [VoucherController],
 })
-voucher voucher Voucher {}
+export class VoucherModule {}

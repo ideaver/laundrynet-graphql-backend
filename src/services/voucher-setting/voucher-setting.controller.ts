@@ -1,52 +1,52 @@
-vouchersetting { VoucherSetting } vouchersetting '@vouchersetting/vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting '@vouchersetting/vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting './vouchersetting.vouchersetting';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { VoucherSettingService } from './voucherSetting.service';
 
-@VoucherSetting()
-vouchersetting vouchersetting VoucherSetting {
-  vouchersetting(vouchersetting vouchersetting VoucherSetting: VoucherSetting) {}
+@Injectable()
+export class VoucherSettingController {
+  constructor(private readonly voucherSettingService: VoucherSettingService) {}
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async createOne(voucherSettingCreateArgs: Prisma.VoucherSettingCreateArgs) {
+    return await this.voucherSettingService.createOne(voucherSettingCreateArgs);
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async createMany(voucherSettingCreateManyArgs: Prisma.VoucherSettingCreateManyArgs) {
+    return await this.voucherSettingService.createMany(voucherSettingCreateManyArgs);
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async findOne(voucherSettingFindUniqueArgs: Prisma.VoucherSettingFindUniqueArgs) {
+    return await this.voucherSettingService.findOne(voucherSettingFindUniqueArgs);
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async findMany(voucherSettingFindManyArgs: Prisma.VoucherSettingFindManyArgs) {
+    return await this.voucherSettingService.findMany(voucherSettingFindManyArgs);
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async findFirst(voucherSettingFindFirstArgs: Prisma.VoucherSettingFindFirstArgs) {
+    return await this.voucherSettingService.findFirst(voucherSettingFindFirstArgs);
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async updateOne(voucherSettingUpdateOneArgs: Prisma.VoucherSettingUpdateArgs) {
+    return await this.voucherSettingService.updateOne(voucherSettingUpdateOneArgs);
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async updateMany(voucherSettingUpdateManyArgs: Prisma.VoucherSettingUpdateManyArgs) {
+    return await this.voucherSettingService.updateMany(voucherSettingUpdateManyArgs);
   }
 
-  vouchersetting vouchersetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.vouchersetting(VoucherSetting);
+  async delete(voucherSettingDeleteArgs: Prisma.VoucherSettingDeleteArgs) {
+    return await this.voucherSettingService.delete(voucherSettingDeleteArgs);
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async deleteMany(voucherSettingDeleteManyArgs: Prisma.VoucherSettingDeleteManyArgs) {
+    return await this.voucherSettingService.deleteMany(voucherSettingDeleteManyArgs);
   }
 
-  vouchersetting vouchersetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.vouchersetting(VoucherSetting);
+  async aggregate(voucherSettingAggregateArgs: Prisma.VoucherSettingAggregateArgs) {
+    return await this.voucherSettingService.aggregate(voucherSettingAggregateArgs);
   }
 
-  vouchersetting vouchersetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.vouchersetting(VoucherSetting);
+  async count(voucherSettingCountArgs: Prisma.VoucherSettingCountArgs) {
+    return await this.voucherSettingService.count(voucherSettingCountArgs);
   }
 }

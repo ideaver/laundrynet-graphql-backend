@@ -1,160 +1,160 @@
-// @outlet-outlet
-outlet { Outlet, Outlet, Outlet, Outlet, Outlet } outlet '@outlet/outlet';
-outlet { Outlet } outlet '@outlet/outlet';
-outlet { Outlet } outlet 'outlet/outlet/outlet.outlet';
-outlet {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateOutlet,
+  CreateManyOutletArgs,
+  CreateOneOutletArgs,
+  DeleteManyOutletArgs,
+  DeleteOneOutletArgs,
+  FindFirstOutletArgs,
+  FindManyOutletArgs,
+  FindUniqueOutletArgs,
   Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-  Outlet,
-} outlet 'outlet/@outlet';
-outlet { Outlet } outlet './outlet.outlet';
-outlet { Outlet } outlet 'outlet/outlet/outlet-outlet-outlet-outlet.outlet';
-outlet Outlet outlet 'outlet/outlet/outlet-outlet.outlet';
+  OutletAggregateArgs,
+  UpdateManyOutletArgs,
+  UpdateOneOutletArgs,
+} from 'src/@generated';
+import { OutletController } from './outlet.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-outlet Outlet {
-  outlet: Outlet.Outlet;
+interface OutletSelect {
+  select: Prisma.OutletSelect;
 }
 
-@Outlet(() => Outlet)
-outlet outlet Outlet {
-  outlet(outlet outlet Outlet: Outlet) {}
+@Resolver(() => Outlet)
+export class OutletResolver {
+  constructor(private readonly outletController: OutletController) {}
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Mutation(() => Outlet, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outlet Outlet(
-    @Outlet()
-    Outlet: Outlet,
-    @Outlet() outlet: Outlet,
-  ): Outlet<Outlet | outlet> {
-    outlet outlet outlet.Outlet.Outlet({
-      ...Outlet,
-      outlet: outlet.outlet,
+  async outletCreateOne(
+    @Args()
+    outletCreateArgs: CreateOneOutletArgs,
+    @Relations() relations: OutletSelect,
+  ): Promise<Outlet | void> {
+    return await this.outletController.createOne({
+      ...outletCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outlet Outlet(
-    @Outlet()
-    Outlet: Outlet,
+  async outletCreateMany(
+    @Args()
+    createManyOutletArgs: CreateManyOutletArgs,
   ) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+    return await this.outletController.createMany(createManyOutletArgs);
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Query(() => Outlet, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Outlet(
-    @Outlet()
-    Outlet: Outlet,
-    @Outlet() outlet: Outlet,
-  ): Outlet<Outlet | outlet> {
-    outlet outlet.Outlet.Outlet({
-      ...Outlet,
-      outlet: outlet.outlet,
+  outletFindOne(
+    @Args()
+    outletFindUniqueArgs: FindUniqueOutletArgs,
+    @Relations() relations: OutletSelect,
+  ): Promise<Outlet | void> {
+    return this.outletController.findOne({
+      ...outletFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Outlet(() => [Outlet], {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Query(() => [Outlet], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Outlet(
-    @Outlet() Outlet: Outlet,
-    @Outlet() outlet: Outlet,
+  outletFindMany(
+    @Args() outletFindManyArgs: FindManyOutletArgs,
+    @Relations() relations: OutletSelect,
   ) {
-    outlet outlet.Outlet.Outlet({
-      ...Outlet,
-      outlet: outlet.outlet,
+    return this.outletController.findMany({
+      ...outletFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Query(() => Outlet, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Outlet(
-    @Outlet()
-    Outlet: Outlet,
-    @Outlet() outlet: Outlet,
-  ): Outlet<Outlet | outlet> {
-    outlet outlet.Outlet.Outlet({
-      ...Outlet,
-      outlet: outlet.outlet,
+  outletFindFirst(
+    @Args()
+    findFirstOutletArgs: FindFirstOutletArgs,
+    @Relations() relations: OutletSelect,
+  ): Promise<Outlet | void> {
+    return this.outletController.findFirst({
+      ...findFirstOutletArgs,
+      select: relations.select,
     });
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Mutation(() => Outlet, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outlet Outlet(
-    @Outlet() Outlet: Outlet,
-    @Outlet() outlet: Outlet,
+  async outletUpdateOne(
+    @Args() outletUpdateOneArgs: UpdateOneOutletArgs,
+    @Relations() relations: OutletSelect,
   ) {
-    outlet outlet.Outlet.Outlet({
-      ...Outlet(Outlet),
-      outlet: outlet.outlet,
+    return this.outletController.updateOne({
+      ...replaceNullWithUndefined(outletUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Mutation(() => Outlet, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outlet Outlet(@Outlet() Outlet: Outlet) {
-    outlet outlet.Outlet.Outlet(Outlet);
+  async outletUpdateMany(@Args() updateManyOutletArgs: UpdateManyOutletArgs) {
+    return this.outletController.updateMany(updateManyOutletArgs);
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outlet Outlet(
-    @Outlet() Outlet: Outlet,
-    @Outlet() outlet: Outlet,
+  async outletDelete(
+    @Args() deleteOneOutletArgs: DeleteOneOutletArgs,
+    @Relations() relations: OutletSelect,
   ) {
-    outlet outlet.Outlet.outlet({
-      ...Outlet,
-      outlet: outlet.outlet,
+    return this.outletController.delete({
+      ...deleteOneOutletArgs,
+      select: relations.select,
     });
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outlet Outlet(@Outlet() Outlet: Outlet) {
-    outlet outlet.Outlet.Outlet(Outlet);
+  async outletDeleteMany(@Args() deleteManyOutletArgs: DeleteManyOutletArgs) {
+    return this.outletController.deleteMany(deleteManyOutletArgs);
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Query(() => AggregateOutlet, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Outlet(@Outlet() Outlet: Outlet) {
-    outlet outlet.Outlet.outlet(Outlet);
+  outletAggregate(@Args() outletAggregateArgs: OutletAggregateArgs) {
+    return this.outletController.aggregate(outletAggregateArgs);
   }
 
-  @Outlet(() => Outlet, {
-    outlet: outlet,
-    outlet: 'Outlet outlet outlet outlet',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Outlet(@Outlet() Outlet: Outlet) {
-    outlet outlet.Outlet.outlet(Outlet);
+  outletCount(@Args() outletCountAggregateInput: FindManyOutletArgs) {
+    return this.outletController.count(outletCountAggregateInput);
   }
 }

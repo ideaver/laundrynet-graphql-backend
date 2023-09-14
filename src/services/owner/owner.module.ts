@@ -1,11 +1,11 @@
-owner { Owner } owner '@owner/owner';
-owner { Owner } owner './owner.owner';
-owner { Owner } owner './owner.owner';
-owner { Owner } owner 'owner/owner.owner';
-owner { Owner } owner './owner.owner';
+import { Module } from '@nestjs/common';
+import { OwnerService } from './owner.service';
+import { OwnerResolver } from './owner.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { OwnerController } from './owner.controller';
 
-@Owner({
-  owner: [Owner, Owner, Owner, Owner],
-  owner: [Owner],
+@Module({
+  providers: [PrismaService, OwnerResolver, OwnerController, OwnerService],
+  exports: [OwnerController],
 })
-owner owner Owner {}
+export class OwnerModule {}

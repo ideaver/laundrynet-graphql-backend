@@ -1,52 +1,52 @@
-laundryitemrequest { LaundryItemRequest } laundryitemrequest '@laundryitemrequest/laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest '@laundryitemrequest/laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest './laundryitemrequest.laundryitemrequest';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { LaundryItemRequestService } from './laundryItemRequest.service';
 
-@LaundryItemRequest()
-laundryitemrequest laundryitemrequest LaundryItemRequest {
-  laundryitemrequest(laundryitemrequest laundryitemrequest LaundryItemRequest: LaundryItemRequest) {}
+@Injectable()
+export class LaundryItemRequestController {
+  constructor(private readonly laundryItemRequestService: LaundryItemRequestService) {}
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async createOne(laundryItemRequestCreateArgs: Prisma.LaundryItemRequestCreateArgs) {
+    return await this.laundryItemRequestService.createOne(laundryItemRequestCreateArgs);
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async createMany(laundryItemRequestCreateManyArgs: Prisma.LaundryItemRequestCreateManyArgs) {
+    return await this.laundryItemRequestService.createMany(laundryItemRequestCreateManyArgs);
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async findOne(laundryItemRequestFindUniqueArgs: Prisma.LaundryItemRequestFindUniqueArgs) {
+    return await this.laundryItemRequestService.findOne(laundryItemRequestFindUniqueArgs);
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async findMany(laundryItemRequestFindManyArgs: Prisma.LaundryItemRequestFindManyArgs) {
+    return await this.laundryItemRequestService.findMany(laundryItemRequestFindManyArgs);
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async findFirst(laundryItemRequestFindFirstArgs: Prisma.LaundryItemRequestFindFirstArgs) {
+    return await this.laundryItemRequestService.findFirst(laundryItemRequestFindFirstArgs);
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async updateOne(laundryItemRequestUpdateOneArgs: Prisma.LaundryItemRequestUpdateArgs) {
+    return await this.laundryItemRequestService.updateOne(laundryItemRequestUpdateOneArgs);
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async updateMany(laundryItemRequestUpdateManyArgs: Prisma.LaundryItemRequestUpdateManyArgs) {
+    return await this.laundryItemRequestService.updateMany(laundryItemRequestUpdateManyArgs);
   }
 
-  laundryitemrequest laundryitemrequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.laundryitemrequest(LaundryItemRequest);
+  async delete(laundryItemRequestDeleteArgs: Prisma.LaundryItemRequestDeleteArgs) {
+    return await this.laundryItemRequestService.delete(laundryItemRequestDeleteArgs);
   }
 
-  laundryitemrequest LaundryItemRequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async deleteMany(laundryItemRequestDeleteManyArgs: Prisma.LaundryItemRequestDeleteManyArgs) {
+    return await this.laundryItemRequestService.deleteMany(laundryItemRequestDeleteManyArgs);
   }
 
-  laundryitemrequest laundryitemrequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.laundryitemrequest(LaundryItemRequest);
+  async aggregate(laundryItemRequestAggregateArgs: Prisma.LaundryItemRequestAggregateArgs) {
+    return await this.laundryItemRequestService.aggregate(laundryItemRequestAggregateArgs);
   }
 
-  laundryitemrequest laundryitemrequest(LaundryItemRequest: LaundryItemRequest.LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.laundryitemrequest(LaundryItemRequest);
+  async count(laundryItemRequestCountArgs: Prisma.LaundryItemRequestCountArgs) {
+    return await this.laundryItemRequestService.count(laundryItemRequestCountArgs);
   }
 }

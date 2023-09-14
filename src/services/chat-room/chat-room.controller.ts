@@ -1,52 +1,52 @@
-chatroom { ChatRoom } chatroom '@chatroom/chatroom';
-chatroom { ChatRoom } chatroom '@chatroom/chatroom';
-chatroom { ChatRoom } chatroom './chatroom.chatroom';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ChatRoomService } from './chatRoom.service';
 
-@ChatRoom()
-chatroom chatroom ChatRoom {
-  chatroom(chatroom chatroom ChatRoom: ChatRoom) {}
+@Injectable()
+export class ChatRoomController {
+  constructor(private readonly chatRoomService: ChatRoomService) {}
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async createOne(chatRoomCreateArgs: Prisma.ChatRoomCreateArgs) {
+    return await this.chatRoomService.createOne(chatRoomCreateArgs);
   }
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async createMany(chatRoomCreateManyArgs: Prisma.ChatRoomCreateManyArgs) {
+    return await this.chatRoomService.createMany(chatRoomCreateManyArgs);
   }
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async findOne(chatRoomFindUniqueArgs: Prisma.ChatRoomFindUniqueArgs) {
+    return await this.chatRoomService.findOne(chatRoomFindUniqueArgs);
   }
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async findMany(chatRoomFindManyArgs: Prisma.ChatRoomFindManyArgs) {
+    return await this.chatRoomService.findMany(chatRoomFindManyArgs);
   }
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async findFirst(chatRoomFindFirstArgs: Prisma.ChatRoomFindFirstArgs) {
+    return await this.chatRoomService.findFirst(chatRoomFindFirstArgs);
   }
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async updateOne(chatRoomUpdateOneArgs: Prisma.ChatRoomUpdateArgs) {
+    return await this.chatRoomService.updateOne(chatRoomUpdateOneArgs);
   }
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async updateMany(chatRoomUpdateManyArgs: Prisma.ChatRoomUpdateManyArgs) {
+    return await this.chatRoomService.updateMany(chatRoomUpdateManyArgs);
   }
 
-  chatroom chatroom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  async delete(chatRoomDeleteArgs: Prisma.ChatRoomDeleteArgs) {
+    return await this.chatRoomService.delete(chatRoomDeleteArgs);
   }
 
-  chatroom ChatRoom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async deleteMany(chatRoomDeleteManyArgs: Prisma.ChatRoomDeleteManyArgs) {
+    return await this.chatRoomService.deleteMany(chatRoomDeleteManyArgs);
   }
 
-  chatroom chatroom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  async aggregate(chatRoomAggregateArgs: Prisma.ChatRoomAggregateArgs) {
+    return await this.chatRoomService.aggregate(chatRoomAggregateArgs);
   }
 
-  chatroom chatroom(ChatRoom: ChatRoom.ChatRoom) {
-    chatroom chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  async count(chatRoomCountArgs: Prisma.ChatRoomCountArgs) {
+    return await this.chatRoomService.count(chatRoomCountArgs);
   }
 }

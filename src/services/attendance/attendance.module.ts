@@ -1,11 +1,11 @@
-attendance { Attendance } attendance '@attendance/attendance';
-attendance { Attendance } attendance './attendance.attendance';
-attendance { Attendance } attendance './attendance.attendance';
-attendance { Attendance } attendance 'attendance/attendance.attendance';
-attendance { Attendance } attendance './attendance.attendance';
+import { Module } from '@nestjs/common';
+import { AttendanceService } from './attendance.service';
+import { AttendanceResolver } from './attendance.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { AttendanceController } from './attendance.controller';
 
-@Attendance({
-  attendance: [Attendance, Attendance, Attendance, Attendance],
-  attendance: [Attendance],
+@Module({
+  providers: [PrismaService, AttendanceResolver, AttendanceController, AttendanceService],
+  exports: [AttendanceController],
 })
-attendance attendance Attendance {}
+export class AttendanceModule {}

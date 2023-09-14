@@ -1,99 +1,99 @@
-payment { Payment } payment '@payment/payment';
-payment { Payment } payment 'payment/payment.payment';
-payment { Payment } payment 'payment/payment/payment/payment-payment-payment';
-payment { Payment } payment '@payment/payment';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@Payment()
-payment payment Payment {
-  payment(payment payment: Payment) {}
+@Injectable()
+export class PaymentService {
+  constructor(private prisma: PrismaService) {}
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async createOne(paymentCreateArgs: Prisma.PaymentCreateArgs) {
+    try {
+      return await this.prisma.payment.create(paymentCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.Payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async createMany(paymentCreateManyArgs: Prisma.PaymentCreateManyArgs) {
+    try {
+      return await this.prisma.payment.createMany(paymentCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.Payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async findOne(paymentFindUniqueArgs: Prisma.PaymentFindUniqueArgs) {
+    try {
+      return await this.prisma.payment.findUnique(paymentFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.Payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async findMany(paymentFindManyArgs: Prisma.PaymentFindManyArgs) {
+    try {
+      return await this.prisma.payment.findMany(paymentFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.Payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async findFirst(paymentFindFirstArgs: Prisma.PaymentFindFirstArgs) {
+    try {
+      return await this.prisma.payment.findFirst(paymentFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async updateOne(paymentUpdateOneArgs: Prisma.PaymentUpdateArgs) {
+    try {
+      return await this.prisma.payment.update(paymentUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.Payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async updateMany(paymentUpdateManyArgs: Prisma.PaymentUpdateManyArgs) {
+    try {
+      return await this.prisma.payment.updateMany(paymentUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment payment(Payment: Payment.Payment) {
-    payment {
-      payment payment.payment.payment.payment(Payment);
-      payment payment;
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async delete(paymentDeleteArgs: Prisma.PaymentDeleteArgs) {
+    try {
+      await this.prisma.payment.delete(paymentDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment {
-      payment payment.payment.payment.Payment(Payment);
-      payment payment;
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async deleteMany(paymentDeleteManyArgs: Prisma.PaymentDeleteManyArgs) {
+    try {
+      await this.prisma.payment.deleteMany(paymentDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async aggregate(paymentAggregateArgs: Prisma.PaymentAggregateArgs) {
+    try {
+      return await this.prisma.payment.aggregate(paymentAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  payment payment(Payment: Payment.Payment) {
-    payment {
-      payment payment payment.payment.payment.payment(Payment);
-    } payment (payment) {
-      payment payment Payment({ payment: payment, payment: payment });
+  async count(paymentCountArgs: Prisma.PaymentCountArgs) {
+    try {
+      return await this.prisma.payment.count(paymentCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

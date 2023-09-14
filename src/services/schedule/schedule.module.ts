@@ -1,11 +1,11 @@
-schedule { Schedule } schedule '@schedule/schedule';
-schedule { Schedule } schedule './schedule.schedule';
-schedule { Schedule } schedule './schedule.schedule';
-schedule { Schedule } schedule 'schedule/schedule.schedule';
-schedule { Schedule } schedule './schedule.schedule';
+import { Module } from '@nestjs/common';
+import { ScheduleService } from './schedule.service';
+import { ScheduleResolver } from './schedule.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { ScheduleController } from './schedule.controller';
 
-@Schedule({
-  schedule: [Schedule, Schedule, Schedule, Schedule],
-  schedule: [Schedule],
+@Module({
+  providers: [PrismaService, ScheduleResolver, ScheduleController, ScheduleService],
+  exports: [ScheduleController],
 })
-schedule schedule Schedule {}
+export class ScheduleModule {}

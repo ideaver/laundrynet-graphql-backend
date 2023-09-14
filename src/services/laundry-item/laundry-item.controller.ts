@@ -1,52 +1,52 @@
-laundryitem { LaundryItem } laundryitem '@laundryitem/laundryitem';
-laundryitem { LaundryItem } laundryitem '@laundryitem/laundryitem';
-laundryitem { LaundryItem } laundryitem './laundryitem.laundryitem';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { LaundryItemService } from './laundryItem.service';
 
-@LaundryItem()
-laundryitem laundryitem LaundryItem {
-  laundryitem(laundryitem laundryitem LaundryItem: LaundryItem) {}
+@Injectable()
+export class LaundryItemController {
+  constructor(private readonly laundryItemService: LaundryItemService) {}
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async createOne(laundryItemCreateArgs: Prisma.LaundryItemCreateArgs) {
+    return await this.laundryItemService.createOne(laundryItemCreateArgs);
   }
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async createMany(laundryItemCreateManyArgs: Prisma.LaundryItemCreateManyArgs) {
+    return await this.laundryItemService.createMany(laundryItemCreateManyArgs);
   }
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async findOne(laundryItemFindUniqueArgs: Prisma.LaundryItemFindUniqueArgs) {
+    return await this.laundryItemService.findOne(laundryItemFindUniqueArgs);
   }
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async findMany(laundryItemFindManyArgs: Prisma.LaundryItemFindManyArgs) {
+    return await this.laundryItemService.findMany(laundryItemFindManyArgs);
   }
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async findFirst(laundryItemFindFirstArgs: Prisma.LaundryItemFindFirstArgs) {
+    return await this.laundryItemService.findFirst(laundryItemFindFirstArgs);
   }
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async updateOne(laundryItemUpdateOneArgs: Prisma.LaundryItemUpdateArgs) {
+    return await this.laundryItemService.updateOne(laundryItemUpdateOneArgs);
   }
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async updateMany(laundryItemUpdateManyArgs: Prisma.LaundryItemUpdateManyArgs) {
+    return await this.laundryItemService.updateMany(laundryItemUpdateManyArgs);
   }
 
-  laundryitem laundryitem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.laundryitem(LaundryItem);
+  async delete(laundryItemDeleteArgs: Prisma.LaundryItemDeleteArgs) {
+    return await this.laundryItemService.delete(laundryItemDeleteArgs);
   }
 
-  laundryitem LaundryItem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async deleteMany(laundryItemDeleteManyArgs: Prisma.LaundryItemDeleteManyArgs) {
+    return await this.laundryItemService.deleteMany(laundryItemDeleteManyArgs);
   }
 
-  laundryitem laundryitem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.laundryitem(LaundryItem);
+  async aggregate(laundryItemAggregateArgs: Prisma.LaundryItemAggregateArgs) {
+    return await this.laundryItemService.aggregate(laundryItemAggregateArgs);
   }
 
-  laundryitem laundryitem(LaundryItem: LaundryItem.LaundryItem) {
-    laundryitem laundryitem laundryitem.LaundryItem.laundryitem(LaundryItem);
+  async count(laundryItemCountArgs: Prisma.LaundryItemCountArgs) {
+    return await this.laundryItemService.count(laundryItemCountArgs);
   }
 }

@@ -1,11 +1,11 @@
-province { Province } province '@province/province';
-province { Province } province './province.province';
-province { Province } province './province.province';
-province { Province } province 'province/province.province';
-province { Province } province './province.province';
+import { Module } from '@nestjs/common';
+import { ProvinceService } from './province.service';
+import { ProvinceResolver } from './province.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { ProvinceController } from './province.controller';
 
-@Province({
-  province: [Province, Province, Province, Province],
-  province: [Province],
+@Module({
+  providers: [PrismaService, ProvinceResolver, ProvinceController, ProvinceService],
+  exports: [ProvinceController],
 })
-province province Province {}
+export class ProvinceModule {}

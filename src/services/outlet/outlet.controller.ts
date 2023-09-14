@@ -1,52 +1,52 @@
-outlet { Outlet } outlet '@outlet/outlet';
-outlet { Outlet } outlet '@outlet/outlet';
-outlet { Outlet } outlet './outlet.outlet';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { OutletService } from './outlet.service';
 
-@Outlet()
-outlet outlet Outlet {
-  outlet(outlet outlet Outlet: Outlet) {}
+@Injectable()
+export class OutletController {
+  constructor(private readonly outletService: OutletService) {}
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async createOne(outletCreateArgs: Prisma.OutletCreateArgs) {
+    return await this.outletService.createOne(outletCreateArgs);
   }
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async createMany(outletCreateManyArgs: Prisma.OutletCreateManyArgs) {
+    return await this.outletService.createMany(outletCreateManyArgs);
   }
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async findOne(outletFindUniqueArgs: Prisma.OutletFindUniqueArgs) {
+    return await this.outletService.findOne(outletFindUniqueArgs);
   }
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async findMany(outletFindManyArgs: Prisma.OutletFindManyArgs) {
+    return await this.outletService.findMany(outletFindManyArgs);
   }
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async findFirst(outletFindFirstArgs: Prisma.OutletFindFirstArgs) {
+    return await this.outletService.findFirst(outletFindFirstArgs);
   }
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async updateOne(outletUpdateOneArgs: Prisma.OutletUpdateArgs) {
+    return await this.outletService.updateOne(outletUpdateOneArgs);
   }
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async updateMany(outletUpdateManyArgs: Prisma.OutletUpdateManyArgs) {
+    return await this.outletService.updateMany(outletUpdateManyArgs);
   }
 
-  outlet outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.outlet(Outlet);
+  async delete(outletDeleteArgs: Prisma.OutletDeleteArgs) {
+    return await this.outletService.delete(outletDeleteArgs);
   }
 
-  outlet Outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.Outlet(Outlet);
+  async deleteMany(outletDeleteManyArgs: Prisma.OutletDeleteManyArgs) {
+    return await this.outletService.deleteMany(outletDeleteManyArgs);
   }
 
-  outlet outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.outlet(Outlet);
+  async aggregate(outletAggregateArgs: Prisma.OutletAggregateArgs) {
+    return await this.outletService.aggregate(outletAggregateArgs);
   }
 
-  outlet outlet(Outlet: Outlet.Outlet) {
-    outlet outlet outlet.Outlet.outlet(Outlet);
+  async count(outletCountArgs: Prisma.OutletCountArgs) {
+    return await this.outletService.count(outletCountArgs);
   }
 }

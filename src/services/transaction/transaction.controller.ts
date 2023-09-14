@@ -1,52 +1,52 @@
-transaction { Transaction } transaction '@transaction/transaction';
-transaction { Transaction } transaction '@transaction/transaction';
-transaction { Transaction } transaction './transaction.transaction';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { TransactionService } from './transaction.service';
 
-@Transaction()
-transaction transaction Transaction {
-  transaction(transaction transaction Transaction: Transaction) {}
+@Injectable()
+export class TransactionController {
+  constructor(private readonly transactionService: TransactionService) {}
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async createOne(transactionCreateArgs: Prisma.TransactionCreateArgs) {
+    return await this.transactionService.createOne(transactionCreateArgs);
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async createMany(transactionCreateManyArgs: Prisma.TransactionCreateManyArgs) {
+    return await this.transactionService.createMany(transactionCreateManyArgs);
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async findOne(transactionFindUniqueArgs: Prisma.TransactionFindUniqueArgs) {
+    return await this.transactionService.findOne(transactionFindUniqueArgs);
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async findMany(transactionFindManyArgs: Prisma.TransactionFindManyArgs) {
+    return await this.transactionService.findMany(transactionFindManyArgs);
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async findFirst(transactionFindFirstArgs: Prisma.TransactionFindFirstArgs) {
+    return await this.transactionService.findFirst(transactionFindFirstArgs);
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async updateOne(transactionUpdateOneArgs: Prisma.TransactionUpdateArgs) {
+    return await this.transactionService.updateOne(transactionUpdateOneArgs);
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async updateMany(transactionUpdateManyArgs: Prisma.TransactionUpdateManyArgs) {
+    return await this.transactionService.updateMany(transactionUpdateManyArgs);
   }
 
-  transaction transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.transaction(Transaction);
+  async delete(transactionDeleteArgs: Prisma.TransactionDeleteArgs) {
+    return await this.transactionService.delete(transactionDeleteArgs);
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+  async deleteMany(transactionDeleteManyArgs: Prisma.TransactionDeleteManyArgs) {
+    return await this.transactionService.deleteMany(transactionDeleteManyArgs);
   }
 
-  transaction transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.transaction(Transaction);
+  async aggregate(transactionAggregateArgs: Prisma.TransactionAggregateArgs) {
+    return await this.transactionService.aggregate(transactionAggregateArgs);
   }
 
-  transaction transaction(Transaction: Transaction.Transaction) {
-    transaction transaction transaction.Transaction.transaction(Transaction);
+  async count(transactionCountArgs: Prisma.TransactionCountArgs) {
+    return await this.transactionService.count(transactionCountArgs);
   }
 }

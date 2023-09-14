@@ -1,160 +1,160 @@
-// @city-city
-city { City, City, City, City, City } city '@city/city';
-city { City } city '@city/city';
-city { City } city 'city/city/city.city';
-city {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateCity,
+  CreateManyCityArgs,
+  CreateOneCityArgs,
+  DeleteManyCityArgs,
+  DeleteOneCityArgs,
+  FindFirstCityArgs,
+  FindManyCityArgs,
+  FindUniqueCityArgs,
   City,
-  City,
-  City,
-  City,
-  City,
-  City,
-  City,
-  City,
-  City,
-  City,
-  City,
-  City,
-} city 'city/@city';
-city { City } city './city.city';
-city { City } city 'city/city/city-city-city-city.city';
-city City city 'city/city/city-city.city';
+  CityAggregateArgs,
+  UpdateManyCityArgs,
+  UpdateOneCityArgs,
+} from 'src/@generated';
+import { CityController } from './city.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-city City {
-  city: City.City;
+interface CitySelect {
+  select: Prisma.CitySelect;
 }
 
-@City(() => City)
-city city City {
-  city(city city City: City) {}
+@Resolver(() => City)
+export class CityResolver {
+  constructor(private readonly cityController: CityController) {}
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Mutation(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  city City(
-    @City()
-    City: City,
-    @City() city: City,
-  ): City<City | city> {
-    city city city.City.City({
-      ...City,
-      city: city.city,
+  async cityCreateOne(
+    @Args()
+    cityCreateArgs: CreateOneCityArgs,
+    @Relations() relations: CitySelect,
+  ): Promise<City | void> {
+    return await this.cityController.createOne({
+      ...cityCreateArgs,
+      select: relations.select,
     });
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  city City(
-    @City()
-    City: City,
+  async cityCreateMany(
+    @Args()
+    createManyCityArgs: CreateManyCityArgs,
   ) {
-    city city city.City.City(City);
+    return await this.cityController.createMany(createManyCityArgs);
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Query(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  City(
-    @City()
-    City: City,
-    @City() city: City,
-  ): City<City | city> {
-    city city.City.City({
-      ...City,
-      city: city.city,
+  cityFindOne(
+    @Args()
+    cityFindUniqueArgs: FindUniqueCityArgs,
+    @Relations() relations: CitySelect,
+  ): Promise<City | void> {
+    return this.cityController.findOne({
+      ...cityFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @City(() => [City], {
-    city: city,
-    city: 'City city city city',
+  @Query(() => [City], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  City(
-    @City() City: City,
-    @City() city: City,
+  cityFindMany(
+    @Args() cityFindManyArgs: FindManyCityArgs,
+    @Relations() relations: CitySelect,
   ) {
-    city city.City.City({
-      ...City,
-      city: city.city,
+    return this.cityController.findMany({
+      ...cityFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Query(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  City(
-    @City()
-    City: City,
-    @City() city: City,
-  ): City<City | city> {
-    city city.City.City({
-      ...City,
-      city: city.city,
+  cityFindFirst(
+    @Args()
+    findFirstCityArgs: FindFirstCityArgs,
+    @Relations() relations: CitySelect,
+  ): Promise<City | void> {
+    return this.cityController.findFirst({
+      ...findFirstCityArgs,
+      select: relations.select,
     });
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Mutation(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  city City(
-    @City() City: City,
-    @City() city: City,
+  async cityUpdateOne(
+    @Args() cityUpdateOneArgs: UpdateOneCityArgs,
+    @Relations() relations: CitySelect,
   ) {
-    city city.City.City({
-      ...City(City),
-      city: city.city,
+    return this.cityController.updateOne({
+      ...replaceNullWithUndefined(cityUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Mutation(() => City, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  city City(@City() City: City) {
-    city city.City.City(City);
+  async cityUpdateMany(@Args() updateManyCityArgs: UpdateManyCityArgs) {
+    return this.cityController.updateMany(updateManyCityArgs);
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  city City(
-    @City() City: City,
-    @City() city: City,
+  async cityDelete(
+    @Args() deleteOneCityArgs: DeleteOneCityArgs,
+    @Relations() relations: CitySelect,
   ) {
-    city city.City.city({
-      ...City,
-      city: city.city,
+    return this.cityController.delete({
+      ...deleteOneCityArgs,
+      select: relations.select,
     });
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  city City(@City() City: City) {
-    city city.City.City(City);
+  async cityDeleteMany(@Args() deleteManyCityArgs: DeleteManyCityArgs) {
+    return this.cityController.deleteMany(deleteManyCityArgs);
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Query(() => AggregateCity, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  City(@City() City: City) {
-    city city.City.city(City);
+  cityAggregate(@Args() cityAggregateArgs: CityAggregateArgs) {
+    return this.cityController.aggregate(cityAggregateArgs);
   }
 
-  @City(() => City, {
-    city: city,
-    city: 'City city city city',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  City(@City() City: City) {
-    city city.City.city(City);
+  cityCount(@Args() cityCountAggregateInput: FindManyCityArgs) {
+    return this.cityController.count(cityCountAggregateInput);
   }
 }

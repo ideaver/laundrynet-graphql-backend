@@ -1,11 +1,11 @@
-outletsetting { OutletSetting } outletsetting '@outletsetting/outletsetting';
-outletsetting { OutletSetting } outletsetting './outletsetting.outletsetting';
-outletsetting { OutletSetting } outletsetting './outletsetting.outletsetting';
-outletsetting { OutletSetting } outletsetting 'outletsetting/outletsetting.outletsetting';
-outletsetting { OutletSetting } outletsetting './outletsetting.outletsetting';
+import { Module } from '@nestjs/common';
+import { OutletSettingService } from './outletSetting.service';
+import { OutletSettingResolver } from './outletSetting.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { OutletSettingController } from './outletSetting.controller';
 
-@OutletSetting({
-  outletsetting: [OutletSetting, OutletSetting, OutletSetting, OutletSetting],
-  outletsetting: [OutletSetting],
+@Module({
+  providers: [PrismaService, OutletSettingResolver, OutletSettingController, OutletSettingService],
+  exports: [OutletSettingController],
 })
-outletsetting outletsetting OutletSetting {}
+export class OutletSettingModule {}

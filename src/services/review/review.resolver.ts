@@ -1,160 +1,160 @@
-// @review-review
-review { Review, Review, Review, Review, Review } review '@review/review';
-review { Review } review '@review/review';
-review { Review } review 'review/review/review.review';
-review {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateReview,
+  CreateManyReviewArgs,
+  CreateOneReviewArgs,
+  DeleteManyReviewArgs,
+  DeleteOneReviewArgs,
+  FindFirstReviewArgs,
+  FindManyReviewArgs,
+  FindUniqueReviewArgs,
   Review,
-  Review,
-  Review,
-  Review,
-  Review,
-  Review,
-  Review,
-  Review,
-  Review,
-  Review,
-  Review,
-  Review,
-} review 'review/@review';
-review { Review } review './review.review';
-review { Review } review 'review/review/review-review-review-review.review';
-review Review review 'review/review/review-review.review';
+  ReviewAggregateArgs,
+  UpdateManyReviewArgs,
+  UpdateOneReviewArgs,
+} from 'src/@generated';
+import { ReviewController } from './review.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-review Review {
-  review: Review.Review;
+interface ReviewSelect {
+  select: Prisma.ReviewSelect;
 }
 
-@Review(() => Review)
-review review Review {
-  review(review review Review: Review) {}
+@Resolver(() => Review)
+export class ReviewResolver {
+  constructor(private readonly reviewController: ReviewController) {}
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Mutation(() => Review, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  review Review(
-    @Review()
-    Review: Review,
-    @Review() review: Review,
-  ): Review<Review | review> {
-    review review review.Review.Review({
-      ...Review,
-      review: review.review,
+  async reviewCreateOne(
+    @Args()
+    reviewCreateArgs: CreateOneReviewArgs,
+    @Relations() relations: ReviewSelect,
+  ): Promise<Review | void> {
+    return await this.reviewController.createOne({
+      ...reviewCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  review Review(
-    @Review()
-    Review: Review,
+  async reviewCreateMany(
+    @Args()
+    createManyReviewArgs: CreateManyReviewArgs,
   ) {
-    review review review.Review.Review(Review);
+    return await this.reviewController.createMany(createManyReviewArgs);
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Query(() => Review, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Review(
-    @Review()
-    Review: Review,
-    @Review() review: Review,
-  ): Review<Review | review> {
-    review review.Review.Review({
-      ...Review,
-      review: review.review,
+  reviewFindOne(
+    @Args()
+    reviewFindUniqueArgs: FindUniqueReviewArgs,
+    @Relations() relations: ReviewSelect,
+  ): Promise<Review | void> {
+    return this.reviewController.findOne({
+      ...reviewFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Review(() => [Review], {
-    review: review,
-    review: 'Review review review review',
+  @Query(() => [Review], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Review(
-    @Review() Review: Review,
-    @Review() review: Review,
+  reviewFindMany(
+    @Args() reviewFindManyArgs: FindManyReviewArgs,
+    @Relations() relations: ReviewSelect,
   ) {
-    review review.Review.Review({
-      ...Review,
-      review: review.review,
+    return this.reviewController.findMany({
+      ...reviewFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Query(() => Review, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Review(
-    @Review()
-    Review: Review,
-    @Review() review: Review,
-  ): Review<Review | review> {
-    review review.Review.Review({
-      ...Review,
-      review: review.review,
+  reviewFindFirst(
+    @Args()
+    findFirstReviewArgs: FindFirstReviewArgs,
+    @Relations() relations: ReviewSelect,
+  ): Promise<Review | void> {
+    return this.reviewController.findFirst({
+      ...findFirstReviewArgs,
+      select: relations.select,
     });
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Mutation(() => Review, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  review Review(
-    @Review() Review: Review,
-    @Review() review: Review,
+  async reviewUpdateOne(
+    @Args() reviewUpdateOneArgs: UpdateOneReviewArgs,
+    @Relations() relations: ReviewSelect,
   ) {
-    review review.Review.Review({
-      ...Review(Review),
-      review: review.review,
+    return this.reviewController.updateOne({
+      ...replaceNullWithUndefined(reviewUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Mutation(() => Review, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  review Review(@Review() Review: Review) {
-    review review.Review.Review(Review);
+  async reviewUpdateMany(@Args() updateManyReviewArgs: UpdateManyReviewArgs) {
+    return this.reviewController.updateMany(updateManyReviewArgs);
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  review Review(
-    @Review() Review: Review,
-    @Review() review: Review,
+  async reviewDelete(
+    @Args() deleteOneReviewArgs: DeleteOneReviewArgs,
+    @Relations() relations: ReviewSelect,
   ) {
-    review review.Review.review({
-      ...Review,
-      review: review.review,
+    return this.reviewController.delete({
+      ...deleteOneReviewArgs,
+      select: relations.select,
     });
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  review Review(@Review() Review: Review) {
-    review review.Review.Review(Review);
+  async reviewDeleteMany(@Args() deleteManyReviewArgs: DeleteManyReviewArgs) {
+    return this.reviewController.deleteMany(deleteManyReviewArgs);
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Query(() => AggregateReview, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Review(@Review() Review: Review) {
-    review review.Review.review(Review);
+  reviewAggregate(@Args() reviewAggregateArgs: ReviewAggregateArgs) {
+    return this.reviewController.aggregate(reviewAggregateArgs);
   }
 
-  @Review(() => Review, {
-    review: review,
-    review: 'Review review review review',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Review(@Review() Review: Review) {
-    review review.Review.review(Review);
+  reviewCount(@Args() reviewCountAggregateInput: FindManyReviewArgs) {
+    return this.reviewController.count(reviewCountAggregateInput);
   }
 }

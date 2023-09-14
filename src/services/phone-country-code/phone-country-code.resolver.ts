@@ -1,160 +1,160 @@
-// @phonecountrycode-phonecountrycode
-phonecountrycode { PhoneCountryCode, PhoneCountryCode, PhoneCountryCode, PhoneCountryCode, PhoneCountryCode } phonecountrycode '@phonecountrycode/phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode '@phonecountrycode/phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode 'phonecountrycode/phonecountrycode/phonecountrycode.phonecountrycode';
-phonecountrycode {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregatePhoneCountryCode,
+  CreateManyPhoneCountryCodeArgs,
+  CreateOnePhoneCountryCodeArgs,
+  DeleteManyPhoneCountryCodeArgs,
+  DeleteOnePhoneCountryCodeArgs,
+  FindFirstPhoneCountryCodeArgs,
+  FindManyPhoneCountryCodeArgs,
+  FindUniquePhoneCountryCodeArgs,
   PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-  PhoneCountryCode,
-} phonecountrycode 'phonecountrycode/@phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode './phonecountrycode.phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode 'phonecountrycode/phonecountrycode/phonecountrycode-phonecountrycode-phonecountrycode-phonecountrycode.phonecountrycode';
-phonecountrycode PhoneCountryCode phonecountrycode 'phonecountrycode/phonecountrycode/phonecountrycode-phonecountrycode.phonecountrycode';
+  PhoneCountryCodeAggregateArgs,
+  UpdateManyPhoneCountryCodeArgs,
+  UpdateOnePhoneCountryCodeArgs,
+} from 'src/@generated';
+import { PhoneCountryCodeController } from './phoneCountryCode.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-phonecountrycode PhoneCountryCode {
-  phonecountrycode: PhoneCountryCode.PhoneCountryCode;
+interface PhoneCountryCodeSelect {
+  select: Prisma.PhoneCountryCodeSelect;
 }
 
-@PhoneCountryCode(() => PhoneCountryCode)
-phonecountrycode phonecountrycode PhoneCountryCode {
-  phonecountrycode(phonecountrycode phonecountrycode PhoneCountryCode: PhoneCountryCode) {}
+@Resolver(() => PhoneCountryCode)
+export class PhoneCountryCodeResolver {
+  constructor(private readonly phoneCountryCodeController: PhoneCountryCodeController) {}
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Mutation(() => PhoneCountryCode, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  phonecountrycode PhoneCountryCode(
-    @PhoneCountryCode()
-    PhoneCountryCode: PhoneCountryCode,
-    @PhoneCountryCode() phonecountrycode: PhoneCountryCode,
-  ): PhoneCountryCode<PhoneCountryCode | phonecountrycode> {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode({
-      ...PhoneCountryCode,
-      phonecountrycode: phonecountrycode.phonecountrycode,
+  async phoneCountryCodeCreateOne(
+    @Args()
+    phoneCountryCodeCreateArgs: CreateOnePhoneCountryCodeArgs,
+    @Relations() relations: PhoneCountryCodeSelect,
+  ): Promise<PhoneCountryCode | void> {
+    return await this.phoneCountryCodeController.createOne({
+      ...phoneCountryCodeCreateArgs,
+      select: relations.select,
     });
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  phonecountrycode PhoneCountryCode(
-    @PhoneCountryCode()
-    PhoneCountryCode: PhoneCountryCode,
+  async phoneCountryCodeCreateMany(
+    @Args()
+    createManyPhoneCountryCodeArgs: CreateManyPhoneCountryCodeArgs,
   ) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+    return await this.phoneCountryCodeController.createMany(createManyPhoneCountryCodeArgs);
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Query(() => PhoneCountryCode, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PhoneCountryCode(
-    @PhoneCountryCode()
-    PhoneCountryCode: PhoneCountryCode,
-    @PhoneCountryCode() phonecountrycode: PhoneCountryCode,
-  ): PhoneCountryCode<PhoneCountryCode | phonecountrycode> {
-    phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode({
-      ...PhoneCountryCode,
-      phonecountrycode: phonecountrycode.phonecountrycode,
+  phoneCountryCodeFindOne(
+    @Args()
+    phoneCountryCodeFindUniqueArgs: FindUniquePhoneCountryCodeArgs,
+    @Relations() relations: PhoneCountryCodeSelect,
+  ): Promise<PhoneCountryCode | void> {
+    return this.phoneCountryCodeController.findOne({
+      ...phoneCountryCodeFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @PhoneCountryCode(() => [PhoneCountryCode], {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Query(() => [PhoneCountryCode], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PhoneCountryCode(
-    @PhoneCountryCode() PhoneCountryCode: PhoneCountryCode,
-    @PhoneCountryCode() phonecountrycode: PhoneCountryCode,
+  phoneCountryCodeFindMany(
+    @Args() phoneCountryCodeFindManyArgs: FindManyPhoneCountryCodeArgs,
+    @Relations() relations: PhoneCountryCodeSelect,
   ) {
-    phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode({
-      ...PhoneCountryCode,
-      phonecountrycode: phonecountrycode.phonecountrycode,
+    return this.phoneCountryCodeController.findMany({
+      ...phoneCountryCodeFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Query(() => PhoneCountryCode, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PhoneCountryCode(
-    @PhoneCountryCode()
-    PhoneCountryCode: PhoneCountryCode,
-    @PhoneCountryCode() phonecountrycode: PhoneCountryCode,
-  ): PhoneCountryCode<PhoneCountryCode | phonecountrycode> {
-    phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode({
-      ...PhoneCountryCode,
-      phonecountrycode: phonecountrycode.phonecountrycode,
+  phoneCountryCodeFindFirst(
+    @Args()
+    findFirstPhoneCountryCodeArgs: FindFirstPhoneCountryCodeArgs,
+    @Relations() relations: PhoneCountryCodeSelect,
+  ): Promise<PhoneCountryCode | void> {
+    return this.phoneCountryCodeController.findFirst({
+      ...findFirstPhoneCountryCodeArgs,
+      select: relations.select,
     });
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Mutation(() => PhoneCountryCode, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  phonecountrycode PhoneCountryCode(
-    @PhoneCountryCode() PhoneCountryCode: PhoneCountryCode,
-    @PhoneCountryCode() phonecountrycode: PhoneCountryCode,
+  async phoneCountryCodeUpdateOne(
+    @Args() phoneCountryCodeUpdateOneArgs: UpdateOnePhoneCountryCodeArgs,
+    @Relations() relations: PhoneCountryCodeSelect,
   ) {
-    phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode({
-      ...PhoneCountryCode(PhoneCountryCode),
-      phonecountrycode: phonecountrycode.phonecountrycode,
+    return this.phoneCountryCodeController.updateOne({
+      ...replaceNullWithUndefined(phoneCountryCodeUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Mutation(() => PhoneCountryCode, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  phonecountrycode PhoneCountryCode(@PhoneCountryCode() PhoneCountryCode: PhoneCountryCode) {
-    phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async phoneCountryCodeUpdateMany(@Args() updateManyPhoneCountryCodeArgs: UpdateManyPhoneCountryCodeArgs) {
+    return this.phoneCountryCodeController.updateMany(updateManyPhoneCountryCodeArgs);
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  phonecountrycode PhoneCountryCode(
-    @PhoneCountryCode() PhoneCountryCode: PhoneCountryCode,
-    @PhoneCountryCode() phonecountrycode: PhoneCountryCode,
+  async phoneCountryCodeDelete(
+    @Args() deleteOnePhoneCountryCodeArgs: DeleteOnePhoneCountryCodeArgs,
+    @Relations() relations: PhoneCountryCodeSelect,
   ) {
-    phonecountrycode phonecountrycode.PhoneCountryCode.phonecountrycode({
-      ...PhoneCountryCode,
-      phonecountrycode: phonecountrycode.phonecountrycode,
+    return this.phoneCountryCodeController.delete({
+      ...deleteOnePhoneCountryCodeArgs,
+      select: relations.select,
     });
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  phonecountrycode PhoneCountryCode(@PhoneCountryCode() PhoneCountryCode: PhoneCountryCode) {
-    phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async phoneCountryCodeDeleteMany(@Args() deleteManyPhoneCountryCodeArgs: DeleteManyPhoneCountryCodeArgs) {
+    return this.phoneCountryCodeController.deleteMany(deleteManyPhoneCountryCodeArgs);
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Query(() => AggregatePhoneCountryCode, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PhoneCountryCode(@PhoneCountryCode() PhoneCountryCode: PhoneCountryCode) {
-    phonecountrycode phonecountrycode.PhoneCountryCode.phonecountrycode(PhoneCountryCode);
+  phoneCountryCodeAggregate(@Args() phoneCountryCodeAggregateArgs: PhoneCountryCodeAggregateArgs) {
+    return this.phoneCountryCodeController.aggregate(phoneCountryCodeAggregateArgs);
   }
 
-  @PhoneCountryCode(() => PhoneCountryCode, {
-    phonecountrycode: phonecountrycode,
-    phonecountrycode: 'PhoneCountryCode phonecountrycode phonecountrycode phonecountrycode',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PhoneCountryCode(@PhoneCountryCode() PhoneCountryCode: PhoneCountryCode) {
-    phonecountrycode phonecountrycode.PhoneCountryCode.phonecountrycode(PhoneCountryCode);
+  phoneCountryCodeCount(@Args() phoneCountryCodeCountAggregateInput: FindManyPhoneCountryCodeArgs) {
+    return this.phoneCountryCodeController.count(phoneCountryCodeCountAggregateInput);
   }
 }

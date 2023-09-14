@@ -1,11 +1,11 @@
-subdistrict { Subdistrict } subdistrict '@subdistrict/subdistrict';
-subdistrict { Subdistrict } subdistrict './subdistrict.subdistrict';
-subdistrict { Subdistrict } subdistrict './subdistrict.subdistrict';
-subdistrict { Subdistrict } subdistrict 'subdistrict/subdistrict.subdistrict';
-subdistrict { Subdistrict } subdistrict './subdistrict.subdistrict';
+import { Module } from '@nestjs/common';
+import { SubdistrictService } from './subdistrict.service';
+import { SubdistrictResolver } from './subdistrict.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { SubdistrictController } from './subdistrict.controller';
 
-@Subdistrict({
-  subdistrict: [Subdistrict, Subdistrict, Subdistrict, Subdistrict],
-  subdistrict: [Subdistrict],
+@Module({
+  providers: [PrismaService, SubdistrictResolver, SubdistrictController, SubdistrictService],
+  exports: [SubdistrictController],
 })
-subdistrict subdistrict Subdistrict {}
+export class SubdistrictModule {}

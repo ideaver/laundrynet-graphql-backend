@@ -1,52 +1,52 @@
-stocktransaction { StockTransaction } stocktransaction '@stocktransaction/stocktransaction';
-stocktransaction { StockTransaction } stocktransaction '@stocktransaction/stocktransaction';
-stocktransaction { StockTransaction } stocktransaction './stocktransaction.stocktransaction';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { StockTransactionService } from './stockTransaction.service';
 
-@StockTransaction()
-stocktransaction stocktransaction StockTransaction {
-  stocktransaction(stocktransaction stocktransaction StockTransaction: StockTransaction) {}
+@Injectable()
+export class StockTransactionController {
+  constructor(private readonly stockTransactionService: StockTransactionService) {}
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async createOne(stockTransactionCreateArgs: Prisma.StockTransactionCreateArgs) {
+    return await this.stockTransactionService.createOne(stockTransactionCreateArgs);
   }
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async createMany(stockTransactionCreateManyArgs: Prisma.StockTransactionCreateManyArgs) {
+    return await this.stockTransactionService.createMany(stockTransactionCreateManyArgs);
   }
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async findOne(stockTransactionFindUniqueArgs: Prisma.StockTransactionFindUniqueArgs) {
+    return await this.stockTransactionService.findOne(stockTransactionFindUniqueArgs);
   }
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async findMany(stockTransactionFindManyArgs: Prisma.StockTransactionFindManyArgs) {
+    return await this.stockTransactionService.findMany(stockTransactionFindManyArgs);
   }
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async findFirst(stockTransactionFindFirstArgs: Prisma.StockTransactionFindFirstArgs) {
+    return await this.stockTransactionService.findFirst(stockTransactionFindFirstArgs);
   }
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async updateOne(stockTransactionUpdateOneArgs: Prisma.StockTransactionUpdateArgs) {
+    return await this.stockTransactionService.updateOne(stockTransactionUpdateOneArgs);
   }
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async updateMany(stockTransactionUpdateManyArgs: Prisma.StockTransactionUpdateManyArgs) {
+    return await this.stockTransactionService.updateMany(stockTransactionUpdateManyArgs);
   }
 
-  stocktransaction stocktransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.stocktransaction(StockTransaction);
+  async delete(stockTransactionDeleteArgs: Prisma.StockTransactionDeleteArgs) {
+    return await this.stockTransactionService.delete(stockTransactionDeleteArgs);
   }
 
-  stocktransaction StockTransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.StockTransaction(StockTransaction);
+  async deleteMany(stockTransactionDeleteManyArgs: Prisma.StockTransactionDeleteManyArgs) {
+    return await this.stockTransactionService.deleteMany(stockTransactionDeleteManyArgs);
   }
 
-  stocktransaction stocktransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.stocktransaction(StockTransaction);
+  async aggregate(stockTransactionAggregateArgs: Prisma.StockTransactionAggregateArgs) {
+    return await this.stockTransactionService.aggregate(stockTransactionAggregateArgs);
   }
 
-  stocktransaction stocktransaction(StockTransaction: StockTransaction.StockTransaction) {
-    stocktransaction stocktransaction stocktransaction.StockTransaction.stocktransaction(StockTransaction);
+  async count(stockTransactionCountArgs: Prisma.StockTransactionCountArgs) {
+    return await this.stockTransactionService.count(stockTransactionCountArgs);
   }
 }

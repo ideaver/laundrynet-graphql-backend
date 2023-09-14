@@ -1,52 +1,52 @@
-cart { Cart } cart '@cart/cart';
-cart { Cart } cart '@cart/cart';
-cart { Cart } cart './cart.cart';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { CartService } from './cart.service';
 
-@Cart()
-cart cart Cart {
-  cart(cart cart Cart: Cart) {}
+@Injectable()
+export class CartController {
+  constructor(private readonly cartService: CartService) {}
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async createOne(cartCreateArgs: Prisma.CartCreateArgs) {
+    return await this.cartService.createOne(cartCreateArgs);
   }
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async createMany(cartCreateManyArgs: Prisma.CartCreateManyArgs) {
+    return await this.cartService.createMany(cartCreateManyArgs);
   }
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async findOne(cartFindUniqueArgs: Prisma.CartFindUniqueArgs) {
+    return await this.cartService.findOne(cartFindUniqueArgs);
   }
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async findMany(cartFindManyArgs: Prisma.CartFindManyArgs) {
+    return await this.cartService.findMany(cartFindManyArgs);
   }
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async findFirst(cartFindFirstArgs: Prisma.CartFindFirstArgs) {
+    return await this.cartService.findFirst(cartFindFirstArgs);
   }
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async updateOne(cartUpdateOneArgs: Prisma.CartUpdateArgs) {
+    return await this.cartService.updateOne(cartUpdateOneArgs);
   }
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async updateMany(cartUpdateManyArgs: Prisma.CartUpdateManyArgs) {
+    return await this.cartService.updateMany(cartUpdateManyArgs);
   }
 
-  cart cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.cart(Cart);
+  async delete(cartDeleteArgs: Prisma.CartDeleteArgs) {
+    return await this.cartService.delete(cartDeleteArgs);
   }
 
-  cart Cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.Cart(Cart);
+  async deleteMany(cartDeleteManyArgs: Prisma.CartDeleteManyArgs) {
+    return await this.cartService.deleteMany(cartDeleteManyArgs);
   }
 
-  cart cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.cart(Cart);
+  async aggregate(cartAggregateArgs: Prisma.CartAggregateArgs) {
+    return await this.cartService.aggregate(cartAggregateArgs);
   }
 
-  cart cart(Cart: Cart.Cart) {
-    cart cart cart.Cart.cart(Cart);
+  async count(cartCountArgs: Prisma.CartCountArgs) {
+    return await this.cartService.count(cartCountArgs);
   }
 }

@@ -1,160 +1,160 @@
-// @account-account
-account { Account, Account, Account, Account, Account } account '@account/account';
-account { Account } account '@account/account';
-account { Account } account 'account/account/account.account';
-account {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateAccount,
+  CreateManyAccountArgs,
+  CreateOneAccountArgs,
+  DeleteManyAccountArgs,
+  DeleteOneAccountArgs,
+  FindFirstAccountArgs,
+  FindManyAccountArgs,
+  FindUniqueAccountArgs,
   Account,
-  Account,
-  Account,
-  Account,
-  Account,
-  Account,
-  Account,
-  Account,
-  Account,
-  Account,
-  Account,
-  Account,
-} account 'account/@account';
-account { Account } account './account.account';
-account { Account } account 'account/account/account-account-account-account.account';
-account Account account 'account/account/account-account.account';
+  AccountAggregateArgs,
+  UpdateManyAccountArgs,
+  UpdateOneAccountArgs,
+} from 'src/@generated';
+import { AccountController } from './account.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-account Account {
-  account: Account.Account;
+interface AccountSelect {
+  select: Prisma.AccountSelect;
 }
 
-@Account(() => Account)
-account account Account {
-  account(account account Account: Account) {}
+@Resolver(() => Account)
+export class AccountResolver {
+  constructor(private readonly accountController: AccountController) {}
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Mutation(() => Account, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  account Account(
-    @Account()
-    Account: Account,
-    @Account() account: Account,
-  ): Account<Account | account> {
-    account account account.Account.Account({
-      ...Account,
-      account: account.account,
+  async accountCreateOne(
+    @Args()
+    accountCreateArgs: CreateOneAccountArgs,
+    @Relations() relations: AccountSelect,
+  ): Promise<Account | void> {
+    return await this.accountController.createOne({
+      ...accountCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  account Account(
-    @Account()
-    Account: Account,
+  async accountCreateMany(
+    @Args()
+    createManyAccountArgs: CreateManyAccountArgs,
   ) {
-    account account account.Account.Account(Account);
+    return await this.accountController.createMany(createManyAccountArgs);
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Query(() => Account, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Account(
-    @Account()
-    Account: Account,
-    @Account() account: Account,
-  ): Account<Account | account> {
-    account account.Account.Account({
-      ...Account,
-      account: account.account,
+  accountFindOne(
+    @Args()
+    accountFindUniqueArgs: FindUniqueAccountArgs,
+    @Relations() relations: AccountSelect,
+  ): Promise<Account | void> {
+    return this.accountController.findOne({
+      ...accountFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Account(() => [Account], {
-    account: account,
-    account: 'Account account account account',
+  @Query(() => [Account], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Account(
-    @Account() Account: Account,
-    @Account() account: Account,
+  accountFindMany(
+    @Args() accountFindManyArgs: FindManyAccountArgs,
+    @Relations() relations: AccountSelect,
   ) {
-    account account.Account.Account({
-      ...Account,
-      account: account.account,
+    return this.accountController.findMany({
+      ...accountFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Query(() => Account, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Account(
-    @Account()
-    Account: Account,
-    @Account() account: Account,
-  ): Account<Account | account> {
-    account account.Account.Account({
-      ...Account,
-      account: account.account,
+  accountFindFirst(
+    @Args()
+    findFirstAccountArgs: FindFirstAccountArgs,
+    @Relations() relations: AccountSelect,
+  ): Promise<Account | void> {
+    return this.accountController.findFirst({
+      ...findFirstAccountArgs,
+      select: relations.select,
     });
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Mutation(() => Account, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  account Account(
-    @Account() Account: Account,
-    @Account() account: Account,
+  async accountUpdateOne(
+    @Args() accountUpdateOneArgs: UpdateOneAccountArgs,
+    @Relations() relations: AccountSelect,
   ) {
-    account account.Account.Account({
-      ...Account(Account),
-      account: account.account,
+    return this.accountController.updateOne({
+      ...replaceNullWithUndefined(accountUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Mutation(() => Account, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  account Account(@Account() Account: Account) {
-    account account.Account.Account(Account);
+  async accountUpdateMany(@Args() updateManyAccountArgs: UpdateManyAccountArgs) {
+    return this.accountController.updateMany(updateManyAccountArgs);
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  account Account(
-    @Account() Account: Account,
-    @Account() account: Account,
+  async accountDelete(
+    @Args() deleteOneAccountArgs: DeleteOneAccountArgs,
+    @Relations() relations: AccountSelect,
   ) {
-    account account.Account.account({
-      ...Account,
-      account: account.account,
+    return this.accountController.delete({
+      ...deleteOneAccountArgs,
+      select: relations.select,
     });
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  account Account(@Account() Account: Account) {
-    account account.Account.Account(Account);
+  async accountDeleteMany(@Args() deleteManyAccountArgs: DeleteManyAccountArgs) {
+    return this.accountController.deleteMany(deleteManyAccountArgs);
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Query(() => AggregateAccount, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Account(@Account() Account: Account) {
-    account account.Account.account(Account);
+  accountAggregate(@Args() accountAggregateArgs: AccountAggregateArgs) {
+    return this.accountController.aggregate(accountAggregateArgs);
   }
 
-  @Account(() => Account, {
-    account: account,
-    account: 'Account account account account',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Account(@Account() Account: Account) {
-    account account.Account.account(Account);
+  accountCount(@Args() accountCountAggregateInput: FindManyAccountArgs) {
+    return this.accountController.count(accountCountAggregateInput);
   }
 }

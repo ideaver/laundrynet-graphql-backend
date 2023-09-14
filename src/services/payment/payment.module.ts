@@ -1,11 +1,11 @@
-payment { Payment } payment '@payment/payment';
-payment { Payment } payment './payment.payment';
-payment { Payment } payment './payment.payment';
-payment { Payment } payment 'payment/payment.payment';
-payment { Payment } payment './payment.payment';
+import { Module } from '@nestjs/common';
+import { PaymentService } from './payment.service';
+import { PaymentResolver } from './payment.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { PaymentController } from './payment.controller';
 
-@Payment({
-  payment: [Payment, Payment, Payment, Payment],
-  payment: [Payment],
+@Module({
+  providers: [PrismaService, PaymentResolver, PaymentController, PaymentService],
+  exports: [PaymentController],
 })
-payment payment Payment {}
+export class PaymentModule {}

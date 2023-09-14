@@ -23,36 +23,19 @@ function convertToLowerCaseWithHyphens(input: string) {
 }
 
 // Function to replace words in a string while maintaining casing
-function replaceWords(input: string, modelName: string) {
-  // Define a regular expression to match words (letters and digits)
-  const wordRegex = /\b\w+\b/g;
-
-  // Replace matched words with the model name while maintaining original casing
-  const replacedInput = input.replace(wordRegex, (match) => {
-    // Determine the casing of the match (lowercase, uppercase, or mixed case)
-    if (match === match.toLowerCase()) {
-      // Match is in lowercase, maintain lowercase in the replacement
-      return modelName.toLowerCase();
-    } else if (match === match.toUpperCase()) {
-      // Match is in uppercase, maintain uppercase in the replacement
-      return modelName.toUpperCase();
+function replaceWithCasePreservation(input, target, replacement) {
+  let regex = new RegExp(target, 'ig'); // Case-insensitive global match
+  return input.replace(regex, (match) => {
+    let newStr = replacement;
+    if (match[0] === match[0].toUpperCase()) {
+      // The first letter is uppercase; capitalize the replacement string
+      newStr = newStr.charAt(0).toUpperCase() + newStr.slice(1);
     } else {
-      // Match is in mixed case, maintain original casing in the replacement
-      return modelName;
+      // The first letter is lowercase; make the replacement string lowercase
+      newStr = newStr.charAt(0).toLowerCase() + newStr.slice(1);
     }
+    return newStr;
   });
-  return replacedInput;
-}
-
-// Updated function to duplicate a folder recursively
-function duplicateFile(
-  sourceFilePath: string,
-  targetFilePath: string,
-  modelName: string,
-) {
-  const fileContent = fs.readFileSync(sourceFilePath, 'utf8');
-  const replacedContent = replaceWords(fileContent, modelName);
-  fs.writeFileSync(targetFilePath, replacedContent);
 }
 
 // Updated function to duplicate a folder recursively
@@ -67,8 +50,6 @@ function duplicateFolder(
 
   const files = fs.readdirSync(sourceDir);
 
-  const lastFolderName = path.basename(sourceDir);
-
   for (const file of files) {
     const sourceFilePath = path.join(sourceDir, file);
     const targetFilePath = path.join(
@@ -82,7 +63,12 @@ function duplicateFolder(
       duplicateFolder(sourceFilePath, targetDir, modelName);
     } else {
       const fileContent = fs.readFileSync(sourceFilePath, 'utf8');
-      const replacedContent = replaceWords(fileContent, modelName);
+      const replacedContent = replaceWithCasePreservation(
+        fileContent,
+        path.basename(sourceDir).toLocaleLowerCase(),
+        modelName,
+      );
+
       fs.writeFileSync(targetFilePath, replacedContent);
     }
   }

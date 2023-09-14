@@ -1,99 +1,99 @@
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory '@marketsalepricehistory/marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory 'marketsalepricehistory/marketsalepricehistory.marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory 'marketsalepricehistory/marketsalepricehistory/marketsalepricehistory/marketsalepricehistory-marketsalepricehistory-marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory '@marketsalepricehistory/marketsalepricehistory';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@MarketSalePriceHistory()
-marketsalepricehistory marketsalepricehistory MarketSalePriceHistory {
-  marketsalepricehistory(marketsalepricehistory marketsalepricehistory: MarketSalePriceHistory) {}
+@Injectable()
+export class MarketSalePriceHistoryService {
+  constructor(private prisma: PrismaService) {}
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.marketsalepricehistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async createOne(marketSalePriceHistoryCreateArgs: Prisma.MarketSalePriceHistoryCreateArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.create(marketSalePriceHistoryCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.MarketSalePriceHistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async createMany(marketSalePriceHistoryCreateManyArgs: Prisma.MarketSalePriceHistoryCreateManyArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.createMany(marketSalePriceHistoryCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.MarketSalePriceHistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async findOne(marketSalePriceHistoryFindUniqueArgs: Prisma.MarketSalePriceHistoryFindUniqueArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.findUnique(marketSalePriceHistoryFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.MarketSalePriceHistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async findMany(marketSalePriceHistoryFindManyArgs: Prisma.MarketSalePriceHistoryFindManyArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.findMany(marketSalePriceHistoryFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.MarketSalePriceHistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async findFirst(marketSalePriceHistoryFindFirstArgs: Prisma.MarketSalePriceHistoryFindFirstArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.findFirst(marketSalePriceHistoryFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.marketsalepricehistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async updateOne(marketSalePriceHistoryUpdateOneArgs: Prisma.MarketSalePriceHistoryUpdateArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.update(marketSalePriceHistoryUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.MarketSalePriceHistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async updateMany(marketSalePriceHistoryUpdateManyArgs: Prisma.MarketSalePriceHistoryUpdateManyArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.updateMany(marketSalePriceHistoryUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory marketsalepricehistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.marketsalepricehistory(MarketSalePriceHistory);
-      marketsalepricehistory marketsalepricehistory;
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async delete(marketSalePriceHistoryDeleteArgs: Prisma.MarketSalePriceHistoryDeleteArgs) {
+    try {
+      await this.prisma.marketSalePriceHistory.delete(marketSalePriceHistoryDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.MarketSalePriceHistory(MarketSalePriceHistory);
-      marketsalepricehistory marketsalepricehistory;
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async deleteMany(marketSalePriceHistoryDeleteManyArgs: Prisma.MarketSalePriceHistoryDeleteManyArgs) {
+    try {
+      await this.prisma.marketSalePriceHistory.deleteMany(marketSalePriceHistoryDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory marketsalepricehistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.marketsalepricehistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async aggregate(marketSalePriceHistoryAggregateArgs: Prisma.MarketSalePriceHistoryAggregateArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.aggregate(marketSalePriceHistoryAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  marketsalepricehistory marketsalepricehistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory {
-      marketsalepricehistory marketsalepricehistory marketsalepricehistory.marketsalepricehistory.marketsalepricehistory.marketsalepricehistory(MarketSalePriceHistory);
-    } marketsalepricehistory (marketsalepricehistory) {
-      marketsalepricehistory marketsalepricehistory MarketSalePriceHistory({ marketsalepricehistory: marketsalepricehistory, marketsalepricehistory: marketsalepricehistory });
+  async count(marketSalePriceHistoryCountArgs: Prisma.MarketSalePriceHistoryCountArgs) {
+    try {
+      return await this.prisma.marketSalePriceHistory.count(marketSalePriceHistoryCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

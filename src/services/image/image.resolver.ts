@@ -1,160 +1,160 @@
-// @image-image
-image { Image, Image, Image, Image, Image } image '@image/image';
-image { Image } image '@image/image';
-image { Image } image 'image/image/image.image';
-image {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateImage,
+  CreateManyImageArgs,
+  CreateOneImageArgs,
+  DeleteManyImageArgs,
+  DeleteOneImageArgs,
+  FindFirstImageArgs,
+  FindManyImageArgs,
+  FindUniqueImageArgs,
   Image,
-  Image,
-  Image,
-  Image,
-  Image,
-  Image,
-  Image,
-  Image,
-  Image,
-  Image,
-  Image,
-  Image,
-} image 'image/@image';
-image { Image } image './image.image';
-image { Image } image 'image/image/image-image-image-image.image';
-image Image image 'image/image/image-image.image';
+  ImageAggregateArgs,
+  UpdateManyImageArgs,
+  UpdateOneImageArgs,
+} from 'src/@generated';
+import { ImageController } from './image.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-image Image {
-  image: Image.Image;
+interface ImageSelect {
+  select: Prisma.ImageSelect;
 }
 
-@Image(() => Image)
-image image Image {
-  image(image image Image: Image) {}
+@Resolver(() => Image)
+export class ImageResolver {
+  constructor(private readonly imageController: ImageController) {}
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Mutation(() => Image, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  image Image(
-    @Image()
-    Image: Image,
-    @Image() image: Image,
-  ): Image<Image | image> {
-    image image image.Image.Image({
-      ...Image,
-      image: image.image,
+  async imageCreateOne(
+    @Args()
+    imageCreateArgs: CreateOneImageArgs,
+    @Relations() relations: ImageSelect,
+  ): Promise<Image | void> {
+    return await this.imageController.createOne({
+      ...imageCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  image Image(
-    @Image()
-    Image: Image,
+  async imageCreateMany(
+    @Args()
+    createManyImageArgs: CreateManyImageArgs,
   ) {
-    image image image.Image.Image(Image);
+    return await this.imageController.createMany(createManyImageArgs);
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Query(() => Image, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Image(
-    @Image()
-    Image: Image,
-    @Image() image: Image,
-  ): Image<Image | image> {
-    image image.Image.Image({
-      ...Image,
-      image: image.image,
+  imageFindOne(
+    @Args()
+    imageFindUniqueArgs: FindUniqueImageArgs,
+    @Relations() relations: ImageSelect,
+  ): Promise<Image | void> {
+    return this.imageController.findOne({
+      ...imageFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Image(() => [Image], {
-    image: image,
-    image: 'Image image image image',
+  @Query(() => [Image], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Image(
-    @Image() Image: Image,
-    @Image() image: Image,
+  imageFindMany(
+    @Args() imageFindManyArgs: FindManyImageArgs,
+    @Relations() relations: ImageSelect,
   ) {
-    image image.Image.Image({
-      ...Image,
-      image: image.image,
+    return this.imageController.findMany({
+      ...imageFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Query(() => Image, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Image(
-    @Image()
-    Image: Image,
-    @Image() image: Image,
-  ): Image<Image | image> {
-    image image.Image.Image({
-      ...Image,
-      image: image.image,
+  imageFindFirst(
+    @Args()
+    findFirstImageArgs: FindFirstImageArgs,
+    @Relations() relations: ImageSelect,
+  ): Promise<Image | void> {
+    return this.imageController.findFirst({
+      ...findFirstImageArgs,
+      select: relations.select,
     });
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Mutation(() => Image, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  image Image(
-    @Image() Image: Image,
-    @Image() image: Image,
+  async imageUpdateOne(
+    @Args() imageUpdateOneArgs: UpdateOneImageArgs,
+    @Relations() relations: ImageSelect,
   ) {
-    image image.Image.Image({
-      ...Image(Image),
-      image: image.image,
+    return this.imageController.updateOne({
+      ...replaceNullWithUndefined(imageUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Mutation(() => Image, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  image Image(@Image() Image: Image) {
-    image image.Image.Image(Image);
+  async imageUpdateMany(@Args() updateManyImageArgs: UpdateManyImageArgs) {
+    return this.imageController.updateMany(updateManyImageArgs);
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  image Image(
-    @Image() Image: Image,
-    @Image() image: Image,
+  async imageDelete(
+    @Args() deleteOneImageArgs: DeleteOneImageArgs,
+    @Relations() relations: ImageSelect,
   ) {
-    image image.Image.image({
-      ...Image,
-      image: image.image,
+    return this.imageController.delete({
+      ...deleteOneImageArgs,
+      select: relations.select,
     });
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  image Image(@Image() Image: Image) {
-    image image.Image.Image(Image);
+  async imageDeleteMany(@Args() deleteManyImageArgs: DeleteManyImageArgs) {
+    return this.imageController.deleteMany(deleteManyImageArgs);
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Query(() => AggregateImage, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Image(@Image() Image: Image) {
-    image image.Image.image(Image);
+  imageAggregate(@Args() imageAggregateArgs: ImageAggregateArgs) {
+    return this.imageController.aggregate(imageAggregateArgs);
   }
 
-  @Image(() => Image, {
-    image: image,
-    image: 'Image image image image',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Image(@Image() Image: Image) {
-    image image.Image.image(Image);
+  imageCount(@Args() imageCountAggregateInput: FindManyImageArgs) {
+    return this.imageController.count(imageCountAggregateInput);
   }
 }

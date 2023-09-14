@@ -1,52 +1,52 @@
-indonesianbank { IndonesianBank } indonesianbank '@indonesianbank/indonesianbank';
-indonesianbank { IndonesianBank } indonesianbank '@indonesianbank/indonesianbank';
-indonesianbank { IndonesianBank } indonesianbank './indonesianbank.indonesianbank';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { IndonesianBankService } from './indonesianBank.service';
 
-@IndonesianBank()
-indonesianbank indonesianbank IndonesianBank {
-  indonesianbank(indonesianbank indonesianbank IndonesianBank: IndonesianBank) {}
+@Injectable()
+export class IndonesianBankController {
+  constructor(private readonly indonesianBankService: IndonesianBankService) {}
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async createOne(indonesianBankCreateArgs: Prisma.IndonesianBankCreateArgs) {
+    return await this.indonesianBankService.createOne(indonesianBankCreateArgs);
   }
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async createMany(indonesianBankCreateManyArgs: Prisma.IndonesianBankCreateManyArgs) {
+    return await this.indonesianBankService.createMany(indonesianBankCreateManyArgs);
   }
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async findOne(indonesianBankFindUniqueArgs: Prisma.IndonesianBankFindUniqueArgs) {
+    return await this.indonesianBankService.findOne(indonesianBankFindUniqueArgs);
   }
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async findMany(indonesianBankFindManyArgs: Prisma.IndonesianBankFindManyArgs) {
+    return await this.indonesianBankService.findMany(indonesianBankFindManyArgs);
   }
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async findFirst(indonesianBankFindFirstArgs: Prisma.IndonesianBankFindFirstArgs) {
+    return await this.indonesianBankService.findFirst(indonesianBankFindFirstArgs);
   }
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async updateOne(indonesianBankUpdateOneArgs: Prisma.IndonesianBankUpdateArgs) {
+    return await this.indonesianBankService.updateOne(indonesianBankUpdateOneArgs);
   }
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async updateMany(indonesianBankUpdateManyArgs: Prisma.IndonesianBankUpdateManyArgs) {
+    return await this.indonesianBankService.updateMany(indonesianBankUpdateManyArgs);
   }
 
-  indonesianbank indonesianbank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.indonesianbank(IndonesianBank);
+  async delete(indonesianBankDeleteArgs: Prisma.IndonesianBankDeleteArgs) {
+    return await this.indonesianBankService.delete(indonesianBankDeleteArgs);
   }
 
-  indonesianbank IndonesianBank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async deleteMany(indonesianBankDeleteManyArgs: Prisma.IndonesianBankDeleteManyArgs) {
+    return await this.indonesianBankService.deleteMany(indonesianBankDeleteManyArgs);
   }
 
-  indonesianbank indonesianbank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.indonesianbank(IndonesianBank);
+  async aggregate(indonesianBankAggregateArgs: Prisma.IndonesianBankAggregateArgs) {
+    return await this.indonesianBankService.aggregate(indonesianBankAggregateArgs);
   }
 
-  indonesianbank indonesianbank(IndonesianBank: IndonesianBank.IndonesianBank) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.indonesianbank(IndonesianBank);
+  async count(indonesianBankCountArgs: Prisma.IndonesianBankCountArgs) {
+    return await this.indonesianBankService.count(indonesianBankCountArgs);
   }
 }

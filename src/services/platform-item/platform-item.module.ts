@@ -1,11 +1,11 @@
-platformitem { PlatformItem } platformitem '@platformitem/platformitem';
-platformitem { PlatformItem } platformitem './platformitem.platformitem';
-platformitem { PlatformItem } platformitem './platformitem.platformitem';
-platformitem { PlatformItem } platformitem 'platformitem/platformitem.platformitem';
-platformitem { PlatformItem } platformitem './platformitem.platformitem';
+import { Module } from '@nestjs/common';
+import { PlatformItemService } from './platformItem.service';
+import { PlatformItemResolver } from './platformItem.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { PlatformItemController } from './platformItem.controller';
 
-@PlatformItem({
-  platformitem: [PlatformItem, PlatformItem, PlatformItem, PlatformItem],
-  platformitem: [PlatformItem],
+@Module({
+  providers: [PrismaService, PlatformItemResolver, PlatformItemController, PlatformItemService],
+  exports: [PlatformItemController],
 })
-platformitem platformitem PlatformItem {}
+export class PlatformItemModule {}

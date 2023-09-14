@@ -1,11 +1,11 @@
-deliverystatus { DeliveryStatus } deliverystatus '@deliverystatus/deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus './deliverystatus.deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus './deliverystatus.deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus 'deliverystatus/deliverystatus.deliverystatus';
-deliverystatus { DeliveryStatus } deliverystatus './deliverystatus.deliverystatus';
+import { Module } from '@nestjs/common';
+import { DeliveryStatusService } from './deliveryStatus.service';
+import { DeliveryStatusResolver } from './deliveryStatus.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { DeliveryStatusController } from './deliveryStatus.controller';
 
-@DeliveryStatus({
-  deliverystatus: [DeliveryStatus, DeliveryStatus, DeliveryStatus, DeliveryStatus],
-  deliverystatus: [DeliveryStatus],
+@Module({
+  providers: [PrismaService, DeliveryStatusResolver, DeliveryStatusController, DeliveryStatusService],
+  exports: [DeliveryStatusController],
 })
-deliverystatus deliverystatus DeliveryStatus {}
+export class DeliveryStatusModule {}

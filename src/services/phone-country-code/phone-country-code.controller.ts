@@ -1,52 +1,52 @@
-phonecountrycode { PhoneCountryCode } phonecountrycode '@phonecountrycode/phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode '@phonecountrycode/phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode './phonecountrycode.phonecountrycode';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { PhoneCountryCodeService } from './phoneCountryCode.service';
 
-@PhoneCountryCode()
-phonecountrycode phonecountrycode PhoneCountryCode {
-  phonecountrycode(phonecountrycode phonecountrycode PhoneCountryCode: PhoneCountryCode) {}
+@Injectable()
+export class PhoneCountryCodeController {
+  constructor(private readonly phoneCountryCodeService: PhoneCountryCodeService) {}
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async createOne(phoneCountryCodeCreateArgs: Prisma.PhoneCountryCodeCreateArgs) {
+    return await this.phoneCountryCodeService.createOne(phoneCountryCodeCreateArgs);
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async createMany(phoneCountryCodeCreateManyArgs: Prisma.PhoneCountryCodeCreateManyArgs) {
+    return await this.phoneCountryCodeService.createMany(phoneCountryCodeCreateManyArgs);
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async findOne(phoneCountryCodeFindUniqueArgs: Prisma.PhoneCountryCodeFindUniqueArgs) {
+    return await this.phoneCountryCodeService.findOne(phoneCountryCodeFindUniqueArgs);
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async findMany(phoneCountryCodeFindManyArgs: Prisma.PhoneCountryCodeFindManyArgs) {
+    return await this.phoneCountryCodeService.findMany(phoneCountryCodeFindManyArgs);
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async findFirst(phoneCountryCodeFindFirstArgs: Prisma.PhoneCountryCodeFindFirstArgs) {
+    return await this.phoneCountryCodeService.findFirst(phoneCountryCodeFindFirstArgs);
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async updateOne(phoneCountryCodeUpdateOneArgs: Prisma.PhoneCountryCodeUpdateArgs) {
+    return await this.phoneCountryCodeService.updateOne(phoneCountryCodeUpdateOneArgs);
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async updateMany(phoneCountryCodeUpdateManyArgs: Prisma.PhoneCountryCodeUpdateManyArgs) {
+    return await this.phoneCountryCodeService.updateMany(phoneCountryCodeUpdateManyArgs);
   }
 
-  phonecountrycode phonecountrycode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.phonecountrycode(PhoneCountryCode);
+  async delete(phoneCountryCodeDeleteArgs: Prisma.PhoneCountryCodeDeleteArgs) {
+    return await this.phoneCountryCodeService.delete(phoneCountryCodeDeleteArgs);
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.PhoneCountryCode(PhoneCountryCode);
+  async deleteMany(phoneCountryCodeDeleteManyArgs: Prisma.PhoneCountryCodeDeleteManyArgs) {
+    return await this.phoneCountryCodeService.deleteMany(phoneCountryCodeDeleteManyArgs);
   }
 
-  phonecountrycode phonecountrycode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.phonecountrycode(PhoneCountryCode);
+  async aggregate(phoneCountryCodeAggregateArgs: Prisma.PhoneCountryCodeAggregateArgs) {
+    return await this.phoneCountryCodeService.aggregate(phoneCountryCodeAggregateArgs);
   }
 
-  phonecountrycode phonecountrycode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode phonecountrycode phonecountrycode.PhoneCountryCode.phonecountrycode(PhoneCountryCode);
+  async count(phoneCountryCodeCountArgs: Prisma.PhoneCountryCodeCountArgs) {
+    return await this.phoneCountryCodeService.count(phoneCountryCodeCountArgs);
   }
 }

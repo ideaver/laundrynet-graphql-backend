@@ -1,11 +1,11 @@
-file { File } file '@file/file';
-file { File } file './file.file';
-file { File } file './file.file';
-file { File } file 'file/file.file';
-file { File } file './file.file';
+import { Module } from '@nestjs/common';
+import { FileService } from './file.service';
+import { FileResolver } from './file.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { FileController } from './file.controller';
 
-@File({
-  file: [File, File, File, File],
-  file: [File],
+@Module({
+  providers: [PrismaService, FileResolver, FileController, FileService],
+  exports: [FileController],
 })
-file file File {}
+export class FileModule {}

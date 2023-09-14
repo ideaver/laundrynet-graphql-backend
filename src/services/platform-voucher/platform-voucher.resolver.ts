@@ -1,160 +1,160 @@
-// @platformvoucher-platformvoucher
-platformvoucher { PlatformVoucher, PlatformVoucher, PlatformVoucher, PlatformVoucher, PlatformVoucher } platformvoucher '@platformvoucher/platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher '@platformvoucher/platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher 'platformvoucher/platformvoucher/platformvoucher.platformvoucher';
-platformvoucher {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregatePlatformVoucher,
+  CreateManyPlatformVoucherArgs,
+  CreateOnePlatformVoucherArgs,
+  DeleteManyPlatformVoucherArgs,
+  DeleteOnePlatformVoucherArgs,
+  FindFirstPlatformVoucherArgs,
+  FindManyPlatformVoucherArgs,
+  FindUniquePlatformVoucherArgs,
   PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-  PlatformVoucher,
-} platformvoucher 'platformvoucher/@platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher './platformvoucher.platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher 'platformvoucher/platformvoucher/platformvoucher-platformvoucher-platformvoucher-platformvoucher.platformvoucher';
-platformvoucher PlatformVoucher platformvoucher 'platformvoucher/platformvoucher/platformvoucher-platformvoucher.platformvoucher';
+  PlatformVoucherAggregateArgs,
+  UpdateManyPlatformVoucherArgs,
+  UpdateOnePlatformVoucherArgs,
+} from 'src/@generated';
+import { PlatformVoucherController } from './platformVoucher.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-platformvoucher PlatformVoucher {
-  platformvoucher: PlatformVoucher.PlatformVoucher;
+interface PlatformVoucherSelect {
+  select: Prisma.PlatformVoucherSelect;
 }
 
-@PlatformVoucher(() => PlatformVoucher)
-platformvoucher platformvoucher PlatformVoucher {
-  platformvoucher(platformvoucher platformvoucher PlatformVoucher: PlatformVoucher) {}
+@Resolver(() => PlatformVoucher)
+export class PlatformVoucherResolver {
+  constructor(private readonly platformVoucherController: PlatformVoucherController) {}
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Mutation(() => PlatformVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformvoucher PlatformVoucher(
-    @PlatformVoucher()
-    PlatformVoucher: PlatformVoucher,
-    @PlatformVoucher() platformvoucher: PlatformVoucher,
-  ): PlatformVoucher<PlatformVoucher | platformvoucher> {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher({
-      ...PlatformVoucher,
-      platformvoucher: platformvoucher.platformvoucher,
+  async platformVoucherCreateOne(
+    @Args()
+    platformVoucherCreateArgs: CreateOnePlatformVoucherArgs,
+    @Relations() relations: PlatformVoucherSelect,
+  ): Promise<PlatformVoucher | void> {
+    return await this.platformVoucherController.createOne({
+      ...platformVoucherCreateArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformvoucher PlatformVoucher(
-    @PlatformVoucher()
-    PlatformVoucher: PlatformVoucher,
+  async platformVoucherCreateMany(
+    @Args()
+    createManyPlatformVoucherArgs: CreateManyPlatformVoucherArgs,
   ) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+    return await this.platformVoucherController.createMany(createManyPlatformVoucherArgs);
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Query(() => PlatformVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformVoucher(
-    @PlatformVoucher()
-    PlatformVoucher: PlatformVoucher,
-    @PlatformVoucher() platformvoucher: PlatformVoucher,
-  ): PlatformVoucher<PlatformVoucher | platformvoucher> {
-    platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher({
-      ...PlatformVoucher,
-      platformvoucher: platformvoucher.platformvoucher,
+  platformVoucherFindOne(
+    @Args()
+    platformVoucherFindUniqueArgs: FindUniquePlatformVoucherArgs,
+    @Relations() relations: PlatformVoucherSelect,
+  ): Promise<PlatformVoucher | void> {
+    return this.platformVoucherController.findOne({
+      ...platformVoucherFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformVoucher(() => [PlatformVoucher], {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Query(() => [PlatformVoucher], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformVoucher(
-    @PlatformVoucher() PlatformVoucher: PlatformVoucher,
-    @PlatformVoucher() platformvoucher: PlatformVoucher,
+  platformVoucherFindMany(
+    @Args() platformVoucherFindManyArgs: FindManyPlatformVoucherArgs,
+    @Relations() relations: PlatformVoucherSelect,
   ) {
-    platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher({
-      ...PlatformVoucher,
-      platformvoucher: platformvoucher.platformvoucher,
+    return this.platformVoucherController.findMany({
+      ...platformVoucherFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Query(() => PlatformVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformVoucher(
-    @PlatformVoucher()
-    PlatformVoucher: PlatformVoucher,
-    @PlatformVoucher() platformvoucher: PlatformVoucher,
-  ): PlatformVoucher<PlatformVoucher | platformvoucher> {
-    platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher({
-      ...PlatformVoucher,
-      platformvoucher: platformvoucher.platformvoucher,
+  platformVoucherFindFirst(
+    @Args()
+    findFirstPlatformVoucherArgs: FindFirstPlatformVoucherArgs,
+    @Relations() relations: PlatformVoucherSelect,
+  ): Promise<PlatformVoucher | void> {
+    return this.platformVoucherController.findFirst({
+      ...findFirstPlatformVoucherArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Mutation(() => PlatformVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformvoucher PlatformVoucher(
-    @PlatformVoucher() PlatformVoucher: PlatformVoucher,
-    @PlatformVoucher() platformvoucher: PlatformVoucher,
+  async platformVoucherUpdateOne(
+    @Args() platformVoucherUpdateOneArgs: UpdateOnePlatformVoucherArgs,
+    @Relations() relations: PlatformVoucherSelect,
   ) {
-    platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher({
-      ...PlatformVoucher(PlatformVoucher),
-      platformvoucher: platformvoucher.platformvoucher,
+    return this.platformVoucherController.updateOne({
+      ...replaceNullWithUndefined(platformVoucherUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Mutation(() => PlatformVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformvoucher PlatformVoucher(@PlatformVoucher() PlatformVoucher: PlatformVoucher) {
-    platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async platformVoucherUpdateMany(@Args() updateManyPlatformVoucherArgs: UpdateManyPlatformVoucherArgs) {
+    return this.platformVoucherController.updateMany(updateManyPlatformVoucherArgs);
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformvoucher PlatformVoucher(
-    @PlatformVoucher() PlatformVoucher: PlatformVoucher,
-    @PlatformVoucher() platformvoucher: PlatformVoucher,
+  async platformVoucherDelete(
+    @Args() deleteOnePlatformVoucherArgs: DeleteOnePlatformVoucherArgs,
+    @Relations() relations: PlatformVoucherSelect,
   ) {
-    platformvoucher platformvoucher.PlatformVoucher.platformvoucher({
-      ...PlatformVoucher,
-      platformvoucher: platformvoucher.platformvoucher,
+    return this.platformVoucherController.delete({
+      ...deleteOnePlatformVoucherArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformvoucher PlatformVoucher(@PlatformVoucher() PlatformVoucher: PlatformVoucher) {
-    platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async platformVoucherDeleteMany(@Args() deleteManyPlatformVoucherArgs: DeleteManyPlatformVoucherArgs) {
+    return this.platformVoucherController.deleteMany(deleteManyPlatformVoucherArgs);
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Query(() => AggregatePlatformVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformVoucher(@PlatformVoucher() PlatformVoucher: PlatformVoucher) {
-    platformvoucher platformvoucher.PlatformVoucher.platformvoucher(PlatformVoucher);
+  platformVoucherAggregate(@Args() platformVoucherAggregateArgs: PlatformVoucherAggregateArgs) {
+    return this.platformVoucherController.aggregate(platformVoucherAggregateArgs);
   }
 
-  @PlatformVoucher(() => PlatformVoucher, {
-    platformvoucher: platformvoucher,
-    platformvoucher: 'PlatformVoucher platformvoucher platformvoucher platformvoucher',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformVoucher(@PlatformVoucher() PlatformVoucher: PlatformVoucher) {
-    platformvoucher platformvoucher.PlatformVoucher.platformvoucher(PlatformVoucher);
+  platformVoucherCount(@Args() platformVoucherCountAggregateInput: FindManyPlatformVoucherArgs) {
+    return this.platformVoucherController.count(platformVoucherCountAggregateInput);
   }
 }

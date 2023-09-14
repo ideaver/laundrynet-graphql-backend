@@ -1,52 +1,52 @@
-delivery { Delivery } delivery '@delivery/delivery';
-delivery { Delivery } delivery '@delivery/delivery';
-delivery { Delivery } delivery './delivery.delivery';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { DeliveryService } from './delivery.service';
 
-@Delivery()
-delivery delivery Delivery {
-  delivery(delivery delivery Delivery: Delivery) {}
+@Injectable()
+export class DeliveryController {
+  constructor(private readonly deliveryService: DeliveryService) {}
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async createOne(deliveryCreateArgs: Prisma.DeliveryCreateArgs) {
+    return await this.deliveryService.createOne(deliveryCreateArgs);
   }
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async createMany(deliveryCreateManyArgs: Prisma.DeliveryCreateManyArgs) {
+    return await this.deliveryService.createMany(deliveryCreateManyArgs);
   }
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async findOne(deliveryFindUniqueArgs: Prisma.DeliveryFindUniqueArgs) {
+    return await this.deliveryService.findOne(deliveryFindUniqueArgs);
   }
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async findMany(deliveryFindManyArgs: Prisma.DeliveryFindManyArgs) {
+    return await this.deliveryService.findMany(deliveryFindManyArgs);
   }
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async findFirst(deliveryFindFirstArgs: Prisma.DeliveryFindFirstArgs) {
+    return await this.deliveryService.findFirst(deliveryFindFirstArgs);
   }
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async updateOne(deliveryUpdateOneArgs: Prisma.DeliveryUpdateArgs) {
+    return await this.deliveryService.updateOne(deliveryUpdateOneArgs);
   }
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async updateMany(deliveryUpdateManyArgs: Prisma.DeliveryUpdateManyArgs) {
+    return await this.deliveryService.updateMany(deliveryUpdateManyArgs);
   }
 
-  delivery delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.delivery(Delivery);
+  async delete(deliveryDeleteArgs: Prisma.DeliveryDeleteArgs) {
+    return await this.deliveryService.delete(deliveryDeleteArgs);
   }
 
-  delivery Delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+  async deleteMany(deliveryDeleteManyArgs: Prisma.DeliveryDeleteManyArgs) {
+    return await this.deliveryService.deleteMany(deliveryDeleteManyArgs);
   }
 
-  delivery delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.delivery(Delivery);
+  async aggregate(deliveryAggregateArgs: Prisma.DeliveryAggregateArgs) {
+    return await this.deliveryService.aggregate(deliveryAggregateArgs);
   }
 
-  delivery delivery(Delivery: Delivery.Delivery) {
-    delivery delivery delivery.Delivery.delivery(Delivery);
+  async count(deliveryCountArgs: Prisma.DeliveryCountArgs) {
+    return await this.deliveryService.count(deliveryCountArgs);
   }
 }

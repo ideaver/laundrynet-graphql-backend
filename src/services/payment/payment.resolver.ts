@@ -1,160 +1,160 @@
-// @payment-payment
-payment { Payment, Payment, Payment, Payment, Payment } payment '@payment/payment';
-payment { Payment } payment '@payment/payment';
-payment { Payment } payment 'payment/payment/payment.payment';
-payment {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregatePayment,
+  CreateManyPaymentArgs,
+  CreateOnePaymentArgs,
+  DeleteManyPaymentArgs,
+  DeleteOnePaymentArgs,
+  FindFirstPaymentArgs,
+  FindManyPaymentArgs,
+  FindUniquePaymentArgs,
   Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-  Payment,
-} payment 'payment/@payment';
-payment { Payment } payment './payment.payment';
-payment { Payment } payment 'payment/payment/payment-payment-payment-payment.payment';
-payment Payment payment 'payment/payment/payment-payment.payment';
+  PaymentAggregateArgs,
+  UpdateManyPaymentArgs,
+  UpdateOnePaymentArgs,
+} from 'src/@generated';
+import { PaymentController } from './payment.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-payment Payment {
-  payment: Payment.Payment;
+interface PaymentSelect {
+  select: Prisma.PaymentSelect;
 }
 
-@Payment(() => Payment)
-payment payment Payment {
-  payment(payment payment Payment: Payment) {}
+@Resolver(() => Payment)
+export class PaymentResolver {
+  constructor(private readonly paymentController: PaymentController) {}
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Mutation(() => Payment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  payment Payment(
-    @Payment()
-    Payment: Payment,
-    @Payment() payment: Payment,
-  ): Payment<Payment | payment> {
-    payment payment payment.Payment.Payment({
-      ...Payment,
-      payment: payment.payment,
+  async paymentCreateOne(
+    @Args()
+    paymentCreateArgs: CreateOnePaymentArgs,
+    @Relations() relations: PaymentSelect,
+  ): Promise<Payment | void> {
+    return await this.paymentController.createOne({
+      ...paymentCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  payment Payment(
-    @Payment()
-    Payment: Payment,
+  async paymentCreateMany(
+    @Args()
+    createManyPaymentArgs: CreateManyPaymentArgs,
   ) {
-    payment payment payment.Payment.Payment(Payment);
+    return await this.paymentController.createMany(createManyPaymentArgs);
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Query(() => Payment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Payment(
-    @Payment()
-    Payment: Payment,
-    @Payment() payment: Payment,
-  ): Payment<Payment | payment> {
-    payment payment.Payment.Payment({
-      ...Payment,
-      payment: payment.payment,
+  paymentFindOne(
+    @Args()
+    paymentFindUniqueArgs: FindUniquePaymentArgs,
+    @Relations() relations: PaymentSelect,
+  ): Promise<Payment | void> {
+    return this.paymentController.findOne({
+      ...paymentFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Payment(() => [Payment], {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Query(() => [Payment], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Payment(
-    @Payment() Payment: Payment,
-    @Payment() payment: Payment,
+  paymentFindMany(
+    @Args() paymentFindManyArgs: FindManyPaymentArgs,
+    @Relations() relations: PaymentSelect,
   ) {
-    payment payment.Payment.Payment({
-      ...Payment,
-      payment: payment.payment,
+    return this.paymentController.findMany({
+      ...paymentFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Query(() => Payment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Payment(
-    @Payment()
-    Payment: Payment,
-    @Payment() payment: Payment,
-  ): Payment<Payment | payment> {
-    payment payment.Payment.Payment({
-      ...Payment,
-      payment: payment.payment,
+  paymentFindFirst(
+    @Args()
+    findFirstPaymentArgs: FindFirstPaymentArgs,
+    @Relations() relations: PaymentSelect,
+  ): Promise<Payment | void> {
+    return this.paymentController.findFirst({
+      ...findFirstPaymentArgs,
+      select: relations.select,
     });
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Mutation(() => Payment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  payment Payment(
-    @Payment() Payment: Payment,
-    @Payment() payment: Payment,
+  async paymentUpdateOne(
+    @Args() paymentUpdateOneArgs: UpdateOnePaymentArgs,
+    @Relations() relations: PaymentSelect,
   ) {
-    payment payment.Payment.Payment({
-      ...Payment(Payment),
-      payment: payment.payment,
+    return this.paymentController.updateOne({
+      ...replaceNullWithUndefined(paymentUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Mutation(() => Payment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  payment Payment(@Payment() Payment: Payment) {
-    payment payment.Payment.Payment(Payment);
+  async paymentUpdateMany(@Args() updateManyPaymentArgs: UpdateManyPaymentArgs) {
+    return this.paymentController.updateMany(updateManyPaymentArgs);
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  payment Payment(
-    @Payment() Payment: Payment,
-    @Payment() payment: Payment,
+  async paymentDelete(
+    @Args() deleteOnePaymentArgs: DeleteOnePaymentArgs,
+    @Relations() relations: PaymentSelect,
   ) {
-    payment payment.Payment.payment({
-      ...Payment,
-      payment: payment.payment,
+    return this.paymentController.delete({
+      ...deleteOnePaymentArgs,
+      select: relations.select,
     });
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  payment Payment(@Payment() Payment: Payment) {
-    payment payment.Payment.Payment(Payment);
+  async paymentDeleteMany(@Args() deleteManyPaymentArgs: DeleteManyPaymentArgs) {
+    return this.paymentController.deleteMany(deleteManyPaymentArgs);
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Query(() => AggregatePayment, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Payment(@Payment() Payment: Payment) {
-    payment payment.Payment.payment(Payment);
+  paymentAggregate(@Args() paymentAggregateArgs: PaymentAggregateArgs) {
+    return this.paymentController.aggregate(paymentAggregateArgs);
   }
 
-  @Payment(() => Payment, {
-    payment: payment,
-    payment: 'Payment payment payment payment',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Payment(@Payment() Payment: Payment) {
-    payment payment.Payment.payment(Payment);
+  paymentCount(@Args() paymentCountAggregateInput: FindManyPaymentArgs) {
+    return this.paymentController.count(paymentCountAggregateInput);
   }
 }

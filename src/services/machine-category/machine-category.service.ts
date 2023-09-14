@@ -1,99 +1,99 @@
-machinecategory { MachineCategory } machinecategory '@machinecategory/machinecategory';
-machinecategory { MachineCategory } machinecategory 'machinecategory/machinecategory.machinecategory';
-machinecategory { MachineCategory } machinecategory 'machinecategory/machinecategory/machinecategory/machinecategory-machinecategory-machinecategory';
-machinecategory { MachineCategory } machinecategory '@machinecategory/machinecategory';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@MachineCategory()
-machinecategory machinecategory MachineCategory {
-  machinecategory(machinecategory machinecategory: MachineCategory) {}
+@Injectable()
+export class MachineCategoryService {
+  constructor(private prisma: PrismaService) {}
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.machinecategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async createOne(machineCategoryCreateArgs: Prisma.MachineCategoryCreateArgs) {
+    try {
+      return await this.prisma.machineCategory.create(machineCategoryCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.MachineCategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async createMany(machineCategoryCreateManyArgs: Prisma.MachineCategoryCreateManyArgs) {
+    try {
+      return await this.prisma.machineCategory.createMany(machineCategoryCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.MachineCategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async findOne(machineCategoryFindUniqueArgs: Prisma.MachineCategoryFindUniqueArgs) {
+    try {
+      return await this.prisma.machineCategory.findUnique(machineCategoryFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.MachineCategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async findMany(machineCategoryFindManyArgs: Prisma.MachineCategoryFindManyArgs) {
+    try {
+      return await this.prisma.machineCategory.findMany(machineCategoryFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.MachineCategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async findFirst(machineCategoryFindFirstArgs: Prisma.MachineCategoryFindFirstArgs) {
+    try {
+      return await this.prisma.machineCategory.findFirst(machineCategoryFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.machinecategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async updateOne(machineCategoryUpdateOneArgs: Prisma.MachineCategoryUpdateArgs) {
+    try {
+      return await this.prisma.machineCategory.update(machineCategoryUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.MachineCategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async updateMany(machineCategoryUpdateManyArgs: Prisma.MachineCategoryUpdateManyArgs) {
+    try {
+      return await this.prisma.machineCategory.updateMany(machineCategoryUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory machinecategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory.machinecategory.machinecategory.machinecategory(MachineCategory);
-      machinecategory machinecategory;
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async delete(machineCategoryDeleteArgs: Prisma.MachineCategoryDeleteArgs) {
+    try {
+      await this.prisma.machineCategory.delete(machineCategoryDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory.machinecategory.machinecategory.MachineCategory(MachineCategory);
-      machinecategory machinecategory;
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async deleteMany(machineCategoryDeleteManyArgs: Prisma.MachineCategoryDeleteManyArgs) {
+    try {
+      await this.prisma.machineCategory.deleteMany(machineCategoryDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory machinecategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.machinecategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async aggregate(machineCategoryAggregateArgs: Prisma.MachineCategoryAggregateArgs) {
+    try {
+      return await this.prisma.machineCategory.aggregate(machineCategoryAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machinecategory machinecategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory {
-      machinecategory machinecategory machinecategory.machinecategory.machinecategory.machinecategory(MachineCategory);
-    } machinecategory (machinecategory) {
-      machinecategory machinecategory MachineCategory({ machinecategory: machinecategory, machinecategory: machinecategory });
+  async count(machineCategoryCountArgs: Prisma.MachineCategoryCountArgs) {
+    try {
+      return await this.prisma.machineCategory.count(machineCategoryCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

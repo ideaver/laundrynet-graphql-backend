@@ -1,160 +1,160 @@
-// @vouchersetting-vouchersetting
-vouchersetting { VoucherSetting, VoucherSetting, VoucherSetting, VoucherSetting, VoucherSetting } vouchersetting '@vouchersetting/vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting '@vouchersetting/vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting 'vouchersetting/vouchersetting/vouchersetting.vouchersetting';
-vouchersetting {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateVoucherSetting,
+  CreateManyVoucherSettingArgs,
+  CreateOneVoucherSettingArgs,
+  DeleteManyVoucherSettingArgs,
+  DeleteOneVoucherSettingArgs,
+  FindFirstVoucherSettingArgs,
+  FindManyVoucherSettingArgs,
+  FindUniqueVoucherSettingArgs,
   VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-  VoucherSetting,
-} vouchersetting 'vouchersetting/@vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting './vouchersetting.vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting 'vouchersetting/vouchersetting/vouchersetting-vouchersetting-vouchersetting-vouchersetting.vouchersetting';
-vouchersetting VoucherSetting vouchersetting 'vouchersetting/vouchersetting/vouchersetting-vouchersetting.vouchersetting';
+  VoucherSettingAggregateArgs,
+  UpdateManyVoucherSettingArgs,
+  UpdateOneVoucherSettingArgs,
+} from 'src/@generated';
+import { VoucherSettingController } from './voucherSetting.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-vouchersetting VoucherSetting {
-  vouchersetting: VoucherSetting.VoucherSetting;
+interface VoucherSettingSelect {
+  select: Prisma.VoucherSettingSelect;
 }
 
-@VoucherSetting(() => VoucherSetting)
-vouchersetting vouchersetting VoucherSetting {
-  vouchersetting(vouchersetting vouchersetting VoucherSetting: VoucherSetting) {}
+@Resolver(() => VoucherSetting)
+export class VoucherSettingResolver {
+  constructor(private readonly voucherSettingController: VoucherSettingController) {}
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Mutation(() => VoucherSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  vouchersetting VoucherSetting(
-    @VoucherSetting()
-    VoucherSetting: VoucherSetting,
-    @VoucherSetting() vouchersetting: VoucherSetting,
-  ): VoucherSetting<VoucherSetting | vouchersetting> {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting({
-      ...VoucherSetting,
-      vouchersetting: vouchersetting.vouchersetting,
+  async voucherSettingCreateOne(
+    @Args()
+    voucherSettingCreateArgs: CreateOneVoucherSettingArgs,
+    @Relations() relations: VoucherSettingSelect,
+  ): Promise<VoucherSetting | void> {
+    return await this.voucherSettingController.createOne({
+      ...voucherSettingCreateArgs,
+      select: relations.select,
     });
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  vouchersetting VoucherSetting(
-    @VoucherSetting()
-    VoucherSetting: VoucherSetting,
+  async voucherSettingCreateMany(
+    @Args()
+    createManyVoucherSettingArgs: CreateManyVoucherSettingArgs,
   ) {
-    vouchersetting vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+    return await this.voucherSettingController.createMany(createManyVoucherSettingArgs);
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Query(() => VoucherSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  VoucherSetting(
-    @VoucherSetting()
-    VoucherSetting: VoucherSetting,
-    @VoucherSetting() vouchersetting: VoucherSetting,
-  ): VoucherSetting<VoucherSetting | vouchersetting> {
-    vouchersetting vouchersetting.VoucherSetting.VoucherSetting({
-      ...VoucherSetting,
-      vouchersetting: vouchersetting.vouchersetting,
+  voucherSettingFindOne(
+    @Args()
+    voucherSettingFindUniqueArgs: FindUniqueVoucherSettingArgs,
+    @Relations() relations: VoucherSettingSelect,
+  ): Promise<VoucherSetting | void> {
+    return this.voucherSettingController.findOne({
+      ...voucherSettingFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @VoucherSetting(() => [VoucherSetting], {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Query(() => [VoucherSetting], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  VoucherSetting(
-    @VoucherSetting() VoucherSetting: VoucherSetting,
-    @VoucherSetting() vouchersetting: VoucherSetting,
+  voucherSettingFindMany(
+    @Args() voucherSettingFindManyArgs: FindManyVoucherSettingArgs,
+    @Relations() relations: VoucherSettingSelect,
   ) {
-    vouchersetting vouchersetting.VoucherSetting.VoucherSetting({
-      ...VoucherSetting,
-      vouchersetting: vouchersetting.vouchersetting,
+    return this.voucherSettingController.findMany({
+      ...voucherSettingFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Query(() => VoucherSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  VoucherSetting(
-    @VoucherSetting()
-    VoucherSetting: VoucherSetting,
-    @VoucherSetting() vouchersetting: VoucherSetting,
-  ): VoucherSetting<VoucherSetting | vouchersetting> {
-    vouchersetting vouchersetting.VoucherSetting.VoucherSetting({
-      ...VoucherSetting,
-      vouchersetting: vouchersetting.vouchersetting,
+  voucherSettingFindFirst(
+    @Args()
+    findFirstVoucherSettingArgs: FindFirstVoucherSettingArgs,
+    @Relations() relations: VoucherSettingSelect,
+  ): Promise<VoucherSetting | void> {
+    return this.voucherSettingController.findFirst({
+      ...findFirstVoucherSettingArgs,
+      select: relations.select,
     });
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Mutation(() => VoucherSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  vouchersetting VoucherSetting(
-    @VoucherSetting() VoucherSetting: VoucherSetting,
-    @VoucherSetting() vouchersetting: VoucherSetting,
+  async voucherSettingUpdateOne(
+    @Args() voucherSettingUpdateOneArgs: UpdateOneVoucherSettingArgs,
+    @Relations() relations: VoucherSettingSelect,
   ) {
-    vouchersetting vouchersetting.VoucherSetting.VoucherSetting({
-      ...VoucherSetting(VoucherSetting),
-      vouchersetting: vouchersetting.vouchersetting,
+    return this.voucherSettingController.updateOne({
+      ...replaceNullWithUndefined(voucherSettingUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Mutation(() => VoucherSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  vouchersetting VoucherSetting(@VoucherSetting() VoucherSetting: VoucherSetting) {
-    vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async voucherSettingUpdateMany(@Args() updateManyVoucherSettingArgs: UpdateManyVoucherSettingArgs) {
+    return this.voucherSettingController.updateMany(updateManyVoucherSettingArgs);
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  vouchersetting VoucherSetting(
-    @VoucherSetting() VoucherSetting: VoucherSetting,
-    @VoucherSetting() vouchersetting: VoucherSetting,
+  async voucherSettingDelete(
+    @Args() deleteOneVoucherSettingArgs: DeleteOneVoucherSettingArgs,
+    @Relations() relations: VoucherSettingSelect,
   ) {
-    vouchersetting vouchersetting.VoucherSetting.vouchersetting({
-      ...VoucherSetting,
-      vouchersetting: vouchersetting.vouchersetting,
+    return this.voucherSettingController.delete({
+      ...deleteOneVoucherSettingArgs,
+      select: relations.select,
     });
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  vouchersetting VoucherSetting(@VoucherSetting() VoucherSetting: VoucherSetting) {
-    vouchersetting vouchersetting.VoucherSetting.VoucherSetting(VoucherSetting);
+  async voucherSettingDeleteMany(@Args() deleteManyVoucherSettingArgs: DeleteManyVoucherSettingArgs) {
+    return this.voucherSettingController.deleteMany(deleteManyVoucherSettingArgs);
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Query(() => AggregateVoucherSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  VoucherSetting(@VoucherSetting() VoucherSetting: VoucherSetting) {
-    vouchersetting vouchersetting.VoucherSetting.vouchersetting(VoucherSetting);
+  voucherSettingAggregate(@Args() voucherSettingAggregateArgs: VoucherSettingAggregateArgs) {
+    return this.voucherSettingController.aggregate(voucherSettingAggregateArgs);
   }
 
-  @VoucherSetting(() => VoucherSetting, {
-    vouchersetting: vouchersetting,
-    vouchersetting: 'VoucherSetting vouchersetting vouchersetting vouchersetting',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  VoucherSetting(@VoucherSetting() VoucherSetting: VoucherSetting) {
-    vouchersetting vouchersetting.VoucherSetting.vouchersetting(VoucherSetting);
+  voucherSettingCount(@Args() voucherSettingCountAggregateInput: FindManyVoucherSettingArgs) {
+    return this.voucherSettingController.count(voucherSettingCountAggregateInput);
   }
 }

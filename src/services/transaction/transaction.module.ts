@@ -1,11 +1,11 @@
-transaction { Transaction } transaction '@transaction/transaction';
-transaction { Transaction } transaction './transaction.transaction';
-transaction { Transaction } transaction './transaction.transaction';
-transaction { Transaction } transaction 'transaction/transaction.transaction';
-transaction { Transaction } transaction './transaction.transaction';
+import { Module } from '@nestjs/common';
+import { TransactionService } from './transaction.service';
+import { TransactionResolver } from './transaction.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { TransactionController } from './transaction.controller';
 
-@Transaction({
-  transaction: [Transaction, Transaction, Transaction, Transaction],
-  transaction: [Transaction],
+@Module({
+  providers: [PrismaService, TransactionResolver, TransactionController, TransactionService],
+  exports: [TransactionController],
 })
-transaction transaction Transaction {}
+export class TransactionModule {}

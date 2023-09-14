@@ -1,160 +1,160 @@
-// @file-file
-file { File, File, File, File, File } file '@file/file';
-file { File } file '@file/file';
-file { File } file 'file/file/file.file';
-file {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateFile,
+  CreateManyFileArgs,
+  CreateOneFileArgs,
+  DeleteManyFileArgs,
+  DeleteOneFileArgs,
+  FindFirstFileArgs,
+  FindManyFileArgs,
+  FindUniqueFileArgs,
   File,
-  File,
-  File,
-  File,
-  File,
-  File,
-  File,
-  File,
-  File,
-  File,
-  File,
-  File,
-} file 'file/@file';
-file { File } file './file.file';
-file { File } file 'file/file/file-file-file-file.file';
-file File file 'file/file/file-file.file';
+  FileAggregateArgs,
+  UpdateManyFileArgs,
+  UpdateOneFileArgs,
+} from 'src/@generated';
+import { FileController } from './file.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-file File {
-  file: File.File;
+interface FileSelect {
+  select: Prisma.FileSelect;
 }
 
-@File(() => File)
-file file File {
-  file(file file File: File) {}
+@Resolver(() => File)
+export class FileResolver {
+  constructor(private readonly fileController: FileController) {}
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Mutation(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  file File(
-    @File()
-    File: File,
-    @File() file: File,
-  ): File<File | file> {
-    file file file.File.File({
-      ...File,
-      file: file.file,
+  async fileCreateOne(
+    @Args()
+    fileCreateArgs: CreateOneFileArgs,
+    @Relations() relations: FileSelect,
+  ): Promise<File | void> {
+    return await this.fileController.createOne({
+      ...fileCreateArgs,
+      select: relations.select,
     });
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  file File(
-    @File()
-    File: File,
+  async fileCreateMany(
+    @Args()
+    createManyFileArgs: CreateManyFileArgs,
   ) {
-    file file file.File.File(File);
+    return await this.fileController.createMany(createManyFileArgs);
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Query(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  File(
-    @File()
-    File: File,
-    @File() file: File,
-  ): File<File | file> {
-    file file.File.File({
-      ...File,
-      file: file.file,
+  fileFindOne(
+    @Args()
+    fileFindUniqueArgs: FindUniqueFileArgs,
+    @Relations() relations: FileSelect,
+  ): Promise<File | void> {
+    return this.fileController.findOne({
+      ...fileFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @File(() => [File], {
-    file: file,
-    file: 'File file file file',
+  @Query(() => [File], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  File(
-    @File() File: File,
-    @File() file: File,
+  fileFindMany(
+    @Args() fileFindManyArgs: FindManyFileArgs,
+    @Relations() relations: FileSelect,
   ) {
-    file file.File.File({
-      ...File,
-      file: file.file,
+    return this.fileController.findMany({
+      ...fileFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Query(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  File(
-    @File()
-    File: File,
-    @File() file: File,
-  ): File<File | file> {
-    file file.File.File({
-      ...File,
-      file: file.file,
+  fileFindFirst(
+    @Args()
+    findFirstFileArgs: FindFirstFileArgs,
+    @Relations() relations: FileSelect,
+  ): Promise<File | void> {
+    return this.fileController.findFirst({
+      ...findFirstFileArgs,
+      select: relations.select,
     });
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Mutation(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  file File(
-    @File() File: File,
-    @File() file: File,
+  async fileUpdateOne(
+    @Args() fileUpdateOneArgs: UpdateOneFileArgs,
+    @Relations() relations: FileSelect,
   ) {
-    file file.File.File({
-      ...File(File),
-      file: file.file,
+    return this.fileController.updateOne({
+      ...replaceNullWithUndefined(fileUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Mutation(() => File, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  file File(@File() File: File) {
-    file file.File.File(File);
+  async fileUpdateMany(@Args() updateManyFileArgs: UpdateManyFileArgs) {
+    return this.fileController.updateMany(updateManyFileArgs);
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  file File(
-    @File() File: File,
-    @File() file: File,
+  async fileDelete(
+    @Args() deleteOneFileArgs: DeleteOneFileArgs,
+    @Relations() relations: FileSelect,
   ) {
-    file file.File.file({
-      ...File,
-      file: file.file,
+    return this.fileController.delete({
+      ...deleteOneFileArgs,
+      select: relations.select,
     });
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  file File(@File() File: File) {
-    file file.File.File(File);
+  async fileDeleteMany(@Args() deleteManyFileArgs: DeleteManyFileArgs) {
+    return this.fileController.deleteMany(deleteManyFileArgs);
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Query(() => AggregateFile, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  File(@File() File: File) {
-    file file.File.file(File);
+  fileAggregate(@Args() fileAggregateArgs: FileAggregateArgs) {
+    return this.fileController.aggregate(fileAggregateArgs);
   }
 
-  @File(() => File, {
-    file: file,
-    file: 'File file file file',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  File(@File() File: File) {
-    file file.File.file(File);
+  fileCount(@Args() fileCountAggregateInput: FindManyFileArgs) {
+    return this.fileController.count(fileCountAggregateInput);
   }
 }

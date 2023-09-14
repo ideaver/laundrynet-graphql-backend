@@ -1,52 +1,52 @@
-user { User } user '@user/user';
-user { User } user '@user/user';
-user { User } user './user.user';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { UserService } from './user.service';
 
-@User()
-user user User {
-  user(user user User: User) {}
+@Injectable()
+export class UserController {
+  constructor(private readonly userService: UserService) {}
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async createOne(userCreateArgs: Prisma.UserCreateArgs) {
+    return await this.userService.createOne(userCreateArgs);
   }
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async createMany(userCreateManyArgs: Prisma.UserCreateManyArgs) {
+    return await this.userService.createMany(userCreateManyArgs);
   }
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async findOne(userFindUniqueArgs: Prisma.UserFindUniqueArgs) {
+    return await this.userService.findOne(userFindUniqueArgs);
   }
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async findMany(userFindManyArgs: Prisma.UserFindManyArgs) {
+    return await this.userService.findMany(userFindManyArgs);
   }
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async findFirst(userFindFirstArgs: Prisma.UserFindFirstArgs) {
+    return await this.userService.findFirst(userFindFirstArgs);
   }
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async updateOne(userUpdateOneArgs: Prisma.UserUpdateArgs) {
+    return await this.userService.updateOne(userUpdateOneArgs);
   }
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async updateMany(userUpdateManyArgs: Prisma.UserUpdateManyArgs) {
+    return await this.userService.updateMany(userUpdateManyArgs);
   }
 
-  user user(User: User.User) {
-    user user user.User.user(User);
+  async delete(userDeleteArgs: Prisma.UserDeleteArgs) {
+    return await this.userService.delete(userDeleteArgs);
   }
 
-  user User(User: User.User) {
-    user user user.User.User(User);
+  async deleteMany(userDeleteManyArgs: Prisma.UserDeleteManyArgs) {
+    return await this.userService.deleteMany(userDeleteManyArgs);
   }
 
-  user user(User: User.User) {
-    user user user.User.user(User);
+  async aggregate(userAggregateArgs: Prisma.UserAggregateArgs) {
+    return await this.userService.aggregate(userAggregateArgs);
   }
 
-  user user(User: User.User) {
-    user user user.User.user(User);
+  async count(userCountArgs: Prisma.UserCountArgs) {
+    return await this.userService.count(userCountArgs);
   }
 }

@@ -1,160 +1,160 @@
-// @employee-employee
-employee { Employee, Employee, Employee, Employee, Employee } employee '@employee/employee';
-employee { Employee } employee '@employee/employee';
-employee { Employee } employee 'employee/employee/employee.employee';
-employee {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateEmployee,
+  CreateManyEmployeeArgs,
+  CreateOneEmployeeArgs,
+  DeleteManyEmployeeArgs,
+  DeleteOneEmployeeArgs,
+  FindFirstEmployeeArgs,
+  FindManyEmployeeArgs,
+  FindUniqueEmployeeArgs,
   Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-  Employee,
-} employee 'employee/@employee';
-employee { Employee } employee './employee.employee';
-employee { Employee } employee 'employee/employee/employee-employee-employee-employee.employee';
-employee Employee employee 'employee/employee/employee-employee.employee';
+  EmployeeAggregateArgs,
+  UpdateManyEmployeeArgs,
+  UpdateOneEmployeeArgs,
+} from 'src/@generated';
+import { EmployeeController } from './employee.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-employee Employee {
-  employee: Employee.Employee;
+interface EmployeeSelect {
+  select: Prisma.EmployeeSelect;
 }
 
-@Employee(() => Employee)
-employee employee Employee {
-  employee(employee employee Employee: Employee) {}
+@Resolver(() => Employee)
+export class EmployeeResolver {
+  constructor(private readonly employeeController: EmployeeController) {}
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Mutation(() => Employee, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employee Employee(
-    @Employee()
-    Employee: Employee,
-    @Employee() employee: Employee,
-  ): Employee<Employee | employee> {
-    employee employee employee.Employee.Employee({
-      ...Employee,
-      employee: employee.employee,
+  async employeeCreateOne(
+    @Args()
+    employeeCreateArgs: CreateOneEmployeeArgs,
+    @Relations() relations: EmployeeSelect,
+  ): Promise<Employee | void> {
+    return await this.employeeController.createOne({
+      ...employeeCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employee Employee(
-    @Employee()
-    Employee: Employee,
+  async employeeCreateMany(
+    @Args()
+    createManyEmployeeArgs: CreateManyEmployeeArgs,
   ) {
-    employee employee employee.Employee.Employee(Employee);
+    return await this.employeeController.createMany(createManyEmployeeArgs);
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Query(() => Employee, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Employee(
-    @Employee()
-    Employee: Employee,
-    @Employee() employee: Employee,
-  ): Employee<Employee | employee> {
-    employee employee.Employee.Employee({
-      ...Employee,
-      employee: employee.employee,
+  employeeFindOne(
+    @Args()
+    employeeFindUniqueArgs: FindUniqueEmployeeArgs,
+    @Relations() relations: EmployeeSelect,
+  ): Promise<Employee | void> {
+    return this.employeeController.findOne({
+      ...employeeFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Employee(() => [Employee], {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Query(() => [Employee], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Employee(
-    @Employee() Employee: Employee,
-    @Employee() employee: Employee,
+  employeeFindMany(
+    @Args() employeeFindManyArgs: FindManyEmployeeArgs,
+    @Relations() relations: EmployeeSelect,
   ) {
-    employee employee.Employee.Employee({
-      ...Employee,
-      employee: employee.employee,
+    return this.employeeController.findMany({
+      ...employeeFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Query(() => Employee, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Employee(
-    @Employee()
-    Employee: Employee,
-    @Employee() employee: Employee,
-  ): Employee<Employee | employee> {
-    employee employee.Employee.Employee({
-      ...Employee,
-      employee: employee.employee,
+  employeeFindFirst(
+    @Args()
+    findFirstEmployeeArgs: FindFirstEmployeeArgs,
+    @Relations() relations: EmployeeSelect,
+  ): Promise<Employee | void> {
+    return this.employeeController.findFirst({
+      ...findFirstEmployeeArgs,
+      select: relations.select,
     });
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Mutation(() => Employee, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employee Employee(
-    @Employee() Employee: Employee,
-    @Employee() employee: Employee,
+  async employeeUpdateOne(
+    @Args() employeeUpdateOneArgs: UpdateOneEmployeeArgs,
+    @Relations() relations: EmployeeSelect,
   ) {
-    employee employee.Employee.Employee({
-      ...Employee(Employee),
-      employee: employee.employee,
+    return this.employeeController.updateOne({
+      ...replaceNullWithUndefined(employeeUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Mutation(() => Employee, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  employee Employee(@Employee() Employee: Employee) {
-    employee employee.Employee.Employee(Employee);
+  async employeeUpdateMany(@Args() updateManyEmployeeArgs: UpdateManyEmployeeArgs) {
+    return this.employeeController.updateMany(updateManyEmployeeArgs);
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  employee Employee(
-    @Employee() Employee: Employee,
-    @Employee() employee: Employee,
+  async employeeDelete(
+    @Args() deleteOneEmployeeArgs: DeleteOneEmployeeArgs,
+    @Relations() relations: EmployeeSelect,
   ) {
-    employee employee.Employee.employee({
-      ...Employee,
-      employee: employee.employee,
+    return this.employeeController.delete({
+      ...deleteOneEmployeeArgs,
+      select: relations.select,
     });
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  employee Employee(@Employee() Employee: Employee) {
-    employee employee.Employee.Employee(Employee);
+  async employeeDeleteMany(@Args() deleteManyEmployeeArgs: DeleteManyEmployeeArgs) {
+    return this.employeeController.deleteMany(deleteManyEmployeeArgs);
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Query(() => AggregateEmployee, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Employee(@Employee() Employee: Employee) {
-    employee employee.Employee.employee(Employee);
+  employeeAggregate(@Args() employeeAggregateArgs: EmployeeAggregateArgs) {
+    return this.employeeController.aggregate(employeeAggregateArgs);
   }
 
-  @Employee(() => Employee, {
-    employee: employee,
-    employee: 'Employee employee employee employee',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Employee(@Employee() Employee: Employee) {
-    employee employee.Employee.employee(Employee);
+  employeeCount(@Args() employeeCountAggregateInput: FindManyEmployeeArgs) {
+    return this.employeeController.count(employeeCountAggregateInput);
   }
 }

@@ -1,52 +1,52 @@
-printermachine { PrinterMachine } printermachine '@printermachine/printermachine';
-printermachine { PrinterMachine } printermachine '@printermachine/printermachine';
-printermachine { PrinterMachine } printermachine './printermachine.printermachine';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { PrinterMachineService } from './printerMachine.service';
 
-@PrinterMachine()
-printermachine printermachine PrinterMachine {
-  printermachine(printermachine printermachine PrinterMachine: PrinterMachine) {}
+@Injectable()
+export class PrinterMachineController {
+  constructor(private readonly printerMachineService: PrinterMachineService) {}
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async createOne(printerMachineCreateArgs: Prisma.PrinterMachineCreateArgs) {
+    return await this.printerMachineService.createOne(printerMachineCreateArgs);
   }
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async createMany(printerMachineCreateManyArgs: Prisma.PrinterMachineCreateManyArgs) {
+    return await this.printerMachineService.createMany(printerMachineCreateManyArgs);
   }
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async findOne(printerMachineFindUniqueArgs: Prisma.PrinterMachineFindUniqueArgs) {
+    return await this.printerMachineService.findOne(printerMachineFindUniqueArgs);
   }
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async findMany(printerMachineFindManyArgs: Prisma.PrinterMachineFindManyArgs) {
+    return await this.printerMachineService.findMany(printerMachineFindManyArgs);
   }
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async findFirst(printerMachineFindFirstArgs: Prisma.PrinterMachineFindFirstArgs) {
+    return await this.printerMachineService.findFirst(printerMachineFindFirstArgs);
   }
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async updateOne(printerMachineUpdateOneArgs: Prisma.PrinterMachineUpdateArgs) {
+    return await this.printerMachineService.updateOne(printerMachineUpdateOneArgs);
   }
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async updateMany(printerMachineUpdateManyArgs: Prisma.PrinterMachineUpdateManyArgs) {
+    return await this.printerMachineService.updateMany(printerMachineUpdateManyArgs);
   }
 
-  printermachine printermachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.printermachine(PrinterMachine);
+  async delete(printerMachineDeleteArgs: Prisma.PrinterMachineDeleteArgs) {
+    return await this.printerMachineService.delete(printerMachineDeleteArgs);
   }
 
-  printermachine PrinterMachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async deleteMany(printerMachineDeleteManyArgs: Prisma.PrinterMachineDeleteManyArgs) {
+    return await this.printerMachineService.deleteMany(printerMachineDeleteManyArgs);
   }
 
-  printermachine printermachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.printermachine(PrinterMachine);
+  async aggregate(printerMachineAggregateArgs: Prisma.PrinterMachineAggregateArgs) {
+    return await this.printerMachineService.aggregate(printerMachineAggregateArgs);
   }
 
-  printermachine printermachine(PrinterMachine: PrinterMachine.PrinterMachine) {
-    printermachine printermachine printermachine.PrinterMachine.printermachine(PrinterMachine);
+  async count(printerMachineCountArgs: Prisma.PrinterMachineCountArgs) {
+    return await this.printerMachineService.count(printerMachineCountArgs);
   }
 }

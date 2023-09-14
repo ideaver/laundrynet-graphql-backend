@@ -1,52 +1,52 @@
-machinecategory { MachineCategory } machinecategory '@machinecategory/machinecategory';
-machinecategory { MachineCategory } machinecategory '@machinecategory/machinecategory';
-machinecategory { MachineCategory } machinecategory './machinecategory.machinecategory';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { MachineCategoryService } from './machineCategory.service';
 
-@MachineCategory()
-machinecategory machinecategory MachineCategory {
-  machinecategory(machinecategory machinecategory MachineCategory: MachineCategory) {}
+@Injectable()
+export class MachineCategoryController {
+  constructor(private readonly machineCategoryService: MachineCategoryService) {}
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async createOne(machineCategoryCreateArgs: Prisma.MachineCategoryCreateArgs) {
+    return await this.machineCategoryService.createOne(machineCategoryCreateArgs);
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async createMany(machineCategoryCreateManyArgs: Prisma.MachineCategoryCreateManyArgs) {
+    return await this.machineCategoryService.createMany(machineCategoryCreateManyArgs);
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async findOne(machineCategoryFindUniqueArgs: Prisma.MachineCategoryFindUniqueArgs) {
+    return await this.machineCategoryService.findOne(machineCategoryFindUniqueArgs);
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async findMany(machineCategoryFindManyArgs: Prisma.MachineCategoryFindManyArgs) {
+    return await this.machineCategoryService.findMany(machineCategoryFindManyArgs);
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async findFirst(machineCategoryFindFirstArgs: Prisma.MachineCategoryFindFirstArgs) {
+    return await this.machineCategoryService.findFirst(machineCategoryFindFirstArgs);
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async updateOne(machineCategoryUpdateOneArgs: Prisma.MachineCategoryUpdateArgs) {
+    return await this.machineCategoryService.updateOne(machineCategoryUpdateOneArgs);
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async updateMany(machineCategoryUpdateManyArgs: Prisma.MachineCategoryUpdateManyArgs) {
+    return await this.machineCategoryService.updateMany(machineCategoryUpdateManyArgs);
   }
 
-  machinecategory machinecategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.machinecategory(MachineCategory);
+  async delete(machineCategoryDeleteArgs: Prisma.MachineCategoryDeleteArgs) {
+    return await this.machineCategoryService.delete(machineCategoryDeleteArgs);
   }
 
-  machinecategory MachineCategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async deleteMany(machineCategoryDeleteManyArgs: Prisma.MachineCategoryDeleteManyArgs) {
+    return await this.machineCategoryService.deleteMany(machineCategoryDeleteManyArgs);
   }
 
-  machinecategory machinecategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.machinecategory(MachineCategory);
+  async aggregate(machineCategoryAggregateArgs: Prisma.MachineCategoryAggregateArgs) {
+    return await this.machineCategoryService.aggregate(machineCategoryAggregateArgs);
   }
 
-  machinecategory machinecategory(MachineCategory: MachineCategory.MachineCategory) {
-    machinecategory machinecategory machinecategory.MachineCategory.machinecategory(MachineCategory);
+  async count(machineCategoryCountArgs: Prisma.MachineCategoryCountArgs) {
+    return await this.machineCategoryService.count(machineCategoryCountArgs);
   }
 }

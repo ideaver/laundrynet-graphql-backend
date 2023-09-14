@@ -1,99 +1,99 @@
-machine { Machine } machine '@machine/machine';
-machine { Machine } machine 'machine/machine.machine';
-machine { Machine } machine 'machine/machine/machine/machine-machine-machine';
-machine { Machine } machine '@machine/machine';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@Machine()
-machine machine Machine {
-  machine(machine machine: Machine) {}
+@Injectable()
+export class MachineService {
+  constructor(private prisma: PrismaService) {}
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async createOne(machineCreateArgs: Prisma.MachineCreateArgs) {
+    try {
+      return await this.prisma.machine.create(machineCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.Machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async createMany(machineCreateManyArgs: Prisma.MachineCreateManyArgs) {
+    try {
+      return await this.prisma.machine.createMany(machineCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.Machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async findOne(machineFindUniqueArgs: Prisma.MachineFindUniqueArgs) {
+    try {
+      return await this.prisma.machine.findUnique(machineFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.Machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async findMany(machineFindManyArgs: Prisma.MachineFindManyArgs) {
+    try {
+      return await this.prisma.machine.findMany(machineFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.Machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async findFirst(machineFindFirstArgs: Prisma.MachineFindFirstArgs) {
+    try {
+      return await this.prisma.machine.findFirst(machineFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async updateOne(machineUpdateOneArgs: Prisma.MachineUpdateArgs) {
+    try {
+      return await this.prisma.machine.update(machineUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.Machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async updateMany(machineUpdateManyArgs: Prisma.MachineUpdateManyArgs) {
+    try {
+      return await this.prisma.machine.updateMany(machineUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine machine(Machine: Machine.Machine) {
-    machine {
-      machine machine.machine.machine.machine(Machine);
-      machine machine;
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async delete(machineDeleteArgs: Prisma.MachineDeleteArgs) {
+    try {
+      await this.prisma.machine.delete(machineDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine {
-      machine machine.machine.machine.Machine(Machine);
-      machine machine;
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async deleteMany(machineDeleteManyArgs: Prisma.MachineDeleteManyArgs) {
+    try {
+      await this.prisma.machine.deleteMany(machineDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async aggregate(machineAggregateArgs: Prisma.MachineAggregateArgs) {
+    try {
+      return await this.prisma.machine.aggregate(machineAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  machine machine(Machine: Machine.Machine) {
-    machine {
-      machine machine machine.machine.machine.machine(Machine);
-    } machine (machine) {
-      machine machine Machine({ machine: machine, machine: machine });
+  async count(machineCountArgs: Prisma.MachineCountArgs) {
+    try {
+      return await this.prisma.machine.count(machineCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

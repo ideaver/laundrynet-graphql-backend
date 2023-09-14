@@ -1,160 +1,160 @@
-// @accessrolepermission-accessrolepermission
-accessrolepermission { AccessRolePermission, AccessRolePermission, AccessRolePermission, AccessRolePermission, AccessRolePermission } accessrolepermission '@accessrolepermission/accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission '@accessrolepermission/accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission 'accessrolepermission/accessrolepermission/accessrolepermission.accessrolepermission';
-accessrolepermission {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateAccessRolePermission,
+  CreateManyAccessRolePermissionArgs,
+  CreateOneAccessRolePermissionArgs,
+  DeleteManyAccessRolePermissionArgs,
+  DeleteOneAccessRolePermissionArgs,
+  FindFirstAccessRolePermissionArgs,
+  FindManyAccessRolePermissionArgs,
+  FindUniqueAccessRolePermissionArgs,
   AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-  AccessRolePermission,
-} accessrolepermission 'accessrolepermission/@accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission './accessrolepermission.accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission 'accessrolepermission/accessrolepermission/accessrolepermission-accessrolepermission-accessrolepermission-accessrolepermission.accessrolepermission';
-accessrolepermission AccessRolePermission accessrolepermission 'accessrolepermission/accessrolepermission/accessrolepermission-accessrolepermission.accessrolepermission';
+  AccessRolePermissionAggregateArgs,
+  UpdateManyAccessRolePermissionArgs,
+  UpdateOneAccessRolePermissionArgs,
+} from 'src/@generated';
+import { AccessRolePermissionController } from './accessRolePermission.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-accessrolepermission AccessRolePermission {
-  accessrolepermission: AccessRolePermission.AccessRolePermission;
+interface AccessRolePermissionSelect {
+  select: Prisma.AccessRolePermissionSelect;
 }
 
-@AccessRolePermission(() => AccessRolePermission)
-accessrolepermission accessrolepermission AccessRolePermission {
-  accessrolepermission(accessrolepermission accessrolepermission AccessRolePermission: AccessRolePermission) {}
+@Resolver(() => AccessRolePermission)
+export class AccessRolePermissionResolver {
+  constructor(private readonly accessRolePermissionController: AccessRolePermissionController) {}
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Mutation(() => AccessRolePermission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accessrolepermission AccessRolePermission(
-    @AccessRolePermission()
-    AccessRolePermission: AccessRolePermission,
-    @AccessRolePermission() accessrolepermission: AccessRolePermission,
-  ): AccessRolePermission<AccessRolePermission | accessrolepermission> {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission({
-      ...AccessRolePermission,
-      accessrolepermission: accessrolepermission.accessrolepermission,
+  async accessRolePermissionCreateOne(
+    @Args()
+    accessRolePermissionCreateArgs: CreateOneAccessRolePermissionArgs,
+    @Relations() relations: AccessRolePermissionSelect,
+  ): Promise<AccessRolePermission | void> {
+    return await this.accessRolePermissionController.createOne({
+      ...accessRolePermissionCreateArgs,
+      select: relations.select,
     });
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accessrolepermission AccessRolePermission(
-    @AccessRolePermission()
-    AccessRolePermission: AccessRolePermission,
+  async accessRolePermissionCreateMany(
+    @Args()
+    createManyAccessRolePermissionArgs: CreateManyAccessRolePermissionArgs,
   ) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+    return await this.accessRolePermissionController.createMany(createManyAccessRolePermissionArgs);
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Query(() => AccessRolePermission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccessRolePermission(
-    @AccessRolePermission()
-    AccessRolePermission: AccessRolePermission,
-    @AccessRolePermission() accessrolepermission: AccessRolePermission,
-  ): AccessRolePermission<AccessRolePermission | accessrolepermission> {
-    accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission({
-      ...AccessRolePermission,
-      accessrolepermission: accessrolepermission.accessrolepermission,
+  accessRolePermissionFindOne(
+    @Args()
+    accessRolePermissionFindUniqueArgs: FindUniqueAccessRolePermissionArgs,
+    @Relations() relations: AccessRolePermissionSelect,
+  ): Promise<AccessRolePermission | void> {
+    return this.accessRolePermissionController.findOne({
+      ...accessRolePermissionFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @AccessRolePermission(() => [AccessRolePermission], {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Query(() => [AccessRolePermission], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccessRolePermission(
-    @AccessRolePermission() AccessRolePermission: AccessRolePermission,
-    @AccessRolePermission() accessrolepermission: AccessRolePermission,
+  accessRolePermissionFindMany(
+    @Args() accessRolePermissionFindManyArgs: FindManyAccessRolePermissionArgs,
+    @Relations() relations: AccessRolePermissionSelect,
   ) {
-    accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission({
-      ...AccessRolePermission,
-      accessrolepermission: accessrolepermission.accessrolepermission,
+    return this.accessRolePermissionController.findMany({
+      ...accessRolePermissionFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Query(() => AccessRolePermission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccessRolePermission(
-    @AccessRolePermission()
-    AccessRolePermission: AccessRolePermission,
-    @AccessRolePermission() accessrolepermission: AccessRolePermission,
-  ): AccessRolePermission<AccessRolePermission | accessrolepermission> {
-    accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission({
-      ...AccessRolePermission,
-      accessrolepermission: accessrolepermission.accessrolepermission,
+  accessRolePermissionFindFirst(
+    @Args()
+    findFirstAccessRolePermissionArgs: FindFirstAccessRolePermissionArgs,
+    @Relations() relations: AccessRolePermissionSelect,
+  ): Promise<AccessRolePermission | void> {
+    return this.accessRolePermissionController.findFirst({
+      ...findFirstAccessRolePermissionArgs,
+      select: relations.select,
     });
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Mutation(() => AccessRolePermission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accessrolepermission AccessRolePermission(
-    @AccessRolePermission() AccessRolePermission: AccessRolePermission,
-    @AccessRolePermission() accessrolepermission: AccessRolePermission,
+  async accessRolePermissionUpdateOne(
+    @Args() accessRolePermissionUpdateOneArgs: UpdateOneAccessRolePermissionArgs,
+    @Relations() relations: AccessRolePermissionSelect,
   ) {
-    accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission({
-      ...AccessRolePermission(AccessRolePermission),
-      accessrolepermission: accessrolepermission.accessrolepermission,
+    return this.accessRolePermissionController.updateOne({
+      ...replaceNullWithUndefined(accessRolePermissionUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Mutation(() => AccessRolePermission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accessrolepermission AccessRolePermission(@AccessRolePermission() AccessRolePermission: AccessRolePermission) {
-    accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async accessRolePermissionUpdateMany(@Args() updateManyAccessRolePermissionArgs: UpdateManyAccessRolePermissionArgs) {
+    return this.accessRolePermissionController.updateMany(updateManyAccessRolePermissionArgs);
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  accessrolepermission AccessRolePermission(
-    @AccessRolePermission() AccessRolePermission: AccessRolePermission,
-    @AccessRolePermission() accessrolepermission: AccessRolePermission,
+  async accessRolePermissionDelete(
+    @Args() deleteOneAccessRolePermissionArgs: DeleteOneAccessRolePermissionArgs,
+    @Relations() relations: AccessRolePermissionSelect,
   ) {
-    accessrolepermission accessrolepermission.AccessRolePermission.accessrolepermission({
-      ...AccessRolePermission,
-      accessrolepermission: accessrolepermission.accessrolepermission,
+    return this.accessRolePermissionController.delete({
+      ...deleteOneAccessRolePermissionArgs,
+      select: relations.select,
     });
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  accessrolepermission AccessRolePermission(@AccessRolePermission() AccessRolePermission: AccessRolePermission) {
-    accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async accessRolePermissionDeleteMany(@Args() deleteManyAccessRolePermissionArgs: DeleteManyAccessRolePermissionArgs) {
+    return this.accessRolePermissionController.deleteMany(deleteManyAccessRolePermissionArgs);
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Query(() => AggregateAccessRolePermission, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccessRolePermission(@AccessRolePermission() AccessRolePermission: AccessRolePermission) {
-    accessrolepermission accessrolepermission.AccessRolePermission.accessrolepermission(AccessRolePermission);
+  accessRolePermissionAggregate(@Args() accessRolePermissionAggregateArgs: AccessRolePermissionAggregateArgs) {
+    return this.accessRolePermissionController.aggregate(accessRolePermissionAggregateArgs);
   }
 
-  @AccessRolePermission(() => AccessRolePermission, {
-    accessrolepermission: accessrolepermission,
-    accessrolepermission: 'AccessRolePermission accessrolepermission accessrolepermission accessrolepermission',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccessRolePermission(@AccessRolePermission() AccessRolePermission: AccessRolePermission) {
-    accessrolepermission accessrolepermission.AccessRolePermission.accessrolepermission(AccessRolePermission);
+  accessRolePermissionCount(@Args() accessRolePermissionCountAggregateInput: FindManyAccessRolePermissionArgs) {
+    return this.accessRolePermissionController.count(accessRolePermissionCountAggregateInput);
   }
 }

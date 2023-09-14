@@ -1,52 +1,52 @@
-printersetting { PrinterSetting } printersetting '@printersetting/printersetting';
-printersetting { PrinterSetting } printersetting '@printersetting/printersetting';
-printersetting { PrinterSetting } printersetting './printersetting.printersetting';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { PrinterSettingService } from './printerSetting.service';
 
-@PrinterSetting()
-printersetting printersetting PrinterSetting {
-  printersetting(printersetting printersetting PrinterSetting: PrinterSetting) {}
+@Injectable()
+export class PrinterSettingController {
+  constructor(private readonly printerSettingService: PrinterSettingService) {}
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async createOne(printerSettingCreateArgs: Prisma.PrinterSettingCreateArgs) {
+    return await this.printerSettingService.createOne(printerSettingCreateArgs);
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async createMany(printerSettingCreateManyArgs: Prisma.PrinterSettingCreateManyArgs) {
+    return await this.printerSettingService.createMany(printerSettingCreateManyArgs);
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async findOne(printerSettingFindUniqueArgs: Prisma.PrinterSettingFindUniqueArgs) {
+    return await this.printerSettingService.findOne(printerSettingFindUniqueArgs);
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async findMany(printerSettingFindManyArgs: Prisma.PrinterSettingFindManyArgs) {
+    return await this.printerSettingService.findMany(printerSettingFindManyArgs);
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async findFirst(printerSettingFindFirstArgs: Prisma.PrinterSettingFindFirstArgs) {
+    return await this.printerSettingService.findFirst(printerSettingFindFirstArgs);
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async updateOne(printerSettingUpdateOneArgs: Prisma.PrinterSettingUpdateArgs) {
+    return await this.printerSettingService.updateOne(printerSettingUpdateOneArgs);
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async updateMany(printerSettingUpdateManyArgs: Prisma.PrinterSettingUpdateManyArgs) {
+    return await this.printerSettingService.updateMany(printerSettingUpdateManyArgs);
   }
 
-  printersetting printersetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.printersetting(PrinterSetting);
+  async delete(printerSettingDeleteArgs: Prisma.PrinterSettingDeleteArgs) {
+    return await this.printerSettingService.delete(printerSettingDeleteArgs);
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.PrinterSetting(PrinterSetting);
+  async deleteMany(printerSettingDeleteManyArgs: Prisma.PrinterSettingDeleteManyArgs) {
+    return await this.printerSettingService.deleteMany(printerSettingDeleteManyArgs);
   }
 
-  printersetting printersetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.printersetting(PrinterSetting);
+  async aggregate(printerSettingAggregateArgs: Prisma.PrinterSettingAggregateArgs) {
+    return await this.printerSettingService.aggregate(printerSettingAggregateArgs);
   }
 
-  printersetting printersetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting printersetting printersetting.PrinterSetting.printersetting(PrinterSetting);
+  async count(printerSettingCountArgs: Prisma.PrinterSettingCountArgs) {
+    return await this.printerSettingService.count(printerSettingCountArgs);
   }
 }

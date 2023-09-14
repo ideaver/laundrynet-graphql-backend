@@ -1,99 +1,99 @@
-customer { Customer } customer '@customer/customer';
-customer { Customer } customer 'customer/customer.customer';
-customer { Customer } customer 'customer/customer/customer/customer-customer-customer';
-customer { Customer } customer '@customer/customer';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@Customer()
-customer customer Customer {
-  customer(customer customer: Customer) {}
+@Injectable()
+export class CustomerService {
+  constructor(private prisma: PrismaService) {}
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async createOne(customerCreateArgs: Prisma.CustomerCreateArgs) {
+    try {
+      return await this.prisma.customer.create(customerCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.Customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async createMany(customerCreateManyArgs: Prisma.CustomerCreateManyArgs) {
+    try {
+      return await this.prisma.customer.createMany(customerCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.Customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async findOne(customerFindUniqueArgs: Prisma.CustomerFindUniqueArgs) {
+    try {
+      return await this.prisma.customer.findUnique(customerFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.Customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async findMany(customerFindManyArgs: Prisma.CustomerFindManyArgs) {
+    try {
+      return await this.prisma.customer.findMany(customerFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.Customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async findFirst(customerFindFirstArgs: Prisma.CustomerFindFirstArgs) {
+    try {
+      return await this.prisma.customer.findFirst(customerFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async updateOne(customerUpdateOneArgs: Prisma.CustomerUpdateArgs) {
+    try {
+      return await this.prisma.customer.update(customerUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.Customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async updateMany(customerUpdateManyArgs: Prisma.CustomerUpdateManyArgs) {
+    try {
+      return await this.prisma.customer.updateMany(customerUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer customer(Customer: Customer.Customer) {
-    customer {
-      customer customer.customer.customer.customer(Customer);
-      customer customer;
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async delete(customerDeleteArgs: Prisma.CustomerDeleteArgs) {
+    try {
+      await this.prisma.customer.delete(customerDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer {
-      customer customer.customer.customer.Customer(Customer);
-      customer customer;
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async deleteMany(customerDeleteManyArgs: Prisma.CustomerDeleteManyArgs) {
+    try {
+      await this.prisma.customer.deleteMany(customerDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async aggregate(customerAggregateArgs: Prisma.CustomerAggregateArgs) {
+    try {
+      return await this.prisma.customer.aggregate(customerAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  customer customer(Customer: Customer.Customer) {
-    customer {
-      customer customer customer.customer.customer.customer(Customer);
-    } customer (customer) {
-      customer customer Customer({ customer: customer, customer: customer });
+  async count(customerCountArgs: Prisma.CustomerCountArgs) {
+    try {
+      return await this.prisma.customer.count(customerCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

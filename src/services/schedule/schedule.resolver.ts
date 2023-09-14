@@ -1,160 +1,160 @@
-// @schedule-schedule
-schedule { Schedule, Schedule, Schedule, Schedule, Schedule } schedule '@schedule/schedule';
-schedule { Schedule } schedule '@schedule/schedule';
-schedule { Schedule } schedule 'schedule/schedule/schedule.schedule';
-schedule {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateSchedule,
+  CreateManyScheduleArgs,
+  CreateOneScheduleArgs,
+  DeleteManyScheduleArgs,
+  DeleteOneScheduleArgs,
+  FindFirstScheduleArgs,
+  FindManyScheduleArgs,
+  FindUniqueScheduleArgs,
   Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-  Schedule,
-} schedule 'schedule/@schedule';
-schedule { Schedule } schedule './schedule.schedule';
-schedule { Schedule } schedule 'schedule/schedule/schedule-schedule-schedule-schedule.schedule';
-schedule Schedule schedule 'schedule/schedule/schedule-schedule.schedule';
+  ScheduleAggregateArgs,
+  UpdateManyScheduleArgs,
+  UpdateOneScheduleArgs,
+} from 'src/@generated';
+import { ScheduleController } from './schedule.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-schedule Schedule {
-  schedule: Schedule.Schedule;
+interface ScheduleSelect {
+  select: Prisma.ScheduleSelect;
 }
 
-@Schedule(() => Schedule)
-schedule schedule Schedule {
-  schedule(schedule schedule Schedule: Schedule) {}
+@Resolver(() => Schedule)
+export class ScheduleResolver {
+  constructor(private readonly scheduleController: ScheduleController) {}
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Mutation(() => Schedule, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  schedule Schedule(
-    @Schedule()
-    Schedule: Schedule,
-    @Schedule() schedule: Schedule,
-  ): Schedule<Schedule | schedule> {
-    schedule schedule schedule.Schedule.Schedule({
-      ...Schedule,
-      schedule: schedule.schedule,
+  async scheduleCreateOne(
+    @Args()
+    scheduleCreateArgs: CreateOneScheduleArgs,
+    @Relations() relations: ScheduleSelect,
+  ): Promise<Schedule | void> {
+    return await this.scheduleController.createOne({
+      ...scheduleCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  schedule Schedule(
-    @Schedule()
-    Schedule: Schedule,
+  async scheduleCreateMany(
+    @Args()
+    createManyScheduleArgs: CreateManyScheduleArgs,
   ) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+    return await this.scheduleController.createMany(createManyScheduleArgs);
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Query(() => Schedule, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Schedule(
-    @Schedule()
-    Schedule: Schedule,
-    @Schedule() schedule: Schedule,
-  ): Schedule<Schedule | schedule> {
-    schedule schedule.Schedule.Schedule({
-      ...Schedule,
-      schedule: schedule.schedule,
+  scheduleFindOne(
+    @Args()
+    scheduleFindUniqueArgs: FindUniqueScheduleArgs,
+    @Relations() relations: ScheduleSelect,
+  ): Promise<Schedule | void> {
+    return this.scheduleController.findOne({
+      ...scheduleFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Schedule(() => [Schedule], {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Query(() => [Schedule], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Schedule(
-    @Schedule() Schedule: Schedule,
-    @Schedule() schedule: Schedule,
+  scheduleFindMany(
+    @Args() scheduleFindManyArgs: FindManyScheduleArgs,
+    @Relations() relations: ScheduleSelect,
   ) {
-    schedule schedule.Schedule.Schedule({
-      ...Schedule,
-      schedule: schedule.schedule,
+    return this.scheduleController.findMany({
+      ...scheduleFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Query(() => Schedule, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Schedule(
-    @Schedule()
-    Schedule: Schedule,
-    @Schedule() schedule: Schedule,
-  ): Schedule<Schedule | schedule> {
-    schedule schedule.Schedule.Schedule({
-      ...Schedule,
-      schedule: schedule.schedule,
+  scheduleFindFirst(
+    @Args()
+    findFirstScheduleArgs: FindFirstScheduleArgs,
+    @Relations() relations: ScheduleSelect,
+  ): Promise<Schedule | void> {
+    return this.scheduleController.findFirst({
+      ...findFirstScheduleArgs,
+      select: relations.select,
     });
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Mutation(() => Schedule, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  schedule Schedule(
-    @Schedule() Schedule: Schedule,
-    @Schedule() schedule: Schedule,
+  async scheduleUpdateOne(
+    @Args() scheduleUpdateOneArgs: UpdateOneScheduleArgs,
+    @Relations() relations: ScheduleSelect,
   ) {
-    schedule schedule.Schedule.Schedule({
-      ...Schedule(Schedule),
-      schedule: schedule.schedule,
+    return this.scheduleController.updateOne({
+      ...replaceNullWithUndefined(scheduleUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Mutation(() => Schedule, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  schedule Schedule(@Schedule() Schedule: Schedule) {
-    schedule schedule.Schedule.Schedule(Schedule);
+  async scheduleUpdateMany(@Args() updateManyScheduleArgs: UpdateManyScheduleArgs) {
+    return this.scheduleController.updateMany(updateManyScheduleArgs);
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  schedule Schedule(
-    @Schedule() Schedule: Schedule,
-    @Schedule() schedule: Schedule,
+  async scheduleDelete(
+    @Args() deleteOneScheduleArgs: DeleteOneScheduleArgs,
+    @Relations() relations: ScheduleSelect,
   ) {
-    schedule schedule.Schedule.schedule({
-      ...Schedule,
-      schedule: schedule.schedule,
+    return this.scheduleController.delete({
+      ...deleteOneScheduleArgs,
+      select: relations.select,
     });
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  schedule Schedule(@Schedule() Schedule: Schedule) {
-    schedule schedule.Schedule.Schedule(Schedule);
+  async scheduleDeleteMany(@Args() deleteManyScheduleArgs: DeleteManyScheduleArgs) {
+    return this.scheduleController.deleteMany(deleteManyScheduleArgs);
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Query(() => AggregateSchedule, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Schedule(@Schedule() Schedule: Schedule) {
-    schedule schedule.Schedule.schedule(Schedule);
+  scheduleAggregate(@Args() scheduleAggregateArgs: ScheduleAggregateArgs) {
+    return this.scheduleController.aggregate(scheduleAggregateArgs);
   }
 
-  @Schedule(() => Schedule, {
-    schedule: schedule,
-    schedule: 'Schedule schedule schedule schedule',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Schedule(@Schedule() Schedule: Schedule) {
-    schedule schedule.Schedule.schedule(Schedule);
+  scheduleCount(@Args() scheduleCountAggregateInput: FindManyScheduleArgs) {
+    return this.scheduleController.count(scheduleCountAggregateInput);
   }
 }

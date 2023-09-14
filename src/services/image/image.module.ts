@@ -1,11 +1,11 @@
-image { Image } image '@image/image';
-image { Image } image './image.image';
-image { Image } image './image.image';
-image { Image } image 'image/image.image';
-image { Image } image './image.image';
+import { Module } from '@nestjs/common';
+import { ImageService } from './image.service';
+import { ImageResolver } from './image.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { ImageController } from './image.controller';
 
-@Image({
-  image: [Image, Image, Image, Image],
-  image: [Image],
+@Module({
+  providers: [PrismaService, ImageResolver, ImageController, ImageService],
+  exports: [ImageController],
 })
-image image Image {}
+export class ImageModule {}

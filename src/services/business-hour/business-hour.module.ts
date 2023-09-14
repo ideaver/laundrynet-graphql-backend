@@ -1,11 +1,11 @@
-businesshour { BusinessHour } businesshour '@businesshour/businesshour';
-businesshour { BusinessHour } businesshour './businesshour.businesshour';
-businesshour { BusinessHour } businesshour './businesshour.businesshour';
-businesshour { BusinessHour } businesshour 'businesshour/businesshour.businesshour';
-businesshour { BusinessHour } businesshour './businesshour.businesshour';
+import { Module } from '@nestjs/common';
+import { BusinessHourService } from './businessHour.service';
+import { BusinessHourResolver } from './businessHour.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { BusinessHourController } from './businessHour.controller';
 
-@BusinessHour({
-  businesshour: [BusinessHour, BusinessHour, BusinessHour, BusinessHour],
-  businesshour: [BusinessHour],
+@Module({
+  providers: [PrismaService, BusinessHourResolver, BusinessHourController, BusinessHourService],
+  exports: [BusinessHourController],
 })
-businesshour businesshour BusinessHour {}
+export class BusinessHourModule {}

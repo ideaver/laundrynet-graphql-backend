@@ -1,52 +1,52 @@
-image { Image } image '@image/image';
-image { Image } image '@image/image';
-image { Image } image './image.image';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ImageService } from './image.service';
 
-@Image()
-image image Image {
-  image(image image Image: Image) {}
+@Injectable()
+export class ImageController {
+  constructor(private readonly imageService: ImageService) {}
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async createOne(imageCreateArgs: Prisma.ImageCreateArgs) {
+    return await this.imageService.createOne(imageCreateArgs);
   }
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async createMany(imageCreateManyArgs: Prisma.ImageCreateManyArgs) {
+    return await this.imageService.createMany(imageCreateManyArgs);
   }
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async findOne(imageFindUniqueArgs: Prisma.ImageFindUniqueArgs) {
+    return await this.imageService.findOne(imageFindUniqueArgs);
   }
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async findMany(imageFindManyArgs: Prisma.ImageFindManyArgs) {
+    return await this.imageService.findMany(imageFindManyArgs);
   }
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async findFirst(imageFindFirstArgs: Prisma.ImageFindFirstArgs) {
+    return await this.imageService.findFirst(imageFindFirstArgs);
   }
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async updateOne(imageUpdateOneArgs: Prisma.ImageUpdateArgs) {
+    return await this.imageService.updateOne(imageUpdateOneArgs);
   }
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async updateMany(imageUpdateManyArgs: Prisma.ImageUpdateManyArgs) {
+    return await this.imageService.updateMany(imageUpdateManyArgs);
   }
 
-  image image(Image: Image.Image) {
-    image image image.Image.image(Image);
+  async delete(imageDeleteArgs: Prisma.ImageDeleteArgs) {
+    return await this.imageService.delete(imageDeleteArgs);
   }
 
-  image Image(Image: Image.Image) {
-    image image image.Image.Image(Image);
+  async deleteMany(imageDeleteManyArgs: Prisma.ImageDeleteManyArgs) {
+    return await this.imageService.deleteMany(imageDeleteManyArgs);
   }
 
-  image image(Image: Image.Image) {
-    image image image.Image.image(Image);
+  async aggregate(imageAggregateArgs: Prisma.ImageAggregateArgs) {
+    return await this.imageService.aggregate(imageAggregateArgs);
   }
 
-  image image(Image: Image.Image) {
-    image image image.Image.image(Image);
+  async count(imageCountArgs: Prisma.ImageCountArgs) {
+    return await this.imageService.count(imageCountArgs);
   }
 }

@@ -1,11 +1,11 @@
-stocktransaction { StockTransaction } stocktransaction '@stocktransaction/stocktransaction';
-stocktransaction { StockTransaction } stocktransaction './stocktransaction.stocktransaction';
-stocktransaction { StockTransaction } stocktransaction './stocktransaction.stocktransaction';
-stocktransaction { StockTransaction } stocktransaction 'stocktransaction/stocktransaction.stocktransaction';
-stocktransaction { StockTransaction } stocktransaction './stocktransaction.stocktransaction';
+import { Module } from '@nestjs/common';
+import { StockTransactionService } from './stockTransaction.service';
+import { StockTransactionResolver } from './stockTransaction.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { StockTransactionController } from './stockTransaction.controller';
 
-@StockTransaction({
-  stocktransaction: [StockTransaction, StockTransaction, StockTransaction, StockTransaction],
-  stocktransaction: [StockTransaction],
+@Module({
+  providers: [PrismaService, StockTransactionResolver, StockTransactionController, StockTransactionService],
+  exports: [StockTransactionController],
 })
-stocktransaction stocktransaction StockTransaction {}
+export class StockTransactionModule {}

@@ -1,160 +1,160 @@
-// @deliverylocationhistory-deliverylocationhistory
-deliverylocationhistory { DeliveryLocationHistory, DeliveryLocationHistory, DeliveryLocationHistory, DeliveryLocationHistory, DeliveryLocationHistory } deliverylocationhistory '@deliverylocationhistory/deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory '@deliverylocationhistory/deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory 'deliverylocationhistory/deliverylocationhistory/deliverylocationhistory.deliverylocationhistory';
-deliverylocationhistory {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateDeliveryLocationHistory,
+  CreateManyDeliveryLocationHistoryArgs,
+  CreateOneDeliveryLocationHistoryArgs,
+  DeleteManyDeliveryLocationHistoryArgs,
+  DeleteOneDeliveryLocationHistoryArgs,
+  FindFirstDeliveryLocationHistoryArgs,
+  FindManyDeliveryLocationHistoryArgs,
+  FindUniqueDeliveryLocationHistoryArgs,
   DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-  DeliveryLocationHistory,
-} deliverylocationhistory 'deliverylocationhistory/@deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory './deliverylocationhistory.deliverylocationhistory';
-deliverylocationhistory { DeliveryLocationHistory } deliverylocationhistory 'deliverylocationhistory/deliverylocationhistory/deliverylocationhistory-deliverylocationhistory-deliverylocationhistory-deliverylocationhistory.deliverylocationhistory';
-deliverylocationhistory DeliveryLocationHistory deliverylocationhistory 'deliverylocationhistory/deliverylocationhistory/deliverylocationhistory-deliverylocationhistory.deliverylocationhistory';
+  DeliveryLocationHistoryAggregateArgs,
+  UpdateManyDeliveryLocationHistoryArgs,
+  UpdateOneDeliveryLocationHistoryArgs,
+} from 'src/@generated';
+import { DeliveryLocationHistoryController } from './deliveryLocationHistory.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-deliverylocationhistory DeliveryLocationHistory {
-  deliverylocationhistory: DeliveryLocationHistory.DeliveryLocationHistory;
+interface DeliveryLocationHistorySelect {
+  select: Prisma.DeliveryLocationHistorySelect;
 }
 
-@DeliveryLocationHistory(() => DeliveryLocationHistory)
-deliverylocationhistory deliverylocationhistory DeliveryLocationHistory {
-  deliverylocationhistory(deliverylocationhistory deliverylocationhistory DeliveryLocationHistory: DeliveryLocationHistory) {}
+@Resolver(() => DeliveryLocationHistory)
+export class DeliveryLocationHistoryResolver {
+  constructor(private readonly deliveryLocationHistoryController: DeliveryLocationHistoryController) {}
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Mutation(() => DeliveryLocationHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverylocationhistory DeliveryLocationHistory(
-    @DeliveryLocationHistory()
-    DeliveryLocationHistory: DeliveryLocationHistory,
-    @DeliveryLocationHistory() deliverylocationhistory: DeliveryLocationHistory,
-  ): DeliveryLocationHistory<DeliveryLocationHistory | deliverylocationhistory> {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory({
-      ...DeliveryLocationHistory,
-      deliverylocationhistory: deliverylocationhistory.deliverylocationhistory,
+  async deliveryLocationHistoryCreateOne(
+    @Args()
+    deliveryLocationHistoryCreateArgs: CreateOneDeliveryLocationHistoryArgs,
+    @Relations() relations: DeliveryLocationHistorySelect,
+  ): Promise<DeliveryLocationHistory | void> {
+    return await this.deliveryLocationHistoryController.createOne({
+      ...deliveryLocationHistoryCreateArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverylocationhistory DeliveryLocationHistory(
-    @DeliveryLocationHistory()
-    DeliveryLocationHistory: DeliveryLocationHistory,
+  async deliveryLocationHistoryCreateMany(
+    @Args()
+    createManyDeliveryLocationHistoryArgs: CreateManyDeliveryLocationHistoryArgs,
   ) {
-    deliverylocationhistory deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+    return await this.deliveryLocationHistoryController.createMany(createManyDeliveryLocationHistoryArgs);
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Query(() => DeliveryLocationHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryLocationHistory(
-    @DeliveryLocationHistory()
-    DeliveryLocationHistory: DeliveryLocationHistory,
-    @DeliveryLocationHistory() deliverylocationhistory: DeliveryLocationHistory,
-  ): DeliveryLocationHistory<DeliveryLocationHistory | deliverylocationhistory> {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory({
-      ...DeliveryLocationHistory,
-      deliverylocationhistory: deliverylocationhistory.deliverylocationhistory,
+  deliveryLocationHistoryFindOne(
+    @Args()
+    deliveryLocationHistoryFindUniqueArgs: FindUniqueDeliveryLocationHistoryArgs,
+    @Relations() relations: DeliveryLocationHistorySelect,
+  ): Promise<DeliveryLocationHistory | void> {
+    return this.deliveryLocationHistoryController.findOne({
+      ...deliveryLocationHistoryFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryLocationHistory(() => [DeliveryLocationHistory], {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Query(() => [DeliveryLocationHistory], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryLocationHistory(
-    @DeliveryLocationHistory() DeliveryLocationHistory: DeliveryLocationHistory,
-    @DeliveryLocationHistory() deliverylocationhistory: DeliveryLocationHistory,
+  deliveryLocationHistoryFindMany(
+    @Args() deliveryLocationHistoryFindManyArgs: FindManyDeliveryLocationHistoryArgs,
+    @Relations() relations: DeliveryLocationHistorySelect,
   ) {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory({
-      ...DeliveryLocationHistory,
-      deliverylocationhistory: deliverylocationhistory.deliverylocationhistory,
+    return this.deliveryLocationHistoryController.findMany({
+      ...deliveryLocationHistoryFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Query(() => DeliveryLocationHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryLocationHistory(
-    @DeliveryLocationHistory()
-    DeliveryLocationHistory: DeliveryLocationHistory,
-    @DeliveryLocationHistory() deliverylocationhistory: DeliveryLocationHistory,
-  ): DeliveryLocationHistory<DeliveryLocationHistory | deliverylocationhistory> {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory({
-      ...DeliveryLocationHistory,
-      deliverylocationhistory: deliverylocationhistory.deliverylocationhistory,
+  deliveryLocationHistoryFindFirst(
+    @Args()
+    findFirstDeliveryLocationHistoryArgs: FindFirstDeliveryLocationHistoryArgs,
+    @Relations() relations: DeliveryLocationHistorySelect,
+  ): Promise<DeliveryLocationHistory | void> {
+    return this.deliveryLocationHistoryController.findFirst({
+      ...findFirstDeliveryLocationHistoryArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Mutation(() => DeliveryLocationHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverylocationhistory DeliveryLocationHistory(
-    @DeliveryLocationHistory() DeliveryLocationHistory: DeliveryLocationHistory,
-    @DeliveryLocationHistory() deliverylocationhistory: DeliveryLocationHistory,
+  async deliveryLocationHistoryUpdateOne(
+    @Args() deliveryLocationHistoryUpdateOneArgs: UpdateOneDeliveryLocationHistoryArgs,
+    @Relations() relations: DeliveryLocationHistorySelect,
   ) {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory({
-      ...DeliveryLocationHistory(DeliveryLocationHistory),
-      deliverylocationhistory: deliverylocationhistory.deliverylocationhistory,
+    return this.deliveryLocationHistoryController.updateOne({
+      ...replaceNullWithUndefined(deliveryLocationHistoryUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Mutation(() => DeliveryLocationHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverylocationhistory DeliveryLocationHistory(@DeliveryLocationHistory() DeliveryLocationHistory: DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async deliveryLocationHistoryUpdateMany(@Args() updateManyDeliveryLocationHistoryArgs: UpdateManyDeliveryLocationHistoryArgs) {
+    return this.deliveryLocationHistoryController.updateMany(updateManyDeliveryLocationHistoryArgs);
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverylocationhistory DeliveryLocationHistory(
-    @DeliveryLocationHistory() DeliveryLocationHistory: DeliveryLocationHistory,
-    @DeliveryLocationHistory() deliverylocationhistory: DeliveryLocationHistory,
+  async deliveryLocationHistoryDelete(
+    @Args() deleteOneDeliveryLocationHistoryArgs: DeleteOneDeliveryLocationHistoryArgs,
+    @Relations() relations: DeliveryLocationHistorySelect,
   ) {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.deliverylocationhistory({
-      ...DeliveryLocationHistory,
-      deliverylocationhistory: deliverylocationhistory.deliverylocationhistory,
+    return this.deliveryLocationHistoryController.delete({
+      ...deleteOneDeliveryLocationHistoryArgs,
+      select: relations.select,
     });
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  deliverylocationhistory DeliveryLocationHistory(@DeliveryLocationHistory() DeliveryLocationHistory: DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.DeliveryLocationHistory(DeliveryLocationHistory);
+  async deliveryLocationHistoryDeleteMany(@Args() deleteManyDeliveryLocationHistoryArgs: DeleteManyDeliveryLocationHistoryArgs) {
+    return this.deliveryLocationHistoryController.deleteMany(deleteManyDeliveryLocationHistoryArgs);
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Query(() => AggregateDeliveryLocationHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryLocationHistory(@DeliveryLocationHistory() DeliveryLocationHistory: DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.deliverylocationhistory(DeliveryLocationHistory);
+  deliveryLocationHistoryAggregate(@Args() deliveryLocationHistoryAggregateArgs: DeliveryLocationHistoryAggregateArgs) {
+    return this.deliveryLocationHistoryController.aggregate(deliveryLocationHistoryAggregateArgs);
   }
 
-  @DeliveryLocationHistory(() => DeliveryLocationHistory, {
-    deliverylocationhistory: deliverylocationhistory,
-    deliverylocationhistory: 'DeliveryLocationHistory deliverylocationhistory deliverylocationhistory deliverylocationhistory',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  DeliveryLocationHistory(@DeliveryLocationHistory() DeliveryLocationHistory: DeliveryLocationHistory) {
-    deliverylocationhistory deliverylocationhistory.DeliveryLocationHistory.deliverylocationhistory(DeliveryLocationHistory);
+  deliveryLocationHistoryCount(@Args() deliveryLocationHistoryCountAggregateInput: FindManyDeliveryLocationHistoryArgs) {
+    return this.deliveryLocationHistoryController.count(deliveryLocationHistoryCountAggregateInput);
   }
 }

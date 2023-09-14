@@ -1,160 +1,160 @@
-// @edcmachine-edcmachine
-edcmachine { EdcMachine, EdcMachine, EdcMachine, EdcMachine, EdcMachine } edcmachine '@edcmachine/edcmachine';
-edcmachine { EdcMachine } edcmachine '@edcmachine/edcmachine';
-edcmachine { EdcMachine } edcmachine 'edcmachine/edcmachine/edcmachine.edcmachine';
-edcmachine {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateEdcMachine,
+  CreateManyEdcMachineArgs,
+  CreateOneEdcMachineArgs,
+  DeleteManyEdcMachineArgs,
+  DeleteOneEdcMachineArgs,
+  FindFirstEdcMachineArgs,
+  FindManyEdcMachineArgs,
+  FindUniqueEdcMachineArgs,
   EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-  EdcMachine,
-} edcmachine 'edcmachine/@edcmachine';
-edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
-edcmachine { EdcMachine } edcmachine 'edcmachine/edcmachine/edcmachine-edcmachine-edcmachine-edcmachine.edcmachine';
-edcmachine EdcMachine edcmachine 'edcmachine/edcmachine/edcmachine-edcmachine.edcmachine';
+  EdcMachineAggregateArgs,
+  UpdateManyEdcMachineArgs,
+  UpdateOneEdcMachineArgs,
+} from 'src/@generated';
+import { EdcMachineController } from './edcMachine.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-edcmachine EdcMachine {
-  edcmachine: EdcMachine.EdcMachine;
+interface EdcMachineSelect {
+  select: Prisma.EdcMachineSelect;
 }
 
-@EdcMachine(() => EdcMachine)
-edcmachine edcmachine EdcMachine {
-  edcmachine(edcmachine edcmachine EdcMachine: EdcMachine) {}
+@Resolver(() => EdcMachine)
+export class EdcMachineResolver {
+  constructor(private readonly edcMachineController: EdcMachineController) {}
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Mutation(() => EdcMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  edcmachine EdcMachine(
-    @EdcMachine()
-    EdcMachine: EdcMachine,
-    @EdcMachine() edcmachine: EdcMachine,
-  ): EdcMachine<EdcMachine | edcmachine> {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine({
-      ...EdcMachine,
-      edcmachine: edcmachine.edcmachine,
+  async edcMachineCreateOne(
+    @Args()
+    edcMachineCreateArgs: CreateOneEdcMachineArgs,
+    @Relations() relations: EdcMachineSelect,
+  ): Promise<EdcMachine | void> {
+    return await this.edcMachineController.createOne({
+      ...edcMachineCreateArgs,
+      select: relations.select,
     });
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  edcmachine EdcMachine(
-    @EdcMachine()
-    EdcMachine: EdcMachine,
+  async edcMachineCreateMany(
+    @Args()
+    createManyEdcMachineArgs: CreateManyEdcMachineArgs,
   ) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+    return await this.edcMachineController.createMany(createManyEdcMachineArgs);
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Query(() => EdcMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EdcMachine(
-    @EdcMachine()
-    EdcMachine: EdcMachine,
-    @EdcMachine() edcmachine: EdcMachine,
-  ): EdcMachine<EdcMachine | edcmachine> {
-    edcmachine edcmachine.EdcMachine.EdcMachine({
-      ...EdcMachine,
-      edcmachine: edcmachine.edcmachine,
+  edcMachineFindOne(
+    @Args()
+    edcMachineFindUniqueArgs: FindUniqueEdcMachineArgs,
+    @Relations() relations: EdcMachineSelect,
+  ): Promise<EdcMachine | void> {
+    return this.edcMachineController.findOne({
+      ...edcMachineFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @EdcMachine(() => [EdcMachine], {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Query(() => [EdcMachine], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EdcMachine(
-    @EdcMachine() EdcMachine: EdcMachine,
-    @EdcMachine() edcmachine: EdcMachine,
+  edcMachineFindMany(
+    @Args() edcMachineFindManyArgs: FindManyEdcMachineArgs,
+    @Relations() relations: EdcMachineSelect,
   ) {
-    edcmachine edcmachine.EdcMachine.EdcMachine({
-      ...EdcMachine,
-      edcmachine: edcmachine.edcmachine,
+    return this.edcMachineController.findMany({
+      ...edcMachineFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Query(() => EdcMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EdcMachine(
-    @EdcMachine()
-    EdcMachine: EdcMachine,
-    @EdcMachine() edcmachine: EdcMachine,
-  ): EdcMachine<EdcMachine | edcmachine> {
-    edcmachine edcmachine.EdcMachine.EdcMachine({
-      ...EdcMachine,
-      edcmachine: edcmachine.edcmachine,
+  edcMachineFindFirst(
+    @Args()
+    findFirstEdcMachineArgs: FindFirstEdcMachineArgs,
+    @Relations() relations: EdcMachineSelect,
+  ): Promise<EdcMachine | void> {
+    return this.edcMachineController.findFirst({
+      ...findFirstEdcMachineArgs,
+      select: relations.select,
     });
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Mutation(() => EdcMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  edcmachine EdcMachine(
-    @EdcMachine() EdcMachine: EdcMachine,
-    @EdcMachine() edcmachine: EdcMachine,
+  async edcMachineUpdateOne(
+    @Args() edcMachineUpdateOneArgs: UpdateOneEdcMachineArgs,
+    @Relations() relations: EdcMachineSelect,
   ) {
-    edcmachine edcmachine.EdcMachine.EdcMachine({
-      ...EdcMachine(EdcMachine),
-      edcmachine: edcmachine.edcmachine,
+    return this.edcMachineController.updateOne({
+      ...replaceNullWithUndefined(edcMachineUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Mutation(() => EdcMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  edcmachine EdcMachine(@EdcMachine() EdcMachine: EdcMachine) {
-    edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async edcMachineUpdateMany(@Args() updateManyEdcMachineArgs: UpdateManyEdcMachineArgs) {
+    return this.edcMachineController.updateMany(updateManyEdcMachineArgs);
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  edcmachine EdcMachine(
-    @EdcMachine() EdcMachine: EdcMachine,
-    @EdcMachine() edcmachine: EdcMachine,
+  async edcMachineDelete(
+    @Args() deleteOneEdcMachineArgs: DeleteOneEdcMachineArgs,
+    @Relations() relations: EdcMachineSelect,
   ) {
-    edcmachine edcmachine.EdcMachine.edcmachine({
-      ...EdcMachine,
-      edcmachine: edcmachine.edcmachine,
+    return this.edcMachineController.delete({
+      ...deleteOneEdcMachineArgs,
+      select: relations.select,
     });
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  edcmachine EdcMachine(@EdcMachine() EdcMachine: EdcMachine) {
-    edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async edcMachineDeleteMany(@Args() deleteManyEdcMachineArgs: DeleteManyEdcMachineArgs) {
+    return this.edcMachineController.deleteMany(deleteManyEdcMachineArgs);
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Query(() => AggregateEdcMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EdcMachine(@EdcMachine() EdcMachine: EdcMachine) {
-    edcmachine edcmachine.EdcMachine.edcmachine(EdcMachine);
+  edcMachineAggregate(@Args() edcMachineAggregateArgs: EdcMachineAggregateArgs) {
+    return this.edcMachineController.aggregate(edcMachineAggregateArgs);
   }
 
-  @EdcMachine(() => EdcMachine, {
-    edcmachine: edcmachine,
-    edcmachine: 'EdcMachine edcmachine edcmachine edcmachine',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  EdcMachine(@EdcMachine() EdcMachine: EdcMachine) {
-    edcmachine edcmachine.EdcMachine.edcmachine(EdcMachine);
+  edcMachineCount(@Args() edcMachineCountAggregateInput: FindManyEdcMachineArgs) {
+    return this.edcMachineController.count(edcMachineCountAggregateInput);
   }
 }

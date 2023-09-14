@@ -1,52 +1,52 @@
-customer { Customer } customer '@customer/customer';
-customer { Customer } customer '@customer/customer';
-customer { Customer } customer './customer.customer';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { CustomerService } from './customer.service';
 
-@Customer()
-customer customer Customer {
-  customer(customer customer Customer: Customer) {}
+@Injectable()
+export class CustomerController {
+  constructor(private readonly customerService: CustomerService) {}
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async createOne(customerCreateArgs: Prisma.CustomerCreateArgs) {
+    return await this.customerService.createOne(customerCreateArgs);
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async createMany(customerCreateManyArgs: Prisma.CustomerCreateManyArgs) {
+    return await this.customerService.createMany(customerCreateManyArgs);
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async findOne(customerFindUniqueArgs: Prisma.CustomerFindUniqueArgs) {
+    return await this.customerService.findOne(customerFindUniqueArgs);
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async findMany(customerFindManyArgs: Prisma.CustomerFindManyArgs) {
+    return await this.customerService.findMany(customerFindManyArgs);
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async findFirst(customerFindFirstArgs: Prisma.CustomerFindFirstArgs) {
+    return await this.customerService.findFirst(customerFindFirstArgs);
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async updateOne(customerUpdateOneArgs: Prisma.CustomerUpdateArgs) {
+    return await this.customerService.updateOne(customerUpdateOneArgs);
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async updateMany(customerUpdateManyArgs: Prisma.CustomerUpdateManyArgs) {
+    return await this.customerService.updateMany(customerUpdateManyArgs);
   }
 
-  customer customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.customer(Customer);
+  async delete(customerDeleteArgs: Prisma.CustomerDeleteArgs) {
+    return await this.customerService.delete(customerDeleteArgs);
   }
 
-  customer Customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.Customer(Customer);
+  async deleteMany(customerDeleteManyArgs: Prisma.CustomerDeleteManyArgs) {
+    return await this.customerService.deleteMany(customerDeleteManyArgs);
   }
 
-  customer customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.customer(Customer);
+  async aggregate(customerAggregateArgs: Prisma.CustomerAggregateArgs) {
+    return await this.customerService.aggregate(customerAggregateArgs);
   }
 
-  customer customer(Customer: Customer.Customer) {
-    customer customer customer.Customer.customer(Customer);
+  async count(customerCountArgs: Prisma.CustomerCountArgs) {
+    return await this.customerService.count(customerCountArgs);
   }
 }

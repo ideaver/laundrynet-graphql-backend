@@ -1,52 +1,52 @@
-owner { Owner } owner '@owner/owner';
-owner { Owner } owner '@owner/owner';
-owner { Owner } owner './owner.owner';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { OwnerService } from './owner.service';
 
-@Owner()
-owner owner Owner {
-  owner(owner owner Owner: Owner) {}
+@Injectable()
+export class OwnerController {
+  constructor(private readonly ownerService: OwnerService) {}
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async createOne(ownerCreateArgs: Prisma.OwnerCreateArgs) {
+    return await this.ownerService.createOne(ownerCreateArgs);
   }
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async createMany(ownerCreateManyArgs: Prisma.OwnerCreateManyArgs) {
+    return await this.ownerService.createMany(ownerCreateManyArgs);
   }
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async findOne(ownerFindUniqueArgs: Prisma.OwnerFindUniqueArgs) {
+    return await this.ownerService.findOne(ownerFindUniqueArgs);
   }
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async findMany(ownerFindManyArgs: Prisma.OwnerFindManyArgs) {
+    return await this.ownerService.findMany(ownerFindManyArgs);
   }
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async findFirst(ownerFindFirstArgs: Prisma.OwnerFindFirstArgs) {
+    return await this.ownerService.findFirst(ownerFindFirstArgs);
   }
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async updateOne(ownerUpdateOneArgs: Prisma.OwnerUpdateArgs) {
+    return await this.ownerService.updateOne(ownerUpdateOneArgs);
   }
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async updateMany(ownerUpdateManyArgs: Prisma.OwnerUpdateManyArgs) {
+    return await this.ownerService.updateMany(ownerUpdateManyArgs);
   }
 
-  owner owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.owner(Owner);
+  async delete(ownerDeleteArgs: Prisma.OwnerDeleteArgs) {
+    return await this.ownerService.delete(ownerDeleteArgs);
   }
 
-  owner Owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.Owner(Owner);
+  async deleteMany(ownerDeleteManyArgs: Prisma.OwnerDeleteManyArgs) {
+    return await this.ownerService.deleteMany(ownerDeleteManyArgs);
   }
 
-  owner owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.owner(Owner);
+  async aggregate(ownerAggregateArgs: Prisma.OwnerAggregateArgs) {
+    return await this.ownerService.aggregate(ownerAggregateArgs);
   }
 
-  owner owner(Owner: Owner.Owner) {
-    owner owner owner.Owner.owner(Owner);
+  async count(ownerCountArgs: Prisma.OwnerCountArgs) {
+    return await this.ownerService.count(ownerCountArgs);
   }
 }

@@ -1,160 +1,160 @@
-// @accountsetting-accountsetting
-accountsetting { AccountSetting, AccountSetting, AccountSetting, AccountSetting, AccountSetting } accountsetting '@accountsetting/accountsetting';
-accountsetting { AccountSetting } accountsetting '@accountsetting/accountsetting';
-accountsetting { AccountSetting } accountsetting 'accountsetting/accountsetting/accountsetting.accountsetting';
-accountsetting {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateAccountSetting,
+  CreateManyAccountSettingArgs,
+  CreateOneAccountSettingArgs,
+  DeleteManyAccountSettingArgs,
+  DeleteOneAccountSettingArgs,
+  FindFirstAccountSettingArgs,
+  FindManyAccountSettingArgs,
+  FindUniqueAccountSettingArgs,
   AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-  AccountSetting,
-} accountsetting 'accountsetting/@accountsetting';
-accountsetting { AccountSetting } accountsetting './accountsetting.accountsetting';
-accountsetting { AccountSetting } accountsetting 'accountsetting/accountsetting/accountsetting-accountsetting-accountsetting-accountsetting.accountsetting';
-accountsetting AccountSetting accountsetting 'accountsetting/accountsetting/accountsetting-accountsetting.accountsetting';
+  AccountSettingAggregateArgs,
+  UpdateManyAccountSettingArgs,
+  UpdateOneAccountSettingArgs,
+} from 'src/@generated';
+import { AccountSettingController } from './accountSetting.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-accountsetting AccountSetting {
-  accountsetting: AccountSetting.AccountSetting;
+interface AccountSettingSelect {
+  select: Prisma.AccountSettingSelect;
 }
 
-@AccountSetting(() => AccountSetting)
-accountsetting accountsetting AccountSetting {
-  accountsetting(accountsetting accountsetting AccountSetting: AccountSetting) {}
+@Resolver(() => AccountSetting)
+export class AccountSettingResolver {
+  constructor(private readonly accountSettingController: AccountSettingController) {}
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Mutation(() => AccountSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accountsetting AccountSetting(
-    @AccountSetting()
-    AccountSetting: AccountSetting,
-    @AccountSetting() accountsetting: AccountSetting,
-  ): AccountSetting<AccountSetting | accountsetting> {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting({
-      ...AccountSetting,
-      accountsetting: accountsetting.accountsetting,
+  async accountSettingCreateOne(
+    @Args()
+    accountSettingCreateArgs: CreateOneAccountSettingArgs,
+    @Relations() relations: AccountSettingSelect,
+  ): Promise<AccountSetting | void> {
+    return await this.accountSettingController.createOne({
+      ...accountSettingCreateArgs,
+      select: relations.select,
     });
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accountsetting AccountSetting(
-    @AccountSetting()
-    AccountSetting: AccountSetting,
+  async accountSettingCreateMany(
+    @Args()
+    createManyAccountSettingArgs: CreateManyAccountSettingArgs,
   ) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+    return await this.accountSettingController.createMany(createManyAccountSettingArgs);
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Query(() => AccountSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccountSetting(
-    @AccountSetting()
-    AccountSetting: AccountSetting,
-    @AccountSetting() accountsetting: AccountSetting,
-  ): AccountSetting<AccountSetting | accountsetting> {
-    accountsetting accountsetting.AccountSetting.AccountSetting({
-      ...AccountSetting,
-      accountsetting: accountsetting.accountsetting,
+  accountSettingFindOne(
+    @Args()
+    accountSettingFindUniqueArgs: FindUniqueAccountSettingArgs,
+    @Relations() relations: AccountSettingSelect,
+  ): Promise<AccountSetting | void> {
+    return this.accountSettingController.findOne({
+      ...accountSettingFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @AccountSetting(() => [AccountSetting], {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Query(() => [AccountSetting], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccountSetting(
-    @AccountSetting() AccountSetting: AccountSetting,
-    @AccountSetting() accountsetting: AccountSetting,
+  accountSettingFindMany(
+    @Args() accountSettingFindManyArgs: FindManyAccountSettingArgs,
+    @Relations() relations: AccountSettingSelect,
   ) {
-    accountsetting accountsetting.AccountSetting.AccountSetting({
-      ...AccountSetting,
-      accountsetting: accountsetting.accountsetting,
+    return this.accountSettingController.findMany({
+      ...accountSettingFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Query(() => AccountSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccountSetting(
-    @AccountSetting()
-    AccountSetting: AccountSetting,
-    @AccountSetting() accountsetting: AccountSetting,
-  ): AccountSetting<AccountSetting | accountsetting> {
-    accountsetting accountsetting.AccountSetting.AccountSetting({
-      ...AccountSetting,
-      accountsetting: accountsetting.accountsetting,
+  accountSettingFindFirst(
+    @Args()
+    findFirstAccountSettingArgs: FindFirstAccountSettingArgs,
+    @Relations() relations: AccountSettingSelect,
+  ): Promise<AccountSetting | void> {
+    return this.accountSettingController.findFirst({
+      ...findFirstAccountSettingArgs,
+      select: relations.select,
     });
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Mutation(() => AccountSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accountsetting AccountSetting(
-    @AccountSetting() AccountSetting: AccountSetting,
-    @AccountSetting() accountsetting: AccountSetting,
+  async accountSettingUpdateOne(
+    @Args() accountSettingUpdateOneArgs: UpdateOneAccountSettingArgs,
+    @Relations() relations: AccountSettingSelect,
   ) {
-    accountsetting accountsetting.AccountSetting.AccountSetting({
-      ...AccountSetting(AccountSetting),
-      accountsetting: accountsetting.accountsetting,
+    return this.accountSettingController.updateOne({
+      ...replaceNullWithUndefined(accountSettingUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Mutation(() => AccountSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  accountsetting AccountSetting(@AccountSetting() AccountSetting: AccountSetting) {
-    accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async accountSettingUpdateMany(@Args() updateManyAccountSettingArgs: UpdateManyAccountSettingArgs) {
+    return this.accountSettingController.updateMany(updateManyAccountSettingArgs);
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  accountsetting AccountSetting(
-    @AccountSetting() AccountSetting: AccountSetting,
-    @AccountSetting() accountsetting: AccountSetting,
+  async accountSettingDelete(
+    @Args() deleteOneAccountSettingArgs: DeleteOneAccountSettingArgs,
+    @Relations() relations: AccountSettingSelect,
   ) {
-    accountsetting accountsetting.AccountSetting.accountsetting({
-      ...AccountSetting,
-      accountsetting: accountsetting.accountsetting,
+    return this.accountSettingController.delete({
+      ...deleteOneAccountSettingArgs,
+      select: relations.select,
     });
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  accountsetting AccountSetting(@AccountSetting() AccountSetting: AccountSetting) {
-    accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async accountSettingDeleteMany(@Args() deleteManyAccountSettingArgs: DeleteManyAccountSettingArgs) {
+    return this.accountSettingController.deleteMany(deleteManyAccountSettingArgs);
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Query(() => AggregateAccountSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccountSetting(@AccountSetting() AccountSetting: AccountSetting) {
-    accountsetting accountsetting.AccountSetting.accountsetting(AccountSetting);
+  accountSettingAggregate(@Args() accountSettingAggregateArgs: AccountSettingAggregateArgs) {
+    return this.accountSettingController.aggregate(accountSettingAggregateArgs);
   }
 
-  @AccountSetting(() => AccountSetting, {
-    accountsetting: accountsetting,
-    accountsetting: 'AccountSetting accountsetting accountsetting accountsetting',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  AccountSetting(@AccountSetting() AccountSetting: AccountSetting) {
-    accountsetting accountsetting.AccountSetting.accountsetting(AccountSetting);
+  accountSettingCount(@Args() accountSettingCountAggregateInput: FindManyAccountSettingArgs) {
+    return this.accountSettingController.count(accountSettingCountAggregateInput);
   }
 }

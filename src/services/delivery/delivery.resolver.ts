@@ -1,160 +1,160 @@
-// @delivery-delivery
-delivery { Delivery, Delivery, Delivery, Delivery, Delivery } delivery '@delivery/delivery';
-delivery { Delivery } delivery '@delivery/delivery';
-delivery { Delivery } delivery 'delivery/delivery/delivery.delivery';
-delivery {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateDelivery,
+  CreateManyDeliveryArgs,
+  CreateOneDeliveryArgs,
+  DeleteManyDeliveryArgs,
+  DeleteOneDeliveryArgs,
+  FindFirstDeliveryArgs,
+  FindManyDeliveryArgs,
+  FindUniqueDeliveryArgs,
   Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-  Delivery,
-} delivery 'delivery/@delivery';
-delivery { Delivery } delivery './delivery.delivery';
-delivery { Delivery } delivery 'delivery/delivery/delivery-delivery-delivery-delivery.delivery';
-delivery Delivery delivery 'delivery/delivery/delivery-delivery.delivery';
+  DeliveryAggregateArgs,
+  UpdateManyDeliveryArgs,
+  UpdateOneDeliveryArgs,
+} from 'src/@generated';
+import { DeliveryController } from './delivery.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-delivery Delivery {
-  delivery: Delivery.Delivery;
+interface DeliverySelect {
+  select: Prisma.DeliverySelect;
 }
 
-@Delivery(() => Delivery)
-delivery delivery Delivery {
-  delivery(delivery delivery Delivery: Delivery) {}
+@Resolver(() => Delivery)
+export class DeliveryResolver {
+  constructor(private readonly deliveryController: DeliveryController) {}
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Mutation(() => Delivery, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  delivery Delivery(
-    @Delivery()
-    Delivery: Delivery,
-    @Delivery() delivery: Delivery,
-  ): Delivery<Delivery | delivery> {
-    delivery delivery delivery.Delivery.Delivery({
-      ...Delivery,
-      delivery: delivery.delivery,
+  async deliveryCreateOne(
+    @Args()
+    deliveryCreateArgs: CreateOneDeliveryArgs,
+    @Relations() relations: DeliverySelect,
+  ): Promise<Delivery | void> {
+    return await this.deliveryController.createOne({
+      ...deliveryCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  delivery Delivery(
-    @Delivery()
-    Delivery: Delivery,
+  async deliveryCreateMany(
+    @Args()
+    createManyDeliveryArgs: CreateManyDeliveryArgs,
   ) {
-    delivery delivery delivery.Delivery.Delivery(Delivery);
+    return await this.deliveryController.createMany(createManyDeliveryArgs);
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Query(() => Delivery, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Delivery(
-    @Delivery()
-    Delivery: Delivery,
-    @Delivery() delivery: Delivery,
-  ): Delivery<Delivery | delivery> {
-    delivery delivery.Delivery.Delivery({
-      ...Delivery,
-      delivery: delivery.delivery,
+  deliveryFindOne(
+    @Args()
+    deliveryFindUniqueArgs: FindUniqueDeliveryArgs,
+    @Relations() relations: DeliverySelect,
+  ): Promise<Delivery | void> {
+    return this.deliveryController.findOne({
+      ...deliveryFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Delivery(() => [Delivery], {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Query(() => [Delivery], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Delivery(
-    @Delivery() Delivery: Delivery,
-    @Delivery() delivery: Delivery,
+  deliveryFindMany(
+    @Args() deliveryFindManyArgs: FindManyDeliveryArgs,
+    @Relations() relations: DeliverySelect,
   ) {
-    delivery delivery.Delivery.Delivery({
-      ...Delivery,
-      delivery: delivery.delivery,
+    return this.deliveryController.findMany({
+      ...deliveryFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Query(() => Delivery, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Delivery(
-    @Delivery()
-    Delivery: Delivery,
-    @Delivery() delivery: Delivery,
-  ): Delivery<Delivery | delivery> {
-    delivery delivery.Delivery.Delivery({
-      ...Delivery,
-      delivery: delivery.delivery,
+  deliveryFindFirst(
+    @Args()
+    findFirstDeliveryArgs: FindFirstDeliveryArgs,
+    @Relations() relations: DeliverySelect,
+  ): Promise<Delivery | void> {
+    return this.deliveryController.findFirst({
+      ...findFirstDeliveryArgs,
+      select: relations.select,
     });
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Mutation(() => Delivery, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  delivery Delivery(
-    @Delivery() Delivery: Delivery,
-    @Delivery() delivery: Delivery,
+  async deliveryUpdateOne(
+    @Args() deliveryUpdateOneArgs: UpdateOneDeliveryArgs,
+    @Relations() relations: DeliverySelect,
   ) {
-    delivery delivery.Delivery.Delivery({
-      ...Delivery(Delivery),
-      delivery: delivery.delivery,
+    return this.deliveryController.updateOne({
+      ...replaceNullWithUndefined(deliveryUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Mutation(() => Delivery, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  delivery Delivery(@Delivery() Delivery: Delivery) {
-    delivery delivery.Delivery.Delivery(Delivery);
+  async deliveryUpdateMany(@Args() updateManyDeliveryArgs: UpdateManyDeliveryArgs) {
+    return this.deliveryController.updateMany(updateManyDeliveryArgs);
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  delivery Delivery(
-    @Delivery() Delivery: Delivery,
-    @Delivery() delivery: Delivery,
+  async deliveryDelete(
+    @Args() deleteOneDeliveryArgs: DeleteOneDeliveryArgs,
+    @Relations() relations: DeliverySelect,
   ) {
-    delivery delivery.Delivery.delivery({
-      ...Delivery,
-      delivery: delivery.delivery,
+    return this.deliveryController.delete({
+      ...deleteOneDeliveryArgs,
+      select: relations.select,
     });
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  delivery Delivery(@Delivery() Delivery: Delivery) {
-    delivery delivery.Delivery.Delivery(Delivery);
+  async deliveryDeleteMany(@Args() deleteManyDeliveryArgs: DeleteManyDeliveryArgs) {
+    return this.deliveryController.deleteMany(deleteManyDeliveryArgs);
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Query(() => AggregateDelivery, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Delivery(@Delivery() Delivery: Delivery) {
-    delivery delivery.Delivery.delivery(Delivery);
+  deliveryAggregate(@Args() deliveryAggregateArgs: DeliveryAggregateArgs) {
+    return this.deliveryController.aggregate(deliveryAggregateArgs);
   }
 
-  @Delivery(() => Delivery, {
-    delivery: delivery,
-    delivery: 'Delivery delivery delivery delivery',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Delivery(@Delivery() Delivery: Delivery) {
-    delivery delivery.Delivery.delivery(Delivery);
+  deliveryCount(@Args() deliveryCountAggregateInput: FindManyDeliveryArgs) {
+    return this.deliveryController.count(deliveryCountAggregateInput);
   }
 }

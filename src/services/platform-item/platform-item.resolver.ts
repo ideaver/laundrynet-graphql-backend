@@ -1,160 +1,160 @@
-// @platformitem-platformitem
-platformitem { PlatformItem, PlatformItem, PlatformItem, PlatformItem, PlatformItem } platformitem '@platformitem/platformitem';
-platformitem { PlatformItem } platformitem '@platformitem/platformitem';
-platformitem { PlatformItem } platformitem 'platformitem/platformitem/platformitem.platformitem';
-platformitem {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregatePlatformItem,
+  CreateManyPlatformItemArgs,
+  CreateOnePlatformItemArgs,
+  DeleteManyPlatformItemArgs,
+  DeleteOnePlatformItemArgs,
+  FindFirstPlatformItemArgs,
+  FindManyPlatformItemArgs,
+  FindUniquePlatformItemArgs,
   PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-  PlatformItem,
-} platformitem 'platformitem/@platformitem';
-platformitem { PlatformItem } platformitem './platformitem.platformitem';
-platformitem { PlatformItem } platformitem 'platformitem/platformitem/platformitem-platformitem-platformitem-platformitem.platformitem';
-platformitem PlatformItem platformitem 'platformitem/platformitem/platformitem-platformitem.platformitem';
+  PlatformItemAggregateArgs,
+  UpdateManyPlatformItemArgs,
+  UpdateOnePlatformItemArgs,
+} from 'src/@generated';
+import { PlatformItemController } from './platformItem.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-platformitem PlatformItem {
-  platformitem: PlatformItem.PlatformItem;
+interface PlatformItemSelect {
+  select: Prisma.PlatformItemSelect;
 }
 
-@PlatformItem(() => PlatformItem)
-platformitem platformitem PlatformItem {
-  platformitem(platformitem platformitem PlatformItem: PlatformItem) {}
+@Resolver(() => PlatformItem)
+export class PlatformItemResolver {
+  constructor(private readonly platformItemController: PlatformItemController) {}
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Mutation(() => PlatformItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformitem PlatformItem(
-    @PlatformItem()
-    PlatformItem: PlatformItem,
-    @PlatformItem() platformitem: PlatformItem,
-  ): PlatformItem<PlatformItem | platformitem> {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem({
-      ...PlatformItem,
-      platformitem: platformitem.platformitem,
+  async platformItemCreateOne(
+    @Args()
+    platformItemCreateArgs: CreateOnePlatformItemArgs,
+    @Relations() relations: PlatformItemSelect,
+  ): Promise<PlatformItem | void> {
+    return await this.platformItemController.createOne({
+      ...platformItemCreateArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformitem PlatformItem(
-    @PlatformItem()
-    PlatformItem: PlatformItem,
+  async platformItemCreateMany(
+    @Args()
+    createManyPlatformItemArgs: CreateManyPlatformItemArgs,
   ) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+    return await this.platformItemController.createMany(createManyPlatformItemArgs);
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Query(() => PlatformItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformItem(
-    @PlatformItem()
-    PlatformItem: PlatformItem,
-    @PlatformItem() platformitem: PlatformItem,
-  ): PlatformItem<PlatformItem | platformitem> {
-    platformitem platformitem.PlatformItem.PlatformItem({
-      ...PlatformItem,
-      platformitem: platformitem.platformitem,
+  platformItemFindOne(
+    @Args()
+    platformItemFindUniqueArgs: FindUniquePlatformItemArgs,
+    @Relations() relations: PlatformItemSelect,
+  ): Promise<PlatformItem | void> {
+    return this.platformItemController.findOne({
+      ...platformItemFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformItem(() => [PlatformItem], {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Query(() => [PlatformItem], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformItem(
-    @PlatformItem() PlatformItem: PlatformItem,
-    @PlatformItem() platformitem: PlatformItem,
+  platformItemFindMany(
+    @Args() platformItemFindManyArgs: FindManyPlatformItemArgs,
+    @Relations() relations: PlatformItemSelect,
   ) {
-    platformitem platformitem.PlatformItem.PlatformItem({
-      ...PlatformItem,
-      platformitem: platformitem.platformitem,
+    return this.platformItemController.findMany({
+      ...platformItemFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Query(() => PlatformItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformItem(
-    @PlatformItem()
-    PlatformItem: PlatformItem,
-    @PlatformItem() platformitem: PlatformItem,
-  ): PlatformItem<PlatformItem | platformitem> {
-    platformitem platformitem.PlatformItem.PlatformItem({
-      ...PlatformItem,
-      platformitem: platformitem.platformitem,
+  platformItemFindFirst(
+    @Args()
+    findFirstPlatformItemArgs: FindFirstPlatformItemArgs,
+    @Relations() relations: PlatformItemSelect,
+  ): Promise<PlatformItem | void> {
+    return this.platformItemController.findFirst({
+      ...findFirstPlatformItemArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Mutation(() => PlatformItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformitem PlatformItem(
-    @PlatformItem() PlatformItem: PlatformItem,
-    @PlatformItem() platformitem: PlatformItem,
+  async platformItemUpdateOne(
+    @Args() platformItemUpdateOneArgs: UpdateOnePlatformItemArgs,
+    @Relations() relations: PlatformItemSelect,
   ) {
-    platformitem platformitem.PlatformItem.PlatformItem({
-      ...PlatformItem(PlatformItem),
-      platformitem: platformitem.platformitem,
+    return this.platformItemController.updateOne({
+      ...replaceNullWithUndefined(platformItemUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Mutation(() => PlatformItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformitem PlatformItem(@PlatformItem() PlatformItem: PlatformItem) {
-    platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async platformItemUpdateMany(@Args() updateManyPlatformItemArgs: UpdateManyPlatformItemArgs) {
+    return this.platformItemController.updateMany(updateManyPlatformItemArgs);
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformitem PlatformItem(
-    @PlatformItem() PlatformItem: PlatformItem,
-    @PlatformItem() platformitem: PlatformItem,
+  async platformItemDelete(
+    @Args() deleteOnePlatformItemArgs: DeleteOnePlatformItemArgs,
+    @Relations() relations: PlatformItemSelect,
   ) {
-    platformitem platformitem.PlatformItem.platformitem({
-      ...PlatformItem,
-      platformitem: platformitem.platformitem,
+    return this.platformItemController.delete({
+      ...deleteOnePlatformItemArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformitem PlatformItem(@PlatformItem() PlatformItem: PlatformItem) {
-    platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async platformItemDeleteMany(@Args() deleteManyPlatformItemArgs: DeleteManyPlatformItemArgs) {
+    return this.platformItemController.deleteMany(deleteManyPlatformItemArgs);
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Query(() => AggregatePlatformItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformItem(@PlatformItem() PlatformItem: PlatformItem) {
-    platformitem platformitem.PlatformItem.platformitem(PlatformItem);
+  platformItemAggregate(@Args() platformItemAggregateArgs: PlatformItemAggregateArgs) {
+    return this.platformItemController.aggregate(platformItemAggregateArgs);
   }
 
-  @PlatformItem(() => PlatformItem, {
-    platformitem: platformitem,
-    platformitem: 'PlatformItem platformitem platformitem platformitem',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformItem(@PlatformItem() PlatformItem: PlatformItem) {
-    platformitem platformitem.PlatformItem.platformitem(PlatformItem);
+  platformItemCount(@Args() platformItemCountAggregateInput: FindManyPlatformItemArgs) {
+    return this.platformItemController.count(platformItemCountAggregateInput);
   }
 }

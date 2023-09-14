@@ -1,52 +1,52 @@
-district { District } district '@district/district';
-district { District } district '@district/district';
-district { District } district './district.district';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { DistrictService } from './district.service';
 
-@District()
-district district District {
-  district(district district District: District) {}
+@Injectable()
+export class DistrictController {
+  constructor(private readonly districtService: DistrictService) {}
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async createOne(districtCreateArgs: Prisma.DistrictCreateArgs) {
+    return await this.districtService.createOne(districtCreateArgs);
   }
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async createMany(districtCreateManyArgs: Prisma.DistrictCreateManyArgs) {
+    return await this.districtService.createMany(districtCreateManyArgs);
   }
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async findOne(districtFindUniqueArgs: Prisma.DistrictFindUniqueArgs) {
+    return await this.districtService.findOne(districtFindUniqueArgs);
   }
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async findMany(districtFindManyArgs: Prisma.DistrictFindManyArgs) {
+    return await this.districtService.findMany(districtFindManyArgs);
   }
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async findFirst(districtFindFirstArgs: Prisma.DistrictFindFirstArgs) {
+    return await this.districtService.findFirst(districtFindFirstArgs);
   }
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async updateOne(districtUpdateOneArgs: Prisma.DistrictUpdateArgs) {
+    return await this.districtService.updateOne(districtUpdateOneArgs);
   }
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async updateMany(districtUpdateManyArgs: Prisma.DistrictUpdateManyArgs) {
+    return await this.districtService.updateMany(districtUpdateManyArgs);
   }
 
-  district district(District: District.District) {
-    district district district.District.district(District);
+  async delete(districtDeleteArgs: Prisma.DistrictDeleteArgs) {
+    return await this.districtService.delete(districtDeleteArgs);
   }
 
-  district District(District: District.District) {
-    district district district.District.District(District);
+  async deleteMany(districtDeleteManyArgs: Prisma.DistrictDeleteManyArgs) {
+    return await this.districtService.deleteMany(districtDeleteManyArgs);
   }
 
-  district district(District: District.District) {
-    district district district.District.district(District);
+  async aggregate(districtAggregateArgs: Prisma.DistrictAggregateArgs) {
+    return await this.districtService.aggregate(districtAggregateArgs);
   }
 
-  district district(District: District.District) {
-    district district district.District.district(District);
+  async count(districtCountArgs: Prisma.DistrictCountArgs) {
+    return await this.districtService.count(districtCountArgs);
   }
 }

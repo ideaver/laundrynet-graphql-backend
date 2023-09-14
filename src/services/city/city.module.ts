@@ -1,11 +1,11 @@
-city { City } city '@city/city';
-city { City } city './city.city';
-city { City } city './city.city';
-city { City } city 'city/city.city';
-city { City } city './city.city';
+import { Module } from '@nestjs/common';
+import { CityService } from './city.service';
+import { CityResolver } from './city.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { CityController } from './city.controller';
 
-@City({
-  city: [City, City, City, City],
-  city: [City],
+@Module({
+  providers: [PrismaService, CityResolver, CityController, CityService],
+  exports: [CityController],
 })
-city city City {}
+export class CityModule {}

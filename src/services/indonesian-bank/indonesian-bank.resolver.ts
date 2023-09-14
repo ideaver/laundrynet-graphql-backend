@@ -1,160 +1,160 @@
-// @indonesianbank-indonesianbank
-indonesianbank { IndonesianBank, IndonesianBank, IndonesianBank, IndonesianBank, IndonesianBank } indonesianbank '@indonesianbank/indonesianbank';
-indonesianbank { IndonesianBank } indonesianbank '@indonesianbank/indonesianbank';
-indonesianbank { IndonesianBank } indonesianbank 'indonesianbank/indonesianbank/indonesianbank.indonesianbank';
-indonesianbank {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateIndonesianBank,
+  CreateManyIndonesianBankArgs,
+  CreateOneIndonesianBankArgs,
+  DeleteManyIndonesianBankArgs,
+  DeleteOneIndonesianBankArgs,
+  FindFirstIndonesianBankArgs,
+  FindManyIndonesianBankArgs,
+  FindUniqueIndonesianBankArgs,
   IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-  IndonesianBank,
-} indonesianbank 'indonesianbank/@indonesianbank';
-indonesianbank { IndonesianBank } indonesianbank './indonesianbank.indonesianbank';
-indonesianbank { IndonesianBank } indonesianbank 'indonesianbank/indonesianbank/indonesianbank-indonesianbank-indonesianbank-indonesianbank.indonesianbank';
-indonesianbank IndonesianBank indonesianbank 'indonesianbank/indonesianbank/indonesianbank-indonesianbank.indonesianbank';
+  IndonesianBankAggregateArgs,
+  UpdateManyIndonesianBankArgs,
+  UpdateOneIndonesianBankArgs,
+} from 'src/@generated';
+import { IndonesianBankController } from './indonesianBank.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-indonesianbank IndonesianBank {
-  indonesianbank: IndonesianBank.IndonesianBank;
+interface IndonesianBankSelect {
+  select: Prisma.IndonesianBankSelect;
 }
 
-@IndonesianBank(() => IndonesianBank)
-indonesianbank indonesianbank IndonesianBank {
-  indonesianbank(indonesianbank indonesianbank IndonesianBank: IndonesianBank) {}
+@Resolver(() => IndonesianBank)
+export class IndonesianBankResolver {
+  constructor(private readonly indonesianBankController: IndonesianBankController) {}
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Mutation(() => IndonesianBank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  indonesianbank IndonesianBank(
-    @IndonesianBank()
-    IndonesianBank: IndonesianBank,
-    @IndonesianBank() indonesianbank: IndonesianBank,
-  ): IndonesianBank<IndonesianBank | indonesianbank> {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank({
-      ...IndonesianBank,
-      indonesianbank: indonesianbank.indonesianbank,
+  async indonesianBankCreateOne(
+    @Args()
+    indonesianBankCreateArgs: CreateOneIndonesianBankArgs,
+    @Relations() relations: IndonesianBankSelect,
+  ): Promise<IndonesianBank | void> {
+    return await this.indonesianBankController.createOne({
+      ...indonesianBankCreateArgs,
+      select: relations.select,
     });
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  indonesianbank IndonesianBank(
-    @IndonesianBank()
-    IndonesianBank: IndonesianBank,
+  async indonesianBankCreateMany(
+    @Args()
+    createManyIndonesianBankArgs: CreateManyIndonesianBankArgs,
   ) {
-    indonesianbank indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+    return await this.indonesianBankController.createMany(createManyIndonesianBankArgs);
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Query(() => IndonesianBank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  IndonesianBank(
-    @IndonesianBank()
-    IndonesianBank: IndonesianBank,
-    @IndonesianBank() indonesianbank: IndonesianBank,
-  ): IndonesianBank<IndonesianBank | indonesianbank> {
-    indonesianbank indonesianbank.IndonesianBank.IndonesianBank({
-      ...IndonesianBank,
-      indonesianbank: indonesianbank.indonesianbank,
+  indonesianBankFindOne(
+    @Args()
+    indonesianBankFindUniqueArgs: FindUniqueIndonesianBankArgs,
+    @Relations() relations: IndonesianBankSelect,
+  ): Promise<IndonesianBank | void> {
+    return this.indonesianBankController.findOne({
+      ...indonesianBankFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @IndonesianBank(() => [IndonesianBank], {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Query(() => [IndonesianBank], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  IndonesianBank(
-    @IndonesianBank() IndonesianBank: IndonesianBank,
-    @IndonesianBank() indonesianbank: IndonesianBank,
+  indonesianBankFindMany(
+    @Args() indonesianBankFindManyArgs: FindManyIndonesianBankArgs,
+    @Relations() relations: IndonesianBankSelect,
   ) {
-    indonesianbank indonesianbank.IndonesianBank.IndonesianBank({
-      ...IndonesianBank,
-      indonesianbank: indonesianbank.indonesianbank,
+    return this.indonesianBankController.findMany({
+      ...indonesianBankFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Query(() => IndonesianBank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  IndonesianBank(
-    @IndonesianBank()
-    IndonesianBank: IndonesianBank,
-    @IndonesianBank() indonesianbank: IndonesianBank,
-  ): IndonesianBank<IndonesianBank | indonesianbank> {
-    indonesianbank indonesianbank.IndonesianBank.IndonesianBank({
-      ...IndonesianBank,
-      indonesianbank: indonesianbank.indonesianbank,
+  indonesianBankFindFirst(
+    @Args()
+    findFirstIndonesianBankArgs: FindFirstIndonesianBankArgs,
+    @Relations() relations: IndonesianBankSelect,
+  ): Promise<IndonesianBank | void> {
+    return this.indonesianBankController.findFirst({
+      ...findFirstIndonesianBankArgs,
+      select: relations.select,
     });
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Mutation(() => IndonesianBank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  indonesianbank IndonesianBank(
-    @IndonesianBank() IndonesianBank: IndonesianBank,
-    @IndonesianBank() indonesianbank: IndonesianBank,
+  async indonesianBankUpdateOne(
+    @Args() indonesianBankUpdateOneArgs: UpdateOneIndonesianBankArgs,
+    @Relations() relations: IndonesianBankSelect,
   ) {
-    indonesianbank indonesianbank.IndonesianBank.IndonesianBank({
-      ...IndonesianBank(IndonesianBank),
-      indonesianbank: indonesianbank.indonesianbank,
+    return this.indonesianBankController.updateOne({
+      ...replaceNullWithUndefined(indonesianBankUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Mutation(() => IndonesianBank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  indonesianbank IndonesianBank(@IndonesianBank() IndonesianBank: IndonesianBank) {
-    indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async indonesianBankUpdateMany(@Args() updateManyIndonesianBankArgs: UpdateManyIndonesianBankArgs) {
+    return this.indonesianBankController.updateMany(updateManyIndonesianBankArgs);
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  indonesianbank IndonesianBank(
-    @IndonesianBank() IndonesianBank: IndonesianBank,
-    @IndonesianBank() indonesianbank: IndonesianBank,
+  async indonesianBankDelete(
+    @Args() deleteOneIndonesianBankArgs: DeleteOneIndonesianBankArgs,
+    @Relations() relations: IndonesianBankSelect,
   ) {
-    indonesianbank indonesianbank.IndonesianBank.indonesianbank({
-      ...IndonesianBank,
-      indonesianbank: indonesianbank.indonesianbank,
+    return this.indonesianBankController.delete({
+      ...deleteOneIndonesianBankArgs,
+      select: relations.select,
     });
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  indonesianbank IndonesianBank(@IndonesianBank() IndonesianBank: IndonesianBank) {
-    indonesianbank indonesianbank.IndonesianBank.IndonesianBank(IndonesianBank);
+  async indonesianBankDeleteMany(@Args() deleteManyIndonesianBankArgs: DeleteManyIndonesianBankArgs) {
+    return this.indonesianBankController.deleteMany(deleteManyIndonesianBankArgs);
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Query(() => AggregateIndonesianBank, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  IndonesianBank(@IndonesianBank() IndonesianBank: IndonesianBank) {
-    indonesianbank indonesianbank.IndonesianBank.indonesianbank(IndonesianBank);
+  indonesianBankAggregate(@Args() indonesianBankAggregateArgs: IndonesianBankAggregateArgs) {
+    return this.indonesianBankController.aggregate(indonesianBankAggregateArgs);
   }
 
-  @IndonesianBank(() => IndonesianBank, {
-    indonesianbank: indonesianbank,
-    indonesianbank: 'IndonesianBank indonesianbank indonesianbank indonesianbank',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  IndonesianBank(@IndonesianBank() IndonesianBank: IndonesianBank) {
-    indonesianbank indonesianbank.IndonesianBank.indonesianbank(IndonesianBank);
+  indonesianBankCount(@Args() indonesianBankCountAggregateInput: FindManyIndonesianBankArgs) {
+    return this.indonesianBankController.count(indonesianBankCountAggregateInput);
   }
 }

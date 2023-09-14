@@ -1,160 +1,160 @@
-// @termorfaq-termorfaq
-termorfaq { TermOrFaq, TermOrFaq, TermOrFaq, TermOrFaq, TermOrFaq } termorfaq '@termorfaq/termorfaq';
-termorfaq { TermOrFaq } termorfaq '@termorfaq/termorfaq';
-termorfaq { TermOrFaq } termorfaq 'termorfaq/termorfaq/termorfaq.termorfaq';
-termorfaq {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateTermOrFaq,
+  CreateManyTermOrFaqArgs,
+  CreateOneTermOrFaqArgs,
+  DeleteManyTermOrFaqArgs,
+  DeleteOneTermOrFaqArgs,
+  FindFirstTermOrFaqArgs,
+  FindManyTermOrFaqArgs,
+  FindUniqueTermOrFaqArgs,
   TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-  TermOrFaq,
-} termorfaq 'termorfaq/@termorfaq';
-termorfaq { TermOrFaq } termorfaq './termorfaq.termorfaq';
-termorfaq { TermOrFaq } termorfaq 'termorfaq/termorfaq/termorfaq-termorfaq-termorfaq-termorfaq.termorfaq';
-termorfaq TermOrFaq termorfaq 'termorfaq/termorfaq/termorfaq-termorfaq.termorfaq';
+  TermOrFaqAggregateArgs,
+  UpdateManyTermOrFaqArgs,
+  UpdateOneTermOrFaqArgs,
+} from 'src/@generated';
+import { TermOrFaqController } from './termOrFaq.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-termorfaq TermOrFaq {
-  termorfaq: TermOrFaq.TermOrFaq;
+interface TermOrFaqSelect {
+  select: Prisma.TermOrFaqSelect;
 }
 
-@TermOrFaq(() => TermOrFaq)
-termorfaq termorfaq TermOrFaq {
-  termorfaq(termorfaq termorfaq TermOrFaq: TermOrFaq) {}
+@Resolver(() => TermOrFaq)
+export class TermOrFaqResolver {
+  constructor(private readonly termOrFaqController: TermOrFaqController) {}
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Mutation(() => TermOrFaq, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  termorfaq TermOrFaq(
-    @TermOrFaq()
-    TermOrFaq: TermOrFaq,
-    @TermOrFaq() termorfaq: TermOrFaq,
-  ): TermOrFaq<TermOrFaq | termorfaq> {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq({
-      ...TermOrFaq,
-      termorfaq: termorfaq.termorfaq,
+  async termOrFaqCreateOne(
+    @Args()
+    termOrFaqCreateArgs: CreateOneTermOrFaqArgs,
+    @Relations() relations: TermOrFaqSelect,
+  ): Promise<TermOrFaq | void> {
+    return await this.termOrFaqController.createOne({
+      ...termOrFaqCreateArgs,
+      select: relations.select,
     });
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  termorfaq TermOrFaq(
-    @TermOrFaq()
-    TermOrFaq: TermOrFaq,
+  async termOrFaqCreateMany(
+    @Args()
+    createManyTermOrFaqArgs: CreateManyTermOrFaqArgs,
   ) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+    return await this.termOrFaqController.createMany(createManyTermOrFaqArgs);
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Query(() => TermOrFaq, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  TermOrFaq(
-    @TermOrFaq()
-    TermOrFaq: TermOrFaq,
-    @TermOrFaq() termorfaq: TermOrFaq,
-  ): TermOrFaq<TermOrFaq | termorfaq> {
-    termorfaq termorfaq.TermOrFaq.TermOrFaq({
-      ...TermOrFaq,
-      termorfaq: termorfaq.termorfaq,
+  termOrFaqFindOne(
+    @Args()
+    termOrFaqFindUniqueArgs: FindUniqueTermOrFaqArgs,
+    @Relations() relations: TermOrFaqSelect,
+  ): Promise<TermOrFaq | void> {
+    return this.termOrFaqController.findOne({
+      ...termOrFaqFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @TermOrFaq(() => [TermOrFaq], {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Query(() => [TermOrFaq], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  TermOrFaq(
-    @TermOrFaq() TermOrFaq: TermOrFaq,
-    @TermOrFaq() termorfaq: TermOrFaq,
+  termOrFaqFindMany(
+    @Args() termOrFaqFindManyArgs: FindManyTermOrFaqArgs,
+    @Relations() relations: TermOrFaqSelect,
   ) {
-    termorfaq termorfaq.TermOrFaq.TermOrFaq({
-      ...TermOrFaq,
-      termorfaq: termorfaq.termorfaq,
+    return this.termOrFaqController.findMany({
+      ...termOrFaqFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Query(() => TermOrFaq, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  TermOrFaq(
-    @TermOrFaq()
-    TermOrFaq: TermOrFaq,
-    @TermOrFaq() termorfaq: TermOrFaq,
-  ): TermOrFaq<TermOrFaq | termorfaq> {
-    termorfaq termorfaq.TermOrFaq.TermOrFaq({
-      ...TermOrFaq,
-      termorfaq: termorfaq.termorfaq,
+  termOrFaqFindFirst(
+    @Args()
+    findFirstTermOrFaqArgs: FindFirstTermOrFaqArgs,
+    @Relations() relations: TermOrFaqSelect,
+  ): Promise<TermOrFaq | void> {
+    return this.termOrFaqController.findFirst({
+      ...findFirstTermOrFaqArgs,
+      select: relations.select,
     });
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Mutation(() => TermOrFaq, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  termorfaq TermOrFaq(
-    @TermOrFaq() TermOrFaq: TermOrFaq,
-    @TermOrFaq() termorfaq: TermOrFaq,
+  async termOrFaqUpdateOne(
+    @Args() termOrFaqUpdateOneArgs: UpdateOneTermOrFaqArgs,
+    @Relations() relations: TermOrFaqSelect,
   ) {
-    termorfaq termorfaq.TermOrFaq.TermOrFaq({
-      ...TermOrFaq(TermOrFaq),
-      termorfaq: termorfaq.termorfaq,
+    return this.termOrFaqController.updateOne({
+      ...replaceNullWithUndefined(termOrFaqUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Mutation(() => TermOrFaq, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  termorfaq TermOrFaq(@TermOrFaq() TermOrFaq: TermOrFaq) {
-    termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async termOrFaqUpdateMany(@Args() updateManyTermOrFaqArgs: UpdateManyTermOrFaqArgs) {
+    return this.termOrFaqController.updateMany(updateManyTermOrFaqArgs);
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  termorfaq TermOrFaq(
-    @TermOrFaq() TermOrFaq: TermOrFaq,
-    @TermOrFaq() termorfaq: TermOrFaq,
+  async termOrFaqDelete(
+    @Args() deleteOneTermOrFaqArgs: DeleteOneTermOrFaqArgs,
+    @Relations() relations: TermOrFaqSelect,
   ) {
-    termorfaq termorfaq.TermOrFaq.termorfaq({
-      ...TermOrFaq,
-      termorfaq: termorfaq.termorfaq,
+    return this.termOrFaqController.delete({
+      ...deleteOneTermOrFaqArgs,
+      select: relations.select,
     });
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  termorfaq TermOrFaq(@TermOrFaq() TermOrFaq: TermOrFaq) {
-    termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async termOrFaqDeleteMany(@Args() deleteManyTermOrFaqArgs: DeleteManyTermOrFaqArgs) {
+    return this.termOrFaqController.deleteMany(deleteManyTermOrFaqArgs);
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Query(() => AggregateTermOrFaq, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  TermOrFaq(@TermOrFaq() TermOrFaq: TermOrFaq) {
-    termorfaq termorfaq.TermOrFaq.termorfaq(TermOrFaq);
+  termOrFaqAggregate(@Args() termOrFaqAggregateArgs: TermOrFaqAggregateArgs) {
+    return this.termOrFaqController.aggregate(termOrFaqAggregateArgs);
   }
 
-  @TermOrFaq(() => TermOrFaq, {
-    termorfaq: termorfaq,
-    termorfaq: 'TermOrFaq termorfaq termorfaq termorfaq',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  TermOrFaq(@TermOrFaq() TermOrFaq: TermOrFaq) {
-    termorfaq termorfaq.TermOrFaq.termorfaq(TermOrFaq);
+  termOrFaqCount(@Args() termOrFaqCountAggregateInput: FindManyTermOrFaqArgs) {
+    return this.termOrFaqController.count(termOrFaqCountAggregateInput);
   }
 }

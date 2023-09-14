@@ -1,160 +1,160 @@
-// @orderstatus-orderstatus
-orderstatus { OrderStatus, OrderStatus, OrderStatus, OrderStatus, OrderStatus } orderstatus '@orderstatus/orderstatus';
-orderstatus { OrderStatus } orderstatus '@orderstatus/orderstatus';
-orderstatus { OrderStatus } orderstatus 'orderstatus/orderstatus/orderstatus.orderstatus';
-orderstatus {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateOrderStatus,
+  CreateManyOrderStatusArgs,
+  CreateOneOrderStatusArgs,
+  DeleteManyOrderStatusArgs,
+  DeleteOneOrderStatusArgs,
+  FindFirstOrderStatusArgs,
+  FindManyOrderStatusArgs,
+  FindUniqueOrderStatusArgs,
   OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-  OrderStatus,
-} orderstatus 'orderstatus/@orderstatus';
-orderstatus { OrderStatus } orderstatus './orderstatus.orderstatus';
-orderstatus { OrderStatus } orderstatus 'orderstatus/orderstatus/orderstatus-orderstatus-orderstatus-orderstatus.orderstatus';
-orderstatus OrderStatus orderstatus 'orderstatus/orderstatus/orderstatus-orderstatus.orderstatus';
+  OrderStatusAggregateArgs,
+  UpdateManyOrderStatusArgs,
+  UpdateOneOrderStatusArgs,
+} from 'src/@generated';
+import { OrderStatusController } from './orderStatus.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-orderstatus OrderStatus {
-  orderstatus: OrderStatus.OrderStatus;
+interface OrderStatusSelect {
+  select: Prisma.OrderStatusSelect;
 }
 
-@OrderStatus(() => OrderStatus)
-orderstatus orderstatus OrderStatus {
-  orderstatus(orderstatus orderstatus OrderStatus: OrderStatus) {}
+@Resolver(() => OrderStatus)
+export class OrderStatusResolver {
+  constructor(private readonly orderStatusController: OrderStatusController) {}
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Mutation(() => OrderStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  orderstatus OrderStatus(
-    @OrderStatus()
-    OrderStatus: OrderStatus,
-    @OrderStatus() orderstatus: OrderStatus,
-  ): OrderStatus<OrderStatus | orderstatus> {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus({
-      ...OrderStatus,
-      orderstatus: orderstatus.orderstatus,
+  async orderStatusCreateOne(
+    @Args()
+    orderStatusCreateArgs: CreateOneOrderStatusArgs,
+    @Relations() relations: OrderStatusSelect,
+  ): Promise<OrderStatus | void> {
+    return await this.orderStatusController.createOne({
+      ...orderStatusCreateArgs,
+      select: relations.select,
     });
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  orderstatus OrderStatus(
-    @OrderStatus()
-    OrderStatus: OrderStatus,
+  async orderStatusCreateMany(
+    @Args()
+    createManyOrderStatusArgs: CreateManyOrderStatusArgs,
   ) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+    return await this.orderStatusController.createMany(createManyOrderStatusArgs);
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Query(() => OrderStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OrderStatus(
-    @OrderStatus()
-    OrderStatus: OrderStatus,
-    @OrderStatus() orderstatus: OrderStatus,
-  ): OrderStatus<OrderStatus | orderstatus> {
-    orderstatus orderstatus.OrderStatus.OrderStatus({
-      ...OrderStatus,
-      orderstatus: orderstatus.orderstatus,
+  orderStatusFindOne(
+    @Args()
+    orderStatusFindUniqueArgs: FindUniqueOrderStatusArgs,
+    @Relations() relations: OrderStatusSelect,
+  ): Promise<OrderStatus | void> {
+    return this.orderStatusController.findOne({
+      ...orderStatusFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @OrderStatus(() => [OrderStatus], {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Query(() => [OrderStatus], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OrderStatus(
-    @OrderStatus() OrderStatus: OrderStatus,
-    @OrderStatus() orderstatus: OrderStatus,
+  orderStatusFindMany(
+    @Args() orderStatusFindManyArgs: FindManyOrderStatusArgs,
+    @Relations() relations: OrderStatusSelect,
   ) {
-    orderstatus orderstatus.OrderStatus.OrderStatus({
-      ...OrderStatus,
-      orderstatus: orderstatus.orderstatus,
+    return this.orderStatusController.findMany({
+      ...orderStatusFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Query(() => OrderStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OrderStatus(
-    @OrderStatus()
-    OrderStatus: OrderStatus,
-    @OrderStatus() orderstatus: OrderStatus,
-  ): OrderStatus<OrderStatus | orderstatus> {
-    orderstatus orderstatus.OrderStatus.OrderStatus({
-      ...OrderStatus,
-      orderstatus: orderstatus.orderstatus,
+  orderStatusFindFirst(
+    @Args()
+    findFirstOrderStatusArgs: FindFirstOrderStatusArgs,
+    @Relations() relations: OrderStatusSelect,
+  ): Promise<OrderStatus | void> {
+    return this.orderStatusController.findFirst({
+      ...findFirstOrderStatusArgs,
+      select: relations.select,
     });
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Mutation(() => OrderStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  orderstatus OrderStatus(
-    @OrderStatus() OrderStatus: OrderStatus,
-    @OrderStatus() orderstatus: OrderStatus,
+  async orderStatusUpdateOne(
+    @Args() orderStatusUpdateOneArgs: UpdateOneOrderStatusArgs,
+    @Relations() relations: OrderStatusSelect,
   ) {
-    orderstatus orderstatus.OrderStatus.OrderStatus({
-      ...OrderStatus(OrderStatus),
-      orderstatus: orderstatus.orderstatus,
+    return this.orderStatusController.updateOne({
+      ...replaceNullWithUndefined(orderStatusUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Mutation(() => OrderStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  orderstatus OrderStatus(@OrderStatus() OrderStatus: OrderStatus) {
-    orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async orderStatusUpdateMany(@Args() updateManyOrderStatusArgs: UpdateManyOrderStatusArgs) {
+    return this.orderStatusController.updateMany(updateManyOrderStatusArgs);
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  orderstatus OrderStatus(
-    @OrderStatus() OrderStatus: OrderStatus,
-    @OrderStatus() orderstatus: OrderStatus,
+  async orderStatusDelete(
+    @Args() deleteOneOrderStatusArgs: DeleteOneOrderStatusArgs,
+    @Relations() relations: OrderStatusSelect,
   ) {
-    orderstatus orderstatus.OrderStatus.orderstatus({
-      ...OrderStatus,
-      orderstatus: orderstatus.orderstatus,
+    return this.orderStatusController.delete({
+      ...deleteOneOrderStatusArgs,
+      select: relations.select,
     });
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  orderstatus OrderStatus(@OrderStatus() OrderStatus: OrderStatus) {
-    orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async orderStatusDeleteMany(@Args() deleteManyOrderStatusArgs: DeleteManyOrderStatusArgs) {
+    return this.orderStatusController.deleteMany(deleteManyOrderStatusArgs);
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Query(() => AggregateOrderStatus, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OrderStatus(@OrderStatus() OrderStatus: OrderStatus) {
-    orderstatus orderstatus.OrderStatus.orderstatus(OrderStatus);
+  orderStatusAggregate(@Args() orderStatusAggregateArgs: OrderStatusAggregateArgs) {
+    return this.orderStatusController.aggregate(orderStatusAggregateArgs);
   }
 
-  @OrderStatus(() => OrderStatus, {
-    orderstatus: orderstatus,
-    orderstatus: 'OrderStatus orderstatus orderstatus orderstatus',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OrderStatus(@OrderStatus() OrderStatus: OrderStatus) {
-    orderstatus orderstatus.OrderStatus.orderstatus(OrderStatus);
+  orderStatusCount(@Args() orderStatusCountAggregateInput: FindManyOrderStatusArgs) {
+    return this.orderStatusController.count(orderStatusCountAggregateInput);
   }
 }

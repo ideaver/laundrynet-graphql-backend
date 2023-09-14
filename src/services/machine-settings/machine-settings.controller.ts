@@ -1,52 +1,52 @@
-machinesettings { MachineSettings } machinesettings '@machinesettings/machinesettings';
-machinesettings { MachineSettings } machinesettings '@machinesettings/machinesettings';
-machinesettings { MachineSettings } machinesettings './machinesettings.machinesettings';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { MachineSettingsService } from './machineSettings.service';
 
-@MachineSettings()
-machinesettings machinesettings MachineSettings {
-  machinesettings(machinesettings machinesettings MachineSettings: MachineSettings) {}
+@Injectable()
+export class MachineSettingsController {
+  constructor(private readonly machineSettingsService: MachineSettingsService) {}
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async createOne(machineSettingsCreateArgs: Prisma.MachineSettingsCreateArgs) {
+    return await this.machineSettingsService.createOne(machineSettingsCreateArgs);
   }
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async createMany(machineSettingsCreateManyArgs: Prisma.MachineSettingsCreateManyArgs) {
+    return await this.machineSettingsService.createMany(machineSettingsCreateManyArgs);
   }
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async findOne(machineSettingsFindUniqueArgs: Prisma.MachineSettingsFindUniqueArgs) {
+    return await this.machineSettingsService.findOne(machineSettingsFindUniqueArgs);
   }
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async findMany(machineSettingsFindManyArgs: Prisma.MachineSettingsFindManyArgs) {
+    return await this.machineSettingsService.findMany(machineSettingsFindManyArgs);
   }
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async findFirst(machineSettingsFindFirstArgs: Prisma.MachineSettingsFindFirstArgs) {
+    return await this.machineSettingsService.findFirst(machineSettingsFindFirstArgs);
   }
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async updateOne(machineSettingsUpdateOneArgs: Prisma.MachineSettingsUpdateArgs) {
+    return await this.machineSettingsService.updateOne(machineSettingsUpdateOneArgs);
   }
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async updateMany(machineSettingsUpdateManyArgs: Prisma.MachineSettingsUpdateManyArgs) {
+    return await this.machineSettingsService.updateMany(machineSettingsUpdateManyArgs);
   }
 
-  machinesettings machinesettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.machinesettings(MachineSettings);
+  async delete(machineSettingsDeleteArgs: Prisma.MachineSettingsDeleteArgs) {
+    return await this.machineSettingsService.delete(machineSettingsDeleteArgs);
   }
 
-  machinesettings MachineSettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async deleteMany(machineSettingsDeleteManyArgs: Prisma.MachineSettingsDeleteManyArgs) {
+    return await this.machineSettingsService.deleteMany(machineSettingsDeleteManyArgs);
   }
 
-  machinesettings machinesettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.machinesettings(MachineSettings);
+  async aggregate(machineSettingsAggregateArgs: Prisma.MachineSettingsAggregateArgs) {
+    return await this.machineSettingsService.aggregate(machineSettingsAggregateArgs);
   }
 
-  machinesettings machinesettings(MachineSettings: MachineSettings.MachineSettings) {
-    machinesettings machinesettings machinesettings.MachineSettings.machinesettings(MachineSettings);
+  async count(machineSettingsCountArgs: Prisma.MachineSettingsCountArgs) {
+    return await this.machineSettingsService.count(machineSettingsCountArgs);
   }
 }

@@ -1,11 +1,11 @@
-message { Message } message '@message/message';
-message { Message } message './message.message';
-message { Message } message './message.message';
-message { Message } message 'message/message.message';
-message { Message } message './message.message';
+import { Module } from '@nestjs/common';
+import { MessageService } from './message.service';
+import { MessageResolver } from './message.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { MessageController } from './message.controller';
 
-@Message({
-  message: [Message, Message, Message, Message],
-  message: [Message],
+@Module({
+  providers: [PrismaService, MessageResolver, MessageController, MessageService],
+  exports: [MessageController],
 })
-message message Message {}
+export class MessageModule {}

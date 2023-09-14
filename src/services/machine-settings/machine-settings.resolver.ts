@@ -1,160 +1,160 @@
-// @machinesettings-machinesettings
-machinesettings { MachineSettings, MachineSettings, MachineSettings, MachineSettings, MachineSettings } machinesettings '@machinesettings/machinesettings';
-machinesettings { MachineSettings } machinesettings '@machinesettings/machinesettings';
-machinesettings { MachineSettings } machinesettings 'machinesettings/machinesettings/machinesettings.machinesettings';
-machinesettings {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateMachineSettings,
+  CreateManyMachineSettingsArgs,
+  CreateOneMachineSettingsArgs,
+  DeleteManyMachineSettingsArgs,
+  DeleteOneMachineSettingsArgs,
+  FindFirstMachineSettingsArgs,
+  FindManyMachineSettingsArgs,
+  FindUniqueMachineSettingsArgs,
   MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-  MachineSettings,
-} machinesettings 'machinesettings/@machinesettings';
-machinesettings { MachineSettings } machinesettings './machinesettings.machinesettings';
-machinesettings { MachineSettings } machinesettings 'machinesettings/machinesettings/machinesettings-machinesettings-machinesettings-machinesettings.machinesettings';
-machinesettings MachineSettings machinesettings 'machinesettings/machinesettings/machinesettings-machinesettings.machinesettings';
+  MachineSettingsAggregateArgs,
+  UpdateManyMachineSettingsArgs,
+  UpdateOneMachineSettingsArgs,
+} from 'src/@generated';
+import { MachineSettingsController } from './machineSettings.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-machinesettings MachineSettings {
-  machinesettings: MachineSettings.MachineSettings;
+interface MachineSettingsSelect {
+  select: Prisma.MachineSettingsSelect;
 }
 
-@MachineSettings(() => MachineSettings)
-machinesettings machinesettings MachineSettings {
-  machinesettings(machinesettings machinesettings MachineSettings: MachineSettings) {}
+@Resolver(() => MachineSettings)
+export class MachineSettingsResolver {
+  constructor(private readonly machineSettingsController: MachineSettingsController) {}
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Mutation(() => MachineSettings, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinesettings MachineSettings(
-    @MachineSettings()
-    MachineSettings: MachineSettings,
-    @MachineSettings() machinesettings: MachineSettings,
-  ): MachineSettings<MachineSettings | machinesettings> {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings({
-      ...MachineSettings,
-      machinesettings: machinesettings.machinesettings,
+  async machineSettingsCreateOne(
+    @Args()
+    machineSettingsCreateArgs: CreateOneMachineSettingsArgs,
+    @Relations() relations: MachineSettingsSelect,
+  ): Promise<MachineSettings | void> {
+    return await this.machineSettingsController.createOne({
+      ...machineSettingsCreateArgs,
+      select: relations.select,
     });
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinesettings MachineSettings(
-    @MachineSettings()
-    MachineSettings: MachineSettings,
+  async machineSettingsCreateMany(
+    @Args()
+    createManyMachineSettingsArgs: CreateManyMachineSettingsArgs,
   ) {
-    machinesettings machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+    return await this.machineSettingsController.createMany(createManyMachineSettingsArgs);
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Query(() => MachineSettings, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineSettings(
-    @MachineSettings()
-    MachineSettings: MachineSettings,
-    @MachineSettings() machinesettings: MachineSettings,
-  ): MachineSettings<MachineSettings | machinesettings> {
-    machinesettings machinesettings.MachineSettings.MachineSettings({
-      ...MachineSettings,
-      machinesettings: machinesettings.machinesettings,
+  machineSettingsFindOne(
+    @Args()
+    machineSettingsFindUniqueArgs: FindUniqueMachineSettingsArgs,
+    @Relations() relations: MachineSettingsSelect,
+  ): Promise<MachineSettings | void> {
+    return this.machineSettingsController.findOne({
+      ...machineSettingsFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @MachineSettings(() => [MachineSettings], {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Query(() => [MachineSettings], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineSettings(
-    @MachineSettings() MachineSettings: MachineSettings,
-    @MachineSettings() machinesettings: MachineSettings,
+  machineSettingsFindMany(
+    @Args() machineSettingsFindManyArgs: FindManyMachineSettingsArgs,
+    @Relations() relations: MachineSettingsSelect,
   ) {
-    machinesettings machinesettings.MachineSettings.MachineSettings({
-      ...MachineSettings,
-      machinesettings: machinesettings.machinesettings,
+    return this.machineSettingsController.findMany({
+      ...machineSettingsFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Query(() => MachineSettings, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineSettings(
-    @MachineSettings()
-    MachineSettings: MachineSettings,
-    @MachineSettings() machinesettings: MachineSettings,
-  ): MachineSettings<MachineSettings | machinesettings> {
-    machinesettings machinesettings.MachineSettings.MachineSettings({
-      ...MachineSettings,
-      machinesettings: machinesettings.machinesettings,
+  machineSettingsFindFirst(
+    @Args()
+    findFirstMachineSettingsArgs: FindFirstMachineSettingsArgs,
+    @Relations() relations: MachineSettingsSelect,
+  ): Promise<MachineSettings | void> {
+    return this.machineSettingsController.findFirst({
+      ...findFirstMachineSettingsArgs,
+      select: relations.select,
     });
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Mutation(() => MachineSettings, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinesettings MachineSettings(
-    @MachineSettings() MachineSettings: MachineSettings,
-    @MachineSettings() machinesettings: MachineSettings,
+  async machineSettingsUpdateOne(
+    @Args() machineSettingsUpdateOneArgs: UpdateOneMachineSettingsArgs,
+    @Relations() relations: MachineSettingsSelect,
   ) {
-    machinesettings machinesettings.MachineSettings.MachineSettings({
-      ...MachineSettings(MachineSettings),
-      machinesettings: machinesettings.machinesettings,
+    return this.machineSettingsController.updateOne({
+      ...replaceNullWithUndefined(machineSettingsUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Mutation(() => MachineSettings, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinesettings MachineSettings(@MachineSettings() MachineSettings: MachineSettings) {
-    machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async machineSettingsUpdateMany(@Args() updateManyMachineSettingsArgs: UpdateManyMachineSettingsArgs) {
+    return this.machineSettingsController.updateMany(updateManyMachineSettingsArgs);
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinesettings MachineSettings(
-    @MachineSettings() MachineSettings: MachineSettings,
-    @MachineSettings() machinesettings: MachineSettings,
+  async machineSettingsDelete(
+    @Args() deleteOneMachineSettingsArgs: DeleteOneMachineSettingsArgs,
+    @Relations() relations: MachineSettingsSelect,
   ) {
-    machinesettings machinesettings.MachineSettings.machinesettings({
-      ...MachineSettings,
-      machinesettings: machinesettings.machinesettings,
+    return this.machineSettingsController.delete({
+      ...deleteOneMachineSettingsArgs,
+      select: relations.select,
     });
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinesettings MachineSettings(@MachineSettings() MachineSettings: MachineSettings) {
-    machinesettings machinesettings.MachineSettings.MachineSettings(MachineSettings);
+  async machineSettingsDeleteMany(@Args() deleteManyMachineSettingsArgs: DeleteManyMachineSettingsArgs) {
+    return this.machineSettingsController.deleteMany(deleteManyMachineSettingsArgs);
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Query(() => AggregateMachineSettings, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineSettings(@MachineSettings() MachineSettings: MachineSettings) {
-    machinesettings machinesettings.MachineSettings.machinesettings(MachineSettings);
+  machineSettingsAggregate(@Args() machineSettingsAggregateArgs: MachineSettingsAggregateArgs) {
+    return this.machineSettingsController.aggregate(machineSettingsAggregateArgs);
   }
 
-  @MachineSettings(() => MachineSettings, {
-    machinesettings: machinesettings,
-    machinesettings: 'MachineSettings machinesettings machinesettings machinesettings',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineSettings(@MachineSettings() MachineSettings: MachineSettings) {
-    machinesettings machinesettings.MachineSettings.machinesettings(MachineSettings);
+  machineSettingsCount(@Args() machineSettingsCountAggregateInput: FindManyMachineSettingsArgs) {
+    return this.machineSettingsController.count(machineSettingsCountAggregateInput);
   }
 }

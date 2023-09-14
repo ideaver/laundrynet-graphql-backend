@@ -1,160 +1,160 @@
-// @invoice-invoice
-invoice { Invoice, Invoice, Invoice, Invoice, Invoice } invoice '@invoice/invoice';
-invoice { Invoice } invoice '@invoice/invoice';
-invoice { Invoice } invoice 'invoice/invoice/invoice.invoice';
-invoice {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateInvoice,
+  CreateManyInvoiceArgs,
+  CreateOneInvoiceArgs,
+  DeleteManyInvoiceArgs,
+  DeleteOneInvoiceArgs,
+  FindFirstInvoiceArgs,
+  FindManyInvoiceArgs,
+  FindUniqueInvoiceArgs,
   Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-  Invoice,
-} invoice 'invoice/@invoice';
-invoice { Invoice } invoice './invoice.invoice';
-invoice { Invoice } invoice 'invoice/invoice/invoice-invoice-invoice-invoice.invoice';
-invoice Invoice invoice 'invoice/invoice/invoice-invoice.invoice';
+  InvoiceAggregateArgs,
+  UpdateManyInvoiceArgs,
+  UpdateOneInvoiceArgs,
+} from 'src/@generated';
+import { InvoiceController } from './invoice.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-invoice Invoice {
-  invoice: Invoice.Invoice;
+interface InvoiceSelect {
+  select: Prisma.InvoiceSelect;
 }
 
-@Invoice(() => Invoice)
-invoice invoice Invoice {
-  invoice(invoice invoice Invoice: Invoice) {}
+@Resolver(() => Invoice)
+export class InvoiceResolver {
+  constructor(private readonly invoiceController: InvoiceController) {}
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Mutation(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  invoice Invoice(
-    @Invoice()
-    Invoice: Invoice,
-    @Invoice() invoice: Invoice,
-  ): Invoice<Invoice | invoice> {
-    invoice invoice invoice.Invoice.Invoice({
-      ...Invoice,
-      invoice: invoice.invoice,
+  async invoiceCreateOne(
+    @Args()
+    invoiceCreateArgs: CreateOneInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
+  ): Promise<Invoice | void> {
+    return await this.invoiceController.createOne({
+      ...invoiceCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  invoice Invoice(
-    @Invoice()
-    Invoice: Invoice,
+  async invoiceCreateMany(
+    @Args()
+    createManyInvoiceArgs: CreateManyInvoiceArgs,
   ) {
-    invoice invoice invoice.Invoice.Invoice(Invoice);
+    return await this.invoiceController.createMany(createManyInvoiceArgs);
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Query(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Invoice(
-    @Invoice()
-    Invoice: Invoice,
-    @Invoice() invoice: Invoice,
-  ): Invoice<Invoice | invoice> {
-    invoice invoice.Invoice.Invoice({
-      ...Invoice,
-      invoice: invoice.invoice,
+  invoiceFindOne(
+    @Args()
+    invoiceFindUniqueArgs: FindUniqueInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
+  ): Promise<Invoice | void> {
+    return this.invoiceController.findOne({
+      ...invoiceFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Invoice(() => [Invoice], {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Query(() => [Invoice], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Invoice(
-    @Invoice() Invoice: Invoice,
-    @Invoice() invoice: Invoice,
+  invoiceFindMany(
+    @Args() invoiceFindManyArgs: FindManyInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
   ) {
-    invoice invoice.Invoice.Invoice({
-      ...Invoice,
-      invoice: invoice.invoice,
+    return this.invoiceController.findMany({
+      ...invoiceFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Query(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Invoice(
-    @Invoice()
-    Invoice: Invoice,
-    @Invoice() invoice: Invoice,
-  ): Invoice<Invoice | invoice> {
-    invoice invoice.Invoice.Invoice({
-      ...Invoice,
-      invoice: invoice.invoice,
+  invoiceFindFirst(
+    @Args()
+    findFirstInvoiceArgs: FindFirstInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
+  ): Promise<Invoice | void> {
+    return this.invoiceController.findFirst({
+      ...findFirstInvoiceArgs,
+      select: relations.select,
     });
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Mutation(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  invoice Invoice(
-    @Invoice() Invoice: Invoice,
-    @Invoice() invoice: Invoice,
+  async invoiceUpdateOne(
+    @Args() invoiceUpdateOneArgs: UpdateOneInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
   ) {
-    invoice invoice.Invoice.Invoice({
-      ...Invoice(Invoice),
-      invoice: invoice.invoice,
+    return this.invoiceController.updateOne({
+      ...replaceNullWithUndefined(invoiceUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Mutation(() => Invoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  invoice Invoice(@Invoice() Invoice: Invoice) {
-    invoice invoice.Invoice.Invoice(Invoice);
+  async invoiceUpdateMany(@Args() updateManyInvoiceArgs: UpdateManyInvoiceArgs) {
+    return this.invoiceController.updateMany(updateManyInvoiceArgs);
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  invoice Invoice(
-    @Invoice() Invoice: Invoice,
-    @Invoice() invoice: Invoice,
+  async invoiceDelete(
+    @Args() deleteOneInvoiceArgs: DeleteOneInvoiceArgs,
+    @Relations() relations: InvoiceSelect,
   ) {
-    invoice invoice.Invoice.invoice({
-      ...Invoice,
-      invoice: invoice.invoice,
+    return this.invoiceController.delete({
+      ...deleteOneInvoiceArgs,
+      select: relations.select,
     });
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  invoice Invoice(@Invoice() Invoice: Invoice) {
-    invoice invoice.Invoice.Invoice(Invoice);
+  async invoiceDeleteMany(@Args() deleteManyInvoiceArgs: DeleteManyInvoiceArgs) {
+    return this.invoiceController.deleteMany(deleteManyInvoiceArgs);
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Query(() => AggregateInvoice, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Invoice(@Invoice() Invoice: Invoice) {
-    invoice invoice.Invoice.invoice(Invoice);
+  invoiceAggregate(@Args() invoiceAggregateArgs: InvoiceAggregateArgs) {
+    return this.invoiceController.aggregate(invoiceAggregateArgs);
   }
 
-  @Invoice(() => Invoice, {
-    invoice: invoice,
-    invoice: 'Invoice invoice invoice invoice',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Invoice(@Invoice() Invoice: Invoice) {
-    invoice invoice.Invoice.invoice(Invoice);
+  invoiceCount(@Args() invoiceCountAggregateInput: FindManyInvoiceArgs) {
+    return this.invoiceController.count(invoiceCountAggregateInput);
   }
 }

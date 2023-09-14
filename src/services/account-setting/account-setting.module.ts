@@ -1,11 +1,11 @@
-accountsetting { AccountSetting } accountsetting '@accountsetting/accountsetting';
-accountsetting { AccountSetting } accountsetting './accountsetting.accountsetting';
-accountsetting { AccountSetting } accountsetting './accountsetting.accountsetting';
-accountsetting { AccountSetting } accountsetting 'accountsetting/accountsetting.accountsetting';
-accountsetting { AccountSetting } accountsetting './accountsetting.accountsetting';
+import { Module } from '@nestjs/common';
+import { AccountSettingService } from './accountSetting.service';
+import { AccountSettingResolver } from './accountSetting.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { AccountSettingController } from './accountSetting.controller';
 
-@AccountSetting({
-  accountsetting: [AccountSetting, AccountSetting, AccountSetting, AccountSetting],
-  accountsetting: [AccountSetting],
+@Module({
+  providers: [PrismaService, AccountSettingResolver, AccountSettingController, AccountSettingService],
+  exports: [AccountSettingController],
 })
-accountsetting accountsetting AccountSetting {}
+export class AccountSettingModule {}

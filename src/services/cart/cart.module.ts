@@ -1,11 +1,11 @@
-cart { Cart } cart '@cart/cart';
-cart { Cart } cart './cart.cart';
-cart { Cart } cart './cart.cart';
-cart { Cart } cart 'cart/cart.cart';
-cart { Cart } cart './cart.cart';
+import { Module } from '@nestjs/common';
+import { CartService } from './cart.service';
+import { CartResolver } from './cart.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { CartController } from './cart.controller';
 
-@Cart({
-  cart: [Cart, Cart, Cart, Cart],
-  cart: [Cart],
+@Module({
+  providers: [PrismaService, CartResolver, CartController, CartService],
+  exports: [CartController],
 })
-cart cart Cart {}
+export class CartModule {}

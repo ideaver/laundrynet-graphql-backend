@@ -1,52 +1,52 @@
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission '@employeeactivitycomission/employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission '@employeeactivitycomission/employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission './employeeactivitycomission.employeeactivitycomission';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { EmployeeActivityComissionService } from './employeeActivityComission.service';
 
-@EmployeeActivityComission()
-employeeactivitycomission employeeactivitycomission EmployeeActivityComission {
-  employeeactivitycomission(employeeactivitycomission employeeactivitycomission EmployeeActivityComission: EmployeeActivityComission) {}
+@Injectable()
+export class EmployeeActivityComissionController {
+  constructor(private readonly employeeActivityComissionService: EmployeeActivityComissionService) {}
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async createOne(employeeActivityComissionCreateArgs: Prisma.EmployeeActivityComissionCreateArgs) {
+    return await this.employeeActivityComissionService.createOne(employeeActivityComissionCreateArgs);
   }
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async createMany(employeeActivityComissionCreateManyArgs: Prisma.EmployeeActivityComissionCreateManyArgs) {
+    return await this.employeeActivityComissionService.createMany(employeeActivityComissionCreateManyArgs);
   }
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async findOne(employeeActivityComissionFindUniqueArgs: Prisma.EmployeeActivityComissionFindUniqueArgs) {
+    return await this.employeeActivityComissionService.findOne(employeeActivityComissionFindUniqueArgs);
   }
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async findMany(employeeActivityComissionFindManyArgs: Prisma.EmployeeActivityComissionFindManyArgs) {
+    return await this.employeeActivityComissionService.findMany(employeeActivityComissionFindManyArgs);
   }
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async findFirst(employeeActivityComissionFindFirstArgs: Prisma.EmployeeActivityComissionFindFirstArgs) {
+    return await this.employeeActivityComissionService.findFirst(employeeActivityComissionFindFirstArgs);
   }
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async updateOne(employeeActivityComissionUpdateOneArgs: Prisma.EmployeeActivityComissionUpdateArgs) {
+    return await this.employeeActivityComissionService.updateOne(employeeActivityComissionUpdateOneArgs);
   }
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async updateMany(employeeActivityComissionUpdateManyArgs: Prisma.EmployeeActivityComissionUpdateManyArgs) {
+    return await this.employeeActivityComissionService.updateMany(employeeActivityComissionUpdateManyArgs);
   }
 
-  employeeactivitycomission employeeactivitycomission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.employeeactivitycomission(EmployeeActivityComission);
+  async delete(employeeActivityComissionDeleteArgs: Prisma.EmployeeActivityComissionDeleteArgs) {
+    return await this.employeeActivityComissionService.delete(employeeActivityComissionDeleteArgs);
   }
 
-  employeeactivitycomission EmployeeActivityComission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.EmployeeActivityComission(EmployeeActivityComission);
+  async deleteMany(employeeActivityComissionDeleteManyArgs: Prisma.EmployeeActivityComissionDeleteManyArgs) {
+    return await this.employeeActivityComissionService.deleteMany(employeeActivityComissionDeleteManyArgs);
   }
 
-  employeeactivitycomission employeeactivitycomission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.employeeactivitycomission(EmployeeActivityComission);
+  async aggregate(employeeActivityComissionAggregateArgs: Prisma.EmployeeActivityComissionAggregateArgs) {
+    return await this.employeeActivityComissionService.aggregate(employeeActivityComissionAggregateArgs);
   }
 
-  employeeactivitycomission employeeactivitycomission(EmployeeActivityComission: EmployeeActivityComission.EmployeeActivityComission) {
-    employeeactivitycomission employeeactivitycomission employeeactivitycomission.EmployeeActivityComission.employeeactivitycomission(EmployeeActivityComission);
+  async count(employeeActivityComissionCountArgs: Prisma.EmployeeActivityComissionCountArgs) {
+    return await this.employeeActivityComissionService.count(employeeActivityComissionCountArgs);
   }
 }

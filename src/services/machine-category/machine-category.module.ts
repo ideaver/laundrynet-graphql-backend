@@ -1,11 +1,11 @@
-machinecategory { MachineCategory } machinecategory '@machinecategory/machinecategory';
-machinecategory { MachineCategory } machinecategory './machinecategory.machinecategory';
-machinecategory { MachineCategory } machinecategory './machinecategory.machinecategory';
-machinecategory { MachineCategory } machinecategory 'machinecategory/machinecategory.machinecategory';
-machinecategory { MachineCategory } machinecategory './machinecategory.machinecategory';
+import { Module } from '@nestjs/common';
+import { MachineCategoryService } from './machineCategory.service';
+import { MachineCategoryResolver } from './machineCategory.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { MachineCategoryController } from './machineCategory.controller';
 
-@MachineCategory({
-  machinecategory: [MachineCategory, MachineCategory, MachineCategory, MachineCategory],
-  machinecategory: [MachineCategory],
+@Module({
+  providers: [PrismaService, MachineCategoryResolver, MachineCategoryController, MachineCategoryService],
+  exports: [MachineCategoryController],
 })
-machinecategory machinecategory MachineCategory {}
+export class MachineCategoryModule {}

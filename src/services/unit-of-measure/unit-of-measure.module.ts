@@ -1,11 +1,11 @@
-unitofmeasure { UnitOfMeasure } unitofmeasure '@unitofmeasure/unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure './unitofmeasure.unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure './unitofmeasure.unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure 'unitofmeasure/unitofmeasure.unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure './unitofmeasure.unitofmeasure';
+import { Module } from '@nestjs/common';
+import { UnitOfMeasureService } from './unitOfMeasure.service';
+import { UnitOfMeasureResolver } from './unitOfMeasure.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { UnitOfMeasureController } from './unitOfMeasure.controller';
 
-@UnitOfMeasure({
-  unitofmeasure: [UnitOfMeasure, UnitOfMeasure, UnitOfMeasure, UnitOfMeasure],
-  unitofmeasure: [UnitOfMeasure],
+@Module({
+  providers: [PrismaService, UnitOfMeasureResolver, UnitOfMeasureController, UnitOfMeasureService],
+  exports: [UnitOfMeasureController],
 })
-unitofmeasure unitofmeasure UnitOfMeasure {}
+export class UnitOfMeasureModule {}

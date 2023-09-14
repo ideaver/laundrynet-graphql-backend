@@ -1,160 +1,160 @@
-// @voucher-voucher
-voucher { Voucher, Voucher, Voucher, Voucher, Voucher } voucher '@voucher/voucher';
-voucher { Voucher } voucher '@voucher/voucher';
-voucher { Voucher } voucher 'voucher/voucher/voucher.voucher';
-voucher {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateVoucher,
+  CreateManyVoucherArgs,
+  CreateOneVoucherArgs,
+  DeleteManyVoucherArgs,
+  DeleteOneVoucherArgs,
+  FindFirstVoucherArgs,
+  FindManyVoucherArgs,
+  FindUniqueVoucherArgs,
   Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-  Voucher,
-} voucher 'voucher/@voucher';
-voucher { Voucher } voucher './voucher.voucher';
-voucher { Voucher } voucher 'voucher/voucher/voucher-voucher-voucher-voucher.voucher';
-voucher Voucher voucher 'voucher/voucher/voucher-voucher.voucher';
+  VoucherAggregateArgs,
+  UpdateManyVoucherArgs,
+  UpdateOneVoucherArgs,
+} from 'src/@generated';
+import { VoucherController } from './voucher.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-voucher Voucher {
-  voucher: Voucher.Voucher;
+interface VoucherSelect {
+  select: Prisma.VoucherSelect;
 }
 
-@Voucher(() => Voucher)
-voucher voucher Voucher {
-  voucher(voucher voucher Voucher: Voucher) {}
+@Resolver(() => Voucher)
+export class VoucherResolver {
+  constructor(private readonly voucherController: VoucherController) {}
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Mutation(() => Voucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  voucher Voucher(
-    @Voucher()
-    Voucher: Voucher,
-    @Voucher() voucher: Voucher,
-  ): Voucher<Voucher | voucher> {
-    voucher voucher voucher.Voucher.Voucher({
-      ...Voucher,
-      voucher: voucher.voucher,
+  async voucherCreateOne(
+    @Args()
+    voucherCreateArgs: CreateOneVoucherArgs,
+    @Relations() relations: VoucherSelect,
+  ): Promise<Voucher | void> {
+    return await this.voucherController.createOne({
+      ...voucherCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  voucher Voucher(
-    @Voucher()
-    Voucher: Voucher,
+  async voucherCreateMany(
+    @Args()
+    createManyVoucherArgs: CreateManyVoucherArgs,
   ) {
-    voucher voucher voucher.Voucher.Voucher(Voucher);
+    return await this.voucherController.createMany(createManyVoucherArgs);
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Query(() => Voucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Voucher(
-    @Voucher()
-    Voucher: Voucher,
-    @Voucher() voucher: Voucher,
-  ): Voucher<Voucher | voucher> {
-    voucher voucher.Voucher.Voucher({
-      ...Voucher,
-      voucher: voucher.voucher,
+  voucherFindOne(
+    @Args()
+    voucherFindUniqueArgs: FindUniqueVoucherArgs,
+    @Relations() relations: VoucherSelect,
+  ): Promise<Voucher | void> {
+    return this.voucherController.findOne({
+      ...voucherFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Voucher(() => [Voucher], {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Query(() => [Voucher], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Voucher(
-    @Voucher() Voucher: Voucher,
-    @Voucher() voucher: Voucher,
+  voucherFindMany(
+    @Args() voucherFindManyArgs: FindManyVoucherArgs,
+    @Relations() relations: VoucherSelect,
   ) {
-    voucher voucher.Voucher.Voucher({
-      ...Voucher,
-      voucher: voucher.voucher,
+    return this.voucherController.findMany({
+      ...voucherFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Query(() => Voucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Voucher(
-    @Voucher()
-    Voucher: Voucher,
-    @Voucher() voucher: Voucher,
-  ): Voucher<Voucher | voucher> {
-    voucher voucher.Voucher.Voucher({
-      ...Voucher,
-      voucher: voucher.voucher,
+  voucherFindFirst(
+    @Args()
+    findFirstVoucherArgs: FindFirstVoucherArgs,
+    @Relations() relations: VoucherSelect,
+  ): Promise<Voucher | void> {
+    return this.voucherController.findFirst({
+      ...findFirstVoucherArgs,
+      select: relations.select,
     });
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Mutation(() => Voucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  voucher Voucher(
-    @Voucher() Voucher: Voucher,
-    @Voucher() voucher: Voucher,
+  async voucherUpdateOne(
+    @Args() voucherUpdateOneArgs: UpdateOneVoucherArgs,
+    @Relations() relations: VoucherSelect,
   ) {
-    voucher voucher.Voucher.Voucher({
-      ...Voucher(Voucher),
-      voucher: voucher.voucher,
+    return this.voucherController.updateOne({
+      ...replaceNullWithUndefined(voucherUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Mutation(() => Voucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  voucher Voucher(@Voucher() Voucher: Voucher) {
-    voucher voucher.Voucher.Voucher(Voucher);
+  async voucherUpdateMany(@Args() updateManyVoucherArgs: UpdateManyVoucherArgs) {
+    return this.voucherController.updateMany(updateManyVoucherArgs);
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  voucher Voucher(
-    @Voucher() Voucher: Voucher,
-    @Voucher() voucher: Voucher,
+  async voucherDelete(
+    @Args() deleteOneVoucherArgs: DeleteOneVoucherArgs,
+    @Relations() relations: VoucherSelect,
   ) {
-    voucher voucher.Voucher.voucher({
-      ...Voucher,
-      voucher: voucher.voucher,
+    return this.voucherController.delete({
+      ...deleteOneVoucherArgs,
+      select: relations.select,
     });
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  voucher Voucher(@Voucher() Voucher: Voucher) {
-    voucher voucher.Voucher.Voucher(Voucher);
+  async voucherDeleteMany(@Args() deleteManyVoucherArgs: DeleteManyVoucherArgs) {
+    return this.voucherController.deleteMany(deleteManyVoucherArgs);
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Query(() => AggregateVoucher, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Voucher(@Voucher() Voucher: Voucher) {
-    voucher voucher.Voucher.voucher(Voucher);
+  voucherAggregate(@Args() voucherAggregateArgs: VoucherAggregateArgs) {
+    return this.voucherController.aggregate(voucherAggregateArgs);
   }
 
-  @Voucher(() => Voucher, {
-    voucher: voucher,
-    voucher: 'Voucher voucher voucher voucher',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Voucher(@Voucher() Voucher: Voucher) {
-    voucher voucher.Voucher.voucher(Voucher);
+  voucherCount(@Args() voucherCountAggregateInput: FindManyVoucherArgs) {
+    return this.voucherController.count(voucherCountAggregateInput);
   }
 }

@@ -1,11 +1,11 @@
-vouchersetting { VoucherSetting } vouchersetting '@vouchersetting/vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting './vouchersetting.vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting './vouchersetting.vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting 'vouchersetting/vouchersetting.vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting './vouchersetting.vouchersetting';
+import { Module } from '@nestjs/common';
+import { VoucherSettingService } from './voucherSetting.service';
+import { VoucherSettingResolver } from './voucherSetting.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { VoucherSettingController } from './voucherSetting.controller';
 
-@VoucherSetting({
-  vouchersetting: [VoucherSetting, VoucherSetting, VoucherSetting, VoucherSetting],
-  vouchersetting: [VoucherSetting],
+@Module({
+  providers: [PrismaService, VoucherSettingResolver, VoucherSettingController, VoucherSettingService],
+  exports: [VoucherSettingController],
 })
-vouchersetting vouchersetting VoucherSetting {}
+export class VoucherSettingModule {}

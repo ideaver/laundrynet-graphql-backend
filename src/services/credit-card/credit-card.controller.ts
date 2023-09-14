@@ -1,52 +1,52 @@
-creditcard { CreditCard } creditcard '@creditcard/creditcard';
-creditcard { CreditCard } creditcard '@creditcard/creditcard';
-creditcard { CreditCard } creditcard './creditcard.creditcard';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { CreditCardService } from './creditCard.service';
 
-@CreditCard()
-creditcard creditcard CreditCard {
-  creditcard(creditcard creditcard CreditCard: CreditCard) {}
+@Injectable()
+export class CreditCardController {
+  constructor(private readonly creditCardService: CreditCardService) {}
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async createOne(creditCardCreateArgs: Prisma.CreditCardCreateArgs) {
+    return await this.creditCardService.createOne(creditCardCreateArgs);
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async createMany(creditCardCreateManyArgs: Prisma.CreditCardCreateManyArgs) {
+    return await this.creditCardService.createMany(creditCardCreateManyArgs);
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async findOne(creditCardFindUniqueArgs: Prisma.CreditCardFindUniqueArgs) {
+    return await this.creditCardService.findOne(creditCardFindUniqueArgs);
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async findMany(creditCardFindManyArgs: Prisma.CreditCardFindManyArgs) {
+    return await this.creditCardService.findMany(creditCardFindManyArgs);
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async findFirst(creditCardFindFirstArgs: Prisma.CreditCardFindFirstArgs) {
+    return await this.creditCardService.findFirst(creditCardFindFirstArgs);
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async updateOne(creditCardUpdateOneArgs: Prisma.CreditCardUpdateArgs) {
+    return await this.creditCardService.updateOne(creditCardUpdateOneArgs);
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async updateMany(creditCardUpdateManyArgs: Prisma.CreditCardUpdateManyArgs) {
+    return await this.creditCardService.updateMany(creditCardUpdateManyArgs);
   }
 
-  creditcard creditcard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.creditcard(CreditCard);
+  async delete(creditCardDeleteArgs: Prisma.CreditCardDeleteArgs) {
+    return await this.creditCardService.delete(creditCardDeleteArgs);
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.CreditCard(CreditCard);
+  async deleteMany(creditCardDeleteManyArgs: Prisma.CreditCardDeleteManyArgs) {
+    return await this.creditCardService.deleteMany(creditCardDeleteManyArgs);
   }
 
-  creditcard creditcard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.creditcard(CreditCard);
+  async aggregate(creditCardAggregateArgs: Prisma.CreditCardAggregateArgs) {
+    return await this.creditCardService.aggregate(creditCardAggregateArgs);
   }
 
-  creditcard creditcard(CreditCard: CreditCard.CreditCard) {
-    creditcard creditcard creditcard.CreditCard.creditcard(CreditCard);
+  async count(creditCardCountArgs: Prisma.CreditCardCountArgs) {
+    return await this.creditCardService.count(creditCardCountArgs);
   }
 }

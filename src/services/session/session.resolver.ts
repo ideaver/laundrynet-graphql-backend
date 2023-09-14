@@ -1,160 +1,160 @@
-// @session-session
-session { Session, Session, Session, Session, Session } session '@session/session';
-session { Session } session '@session/session';
-session { Session } session 'session/session/session.session';
-session {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateSession,
+  CreateManySessionArgs,
+  CreateOneSessionArgs,
+  DeleteManySessionArgs,
+  DeleteOneSessionArgs,
+  FindFirstSessionArgs,
+  FindManySessionArgs,
+  FindUniqueSessionArgs,
   Session,
-  Session,
-  Session,
-  Session,
-  Session,
-  Session,
-  Session,
-  Session,
-  Session,
-  Session,
-  Session,
-  Session,
-} session 'session/@session';
-session { Session } session './session.session';
-session { Session } session 'session/session/session-session-session-session.session';
-session Session session 'session/session/session-session.session';
+  SessionAggregateArgs,
+  UpdateManySessionArgs,
+  UpdateOneSessionArgs,
+} from 'src/@generated';
+import { SessionController } from './session.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-session Session {
-  session: Session.Session;
+interface SessionSelect {
+  select: Prisma.SessionSelect;
 }
 
-@Session(() => Session)
-session session Session {
-  session(session session Session: Session) {}
+@Resolver(() => Session)
+export class SessionResolver {
+  constructor(private readonly sessionController: SessionController) {}
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Mutation(() => Session, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  session Session(
-    @Session()
-    Session: Session,
-    @Session() session: Session,
-  ): Session<Session | session> {
-    session session session.Session.Session({
-      ...Session,
-      session: session.session,
+  async sessionCreateOne(
+    @Args()
+    sessionCreateArgs: CreateOneSessionArgs,
+    @Relations() relations: SessionSelect,
+  ): Promise<Session | void> {
+    return await this.sessionController.createOne({
+      ...sessionCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  session Session(
-    @Session()
-    Session: Session,
+  async sessionCreateMany(
+    @Args()
+    createManySessionArgs: CreateManySessionArgs,
   ) {
-    session session session.Session.Session(Session);
+    return await this.sessionController.createMany(createManySessionArgs);
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Query(() => Session, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Session(
-    @Session()
-    Session: Session,
-    @Session() session: Session,
-  ): Session<Session | session> {
-    session session.Session.Session({
-      ...Session,
-      session: session.session,
+  sessionFindOne(
+    @Args()
+    sessionFindUniqueArgs: FindUniqueSessionArgs,
+    @Relations() relations: SessionSelect,
+  ): Promise<Session | void> {
+    return this.sessionController.findOne({
+      ...sessionFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Session(() => [Session], {
-    session: session,
-    session: 'Session session session session',
+  @Query(() => [Session], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Session(
-    @Session() Session: Session,
-    @Session() session: Session,
+  sessionFindMany(
+    @Args() sessionFindManyArgs: FindManySessionArgs,
+    @Relations() relations: SessionSelect,
   ) {
-    session session.Session.Session({
-      ...Session,
-      session: session.session,
+    return this.sessionController.findMany({
+      ...sessionFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Query(() => Session, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Session(
-    @Session()
-    Session: Session,
-    @Session() session: Session,
-  ): Session<Session | session> {
-    session session.Session.Session({
-      ...Session,
-      session: session.session,
+  sessionFindFirst(
+    @Args()
+    findFirstSessionArgs: FindFirstSessionArgs,
+    @Relations() relations: SessionSelect,
+  ): Promise<Session | void> {
+    return this.sessionController.findFirst({
+      ...findFirstSessionArgs,
+      select: relations.select,
     });
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Mutation(() => Session, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  session Session(
-    @Session() Session: Session,
-    @Session() session: Session,
+  async sessionUpdateOne(
+    @Args() sessionUpdateOneArgs: UpdateOneSessionArgs,
+    @Relations() relations: SessionSelect,
   ) {
-    session session.Session.Session({
-      ...Session(Session),
-      session: session.session,
+    return this.sessionController.updateOne({
+      ...replaceNullWithUndefined(sessionUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Mutation(() => Session, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  session Session(@Session() Session: Session) {
-    session session.Session.Session(Session);
+  async sessionUpdateMany(@Args() updateManySessionArgs: UpdateManySessionArgs) {
+    return this.sessionController.updateMany(updateManySessionArgs);
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  session Session(
-    @Session() Session: Session,
-    @Session() session: Session,
+  async sessionDelete(
+    @Args() deleteOneSessionArgs: DeleteOneSessionArgs,
+    @Relations() relations: SessionSelect,
   ) {
-    session session.Session.session({
-      ...Session,
-      session: session.session,
+    return this.sessionController.delete({
+      ...deleteOneSessionArgs,
+      select: relations.select,
     });
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  session Session(@Session() Session: Session) {
-    session session.Session.Session(Session);
+  async sessionDeleteMany(@Args() deleteManySessionArgs: DeleteManySessionArgs) {
+    return this.sessionController.deleteMany(deleteManySessionArgs);
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Query(() => AggregateSession, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Session(@Session() Session: Session) {
-    session session.Session.session(Session);
+  sessionAggregate(@Args() sessionAggregateArgs: SessionAggregateArgs) {
+    return this.sessionController.aggregate(sessionAggregateArgs);
   }
 
-  @Session(() => Session, {
-    session: session,
-    session: 'Session session session session',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Session(@Session() Session: Session) {
-    session session.Session.session(Session);
+  sessionCount(@Args() sessionCountAggregateInput: FindManySessionArgs) {
+    return this.sessionController.count(sessionCountAggregateInput);
   }
 }

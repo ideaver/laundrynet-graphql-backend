@@ -1,52 +1,52 @@
-accountsetting { AccountSetting } accountsetting '@accountsetting/accountsetting';
-accountsetting { AccountSetting } accountsetting '@accountsetting/accountsetting';
-accountsetting { AccountSetting } accountsetting './accountsetting.accountsetting';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { AccountSettingService } from './accountSetting.service';
 
-@AccountSetting()
-accountsetting accountsetting AccountSetting {
-  accountsetting(accountsetting accountsetting AccountSetting: AccountSetting) {}
+@Injectable()
+export class AccountSettingController {
+  constructor(private readonly accountSettingService: AccountSettingService) {}
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async createOne(accountSettingCreateArgs: Prisma.AccountSettingCreateArgs) {
+    return await this.accountSettingService.createOne(accountSettingCreateArgs);
   }
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async createMany(accountSettingCreateManyArgs: Prisma.AccountSettingCreateManyArgs) {
+    return await this.accountSettingService.createMany(accountSettingCreateManyArgs);
   }
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async findOne(accountSettingFindUniqueArgs: Prisma.AccountSettingFindUniqueArgs) {
+    return await this.accountSettingService.findOne(accountSettingFindUniqueArgs);
   }
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async findMany(accountSettingFindManyArgs: Prisma.AccountSettingFindManyArgs) {
+    return await this.accountSettingService.findMany(accountSettingFindManyArgs);
   }
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async findFirst(accountSettingFindFirstArgs: Prisma.AccountSettingFindFirstArgs) {
+    return await this.accountSettingService.findFirst(accountSettingFindFirstArgs);
   }
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async updateOne(accountSettingUpdateOneArgs: Prisma.AccountSettingUpdateArgs) {
+    return await this.accountSettingService.updateOne(accountSettingUpdateOneArgs);
   }
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async updateMany(accountSettingUpdateManyArgs: Prisma.AccountSettingUpdateManyArgs) {
+    return await this.accountSettingService.updateMany(accountSettingUpdateManyArgs);
   }
 
-  accountsetting accountsetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.accountsetting(AccountSetting);
+  async delete(accountSettingDeleteArgs: Prisma.AccountSettingDeleteArgs) {
+    return await this.accountSettingService.delete(accountSettingDeleteArgs);
   }
 
-  accountsetting AccountSetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.AccountSetting(AccountSetting);
+  async deleteMany(accountSettingDeleteManyArgs: Prisma.AccountSettingDeleteManyArgs) {
+    return await this.accountSettingService.deleteMany(accountSettingDeleteManyArgs);
   }
 
-  accountsetting accountsetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.accountsetting(AccountSetting);
+  async aggregate(accountSettingAggregateArgs: Prisma.AccountSettingAggregateArgs) {
+    return await this.accountSettingService.aggregate(accountSettingAggregateArgs);
   }
 
-  accountsetting accountsetting(AccountSetting: AccountSetting.AccountSetting) {
-    accountsetting accountsetting accountsetting.AccountSetting.accountsetting(AccountSetting);
+  async count(accountSettingCountArgs: Prisma.AccountSettingCountArgs) {
+    return await this.accountSettingService.count(accountSettingCountArgs);
   }
 }

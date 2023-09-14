@@ -1,160 +1,160 @@
-// @platformorder-platformorder
-platformorder { PlatformOrder, PlatformOrder, PlatformOrder, PlatformOrder, PlatformOrder } platformorder '@platformorder/platformorder';
-platformorder { PlatformOrder } platformorder '@platformorder/platformorder';
-platformorder { PlatformOrder } platformorder 'platformorder/platformorder/platformorder.platformorder';
-platformorder {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregatePlatformOrder,
+  CreateManyPlatformOrderArgs,
+  CreateOnePlatformOrderArgs,
+  DeleteManyPlatformOrderArgs,
+  DeleteOnePlatformOrderArgs,
+  FindFirstPlatformOrderArgs,
+  FindManyPlatformOrderArgs,
+  FindUniquePlatformOrderArgs,
   PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-  PlatformOrder,
-} platformorder 'platformorder/@platformorder';
-platformorder { PlatformOrder } platformorder './platformorder.platformorder';
-platformorder { PlatformOrder } platformorder 'platformorder/platformorder/platformorder-platformorder-platformorder-platformorder.platformorder';
-platformorder PlatformOrder platformorder 'platformorder/platformorder/platformorder-platformorder.platformorder';
+  PlatformOrderAggregateArgs,
+  UpdateManyPlatformOrderArgs,
+  UpdateOnePlatformOrderArgs,
+} from 'src/@generated';
+import { PlatformOrderController } from './platformOrder.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-platformorder PlatformOrder {
-  platformorder: PlatformOrder.PlatformOrder;
+interface PlatformOrderSelect {
+  select: Prisma.PlatformOrderSelect;
 }
 
-@PlatformOrder(() => PlatformOrder)
-platformorder platformorder PlatformOrder {
-  platformorder(platformorder platformorder PlatformOrder: PlatformOrder) {}
+@Resolver(() => PlatformOrder)
+export class PlatformOrderResolver {
+  constructor(private readonly platformOrderController: PlatformOrderController) {}
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Mutation(() => PlatformOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformorder PlatformOrder(
-    @PlatformOrder()
-    PlatformOrder: PlatformOrder,
-    @PlatformOrder() platformorder: PlatformOrder,
-  ): PlatformOrder<PlatformOrder | platformorder> {
-    platformorder platformorder platformorder.PlatformOrder.PlatformOrder({
-      ...PlatformOrder,
-      platformorder: platformorder.platformorder,
+  async platformOrderCreateOne(
+    @Args()
+    platformOrderCreateArgs: CreateOnePlatformOrderArgs,
+    @Relations() relations: PlatformOrderSelect,
+  ): Promise<PlatformOrder | void> {
+    return await this.platformOrderController.createOne({
+      ...platformOrderCreateArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformorder PlatformOrder(
-    @PlatformOrder()
-    PlatformOrder: PlatformOrder,
+  async platformOrderCreateMany(
+    @Args()
+    createManyPlatformOrderArgs: CreateManyPlatformOrderArgs,
   ) {
-    platformorder platformorder platformorder.PlatformOrder.PlatformOrder(PlatformOrder);
+    return await this.platformOrderController.createMany(createManyPlatformOrderArgs);
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Query(() => PlatformOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformOrder(
-    @PlatformOrder()
-    PlatformOrder: PlatformOrder,
-    @PlatformOrder() platformorder: PlatformOrder,
-  ): PlatformOrder<PlatformOrder | platformorder> {
-    platformorder platformorder.PlatformOrder.PlatformOrder({
-      ...PlatformOrder,
-      platformorder: platformorder.platformorder,
+  platformOrderFindOne(
+    @Args()
+    platformOrderFindUniqueArgs: FindUniquePlatformOrderArgs,
+    @Relations() relations: PlatformOrderSelect,
+  ): Promise<PlatformOrder | void> {
+    return this.platformOrderController.findOne({
+      ...platformOrderFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformOrder(() => [PlatformOrder], {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Query(() => [PlatformOrder], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformOrder(
-    @PlatformOrder() PlatformOrder: PlatformOrder,
-    @PlatformOrder() platformorder: PlatformOrder,
+  platformOrderFindMany(
+    @Args() platformOrderFindManyArgs: FindManyPlatformOrderArgs,
+    @Relations() relations: PlatformOrderSelect,
   ) {
-    platformorder platformorder.PlatformOrder.PlatformOrder({
-      ...PlatformOrder,
-      platformorder: platformorder.platformorder,
+    return this.platformOrderController.findMany({
+      ...platformOrderFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Query(() => PlatformOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformOrder(
-    @PlatformOrder()
-    PlatformOrder: PlatformOrder,
-    @PlatformOrder() platformorder: PlatformOrder,
-  ): PlatformOrder<PlatformOrder | platformorder> {
-    platformorder platformorder.PlatformOrder.PlatformOrder({
-      ...PlatformOrder,
-      platformorder: platformorder.platformorder,
+  platformOrderFindFirst(
+    @Args()
+    findFirstPlatformOrderArgs: FindFirstPlatformOrderArgs,
+    @Relations() relations: PlatformOrderSelect,
+  ): Promise<PlatformOrder | void> {
+    return this.platformOrderController.findFirst({
+      ...findFirstPlatformOrderArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Mutation(() => PlatformOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformorder PlatformOrder(
-    @PlatformOrder() PlatformOrder: PlatformOrder,
-    @PlatformOrder() platformorder: PlatformOrder,
+  async platformOrderUpdateOne(
+    @Args() platformOrderUpdateOneArgs: UpdateOnePlatformOrderArgs,
+    @Relations() relations: PlatformOrderSelect,
   ) {
-    platformorder platformorder.PlatformOrder.PlatformOrder({
-      ...PlatformOrder(PlatformOrder),
-      platformorder: platformorder.platformorder,
+    return this.platformOrderController.updateOne({
+      ...replaceNullWithUndefined(platformOrderUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Mutation(() => PlatformOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformorder PlatformOrder(@PlatformOrder() PlatformOrder: PlatformOrder) {
-    platformorder platformorder.PlatformOrder.PlatformOrder(PlatformOrder);
+  async platformOrderUpdateMany(@Args() updateManyPlatformOrderArgs: UpdateManyPlatformOrderArgs) {
+    return this.platformOrderController.updateMany(updateManyPlatformOrderArgs);
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformorder PlatformOrder(
-    @PlatformOrder() PlatformOrder: PlatformOrder,
-    @PlatformOrder() platformorder: PlatformOrder,
+  async platformOrderDelete(
+    @Args() deleteOnePlatformOrderArgs: DeleteOnePlatformOrderArgs,
+    @Relations() relations: PlatformOrderSelect,
   ) {
-    platformorder platformorder.PlatformOrder.platformorder({
-      ...PlatformOrder,
-      platformorder: platformorder.platformorder,
+    return this.platformOrderController.delete({
+      ...deleteOnePlatformOrderArgs,
+      select: relations.select,
     });
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  platformorder PlatformOrder(@PlatformOrder() PlatformOrder: PlatformOrder) {
-    platformorder platformorder.PlatformOrder.PlatformOrder(PlatformOrder);
+  async platformOrderDeleteMany(@Args() deleteManyPlatformOrderArgs: DeleteManyPlatformOrderArgs) {
+    return this.platformOrderController.deleteMany(deleteManyPlatformOrderArgs);
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Query(() => AggregatePlatformOrder, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformOrder(@PlatformOrder() PlatformOrder: PlatformOrder) {
-    platformorder platformorder.PlatformOrder.platformorder(PlatformOrder);
+  platformOrderAggregate(@Args() platformOrderAggregateArgs: PlatformOrderAggregateArgs) {
+    return this.platformOrderController.aggregate(platformOrderAggregateArgs);
   }
 
-  @PlatformOrder(() => PlatformOrder, {
-    platformorder: platformorder,
-    platformorder: 'PlatformOrder platformorder platformorder platformorder',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PlatformOrder(@PlatformOrder() PlatformOrder: PlatformOrder) {
-    platformorder platformorder.PlatformOrder.platformorder(PlatformOrder);
+  platformOrderCount(@Args() platformOrderCountAggregateInput: FindManyPlatformOrderArgs) {
+    return this.platformOrderController.count(platformOrderCountAggregateInput);
   }
 }

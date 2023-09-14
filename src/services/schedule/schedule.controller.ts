@@ -1,52 +1,52 @@
-schedule { Schedule } schedule '@schedule/schedule';
-schedule { Schedule } schedule '@schedule/schedule';
-schedule { Schedule } schedule './schedule.schedule';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ScheduleService } from './schedule.service';
 
-@Schedule()
-schedule schedule Schedule {
-  schedule(schedule schedule Schedule: Schedule) {}
+@Injectable()
+export class ScheduleController {
+  constructor(private readonly scheduleService: ScheduleService) {}
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async createOne(scheduleCreateArgs: Prisma.ScheduleCreateArgs) {
+    return await this.scheduleService.createOne(scheduleCreateArgs);
   }
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async createMany(scheduleCreateManyArgs: Prisma.ScheduleCreateManyArgs) {
+    return await this.scheduleService.createMany(scheduleCreateManyArgs);
   }
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async findOne(scheduleFindUniqueArgs: Prisma.ScheduleFindUniqueArgs) {
+    return await this.scheduleService.findOne(scheduleFindUniqueArgs);
   }
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async findMany(scheduleFindManyArgs: Prisma.ScheduleFindManyArgs) {
+    return await this.scheduleService.findMany(scheduleFindManyArgs);
   }
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async findFirst(scheduleFindFirstArgs: Prisma.ScheduleFindFirstArgs) {
+    return await this.scheduleService.findFirst(scheduleFindFirstArgs);
   }
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async updateOne(scheduleUpdateOneArgs: Prisma.ScheduleUpdateArgs) {
+    return await this.scheduleService.updateOne(scheduleUpdateOneArgs);
   }
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async updateMany(scheduleUpdateManyArgs: Prisma.ScheduleUpdateManyArgs) {
+    return await this.scheduleService.updateMany(scheduleUpdateManyArgs);
   }
 
-  schedule schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.schedule(Schedule);
+  async delete(scheduleDeleteArgs: Prisma.ScheduleDeleteArgs) {
+    return await this.scheduleService.delete(scheduleDeleteArgs);
   }
 
-  schedule Schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.Schedule(Schedule);
+  async deleteMany(scheduleDeleteManyArgs: Prisma.ScheduleDeleteManyArgs) {
+    return await this.scheduleService.deleteMany(scheduleDeleteManyArgs);
   }
 
-  schedule schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.schedule(Schedule);
+  async aggregate(scheduleAggregateArgs: Prisma.ScheduleAggregateArgs) {
+    return await this.scheduleService.aggregate(scheduleAggregateArgs);
   }
 
-  schedule schedule(Schedule: Schedule.Schedule) {
-    schedule schedule schedule.Schedule.schedule(Schedule);
+  async count(scheduleCountArgs: Prisma.ScheduleCountArgs) {
+    return await this.scheduleService.count(scheduleCountArgs);
   }
 }

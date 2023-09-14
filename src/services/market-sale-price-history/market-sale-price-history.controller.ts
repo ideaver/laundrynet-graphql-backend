@@ -1,52 +1,52 @@
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory '@marketsalepricehistory/marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory '@marketsalepricehistory/marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory './marketsalepricehistory.marketsalepricehistory';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { MarketSalePriceHistoryService } from './marketSalePriceHistory.service';
 
-@MarketSalePriceHistory()
-marketsalepricehistory marketsalepricehistory MarketSalePriceHistory {
-  marketsalepricehistory(marketsalepricehistory marketsalepricehistory MarketSalePriceHistory: MarketSalePriceHistory) {}
+@Injectable()
+export class MarketSalePriceHistoryController {
+  constructor(private readonly marketSalePriceHistoryService: MarketSalePriceHistoryService) {}
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async createOne(marketSalePriceHistoryCreateArgs: Prisma.MarketSalePriceHistoryCreateArgs) {
+    return await this.marketSalePriceHistoryService.createOne(marketSalePriceHistoryCreateArgs);
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async createMany(marketSalePriceHistoryCreateManyArgs: Prisma.MarketSalePriceHistoryCreateManyArgs) {
+    return await this.marketSalePriceHistoryService.createMany(marketSalePriceHistoryCreateManyArgs);
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async findOne(marketSalePriceHistoryFindUniqueArgs: Prisma.MarketSalePriceHistoryFindUniqueArgs) {
+    return await this.marketSalePriceHistoryService.findOne(marketSalePriceHistoryFindUniqueArgs);
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async findMany(marketSalePriceHistoryFindManyArgs: Prisma.MarketSalePriceHistoryFindManyArgs) {
+    return await this.marketSalePriceHistoryService.findMany(marketSalePriceHistoryFindManyArgs);
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async findFirst(marketSalePriceHistoryFindFirstArgs: Prisma.MarketSalePriceHistoryFindFirstArgs) {
+    return await this.marketSalePriceHistoryService.findFirst(marketSalePriceHistoryFindFirstArgs);
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async updateOne(marketSalePriceHistoryUpdateOneArgs: Prisma.MarketSalePriceHistoryUpdateArgs) {
+    return await this.marketSalePriceHistoryService.updateOne(marketSalePriceHistoryUpdateOneArgs);
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async updateMany(marketSalePriceHistoryUpdateManyArgs: Prisma.MarketSalePriceHistoryUpdateManyArgs) {
+    return await this.marketSalePriceHistoryService.updateMany(marketSalePriceHistoryUpdateManyArgs);
   }
 
-  marketsalepricehistory marketsalepricehistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.marketsalepricehistory(MarketSalePriceHistory);
+  async delete(marketSalePriceHistoryDeleteArgs: Prisma.MarketSalePriceHistoryDeleteArgs) {
+    return await this.marketSalePriceHistoryService.delete(marketSalePriceHistoryDeleteArgs);
   }
 
-  marketsalepricehistory MarketSalePriceHistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async deleteMany(marketSalePriceHistoryDeleteManyArgs: Prisma.MarketSalePriceHistoryDeleteManyArgs) {
+    return await this.marketSalePriceHistoryService.deleteMany(marketSalePriceHistoryDeleteManyArgs);
   }
 
-  marketsalepricehistory marketsalepricehistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.marketsalepricehistory(MarketSalePriceHistory);
+  async aggregate(marketSalePriceHistoryAggregateArgs: Prisma.MarketSalePriceHistoryAggregateArgs) {
+    return await this.marketSalePriceHistoryService.aggregate(marketSalePriceHistoryAggregateArgs);
   }
 
-  marketsalepricehistory marketsalepricehistory(MarketSalePriceHistory: MarketSalePriceHistory.MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.marketsalepricehistory(MarketSalePriceHistory);
+  async count(marketSalePriceHistoryCountArgs: Prisma.MarketSalePriceHistoryCountArgs) {
+    return await this.marketSalePriceHistoryService.count(marketSalePriceHistoryCountArgs);
   }
 }

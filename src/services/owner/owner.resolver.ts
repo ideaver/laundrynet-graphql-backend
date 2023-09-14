@@ -1,160 +1,160 @@
-// @owner-owner
-owner { Owner, Owner, Owner, Owner, Owner } owner '@owner/owner';
-owner { Owner } owner '@owner/owner';
-owner { Owner } owner 'owner/owner/owner.owner';
-owner {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateOwner,
+  CreateManyOwnerArgs,
+  CreateOneOwnerArgs,
+  DeleteManyOwnerArgs,
+  DeleteOneOwnerArgs,
+  FindFirstOwnerArgs,
+  FindManyOwnerArgs,
+  FindUniqueOwnerArgs,
   Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-  Owner,
-} owner 'owner/@owner';
-owner { Owner } owner './owner.owner';
-owner { Owner } owner 'owner/owner/owner-owner-owner-owner.owner';
-owner Owner owner 'owner/owner/owner-owner.owner';
+  OwnerAggregateArgs,
+  UpdateManyOwnerArgs,
+  UpdateOneOwnerArgs,
+} from 'src/@generated';
+import { OwnerController } from './owner.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-owner Owner {
-  owner: Owner.Owner;
+interface OwnerSelect {
+  select: Prisma.OwnerSelect;
 }
 
-@Owner(() => Owner)
-owner owner Owner {
-  owner(owner owner Owner: Owner) {}
+@Resolver(() => Owner)
+export class OwnerResolver {
+  constructor(private readonly ownerController: OwnerController) {}
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Mutation(() => Owner, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  owner Owner(
-    @Owner()
-    Owner: Owner,
-    @Owner() owner: Owner,
-  ): Owner<Owner | owner> {
-    owner owner owner.Owner.Owner({
-      ...Owner,
-      owner: owner.owner,
+  async ownerCreateOne(
+    @Args()
+    ownerCreateArgs: CreateOneOwnerArgs,
+    @Relations() relations: OwnerSelect,
+  ): Promise<Owner | void> {
+    return await this.ownerController.createOne({
+      ...ownerCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  owner Owner(
-    @Owner()
-    Owner: Owner,
+  async ownerCreateMany(
+    @Args()
+    createManyOwnerArgs: CreateManyOwnerArgs,
   ) {
-    owner owner owner.Owner.Owner(Owner);
+    return await this.ownerController.createMany(createManyOwnerArgs);
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Query(() => Owner, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Owner(
-    @Owner()
-    Owner: Owner,
-    @Owner() owner: Owner,
-  ): Owner<Owner | owner> {
-    owner owner.Owner.Owner({
-      ...Owner,
-      owner: owner.owner,
+  ownerFindOne(
+    @Args()
+    ownerFindUniqueArgs: FindUniqueOwnerArgs,
+    @Relations() relations: OwnerSelect,
+  ): Promise<Owner | void> {
+    return this.ownerController.findOne({
+      ...ownerFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Owner(() => [Owner], {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Query(() => [Owner], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Owner(
-    @Owner() Owner: Owner,
-    @Owner() owner: Owner,
+  ownerFindMany(
+    @Args() ownerFindManyArgs: FindManyOwnerArgs,
+    @Relations() relations: OwnerSelect,
   ) {
-    owner owner.Owner.Owner({
-      ...Owner,
-      owner: owner.owner,
+    return this.ownerController.findMany({
+      ...ownerFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Query(() => Owner, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Owner(
-    @Owner()
-    Owner: Owner,
-    @Owner() owner: Owner,
-  ): Owner<Owner | owner> {
-    owner owner.Owner.Owner({
-      ...Owner,
-      owner: owner.owner,
+  ownerFindFirst(
+    @Args()
+    findFirstOwnerArgs: FindFirstOwnerArgs,
+    @Relations() relations: OwnerSelect,
+  ): Promise<Owner | void> {
+    return this.ownerController.findFirst({
+      ...findFirstOwnerArgs,
+      select: relations.select,
     });
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Mutation(() => Owner, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  owner Owner(
-    @Owner() Owner: Owner,
-    @Owner() owner: Owner,
+  async ownerUpdateOne(
+    @Args() ownerUpdateOneArgs: UpdateOneOwnerArgs,
+    @Relations() relations: OwnerSelect,
   ) {
-    owner owner.Owner.Owner({
-      ...Owner(Owner),
-      owner: owner.owner,
+    return this.ownerController.updateOne({
+      ...replaceNullWithUndefined(ownerUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Mutation(() => Owner, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  owner Owner(@Owner() Owner: Owner) {
-    owner owner.Owner.Owner(Owner);
+  async ownerUpdateMany(@Args() updateManyOwnerArgs: UpdateManyOwnerArgs) {
+    return this.ownerController.updateMany(updateManyOwnerArgs);
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  owner Owner(
-    @Owner() Owner: Owner,
-    @Owner() owner: Owner,
+  async ownerDelete(
+    @Args() deleteOneOwnerArgs: DeleteOneOwnerArgs,
+    @Relations() relations: OwnerSelect,
   ) {
-    owner owner.Owner.owner({
-      ...Owner,
-      owner: owner.owner,
+    return this.ownerController.delete({
+      ...deleteOneOwnerArgs,
+      select: relations.select,
     });
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  owner Owner(@Owner() Owner: Owner) {
-    owner owner.Owner.Owner(Owner);
+  async ownerDeleteMany(@Args() deleteManyOwnerArgs: DeleteManyOwnerArgs) {
+    return this.ownerController.deleteMany(deleteManyOwnerArgs);
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Query(() => AggregateOwner, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Owner(@Owner() Owner: Owner) {
-    owner owner.Owner.owner(Owner);
+  ownerAggregate(@Args() ownerAggregateArgs: OwnerAggregateArgs) {
+    return this.ownerController.aggregate(ownerAggregateArgs);
   }
 
-  @Owner(() => Owner, {
-    owner: owner,
-    owner: 'Owner owner owner owner',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Owner(@Owner() Owner: Owner) {
-    owner owner.Owner.owner(Owner);
+  ownerCount(@Args() ownerCountAggregateInput: FindManyOwnerArgs) {
+    return this.ownerController.count(ownerCountAggregateInput);
   }
 }

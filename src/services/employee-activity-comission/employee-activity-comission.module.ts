@@ -1,11 +1,11 @@
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission '@employeeactivitycomission/employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission './employeeactivitycomission.employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission './employeeactivitycomission.employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission 'employeeactivitycomission/employeeactivitycomission.employeeactivitycomission';
-employeeactivitycomission { EmployeeActivityComission } employeeactivitycomission './employeeactivitycomission.employeeactivitycomission';
+import { Module } from '@nestjs/common';
+import { EmployeeActivityComissionService } from './employeeActivityComission.service';
+import { EmployeeActivityComissionResolver } from './employeeActivityComission.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { EmployeeActivityComissionController } from './employeeActivityComission.controller';
 
-@EmployeeActivityComission({
-  employeeactivitycomission: [EmployeeActivityComission, EmployeeActivityComission, EmployeeActivityComission, EmployeeActivityComission],
-  employeeactivitycomission: [EmployeeActivityComission],
+@Module({
+  providers: [PrismaService, EmployeeActivityComissionResolver, EmployeeActivityComissionController, EmployeeActivityComissionService],
+  exports: [EmployeeActivityComissionController],
 })
-employeeactivitycomission employeeactivitycomission EmployeeActivityComission {}
+export class EmployeeActivityComissionModule {}

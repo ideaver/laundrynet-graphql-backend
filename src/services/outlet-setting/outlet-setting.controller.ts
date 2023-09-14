@@ -1,52 +1,52 @@
-outletsetting { OutletSetting } outletsetting '@outletsetting/outletsetting';
-outletsetting { OutletSetting } outletsetting '@outletsetting/outletsetting';
-outletsetting { OutletSetting } outletsetting './outletsetting.outletsetting';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { OutletSettingService } from './outletSetting.service';
 
-@OutletSetting()
-outletsetting outletsetting OutletSetting {
-  outletsetting(outletsetting outletsetting OutletSetting: OutletSetting) {}
+@Injectable()
+export class OutletSettingController {
+  constructor(private readonly outletSettingService: OutletSettingService) {}
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async createOne(outletSettingCreateArgs: Prisma.OutletSettingCreateArgs) {
+    return await this.outletSettingService.createOne(outletSettingCreateArgs);
   }
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async createMany(outletSettingCreateManyArgs: Prisma.OutletSettingCreateManyArgs) {
+    return await this.outletSettingService.createMany(outletSettingCreateManyArgs);
   }
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async findOne(outletSettingFindUniqueArgs: Prisma.OutletSettingFindUniqueArgs) {
+    return await this.outletSettingService.findOne(outletSettingFindUniqueArgs);
   }
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async findMany(outletSettingFindManyArgs: Prisma.OutletSettingFindManyArgs) {
+    return await this.outletSettingService.findMany(outletSettingFindManyArgs);
   }
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async findFirst(outletSettingFindFirstArgs: Prisma.OutletSettingFindFirstArgs) {
+    return await this.outletSettingService.findFirst(outletSettingFindFirstArgs);
   }
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async updateOne(outletSettingUpdateOneArgs: Prisma.OutletSettingUpdateArgs) {
+    return await this.outletSettingService.updateOne(outletSettingUpdateOneArgs);
   }
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async updateMany(outletSettingUpdateManyArgs: Prisma.OutletSettingUpdateManyArgs) {
+    return await this.outletSettingService.updateMany(outletSettingUpdateManyArgs);
   }
 
-  outletsetting outletsetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.outletsetting(OutletSetting);
+  async delete(outletSettingDeleteArgs: Prisma.OutletSettingDeleteArgs) {
+    return await this.outletSettingService.delete(outletSettingDeleteArgs);
   }
 
-  outletsetting OutletSetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async deleteMany(outletSettingDeleteManyArgs: Prisma.OutletSettingDeleteManyArgs) {
+    return await this.outletSettingService.deleteMany(outletSettingDeleteManyArgs);
   }
 
-  outletsetting outletsetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.outletsetting(OutletSetting);
+  async aggregate(outletSettingAggregateArgs: Prisma.OutletSettingAggregateArgs) {
+    return await this.outletSettingService.aggregate(outletSettingAggregateArgs);
   }
 
-  outletsetting outletsetting(OutletSetting: OutletSetting.OutletSetting) {
-    outletsetting outletsetting outletsetting.OutletSetting.outletsetting(OutletSetting);
+  async count(outletSettingCountArgs: Prisma.OutletSettingCountArgs) {
+    return await this.outletSettingService.count(outletSettingCountArgs);
   }
 }

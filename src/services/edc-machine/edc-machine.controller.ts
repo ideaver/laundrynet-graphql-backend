@@ -1,52 +1,52 @@
-edcmachine { EdcMachine } edcmachine '@edcmachine/edcmachine';
-edcmachine { EdcMachine } edcmachine '@edcmachine/edcmachine';
-edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { EdcMachineService } from './edcMachine.service';
 
-@EdcMachine()
-edcmachine edcmachine EdcMachine {
-  edcmachine(edcmachine edcmachine EdcMachine: EdcMachine) {}
+@Injectable()
+export class EdcMachineController {
+  constructor(private readonly edcMachineService: EdcMachineService) {}
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async createOne(edcMachineCreateArgs: Prisma.EdcMachineCreateArgs) {
+    return await this.edcMachineService.createOne(edcMachineCreateArgs);
   }
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async createMany(edcMachineCreateManyArgs: Prisma.EdcMachineCreateManyArgs) {
+    return await this.edcMachineService.createMany(edcMachineCreateManyArgs);
   }
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async findOne(edcMachineFindUniqueArgs: Prisma.EdcMachineFindUniqueArgs) {
+    return await this.edcMachineService.findOne(edcMachineFindUniqueArgs);
   }
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async findMany(edcMachineFindManyArgs: Prisma.EdcMachineFindManyArgs) {
+    return await this.edcMachineService.findMany(edcMachineFindManyArgs);
   }
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async findFirst(edcMachineFindFirstArgs: Prisma.EdcMachineFindFirstArgs) {
+    return await this.edcMachineService.findFirst(edcMachineFindFirstArgs);
   }
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async updateOne(edcMachineUpdateOneArgs: Prisma.EdcMachineUpdateArgs) {
+    return await this.edcMachineService.updateOne(edcMachineUpdateOneArgs);
   }
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async updateMany(edcMachineUpdateManyArgs: Prisma.EdcMachineUpdateManyArgs) {
+    return await this.edcMachineService.updateMany(edcMachineUpdateManyArgs);
   }
 
-  edcmachine edcmachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.edcmachine(EdcMachine);
+  async delete(edcMachineDeleteArgs: Prisma.EdcMachineDeleteArgs) {
+    return await this.edcMachineService.delete(edcMachineDeleteArgs);
   }
 
-  edcmachine EdcMachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.EdcMachine(EdcMachine);
+  async deleteMany(edcMachineDeleteManyArgs: Prisma.EdcMachineDeleteManyArgs) {
+    return await this.edcMachineService.deleteMany(edcMachineDeleteManyArgs);
   }
 
-  edcmachine edcmachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.edcmachine(EdcMachine);
+  async aggregate(edcMachineAggregateArgs: Prisma.EdcMachineAggregateArgs) {
+    return await this.edcMachineService.aggregate(edcMachineAggregateArgs);
   }
 
-  edcmachine edcmachine(EdcMachine: EdcMachine.EdcMachine) {
-    edcmachine edcmachine edcmachine.EdcMachine.edcmachine(EdcMachine);
+  async count(edcMachineCountArgs: Prisma.EdcMachineCountArgs) {
+    return await this.edcMachineService.count(edcMachineCountArgs);
   }
 }

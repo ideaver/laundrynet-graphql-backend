@@ -1,11 +1,11 @@
-edcmachine { EdcMachine } edcmachine '@edcmachine/edcmachine';
-edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
-edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
-edcmachine { EdcMachine } edcmachine 'edcmachine/edcmachine.edcmachine';
-edcmachine { EdcMachine } edcmachine './edcmachine.edcmachine';
+import { Module } from '@nestjs/common';
+import { EdcMachineService } from './edcMachine.service';
+import { EdcMachineResolver } from './edcMachine.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { EdcMachineController } from './edcMachine.controller';
 
-@EdcMachine({
-  edcmachine: [EdcMachine, EdcMachine, EdcMachine, EdcMachine],
-  edcmachine: [EdcMachine],
+@Module({
+  providers: [PrismaService, EdcMachineResolver, EdcMachineController, EdcMachineService],
+  exports: [EdcMachineController],
 })
-edcmachine edcmachine EdcMachine {}
+export class EdcMachineModule {}

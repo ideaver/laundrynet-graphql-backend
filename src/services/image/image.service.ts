@@ -1,99 +1,99 @@
-image { Image } image '@image/image';
-image { Image } image 'image/image.image';
-image { Image } image 'image/image/image/image-image-image';
-image { Image } image '@image/image';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@Image()
-image image Image {
-  image(image image: Image) {}
+@Injectable()
+export class ImageService {
+  constructor(private prisma: PrismaService) {}
 
-  image Image(Image: Image.Image) {
-    image {
-      image image image.image.image.image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async createOne(imageCreateArgs: Prisma.ImageCreateArgs) {
+    try {
+      return await this.prisma.image.create(imageCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image Image(Image: Image.Image) {
-    image {
-      image image image.image.image.Image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async createMany(imageCreateManyArgs: Prisma.ImageCreateManyArgs) {
+    try {
+      return await this.prisma.image.createMany(imageCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image Image(Image: Image.Image) {
-    image {
-      image image image.image.image.Image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async findOne(imageFindUniqueArgs: Prisma.ImageFindUniqueArgs) {
+    try {
+      return await this.prisma.image.findUnique(imageFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image Image(Image: Image.Image) {
-    image {
-      image image image.image.image.Image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async findMany(imageFindManyArgs: Prisma.ImageFindManyArgs) {
+    try {
+      return await this.prisma.image.findMany(imageFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image Image(Image: Image.Image) {
-    image {
-      image image image.image.image.Image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async findFirst(imageFindFirstArgs: Prisma.ImageFindFirstArgs) {
+    try {
+      return await this.prisma.image.findFirst(imageFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image Image(Image: Image.Image) {
-    image {
-      image image image.image.image.image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async updateOne(imageUpdateOneArgs: Prisma.ImageUpdateArgs) {
+    try {
+      return await this.prisma.image.update(imageUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image Image(Image: Image.Image) {
-    image {
-      image image image.image.image.Image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async updateMany(imageUpdateManyArgs: Prisma.ImageUpdateManyArgs) {
+    try {
+      return await this.prisma.image.updateMany(imageUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image image(Image: Image.Image) {
-    image {
-      image image.image.image.image(Image);
-      image image;
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async delete(imageDeleteArgs: Prisma.ImageDeleteArgs) {
+    try {
+      await this.prisma.image.delete(imageDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image Image(Image: Image.Image) {
-    image {
-      image image.image.image.Image(Image);
-      image image;
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async deleteMany(imageDeleteManyArgs: Prisma.ImageDeleteManyArgs) {
+    try {
+      await this.prisma.image.deleteMany(imageDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image image(Image: Image.Image) {
-    image {
-      image image image.image.image.image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async aggregate(imageAggregateArgs: Prisma.ImageAggregateArgs) {
+    try {
+      return await this.prisma.image.aggregate(imageAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  image image(Image: Image.Image) {
-    image {
-      image image image.image.image.image(Image);
-    } image (image) {
-      image image Image({ image: image, image: image });
+  async count(imageCountArgs: Prisma.ImageCountArgs) {
+    try {
+      return await this.prisma.image.count(imageCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

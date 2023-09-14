@@ -1,160 +1,160 @@
-// @outletsetting-outletsetting
-outletsetting { OutletSetting, OutletSetting, OutletSetting, OutletSetting, OutletSetting } outletsetting '@outletsetting/outletsetting';
-outletsetting { OutletSetting } outletsetting '@outletsetting/outletsetting';
-outletsetting { OutletSetting } outletsetting 'outletsetting/outletsetting/outletsetting.outletsetting';
-outletsetting {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateOutletSetting,
+  CreateManyOutletSettingArgs,
+  CreateOneOutletSettingArgs,
+  DeleteManyOutletSettingArgs,
+  DeleteOneOutletSettingArgs,
+  FindFirstOutletSettingArgs,
+  FindManyOutletSettingArgs,
+  FindUniqueOutletSettingArgs,
   OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-  OutletSetting,
-} outletsetting 'outletsetting/@outletsetting';
-outletsetting { OutletSetting } outletsetting './outletsetting.outletsetting';
-outletsetting { OutletSetting } outletsetting 'outletsetting/outletsetting/outletsetting-outletsetting-outletsetting-outletsetting.outletsetting';
-outletsetting OutletSetting outletsetting 'outletsetting/outletsetting/outletsetting-outletsetting.outletsetting';
+  OutletSettingAggregateArgs,
+  UpdateManyOutletSettingArgs,
+  UpdateOneOutletSettingArgs,
+} from 'src/@generated';
+import { OutletSettingController } from './outletSetting.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-outletsetting OutletSetting {
-  outletsetting: OutletSetting.OutletSetting;
+interface OutletSettingSelect {
+  select: Prisma.OutletSettingSelect;
 }
 
-@OutletSetting(() => OutletSetting)
-outletsetting outletsetting OutletSetting {
-  outletsetting(outletsetting outletsetting OutletSetting: OutletSetting) {}
+@Resolver(() => OutletSetting)
+export class OutletSettingResolver {
+  constructor(private readonly outletSettingController: OutletSettingController) {}
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Mutation(() => OutletSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletsetting OutletSetting(
-    @OutletSetting()
-    OutletSetting: OutletSetting,
-    @OutletSetting() outletsetting: OutletSetting,
-  ): OutletSetting<OutletSetting | outletsetting> {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting({
-      ...OutletSetting,
-      outletsetting: outletsetting.outletsetting,
+  async outletSettingCreateOne(
+    @Args()
+    outletSettingCreateArgs: CreateOneOutletSettingArgs,
+    @Relations() relations: OutletSettingSelect,
+  ): Promise<OutletSetting | void> {
+    return await this.outletSettingController.createOne({
+      ...outletSettingCreateArgs,
+      select: relations.select,
     });
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletsetting OutletSetting(
-    @OutletSetting()
-    OutletSetting: OutletSetting,
+  async outletSettingCreateMany(
+    @Args()
+    createManyOutletSettingArgs: CreateManyOutletSettingArgs,
   ) {
-    outletsetting outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+    return await this.outletSettingController.createMany(createManyOutletSettingArgs);
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Query(() => OutletSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletSetting(
-    @OutletSetting()
-    OutletSetting: OutletSetting,
-    @OutletSetting() outletsetting: OutletSetting,
-  ): OutletSetting<OutletSetting | outletsetting> {
-    outletsetting outletsetting.OutletSetting.OutletSetting({
-      ...OutletSetting,
-      outletsetting: outletsetting.outletsetting,
+  outletSettingFindOne(
+    @Args()
+    outletSettingFindUniqueArgs: FindUniqueOutletSettingArgs,
+    @Relations() relations: OutletSettingSelect,
+  ): Promise<OutletSetting | void> {
+    return this.outletSettingController.findOne({
+      ...outletSettingFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @OutletSetting(() => [OutletSetting], {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Query(() => [OutletSetting], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletSetting(
-    @OutletSetting() OutletSetting: OutletSetting,
-    @OutletSetting() outletsetting: OutletSetting,
+  outletSettingFindMany(
+    @Args() outletSettingFindManyArgs: FindManyOutletSettingArgs,
+    @Relations() relations: OutletSettingSelect,
   ) {
-    outletsetting outletsetting.OutletSetting.OutletSetting({
-      ...OutletSetting,
-      outletsetting: outletsetting.outletsetting,
+    return this.outletSettingController.findMany({
+      ...outletSettingFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Query(() => OutletSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletSetting(
-    @OutletSetting()
-    OutletSetting: OutletSetting,
-    @OutletSetting() outletsetting: OutletSetting,
-  ): OutletSetting<OutletSetting | outletsetting> {
-    outletsetting outletsetting.OutletSetting.OutletSetting({
-      ...OutletSetting,
-      outletsetting: outletsetting.outletsetting,
+  outletSettingFindFirst(
+    @Args()
+    findFirstOutletSettingArgs: FindFirstOutletSettingArgs,
+    @Relations() relations: OutletSettingSelect,
+  ): Promise<OutletSetting | void> {
+    return this.outletSettingController.findFirst({
+      ...findFirstOutletSettingArgs,
+      select: relations.select,
     });
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Mutation(() => OutletSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletsetting OutletSetting(
-    @OutletSetting() OutletSetting: OutletSetting,
-    @OutletSetting() outletsetting: OutletSetting,
+  async outletSettingUpdateOne(
+    @Args() outletSettingUpdateOneArgs: UpdateOneOutletSettingArgs,
+    @Relations() relations: OutletSettingSelect,
   ) {
-    outletsetting outletsetting.OutletSetting.OutletSetting({
-      ...OutletSetting(OutletSetting),
-      outletsetting: outletsetting.outletsetting,
+    return this.outletSettingController.updateOne({
+      ...replaceNullWithUndefined(outletSettingUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Mutation(() => OutletSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletsetting OutletSetting(@OutletSetting() OutletSetting: OutletSetting) {
-    outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async outletSettingUpdateMany(@Args() updateManyOutletSettingArgs: UpdateManyOutletSettingArgs) {
+    return this.outletSettingController.updateMany(updateManyOutletSettingArgs);
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletsetting OutletSetting(
-    @OutletSetting() OutletSetting: OutletSetting,
-    @OutletSetting() outletsetting: OutletSetting,
+  async outletSettingDelete(
+    @Args() deleteOneOutletSettingArgs: DeleteOneOutletSettingArgs,
+    @Relations() relations: OutletSettingSelect,
   ) {
-    outletsetting outletsetting.OutletSetting.outletsetting({
-      ...OutletSetting,
-      outletsetting: outletsetting.outletsetting,
+    return this.outletSettingController.delete({
+      ...deleteOneOutletSettingArgs,
+      select: relations.select,
     });
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletsetting OutletSetting(@OutletSetting() OutletSetting: OutletSetting) {
-    outletsetting outletsetting.OutletSetting.OutletSetting(OutletSetting);
+  async outletSettingDeleteMany(@Args() deleteManyOutletSettingArgs: DeleteManyOutletSettingArgs) {
+    return this.outletSettingController.deleteMany(deleteManyOutletSettingArgs);
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Query(() => AggregateOutletSetting, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletSetting(@OutletSetting() OutletSetting: OutletSetting) {
-    outletsetting outletsetting.OutletSetting.outletsetting(OutletSetting);
+  outletSettingAggregate(@Args() outletSettingAggregateArgs: OutletSettingAggregateArgs) {
+    return this.outletSettingController.aggregate(outletSettingAggregateArgs);
   }
 
-  @OutletSetting(() => OutletSetting, {
-    outletsetting: outletsetting,
-    outletsetting: 'OutletSetting outletsetting outletsetting outletsetting',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletSetting(@OutletSetting() OutletSetting: OutletSetting) {
-    outletsetting outletsetting.OutletSetting.outletsetting(OutletSetting);
+  outletSettingCount(@Args() outletSettingCountAggregateInput: FindManyOutletSettingArgs) {
+    return this.outletSettingController.count(outletSettingCountAggregateInput);
   }
 }

@@ -1,160 +1,160 @@
-// @outletlaundryitemservice-outletlaundryitemservice
-outletlaundryitemservice { OutletLaundryItemService, OutletLaundryItemService, OutletLaundryItemService, OutletLaundryItemService, OutletLaundryItemService } outletlaundryitemservice '@outletlaundryitemservice/outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice '@outletlaundryitemservice/outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice 'outletlaundryitemservice/outletlaundryitemservice/outletlaundryitemservice.outletlaundryitemservice';
-outletlaundryitemservice {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateOutletLaundryItemService,
+  CreateManyOutletLaundryItemServiceArgs,
+  CreateOneOutletLaundryItemServiceArgs,
+  DeleteManyOutletLaundryItemServiceArgs,
+  DeleteOneOutletLaundryItemServiceArgs,
+  FindFirstOutletLaundryItemServiceArgs,
+  FindManyOutletLaundryItemServiceArgs,
+  FindUniqueOutletLaundryItemServiceArgs,
   OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-  OutletLaundryItemService,
-} outletlaundryitemservice 'outletlaundryitemservice/@outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice './outletlaundryitemservice.outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice 'outletlaundryitemservice/outletlaundryitemservice/outletlaundryitemservice-outletlaundryitemservice-outletlaundryitemservice-outletlaundryitemservice.outletlaundryitemservice';
-outletlaundryitemservice OutletLaundryItemService outletlaundryitemservice 'outletlaundryitemservice/outletlaundryitemservice/outletlaundryitemservice-outletlaundryitemservice.outletlaundryitemservice';
+  OutletLaundryItemServiceAggregateArgs,
+  UpdateManyOutletLaundryItemServiceArgs,
+  UpdateOneOutletLaundryItemServiceArgs,
+} from 'src/@generated';
+import { OutletLaundryItemServiceController } from './outletLaundryItemService.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-outletlaundryitemservice OutletLaundryItemService {
-  outletlaundryitemservice: OutletLaundryItemService.OutletLaundryItemService;
+interface OutletLaundryItemServiceSelect {
+  select: Prisma.OutletLaundryItemServiceSelect;
 }
 
-@OutletLaundryItemService(() => OutletLaundryItemService)
-outletlaundryitemservice outletlaundryitemservice OutletLaundryItemService {
-  outletlaundryitemservice(outletlaundryitemservice outletlaundryitemservice OutletLaundryItemService: OutletLaundryItemService) {}
+@Resolver(() => OutletLaundryItemService)
+export class OutletLaundryItemServiceResolver {
+  constructor(private readonly outletLaundryItemServiceController: OutletLaundryItemServiceController) {}
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Mutation(() => OutletLaundryItemService, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletlaundryitemservice OutletLaundryItemService(
-    @OutletLaundryItemService()
-    OutletLaundryItemService: OutletLaundryItemService,
-    @OutletLaundryItemService() outletlaundryitemservice: OutletLaundryItemService,
-  ): OutletLaundryItemService<OutletLaundryItemService | outletlaundryitemservice> {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService({
-      ...OutletLaundryItemService,
-      outletlaundryitemservice: outletlaundryitemservice.outletlaundryitemservice,
+  async outletLaundryItemServiceCreateOne(
+    @Args()
+    outletLaundryItemServiceCreateArgs: CreateOneOutletLaundryItemServiceArgs,
+    @Relations() relations: OutletLaundryItemServiceSelect,
+  ): Promise<OutletLaundryItemService | void> {
+    return await this.outletLaundryItemServiceController.createOne({
+      ...outletLaundryItemServiceCreateArgs,
+      select: relations.select,
     });
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletlaundryitemservice OutletLaundryItemService(
-    @OutletLaundryItemService()
-    OutletLaundryItemService: OutletLaundryItemService,
+  async outletLaundryItemServiceCreateMany(
+    @Args()
+    createManyOutletLaundryItemServiceArgs: CreateManyOutletLaundryItemServiceArgs,
   ) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+    return await this.outletLaundryItemServiceController.createMany(createManyOutletLaundryItemServiceArgs);
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Query(() => OutletLaundryItemService, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletLaundryItemService(
-    @OutletLaundryItemService()
-    OutletLaundryItemService: OutletLaundryItemService,
-    @OutletLaundryItemService() outletlaundryitemservice: OutletLaundryItemService,
-  ): OutletLaundryItemService<OutletLaundryItemService | outletlaundryitemservice> {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService({
-      ...OutletLaundryItemService,
-      outletlaundryitemservice: outletlaundryitemservice.outletlaundryitemservice,
+  outletLaundryItemServiceFindOne(
+    @Args()
+    outletLaundryItemServiceFindUniqueArgs: FindUniqueOutletLaundryItemServiceArgs,
+    @Relations() relations: OutletLaundryItemServiceSelect,
+  ): Promise<OutletLaundryItemService | void> {
+    return this.outletLaundryItemServiceController.findOne({
+      ...outletLaundryItemServiceFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @OutletLaundryItemService(() => [OutletLaundryItemService], {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Query(() => [OutletLaundryItemService], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletLaundryItemService(
-    @OutletLaundryItemService() OutletLaundryItemService: OutletLaundryItemService,
-    @OutletLaundryItemService() outletlaundryitemservice: OutletLaundryItemService,
+  outletLaundryItemServiceFindMany(
+    @Args() outletLaundryItemServiceFindManyArgs: FindManyOutletLaundryItemServiceArgs,
+    @Relations() relations: OutletLaundryItemServiceSelect,
   ) {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService({
-      ...OutletLaundryItemService,
-      outletlaundryitemservice: outletlaundryitemservice.outletlaundryitemservice,
+    return this.outletLaundryItemServiceController.findMany({
+      ...outletLaundryItemServiceFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Query(() => OutletLaundryItemService, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletLaundryItemService(
-    @OutletLaundryItemService()
-    OutletLaundryItemService: OutletLaundryItemService,
-    @OutletLaundryItemService() outletlaundryitemservice: OutletLaundryItemService,
-  ): OutletLaundryItemService<OutletLaundryItemService | outletlaundryitemservice> {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService({
-      ...OutletLaundryItemService,
-      outletlaundryitemservice: outletlaundryitemservice.outletlaundryitemservice,
+  outletLaundryItemServiceFindFirst(
+    @Args()
+    findFirstOutletLaundryItemServiceArgs: FindFirstOutletLaundryItemServiceArgs,
+    @Relations() relations: OutletLaundryItemServiceSelect,
+  ): Promise<OutletLaundryItemService | void> {
+    return this.outletLaundryItemServiceController.findFirst({
+      ...findFirstOutletLaundryItemServiceArgs,
+      select: relations.select,
     });
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Mutation(() => OutletLaundryItemService, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletlaundryitemservice OutletLaundryItemService(
-    @OutletLaundryItemService() OutletLaundryItemService: OutletLaundryItemService,
-    @OutletLaundryItemService() outletlaundryitemservice: OutletLaundryItemService,
+  async outletLaundryItemServiceUpdateOne(
+    @Args() outletLaundryItemServiceUpdateOneArgs: UpdateOneOutletLaundryItemServiceArgs,
+    @Relations() relations: OutletLaundryItemServiceSelect,
   ) {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService({
-      ...OutletLaundryItemService(OutletLaundryItemService),
-      outletlaundryitemservice: outletlaundryitemservice.outletlaundryitemservice,
+    return this.outletLaundryItemServiceController.updateOne({
+      ...replaceNullWithUndefined(outletLaundryItemServiceUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Mutation(() => OutletLaundryItemService, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletlaundryitemservice OutletLaundryItemService(@OutletLaundryItemService() OutletLaundryItemService: OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async outletLaundryItemServiceUpdateMany(@Args() updateManyOutletLaundryItemServiceArgs: UpdateManyOutletLaundryItemServiceArgs) {
+    return this.outletLaundryItemServiceController.updateMany(updateManyOutletLaundryItemServiceArgs);
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletlaundryitemservice OutletLaundryItemService(
-    @OutletLaundryItemService() OutletLaundryItemService: OutletLaundryItemService,
-    @OutletLaundryItemService() outletlaundryitemservice: OutletLaundryItemService,
+  async outletLaundryItemServiceDelete(
+    @Args() deleteOneOutletLaundryItemServiceArgs: DeleteOneOutletLaundryItemServiceArgs,
+    @Relations() relations: OutletLaundryItemServiceSelect,
   ) {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.outletlaundryitemservice({
-      ...OutletLaundryItemService,
-      outletlaundryitemservice: outletlaundryitemservice.outletlaundryitemservice,
+    return this.outletLaundryItemServiceController.delete({
+      ...deleteOneOutletLaundryItemServiceArgs,
+      select: relations.select,
     });
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  outletlaundryitemservice OutletLaundryItemService(@OutletLaundryItemService() OutletLaundryItemService: OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async outletLaundryItemServiceDeleteMany(@Args() deleteManyOutletLaundryItemServiceArgs: DeleteManyOutletLaundryItemServiceArgs) {
+    return this.outletLaundryItemServiceController.deleteMany(deleteManyOutletLaundryItemServiceArgs);
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Query(() => AggregateOutletLaundryItemService, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletLaundryItemService(@OutletLaundryItemService() OutletLaundryItemService: OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.outletlaundryitemservice(OutletLaundryItemService);
+  outletLaundryItemServiceAggregate(@Args() outletLaundryItemServiceAggregateArgs: OutletLaundryItemServiceAggregateArgs) {
+    return this.outletLaundryItemServiceController.aggregate(outletLaundryItemServiceAggregateArgs);
   }
 
-  @OutletLaundryItemService(() => OutletLaundryItemService, {
-    outletlaundryitemservice: outletlaundryitemservice,
-    outletlaundryitemservice: 'OutletLaundryItemService outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  OutletLaundryItemService(@OutletLaundryItemService() OutletLaundryItemService: OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.outletlaundryitemservice(OutletLaundryItemService);
+  outletLaundryItemServiceCount(@Args() outletLaundryItemServiceCountAggregateInput: FindManyOutletLaundryItemServiceArgs) {
+    return this.outletLaundryItemServiceController.count(outletLaundryItemServiceCountAggregateInput);
   }
 }

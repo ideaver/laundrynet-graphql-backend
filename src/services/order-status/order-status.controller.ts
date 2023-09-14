@@ -1,52 +1,52 @@
-orderstatus { OrderStatus } orderstatus '@orderstatus/orderstatus';
-orderstatus { OrderStatus } orderstatus '@orderstatus/orderstatus';
-orderstatus { OrderStatus } orderstatus './orderstatus.orderstatus';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { OrderStatusService } from './orderStatus.service';
 
-@OrderStatus()
-orderstatus orderstatus OrderStatus {
-  orderstatus(orderstatus orderstatus OrderStatus: OrderStatus) {}
+@Injectable()
+export class OrderStatusController {
+  constructor(private readonly orderStatusService: OrderStatusService) {}
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async createOne(orderStatusCreateArgs: Prisma.OrderStatusCreateArgs) {
+    return await this.orderStatusService.createOne(orderStatusCreateArgs);
   }
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async createMany(orderStatusCreateManyArgs: Prisma.OrderStatusCreateManyArgs) {
+    return await this.orderStatusService.createMany(orderStatusCreateManyArgs);
   }
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async findOne(orderStatusFindUniqueArgs: Prisma.OrderStatusFindUniqueArgs) {
+    return await this.orderStatusService.findOne(orderStatusFindUniqueArgs);
   }
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async findMany(orderStatusFindManyArgs: Prisma.OrderStatusFindManyArgs) {
+    return await this.orderStatusService.findMany(orderStatusFindManyArgs);
   }
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async findFirst(orderStatusFindFirstArgs: Prisma.OrderStatusFindFirstArgs) {
+    return await this.orderStatusService.findFirst(orderStatusFindFirstArgs);
   }
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async updateOne(orderStatusUpdateOneArgs: Prisma.OrderStatusUpdateArgs) {
+    return await this.orderStatusService.updateOne(orderStatusUpdateOneArgs);
   }
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async updateMany(orderStatusUpdateManyArgs: Prisma.OrderStatusUpdateManyArgs) {
+    return await this.orderStatusService.updateMany(orderStatusUpdateManyArgs);
   }
 
-  orderstatus orderstatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.orderstatus(OrderStatus);
+  async delete(orderStatusDeleteArgs: Prisma.OrderStatusDeleteArgs) {
+    return await this.orderStatusService.delete(orderStatusDeleteArgs);
   }
 
-  orderstatus OrderStatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.OrderStatus(OrderStatus);
+  async deleteMany(orderStatusDeleteManyArgs: Prisma.OrderStatusDeleteManyArgs) {
+    return await this.orderStatusService.deleteMany(orderStatusDeleteManyArgs);
   }
 
-  orderstatus orderstatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.orderstatus(OrderStatus);
+  async aggregate(orderStatusAggregateArgs: Prisma.OrderStatusAggregateArgs) {
+    return await this.orderStatusService.aggregate(orderStatusAggregateArgs);
   }
 
-  orderstatus orderstatus(OrderStatus: OrderStatus.OrderStatus) {
-    orderstatus orderstatus orderstatus.OrderStatus.orderstatus(OrderStatus);
+  async count(orderStatusCountArgs: Prisma.OrderStatusCountArgs) {
+    return await this.orderStatusService.count(orderStatusCountArgs);
   }
 }

@@ -1,52 +1,52 @@
-attendance { Attendance } attendance '@attendance/attendance';
-attendance { Attendance } attendance '@attendance/attendance';
-attendance { Attendance } attendance './attendance.attendance';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { AttendanceService } from './attendance.service';
 
-@Attendance()
-attendance attendance Attendance {
-  attendance(attendance attendance Attendance: Attendance) {}
+@Injectable()
+export class AttendanceController {
+  constructor(private readonly attendanceService: AttendanceService) {}
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async createOne(attendanceCreateArgs: Prisma.AttendanceCreateArgs) {
+    return await this.attendanceService.createOne(attendanceCreateArgs);
   }
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async createMany(attendanceCreateManyArgs: Prisma.AttendanceCreateManyArgs) {
+    return await this.attendanceService.createMany(attendanceCreateManyArgs);
   }
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async findOne(attendanceFindUniqueArgs: Prisma.AttendanceFindUniqueArgs) {
+    return await this.attendanceService.findOne(attendanceFindUniqueArgs);
   }
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async findMany(attendanceFindManyArgs: Prisma.AttendanceFindManyArgs) {
+    return await this.attendanceService.findMany(attendanceFindManyArgs);
   }
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async findFirst(attendanceFindFirstArgs: Prisma.AttendanceFindFirstArgs) {
+    return await this.attendanceService.findFirst(attendanceFindFirstArgs);
   }
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async updateOne(attendanceUpdateOneArgs: Prisma.AttendanceUpdateArgs) {
+    return await this.attendanceService.updateOne(attendanceUpdateOneArgs);
   }
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async updateMany(attendanceUpdateManyArgs: Prisma.AttendanceUpdateManyArgs) {
+    return await this.attendanceService.updateMany(attendanceUpdateManyArgs);
   }
 
-  attendance attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.attendance(Attendance);
+  async delete(attendanceDeleteArgs: Prisma.AttendanceDeleteArgs) {
+    return await this.attendanceService.delete(attendanceDeleteArgs);
   }
 
-  attendance Attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+  async deleteMany(attendanceDeleteManyArgs: Prisma.AttendanceDeleteManyArgs) {
+    return await this.attendanceService.deleteMany(attendanceDeleteManyArgs);
   }
 
-  attendance attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.attendance(Attendance);
+  async aggregate(attendanceAggregateArgs: Prisma.AttendanceAggregateArgs) {
+    return await this.attendanceService.aggregate(attendanceAggregateArgs);
   }
 
-  attendance attendance(Attendance: Attendance.Attendance) {
-    attendance attendance attendance.Attendance.attendance(Attendance);
+  async count(attendanceCountArgs: Prisma.AttendanceCountArgs) {
+    return await this.attendanceService.count(attendanceCountArgs);
   }
 }

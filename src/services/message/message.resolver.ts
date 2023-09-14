@@ -1,160 +1,160 @@
-// @message-message
-message { Message, Message, Message, Message, Message } message '@message/message';
-message { Message } message '@message/message';
-message { Message } message 'message/message/message.message';
-message {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateMessage,
+  CreateManyMessageArgs,
+  CreateOneMessageArgs,
+  DeleteManyMessageArgs,
+  DeleteOneMessageArgs,
+  FindFirstMessageArgs,
+  FindManyMessageArgs,
+  FindUniqueMessageArgs,
   Message,
-  Message,
-  Message,
-  Message,
-  Message,
-  Message,
-  Message,
-  Message,
-  Message,
-  Message,
-  Message,
-  Message,
-} message 'message/@message';
-message { Message } message './message.message';
-message { Message } message 'message/message/message-message-message-message.message';
-message Message message 'message/message/message-message.message';
+  MessageAggregateArgs,
+  UpdateManyMessageArgs,
+  UpdateOneMessageArgs,
+} from 'src/@generated';
+import { MessageController } from './message.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-message Message {
-  message: Message.Message;
+interface MessageSelect {
+  select: Prisma.MessageSelect;
 }
 
-@Message(() => Message)
-message message Message {
-  message(message message Message: Message) {}
+@Resolver(() => Message)
+export class MessageResolver {
+  constructor(private readonly messageController: MessageController) {}
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Mutation(() => Message, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  message Message(
-    @Message()
-    Message: Message,
-    @Message() message: Message,
-  ): Message<Message | message> {
-    message message message.Message.Message({
-      ...Message,
-      message: message.message,
+  async messageCreateOne(
+    @Args()
+    messageCreateArgs: CreateOneMessageArgs,
+    @Relations() relations: MessageSelect,
+  ): Promise<Message | void> {
+    return await this.messageController.createOne({
+      ...messageCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  message Message(
-    @Message()
-    Message: Message,
+  async messageCreateMany(
+    @Args()
+    createManyMessageArgs: CreateManyMessageArgs,
   ) {
-    message message message.Message.Message(Message);
+    return await this.messageController.createMany(createManyMessageArgs);
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Query(() => Message, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Message(
-    @Message()
-    Message: Message,
-    @Message() message: Message,
-  ): Message<Message | message> {
-    message message.Message.Message({
-      ...Message,
-      message: message.message,
+  messageFindOne(
+    @Args()
+    messageFindUniqueArgs: FindUniqueMessageArgs,
+    @Relations() relations: MessageSelect,
+  ): Promise<Message | void> {
+    return this.messageController.findOne({
+      ...messageFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Message(() => [Message], {
-    message: message,
-    message: 'Message message message message',
+  @Query(() => [Message], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Message(
-    @Message() Message: Message,
-    @Message() message: Message,
+  messageFindMany(
+    @Args() messageFindManyArgs: FindManyMessageArgs,
+    @Relations() relations: MessageSelect,
   ) {
-    message message.Message.Message({
-      ...Message,
-      message: message.message,
+    return this.messageController.findMany({
+      ...messageFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Query(() => Message, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Message(
-    @Message()
-    Message: Message,
-    @Message() message: Message,
-  ): Message<Message | message> {
-    message message.Message.Message({
-      ...Message,
-      message: message.message,
+  messageFindFirst(
+    @Args()
+    findFirstMessageArgs: FindFirstMessageArgs,
+    @Relations() relations: MessageSelect,
+  ): Promise<Message | void> {
+    return this.messageController.findFirst({
+      ...findFirstMessageArgs,
+      select: relations.select,
     });
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Mutation(() => Message, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  message Message(
-    @Message() Message: Message,
-    @Message() message: Message,
+  async messageUpdateOne(
+    @Args() messageUpdateOneArgs: UpdateOneMessageArgs,
+    @Relations() relations: MessageSelect,
   ) {
-    message message.Message.Message({
-      ...Message(Message),
-      message: message.message,
+    return this.messageController.updateOne({
+      ...replaceNullWithUndefined(messageUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Mutation(() => Message, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  message Message(@Message() Message: Message) {
-    message message.Message.Message(Message);
+  async messageUpdateMany(@Args() updateManyMessageArgs: UpdateManyMessageArgs) {
+    return this.messageController.updateMany(updateManyMessageArgs);
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  message Message(
-    @Message() Message: Message,
-    @Message() message: Message,
+  async messageDelete(
+    @Args() deleteOneMessageArgs: DeleteOneMessageArgs,
+    @Relations() relations: MessageSelect,
   ) {
-    message message.Message.message({
-      ...Message,
-      message: message.message,
+    return this.messageController.delete({
+      ...deleteOneMessageArgs,
+      select: relations.select,
     });
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  message Message(@Message() Message: Message) {
-    message message.Message.Message(Message);
+  async messageDeleteMany(@Args() deleteManyMessageArgs: DeleteManyMessageArgs) {
+    return this.messageController.deleteMany(deleteManyMessageArgs);
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Query(() => AggregateMessage, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Message(@Message() Message: Message) {
-    message message.Message.message(Message);
+  messageAggregate(@Args() messageAggregateArgs: MessageAggregateArgs) {
+    return this.messageController.aggregate(messageAggregateArgs);
   }
 
-  @Message(() => Message, {
-    message: message,
-    message: 'Message message message message',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Message(@Message() Message: Message) {
-    message message.Message.message(Message);
+  messageCount(@Args() messageCountAggregateInput: FindManyMessageArgs) {
+    return this.messageController.count(messageCountAggregateInput);
   }
 }

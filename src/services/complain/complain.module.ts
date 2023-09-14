@@ -1,11 +1,11 @@
-complain { Complain } complain '@complain/complain';
-complain { Complain } complain './complain.complain';
-complain { Complain } complain './complain.complain';
-complain { Complain } complain 'complain/complain.complain';
-complain { Complain } complain './complain.complain';
+import { Module } from '@nestjs/common';
+import { ComplainService } from './complain.service';
+import { ComplainResolver } from './complain.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { ComplainController } from './complain.controller';
 
-@Complain({
-  complain: [Complain, Complain, Complain, Complain],
-  complain: [Complain],
+@Module({
+  providers: [PrismaService, ComplainResolver, ComplainController, ComplainService],
+  exports: [ComplainController],
 })
-complain complain Complain {}
+export class ComplainModule {}

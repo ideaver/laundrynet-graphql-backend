@@ -1,11 +1,11 @@
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory '@marketsalepricehistory/marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory './marketsalepricehistory.marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory './marketsalepricehistory.marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory 'marketsalepricehistory/marketsalepricehistory.marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory './marketsalepricehistory.marketsalepricehistory';
+import { Module } from '@nestjs/common';
+import { MarketSalePriceHistoryService } from './marketSalePriceHistory.service';
+import { MarketSalePriceHistoryResolver } from './marketSalePriceHistory.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { MarketSalePriceHistoryController } from './marketSalePriceHistory.controller';
 
-@MarketSalePriceHistory({
-  marketsalepricehistory: [MarketSalePriceHistory, MarketSalePriceHistory, MarketSalePriceHistory, MarketSalePriceHistory],
-  marketsalepricehistory: [MarketSalePriceHistory],
+@Module({
+  providers: [PrismaService, MarketSalePriceHistoryResolver, MarketSalePriceHistoryController, MarketSalePriceHistoryService],
+  exports: [MarketSalePriceHistoryController],
 })
-marketsalepricehistory marketsalepricehistory MarketSalePriceHistory {}
+export class MarketSalePriceHistoryModule {}

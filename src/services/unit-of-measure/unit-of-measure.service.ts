@@ -1,99 +1,99 @@
-unitofmeasure { UnitOfMeasure } unitofmeasure '@unitofmeasure/unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure 'unitofmeasure/unitofmeasure.unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure 'unitofmeasure/unitofmeasure/unitofmeasure/unitofmeasure-unitofmeasure-unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure '@unitofmeasure/unitofmeasure';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@UnitOfMeasure()
-unitofmeasure unitofmeasure UnitOfMeasure {
-  unitofmeasure(unitofmeasure unitofmeasure: UnitOfMeasure) {}
+@Injectable()
+export class UnitOfMeasureService {
+  constructor(private prisma: PrismaService) {}
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.unitofmeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async createOne(unitOfMeasureCreateArgs: Prisma.UnitOfMeasureCreateArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.create(unitOfMeasureCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.UnitOfMeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async createMany(unitOfMeasureCreateManyArgs: Prisma.UnitOfMeasureCreateManyArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.createMany(unitOfMeasureCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.UnitOfMeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async findOne(unitOfMeasureFindUniqueArgs: Prisma.UnitOfMeasureFindUniqueArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.findUnique(unitOfMeasureFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.UnitOfMeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async findMany(unitOfMeasureFindManyArgs: Prisma.UnitOfMeasureFindManyArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.findMany(unitOfMeasureFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.UnitOfMeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async findFirst(unitOfMeasureFindFirstArgs: Prisma.UnitOfMeasureFindFirstArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.findFirst(unitOfMeasureFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.unitofmeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async updateOne(unitOfMeasureUpdateOneArgs: Prisma.UnitOfMeasureUpdateArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.update(unitOfMeasureUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.UnitOfMeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async updateMany(unitOfMeasureUpdateManyArgs: Prisma.UnitOfMeasureUpdateManyArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.updateMany(unitOfMeasureUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure unitofmeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.unitofmeasure(UnitOfMeasure);
-      unitofmeasure unitofmeasure;
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async delete(unitOfMeasureDeleteArgs: Prisma.UnitOfMeasureDeleteArgs) {
+    try {
+      await this.prisma.unitOfMeasure.delete(unitOfMeasureDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure UnitOfMeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.UnitOfMeasure(UnitOfMeasure);
-      unitofmeasure unitofmeasure;
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async deleteMany(unitOfMeasureDeleteManyArgs: Prisma.UnitOfMeasureDeleteManyArgs) {
+    try {
+      await this.prisma.unitOfMeasure.deleteMany(unitOfMeasureDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure unitofmeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.unitofmeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async aggregate(unitOfMeasureAggregateArgs: Prisma.UnitOfMeasureAggregateArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.aggregate(unitOfMeasureAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  unitofmeasure unitofmeasure(UnitOfMeasure: UnitOfMeasure.UnitOfMeasure) {
-    unitofmeasure {
-      unitofmeasure unitofmeasure unitofmeasure.unitofmeasure.unitofmeasure.unitofmeasure(UnitOfMeasure);
-    } unitofmeasure (unitofmeasure) {
-      unitofmeasure unitofmeasure UnitOfMeasure({ unitofmeasure: unitofmeasure, unitofmeasure: unitofmeasure });
+  async count(unitOfMeasureCountArgs: Prisma.UnitOfMeasureCountArgs) {
+    try {
+      return await this.prisma.unitOfMeasure.count(unitOfMeasureCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

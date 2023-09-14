@@ -1,11 +1,11 @@
-user { User } user '@user/user';
-user { User } user './user.user';
-user { User } user './user.user';
-user { User } user 'user/user.user';
-user { User } user './user.user';
+import { Module } from '@nestjs/common';
+import { UserService } from './user.service';
+import { UserResolver } from './user.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { UserController } from './user.controller';
 
-@User({
-  user: [User, User, User, User],
-  user: [User],
+@Module({
+  providers: [PrismaService, UserResolver, UserController, UserService],
+  exports: [UserController],
 })
-user user User {}
+export class UserModule {}

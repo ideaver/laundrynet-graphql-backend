@@ -1,52 +1,52 @@
-businesshour { BusinessHour } businesshour '@businesshour/businesshour';
-businesshour { BusinessHour } businesshour '@businesshour/businesshour';
-businesshour { BusinessHour } businesshour './businesshour.businesshour';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { BusinessHourService } from './businessHour.service';
 
-@BusinessHour()
-businesshour businesshour BusinessHour {
-  businesshour(businesshour businesshour BusinessHour: BusinessHour) {}
+@Injectable()
+export class BusinessHourController {
+  constructor(private readonly businessHourService: BusinessHourService) {}
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async createOne(businessHourCreateArgs: Prisma.BusinessHourCreateArgs) {
+    return await this.businessHourService.createOne(businessHourCreateArgs);
   }
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async createMany(businessHourCreateManyArgs: Prisma.BusinessHourCreateManyArgs) {
+    return await this.businessHourService.createMany(businessHourCreateManyArgs);
   }
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async findOne(businessHourFindUniqueArgs: Prisma.BusinessHourFindUniqueArgs) {
+    return await this.businessHourService.findOne(businessHourFindUniqueArgs);
   }
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async findMany(businessHourFindManyArgs: Prisma.BusinessHourFindManyArgs) {
+    return await this.businessHourService.findMany(businessHourFindManyArgs);
   }
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async findFirst(businessHourFindFirstArgs: Prisma.BusinessHourFindFirstArgs) {
+    return await this.businessHourService.findFirst(businessHourFindFirstArgs);
   }
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async updateOne(businessHourUpdateOneArgs: Prisma.BusinessHourUpdateArgs) {
+    return await this.businessHourService.updateOne(businessHourUpdateOneArgs);
   }
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async updateMany(businessHourUpdateManyArgs: Prisma.BusinessHourUpdateManyArgs) {
+    return await this.businessHourService.updateMany(businessHourUpdateManyArgs);
   }
 
-  businesshour businesshour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.businesshour(BusinessHour);
+  async delete(businessHourDeleteArgs: Prisma.BusinessHourDeleteArgs) {
+    return await this.businessHourService.delete(businessHourDeleteArgs);
   }
 
-  businesshour BusinessHour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.BusinessHour(BusinessHour);
+  async deleteMany(businessHourDeleteManyArgs: Prisma.BusinessHourDeleteManyArgs) {
+    return await this.businessHourService.deleteMany(businessHourDeleteManyArgs);
   }
 
-  businesshour businesshour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.businesshour(BusinessHour);
+  async aggregate(businessHourAggregateArgs: Prisma.BusinessHourAggregateArgs) {
+    return await this.businessHourService.aggregate(businessHourAggregateArgs);
   }
 
-  businesshour businesshour(BusinessHour: BusinessHour.BusinessHour) {
-    businesshour businesshour businesshour.BusinessHour.businesshour(BusinessHour);
+  async count(businessHourCountArgs: Prisma.BusinessHourCountArgs) {
+    return await this.businessHourService.count(businessHourCountArgs);
   }
 }

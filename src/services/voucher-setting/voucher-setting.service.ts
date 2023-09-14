@@ -1,99 +1,99 @@
-vouchersetting { VoucherSetting } vouchersetting '@vouchersetting/vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting 'vouchersetting/vouchersetting.vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting 'vouchersetting/vouchersetting/vouchersetting/vouchersetting-vouchersetting-vouchersetting';
-vouchersetting { VoucherSetting } vouchersetting '@vouchersetting/vouchersetting';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@VoucherSetting()
-vouchersetting vouchersetting VoucherSetting {
-  vouchersetting(vouchersetting vouchersetting: VoucherSetting) {}
+@Injectable()
+export class VoucherSettingService {
+  constructor(private prisma: PrismaService) {}
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.vouchersetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async createOne(voucherSettingCreateArgs: Prisma.VoucherSettingCreateArgs) {
+    try {
+      return await this.prisma.voucherSetting.create(voucherSettingCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.VoucherSetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async createMany(voucherSettingCreateManyArgs: Prisma.VoucherSettingCreateManyArgs) {
+    try {
+      return await this.prisma.voucherSetting.createMany(voucherSettingCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.VoucherSetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async findOne(voucherSettingFindUniqueArgs: Prisma.VoucherSettingFindUniqueArgs) {
+    try {
+      return await this.prisma.voucherSetting.findUnique(voucherSettingFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.VoucherSetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async findMany(voucherSettingFindManyArgs: Prisma.VoucherSettingFindManyArgs) {
+    try {
+      return await this.prisma.voucherSetting.findMany(voucherSettingFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.VoucherSetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async findFirst(voucherSettingFindFirstArgs: Prisma.VoucherSettingFindFirstArgs) {
+    try {
+      return await this.prisma.voucherSetting.findFirst(voucherSettingFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.vouchersetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async updateOne(voucherSettingUpdateOneArgs: Prisma.VoucherSettingUpdateArgs) {
+    try {
+      return await this.prisma.voucherSetting.update(voucherSettingUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.VoucherSetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async updateMany(voucherSettingUpdateManyArgs: Prisma.VoucherSettingUpdateManyArgs) {
+    try {
+      return await this.prisma.voucherSetting.updateMany(voucherSettingUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting vouchersetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting.vouchersetting.vouchersetting.vouchersetting(VoucherSetting);
-      vouchersetting vouchersetting;
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async delete(voucherSettingDeleteArgs: Prisma.VoucherSettingDeleteArgs) {
+    try {
+      await this.prisma.voucherSetting.delete(voucherSettingDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting VoucherSetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting.vouchersetting.vouchersetting.VoucherSetting(VoucherSetting);
-      vouchersetting vouchersetting;
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async deleteMany(voucherSettingDeleteManyArgs: Prisma.VoucherSettingDeleteManyArgs) {
+    try {
+      await this.prisma.voucherSetting.deleteMany(voucherSettingDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting vouchersetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.vouchersetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async aggregate(voucherSettingAggregateArgs: Prisma.VoucherSettingAggregateArgs) {
+    try {
+      return await this.prisma.voucherSetting.aggregate(voucherSettingAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  vouchersetting vouchersetting(VoucherSetting: VoucherSetting.VoucherSetting) {
-    vouchersetting {
-      vouchersetting vouchersetting vouchersetting.vouchersetting.vouchersetting.vouchersetting(VoucherSetting);
-    } vouchersetting (vouchersetting) {
-      vouchersetting vouchersetting VoucherSetting({ vouchersetting: vouchersetting, vouchersetting: vouchersetting });
+  async count(voucherSettingCountArgs: Prisma.VoucherSettingCountArgs) {
+    try {
+      return await this.prisma.voucherSetting.count(voucherSettingCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

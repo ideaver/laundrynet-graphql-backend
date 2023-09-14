@@ -1,160 +1,160 @@
-// @unitofmeasure-unitofmeasure
-unitofmeasure { UnitOfMeasure, UnitOfMeasure, UnitOfMeasure, UnitOfMeasure, UnitOfMeasure } unitofmeasure '@unitofmeasure/unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure '@unitofmeasure/unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure 'unitofmeasure/unitofmeasure/unitofmeasure.unitofmeasure';
-unitofmeasure {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateUnitOfMeasure,
+  CreateManyUnitOfMeasureArgs,
+  CreateOneUnitOfMeasureArgs,
+  DeleteManyUnitOfMeasureArgs,
+  DeleteOneUnitOfMeasureArgs,
+  FindFirstUnitOfMeasureArgs,
+  FindManyUnitOfMeasureArgs,
+  FindUniqueUnitOfMeasureArgs,
   UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-  UnitOfMeasure,
-} unitofmeasure 'unitofmeasure/@unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure './unitofmeasure.unitofmeasure';
-unitofmeasure { UnitOfMeasure } unitofmeasure 'unitofmeasure/unitofmeasure/unitofmeasure-unitofmeasure-unitofmeasure-unitofmeasure.unitofmeasure';
-unitofmeasure UnitOfMeasure unitofmeasure 'unitofmeasure/unitofmeasure/unitofmeasure-unitofmeasure.unitofmeasure';
+  UnitOfMeasureAggregateArgs,
+  UpdateManyUnitOfMeasureArgs,
+  UpdateOneUnitOfMeasureArgs,
+} from 'src/@generated';
+import { UnitOfMeasureController } from './unitOfMeasure.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-unitofmeasure UnitOfMeasure {
-  unitofmeasure: UnitOfMeasure.UnitOfMeasure;
+interface UnitOfMeasureSelect {
+  select: Prisma.UnitOfMeasureSelect;
 }
 
-@UnitOfMeasure(() => UnitOfMeasure)
-unitofmeasure unitofmeasure UnitOfMeasure {
-  unitofmeasure(unitofmeasure unitofmeasure UnitOfMeasure: UnitOfMeasure) {}
+@Resolver(() => UnitOfMeasure)
+export class UnitOfMeasureResolver {
+  constructor(private readonly unitOfMeasureController: UnitOfMeasureController) {}
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Mutation(() => UnitOfMeasure, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  unitofmeasure UnitOfMeasure(
-    @UnitOfMeasure()
-    UnitOfMeasure: UnitOfMeasure,
-    @UnitOfMeasure() unitofmeasure: UnitOfMeasure,
-  ): UnitOfMeasure<UnitOfMeasure | unitofmeasure> {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure({
-      ...UnitOfMeasure,
-      unitofmeasure: unitofmeasure.unitofmeasure,
+  async unitOfMeasureCreateOne(
+    @Args()
+    unitOfMeasureCreateArgs: CreateOneUnitOfMeasureArgs,
+    @Relations() relations: UnitOfMeasureSelect,
+  ): Promise<UnitOfMeasure | void> {
+    return await this.unitOfMeasureController.createOne({
+      ...unitOfMeasureCreateArgs,
+      select: relations.select,
     });
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  unitofmeasure UnitOfMeasure(
-    @UnitOfMeasure()
-    UnitOfMeasure: UnitOfMeasure,
+  async unitOfMeasureCreateMany(
+    @Args()
+    createManyUnitOfMeasureArgs: CreateManyUnitOfMeasureArgs,
   ) {
-    unitofmeasure unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+    return await this.unitOfMeasureController.createMany(createManyUnitOfMeasureArgs);
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Query(() => UnitOfMeasure, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  UnitOfMeasure(
-    @UnitOfMeasure()
-    UnitOfMeasure: UnitOfMeasure,
-    @UnitOfMeasure() unitofmeasure: UnitOfMeasure,
-  ): UnitOfMeasure<UnitOfMeasure | unitofmeasure> {
-    unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure({
-      ...UnitOfMeasure,
-      unitofmeasure: unitofmeasure.unitofmeasure,
+  unitOfMeasureFindOne(
+    @Args()
+    unitOfMeasureFindUniqueArgs: FindUniqueUnitOfMeasureArgs,
+    @Relations() relations: UnitOfMeasureSelect,
+  ): Promise<UnitOfMeasure | void> {
+    return this.unitOfMeasureController.findOne({
+      ...unitOfMeasureFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @UnitOfMeasure(() => [UnitOfMeasure], {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Query(() => [UnitOfMeasure], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  UnitOfMeasure(
-    @UnitOfMeasure() UnitOfMeasure: UnitOfMeasure,
-    @UnitOfMeasure() unitofmeasure: UnitOfMeasure,
+  unitOfMeasureFindMany(
+    @Args() unitOfMeasureFindManyArgs: FindManyUnitOfMeasureArgs,
+    @Relations() relations: UnitOfMeasureSelect,
   ) {
-    unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure({
-      ...UnitOfMeasure,
-      unitofmeasure: unitofmeasure.unitofmeasure,
+    return this.unitOfMeasureController.findMany({
+      ...unitOfMeasureFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Query(() => UnitOfMeasure, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  UnitOfMeasure(
-    @UnitOfMeasure()
-    UnitOfMeasure: UnitOfMeasure,
-    @UnitOfMeasure() unitofmeasure: UnitOfMeasure,
-  ): UnitOfMeasure<UnitOfMeasure | unitofmeasure> {
-    unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure({
-      ...UnitOfMeasure,
-      unitofmeasure: unitofmeasure.unitofmeasure,
+  unitOfMeasureFindFirst(
+    @Args()
+    findFirstUnitOfMeasureArgs: FindFirstUnitOfMeasureArgs,
+    @Relations() relations: UnitOfMeasureSelect,
+  ): Promise<UnitOfMeasure | void> {
+    return this.unitOfMeasureController.findFirst({
+      ...findFirstUnitOfMeasureArgs,
+      select: relations.select,
     });
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Mutation(() => UnitOfMeasure, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  unitofmeasure UnitOfMeasure(
-    @UnitOfMeasure() UnitOfMeasure: UnitOfMeasure,
-    @UnitOfMeasure() unitofmeasure: UnitOfMeasure,
+  async unitOfMeasureUpdateOne(
+    @Args() unitOfMeasureUpdateOneArgs: UpdateOneUnitOfMeasureArgs,
+    @Relations() relations: UnitOfMeasureSelect,
   ) {
-    unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure({
-      ...UnitOfMeasure(UnitOfMeasure),
-      unitofmeasure: unitofmeasure.unitofmeasure,
+    return this.unitOfMeasureController.updateOne({
+      ...replaceNullWithUndefined(unitOfMeasureUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Mutation(() => UnitOfMeasure, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  unitofmeasure UnitOfMeasure(@UnitOfMeasure() UnitOfMeasure: UnitOfMeasure) {
-    unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async unitOfMeasureUpdateMany(@Args() updateManyUnitOfMeasureArgs: UpdateManyUnitOfMeasureArgs) {
+    return this.unitOfMeasureController.updateMany(updateManyUnitOfMeasureArgs);
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  unitofmeasure UnitOfMeasure(
-    @UnitOfMeasure() UnitOfMeasure: UnitOfMeasure,
-    @UnitOfMeasure() unitofmeasure: UnitOfMeasure,
+  async unitOfMeasureDelete(
+    @Args() deleteOneUnitOfMeasureArgs: DeleteOneUnitOfMeasureArgs,
+    @Relations() relations: UnitOfMeasureSelect,
   ) {
-    unitofmeasure unitofmeasure.UnitOfMeasure.unitofmeasure({
-      ...UnitOfMeasure,
-      unitofmeasure: unitofmeasure.unitofmeasure,
+    return this.unitOfMeasureController.delete({
+      ...deleteOneUnitOfMeasureArgs,
+      select: relations.select,
     });
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  unitofmeasure UnitOfMeasure(@UnitOfMeasure() UnitOfMeasure: UnitOfMeasure) {
-    unitofmeasure unitofmeasure.UnitOfMeasure.UnitOfMeasure(UnitOfMeasure);
+  async unitOfMeasureDeleteMany(@Args() deleteManyUnitOfMeasureArgs: DeleteManyUnitOfMeasureArgs) {
+    return this.unitOfMeasureController.deleteMany(deleteManyUnitOfMeasureArgs);
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Query(() => AggregateUnitOfMeasure, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  UnitOfMeasure(@UnitOfMeasure() UnitOfMeasure: UnitOfMeasure) {
-    unitofmeasure unitofmeasure.UnitOfMeasure.unitofmeasure(UnitOfMeasure);
+  unitOfMeasureAggregate(@Args() unitOfMeasureAggregateArgs: UnitOfMeasureAggregateArgs) {
+    return this.unitOfMeasureController.aggregate(unitOfMeasureAggregateArgs);
   }
 
-  @UnitOfMeasure(() => UnitOfMeasure, {
-    unitofmeasure: unitofmeasure,
-    unitofmeasure: 'UnitOfMeasure unitofmeasure unitofmeasure unitofmeasure',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  UnitOfMeasure(@UnitOfMeasure() UnitOfMeasure: UnitOfMeasure) {
-    unitofmeasure unitofmeasure.UnitOfMeasure.unitofmeasure(UnitOfMeasure);
+  unitOfMeasureCount(@Args() unitOfMeasureCountAggregateInput: FindManyUnitOfMeasureArgs) {
+    return this.unitOfMeasureController.count(unitOfMeasureCountAggregateInput);
   }
 }

@@ -1,52 +1,52 @@
-province { Province } province '@province/province';
-province { Province } province '@province/province';
-province { Province } province './province.province';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ProvinceService } from './province.service';
 
-@Province()
-province province Province {
-  province(province province Province: Province) {}
+@Injectable()
+export class ProvinceController {
+  constructor(private readonly provinceService: ProvinceService) {}
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async createOne(provinceCreateArgs: Prisma.ProvinceCreateArgs) {
+    return await this.provinceService.createOne(provinceCreateArgs);
   }
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async createMany(provinceCreateManyArgs: Prisma.ProvinceCreateManyArgs) {
+    return await this.provinceService.createMany(provinceCreateManyArgs);
   }
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async findOne(provinceFindUniqueArgs: Prisma.ProvinceFindUniqueArgs) {
+    return await this.provinceService.findOne(provinceFindUniqueArgs);
   }
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async findMany(provinceFindManyArgs: Prisma.ProvinceFindManyArgs) {
+    return await this.provinceService.findMany(provinceFindManyArgs);
   }
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async findFirst(provinceFindFirstArgs: Prisma.ProvinceFindFirstArgs) {
+    return await this.provinceService.findFirst(provinceFindFirstArgs);
   }
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async updateOne(provinceUpdateOneArgs: Prisma.ProvinceUpdateArgs) {
+    return await this.provinceService.updateOne(provinceUpdateOneArgs);
   }
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async updateMany(provinceUpdateManyArgs: Prisma.ProvinceUpdateManyArgs) {
+    return await this.provinceService.updateMany(provinceUpdateManyArgs);
   }
 
-  province province(Province: Province.Province) {
-    province province province.Province.province(Province);
+  async delete(provinceDeleteArgs: Prisma.ProvinceDeleteArgs) {
+    return await this.provinceService.delete(provinceDeleteArgs);
   }
 
-  province Province(Province: Province.Province) {
-    province province province.Province.Province(Province);
+  async deleteMany(provinceDeleteManyArgs: Prisma.ProvinceDeleteManyArgs) {
+    return await this.provinceService.deleteMany(provinceDeleteManyArgs);
   }
 
-  province province(Province: Province.Province) {
-    province province province.Province.province(Province);
+  async aggregate(provinceAggregateArgs: Prisma.ProvinceAggregateArgs) {
+    return await this.provinceService.aggregate(provinceAggregateArgs);
   }
 
-  province province(Province: Province.Province) {
-    province province province.Province.province(Province);
+  async count(provinceCountArgs: Prisma.ProvinceCountArgs) {
+    return await this.provinceService.count(provinceCountArgs);
   }
 }

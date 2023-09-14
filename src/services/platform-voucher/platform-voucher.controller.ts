@@ -1,52 +1,52 @@
-platformvoucher { PlatformVoucher } platformvoucher '@platformvoucher/platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher '@platformvoucher/platformvoucher';
-platformvoucher { PlatformVoucher } platformvoucher './platformvoucher.platformvoucher';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { PlatformVoucherService } from './platformVoucher.service';
 
-@PlatformVoucher()
-platformvoucher platformvoucher PlatformVoucher {
-  platformvoucher(platformvoucher platformvoucher PlatformVoucher: PlatformVoucher) {}
+@Injectable()
+export class PlatformVoucherController {
+  constructor(private readonly platformVoucherService: PlatformVoucherService) {}
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async createOne(platformVoucherCreateArgs: Prisma.PlatformVoucherCreateArgs) {
+    return await this.platformVoucherService.createOne(platformVoucherCreateArgs);
   }
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async createMany(platformVoucherCreateManyArgs: Prisma.PlatformVoucherCreateManyArgs) {
+    return await this.platformVoucherService.createMany(platformVoucherCreateManyArgs);
   }
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async findOne(platformVoucherFindUniqueArgs: Prisma.PlatformVoucherFindUniqueArgs) {
+    return await this.platformVoucherService.findOne(platformVoucherFindUniqueArgs);
   }
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async findMany(platformVoucherFindManyArgs: Prisma.PlatformVoucherFindManyArgs) {
+    return await this.platformVoucherService.findMany(platformVoucherFindManyArgs);
   }
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async findFirst(platformVoucherFindFirstArgs: Prisma.PlatformVoucherFindFirstArgs) {
+    return await this.platformVoucherService.findFirst(platformVoucherFindFirstArgs);
   }
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async updateOne(platformVoucherUpdateOneArgs: Prisma.PlatformVoucherUpdateArgs) {
+    return await this.platformVoucherService.updateOne(platformVoucherUpdateOneArgs);
   }
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async updateMany(platformVoucherUpdateManyArgs: Prisma.PlatformVoucherUpdateManyArgs) {
+    return await this.platformVoucherService.updateMany(platformVoucherUpdateManyArgs);
   }
 
-  platformvoucher platformvoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.platformvoucher(PlatformVoucher);
+  async delete(platformVoucherDeleteArgs: Prisma.PlatformVoucherDeleteArgs) {
+    return await this.platformVoucherService.delete(platformVoucherDeleteArgs);
   }
 
-  platformvoucher PlatformVoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.PlatformVoucher(PlatformVoucher);
+  async deleteMany(platformVoucherDeleteManyArgs: Prisma.PlatformVoucherDeleteManyArgs) {
+    return await this.platformVoucherService.deleteMany(platformVoucherDeleteManyArgs);
   }
 
-  platformvoucher platformvoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.platformvoucher(PlatformVoucher);
+  async aggregate(platformVoucherAggregateArgs: Prisma.PlatformVoucherAggregateArgs) {
+    return await this.platformVoucherService.aggregate(platformVoucherAggregateArgs);
   }
 
-  platformvoucher platformvoucher(PlatformVoucher: PlatformVoucher.PlatformVoucher) {
-    platformvoucher platformvoucher platformvoucher.PlatformVoucher.platformvoucher(PlatformVoucher);
+  async count(platformVoucherCountArgs: Prisma.PlatformVoucherCountArgs) {
+    return await this.platformVoucherService.count(platformVoucherCountArgs);
   }
 }

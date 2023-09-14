@@ -1,52 +1,52 @@
-employee { Employee } employee '@employee/employee';
-employee { Employee } employee '@employee/employee';
-employee { Employee } employee './employee.employee';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { EmployeeService } from './employee.service';
 
-@Employee()
-employee employee Employee {
-  employee(employee employee Employee: Employee) {}
+@Injectable()
+export class EmployeeController {
+  constructor(private readonly employeeService: EmployeeService) {}
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async createOne(employeeCreateArgs: Prisma.EmployeeCreateArgs) {
+    return await this.employeeService.createOne(employeeCreateArgs);
   }
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async createMany(employeeCreateManyArgs: Prisma.EmployeeCreateManyArgs) {
+    return await this.employeeService.createMany(employeeCreateManyArgs);
   }
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async findOne(employeeFindUniqueArgs: Prisma.EmployeeFindUniqueArgs) {
+    return await this.employeeService.findOne(employeeFindUniqueArgs);
   }
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async findMany(employeeFindManyArgs: Prisma.EmployeeFindManyArgs) {
+    return await this.employeeService.findMany(employeeFindManyArgs);
   }
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async findFirst(employeeFindFirstArgs: Prisma.EmployeeFindFirstArgs) {
+    return await this.employeeService.findFirst(employeeFindFirstArgs);
   }
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async updateOne(employeeUpdateOneArgs: Prisma.EmployeeUpdateArgs) {
+    return await this.employeeService.updateOne(employeeUpdateOneArgs);
   }
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async updateMany(employeeUpdateManyArgs: Prisma.EmployeeUpdateManyArgs) {
+    return await this.employeeService.updateMany(employeeUpdateManyArgs);
   }
 
-  employee employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.employee(Employee);
+  async delete(employeeDeleteArgs: Prisma.EmployeeDeleteArgs) {
+    return await this.employeeService.delete(employeeDeleteArgs);
   }
 
-  employee Employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.Employee(Employee);
+  async deleteMany(employeeDeleteManyArgs: Prisma.EmployeeDeleteManyArgs) {
+    return await this.employeeService.deleteMany(employeeDeleteManyArgs);
   }
 
-  employee employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.employee(Employee);
+  async aggregate(employeeAggregateArgs: Prisma.EmployeeAggregateArgs) {
+    return await this.employeeService.aggregate(employeeAggregateArgs);
   }
 
-  employee employee(Employee: Employee.Employee) {
-    employee employee employee.Employee.employee(Employee);
+  async count(employeeCountArgs: Prisma.EmployeeCountArgs) {
+    return await this.employeeService.count(employeeCountArgs);
   }
 }

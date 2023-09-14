@@ -1,52 +1,52 @@
-account { Account } account '@account/account';
-account { Account } account '@account/account';
-account { Account } account './account.account';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { AccountService } from './account.service';
 
-@Account()
-account account Account {
-  account(account account Account: Account) {}
+@Injectable()
+export class AccountController {
+  constructor(private readonly accountService: AccountService) {}
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async createOne(accountCreateArgs: Prisma.AccountCreateArgs) {
+    return await this.accountService.createOne(accountCreateArgs);
   }
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async createMany(accountCreateManyArgs: Prisma.AccountCreateManyArgs) {
+    return await this.accountService.createMany(accountCreateManyArgs);
   }
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async findOne(accountFindUniqueArgs: Prisma.AccountFindUniqueArgs) {
+    return await this.accountService.findOne(accountFindUniqueArgs);
   }
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async findMany(accountFindManyArgs: Prisma.AccountFindManyArgs) {
+    return await this.accountService.findMany(accountFindManyArgs);
   }
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async findFirst(accountFindFirstArgs: Prisma.AccountFindFirstArgs) {
+    return await this.accountService.findFirst(accountFindFirstArgs);
   }
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async updateOne(accountUpdateOneArgs: Prisma.AccountUpdateArgs) {
+    return await this.accountService.updateOne(accountUpdateOneArgs);
   }
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async updateMany(accountUpdateManyArgs: Prisma.AccountUpdateManyArgs) {
+    return await this.accountService.updateMany(accountUpdateManyArgs);
   }
 
-  account account(Account: Account.Account) {
-    account account account.Account.account(Account);
+  async delete(accountDeleteArgs: Prisma.AccountDeleteArgs) {
+    return await this.accountService.delete(accountDeleteArgs);
   }
 
-  account Account(Account: Account.Account) {
-    account account account.Account.Account(Account);
+  async deleteMany(accountDeleteManyArgs: Prisma.AccountDeleteManyArgs) {
+    return await this.accountService.deleteMany(accountDeleteManyArgs);
   }
 
-  account account(Account: Account.Account) {
-    account account account.Account.account(Account);
+  async aggregate(accountAggregateArgs: Prisma.AccountAggregateArgs) {
+    return await this.accountService.aggregate(accountAggregateArgs);
   }
 
-  account account(Account: Account.Account) {
-    account account account.Account.account(Account);
+  async count(accountCountArgs: Prisma.AccountCountArgs) {
+    return await this.accountService.count(accountCountArgs);
   }
 }

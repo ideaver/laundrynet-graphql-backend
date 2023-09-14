@@ -1,160 +1,160 @@
-// @attendance-attendance
-attendance { Attendance, Attendance, Attendance, Attendance, Attendance } attendance '@attendance/attendance';
-attendance { Attendance } attendance '@attendance/attendance';
-attendance { Attendance } attendance 'attendance/attendance/attendance.attendance';
-attendance {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateAttendance,
+  CreateManyAttendanceArgs,
+  CreateOneAttendanceArgs,
+  DeleteManyAttendanceArgs,
+  DeleteOneAttendanceArgs,
+  FindFirstAttendanceArgs,
+  FindManyAttendanceArgs,
+  FindUniqueAttendanceArgs,
   Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-  Attendance,
-} attendance 'attendance/@attendance';
-attendance { Attendance } attendance './attendance.attendance';
-attendance { Attendance } attendance 'attendance/attendance/attendance-attendance-attendance-attendance.attendance';
-attendance Attendance attendance 'attendance/attendance/attendance-attendance.attendance';
+  AttendanceAggregateArgs,
+  UpdateManyAttendanceArgs,
+  UpdateOneAttendanceArgs,
+} from 'src/@generated';
+import { AttendanceController } from './attendance.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-attendance Attendance {
-  attendance: Attendance.Attendance;
+interface AttendanceSelect {
+  select: Prisma.AttendanceSelect;
 }
 
-@Attendance(() => Attendance)
-attendance attendance Attendance {
-  attendance(attendance attendance Attendance: Attendance) {}
+@Resolver(() => Attendance)
+export class AttendanceResolver {
+  constructor(private readonly attendanceController: AttendanceController) {}
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Mutation(() => Attendance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  attendance Attendance(
-    @Attendance()
-    Attendance: Attendance,
-    @Attendance() attendance: Attendance,
-  ): Attendance<Attendance | attendance> {
-    attendance attendance attendance.Attendance.Attendance({
-      ...Attendance,
-      attendance: attendance.attendance,
+  async attendanceCreateOne(
+    @Args()
+    attendanceCreateArgs: CreateOneAttendanceArgs,
+    @Relations() relations: AttendanceSelect,
+  ): Promise<Attendance | void> {
+    return await this.attendanceController.createOne({
+      ...attendanceCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  attendance Attendance(
-    @Attendance()
-    Attendance: Attendance,
+  async attendanceCreateMany(
+    @Args()
+    createManyAttendanceArgs: CreateManyAttendanceArgs,
   ) {
-    attendance attendance attendance.Attendance.Attendance(Attendance);
+    return await this.attendanceController.createMany(createManyAttendanceArgs);
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Query(() => Attendance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Attendance(
-    @Attendance()
-    Attendance: Attendance,
-    @Attendance() attendance: Attendance,
-  ): Attendance<Attendance | attendance> {
-    attendance attendance.Attendance.Attendance({
-      ...Attendance,
-      attendance: attendance.attendance,
+  attendanceFindOne(
+    @Args()
+    attendanceFindUniqueArgs: FindUniqueAttendanceArgs,
+    @Relations() relations: AttendanceSelect,
+  ): Promise<Attendance | void> {
+    return this.attendanceController.findOne({
+      ...attendanceFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Attendance(() => [Attendance], {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Query(() => [Attendance], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Attendance(
-    @Attendance() Attendance: Attendance,
-    @Attendance() attendance: Attendance,
+  attendanceFindMany(
+    @Args() attendanceFindManyArgs: FindManyAttendanceArgs,
+    @Relations() relations: AttendanceSelect,
   ) {
-    attendance attendance.Attendance.Attendance({
-      ...Attendance,
-      attendance: attendance.attendance,
+    return this.attendanceController.findMany({
+      ...attendanceFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Query(() => Attendance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Attendance(
-    @Attendance()
-    Attendance: Attendance,
-    @Attendance() attendance: Attendance,
-  ): Attendance<Attendance | attendance> {
-    attendance attendance.Attendance.Attendance({
-      ...Attendance,
-      attendance: attendance.attendance,
+  attendanceFindFirst(
+    @Args()
+    findFirstAttendanceArgs: FindFirstAttendanceArgs,
+    @Relations() relations: AttendanceSelect,
+  ): Promise<Attendance | void> {
+    return this.attendanceController.findFirst({
+      ...findFirstAttendanceArgs,
+      select: relations.select,
     });
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Mutation(() => Attendance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  attendance Attendance(
-    @Attendance() Attendance: Attendance,
-    @Attendance() attendance: Attendance,
+  async attendanceUpdateOne(
+    @Args() attendanceUpdateOneArgs: UpdateOneAttendanceArgs,
+    @Relations() relations: AttendanceSelect,
   ) {
-    attendance attendance.Attendance.Attendance({
-      ...Attendance(Attendance),
-      attendance: attendance.attendance,
+    return this.attendanceController.updateOne({
+      ...replaceNullWithUndefined(attendanceUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Mutation(() => Attendance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  attendance Attendance(@Attendance() Attendance: Attendance) {
-    attendance attendance.Attendance.Attendance(Attendance);
+  async attendanceUpdateMany(@Args() updateManyAttendanceArgs: UpdateManyAttendanceArgs) {
+    return this.attendanceController.updateMany(updateManyAttendanceArgs);
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  attendance Attendance(
-    @Attendance() Attendance: Attendance,
-    @Attendance() attendance: Attendance,
+  async attendanceDelete(
+    @Args() deleteOneAttendanceArgs: DeleteOneAttendanceArgs,
+    @Relations() relations: AttendanceSelect,
   ) {
-    attendance attendance.Attendance.attendance({
-      ...Attendance,
-      attendance: attendance.attendance,
+    return this.attendanceController.delete({
+      ...deleteOneAttendanceArgs,
+      select: relations.select,
     });
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  attendance Attendance(@Attendance() Attendance: Attendance) {
-    attendance attendance.Attendance.Attendance(Attendance);
+  async attendanceDeleteMany(@Args() deleteManyAttendanceArgs: DeleteManyAttendanceArgs) {
+    return this.attendanceController.deleteMany(deleteManyAttendanceArgs);
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Query(() => AggregateAttendance, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Attendance(@Attendance() Attendance: Attendance) {
-    attendance attendance.Attendance.attendance(Attendance);
+  attendanceAggregate(@Args() attendanceAggregateArgs: AttendanceAggregateArgs) {
+    return this.attendanceController.aggregate(attendanceAggregateArgs);
   }
 
-  @Attendance(() => Attendance, {
-    attendance: attendance,
-    attendance: 'Attendance attendance attendance attendance',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Attendance(@Attendance() Attendance: Attendance) {
-    attendance attendance.Attendance.attendance(Attendance);
+  attendanceCount(@Args() attendanceCountAggregateInput: FindManyAttendanceArgs) {
+    return this.attendanceController.count(attendanceCountAggregateInput);
   }
 }

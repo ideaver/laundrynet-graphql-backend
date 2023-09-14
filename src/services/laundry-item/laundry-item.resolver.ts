@@ -1,160 +1,160 @@
-// @laundryitem-laundryitem
-laundryitem { LaundryItem, LaundryItem, LaundryItem, LaundryItem, LaundryItem } laundryitem '@laundryitem/laundryitem';
-laundryitem { LaundryItem } laundryitem '@laundryitem/laundryitem';
-laundryitem { LaundryItem } laundryitem 'laundryitem/laundryitem/laundryitem.laundryitem';
-laundryitem {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateLaundryItem,
+  CreateManyLaundryItemArgs,
+  CreateOneLaundryItemArgs,
+  DeleteManyLaundryItemArgs,
+  DeleteOneLaundryItemArgs,
+  FindFirstLaundryItemArgs,
+  FindManyLaundryItemArgs,
+  FindUniqueLaundryItemArgs,
   LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-  LaundryItem,
-} laundryitem 'laundryitem/@laundryitem';
-laundryitem { LaundryItem } laundryitem './laundryitem.laundryitem';
-laundryitem { LaundryItem } laundryitem 'laundryitem/laundryitem/laundryitem-laundryitem-laundryitem-laundryitem.laundryitem';
-laundryitem LaundryItem laundryitem 'laundryitem/laundryitem/laundryitem-laundryitem.laundryitem';
+  LaundryItemAggregateArgs,
+  UpdateManyLaundryItemArgs,
+  UpdateOneLaundryItemArgs,
+} from 'src/@generated';
+import { LaundryItemController } from './laundryItem.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-laundryitem LaundryItem {
-  laundryitem: LaundryItem.LaundryItem;
+interface LaundryItemSelect {
+  select: Prisma.LaundryItemSelect;
 }
 
-@LaundryItem(() => LaundryItem)
-laundryitem laundryitem LaundryItem {
-  laundryitem(laundryitem laundryitem LaundryItem: LaundryItem) {}
+@Resolver(() => LaundryItem)
+export class LaundryItemResolver {
+  constructor(private readonly laundryItemController: LaundryItemController) {}
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Mutation(() => LaundryItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitem LaundryItem(
-    @LaundryItem()
-    LaundryItem: LaundryItem,
-    @LaundryItem() laundryitem: LaundryItem,
-  ): LaundryItem<LaundryItem | laundryitem> {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem({
-      ...LaundryItem,
-      laundryitem: laundryitem.laundryitem,
+  async laundryItemCreateOne(
+    @Args()
+    laundryItemCreateArgs: CreateOneLaundryItemArgs,
+    @Relations() relations: LaundryItemSelect,
+  ): Promise<LaundryItem | void> {
+    return await this.laundryItemController.createOne({
+      ...laundryItemCreateArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitem LaundryItem(
-    @LaundryItem()
-    LaundryItem: LaundryItem,
+  async laundryItemCreateMany(
+    @Args()
+    createManyLaundryItemArgs: CreateManyLaundryItemArgs,
   ) {
-    laundryitem laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+    return await this.laundryItemController.createMany(createManyLaundryItemArgs);
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Query(() => LaundryItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItem(
-    @LaundryItem()
-    LaundryItem: LaundryItem,
-    @LaundryItem() laundryitem: LaundryItem,
-  ): LaundryItem<LaundryItem | laundryitem> {
-    laundryitem laundryitem.LaundryItem.LaundryItem({
-      ...LaundryItem,
-      laundryitem: laundryitem.laundryitem,
+  laundryItemFindOne(
+    @Args()
+    laundryItemFindUniqueArgs: FindUniqueLaundryItemArgs,
+    @Relations() relations: LaundryItemSelect,
+  ): Promise<LaundryItem | void> {
+    return this.laundryItemController.findOne({
+      ...laundryItemFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItem(() => [LaundryItem], {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Query(() => [LaundryItem], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItem(
-    @LaundryItem() LaundryItem: LaundryItem,
-    @LaundryItem() laundryitem: LaundryItem,
+  laundryItemFindMany(
+    @Args() laundryItemFindManyArgs: FindManyLaundryItemArgs,
+    @Relations() relations: LaundryItemSelect,
   ) {
-    laundryitem laundryitem.LaundryItem.LaundryItem({
-      ...LaundryItem,
-      laundryitem: laundryitem.laundryitem,
+    return this.laundryItemController.findMany({
+      ...laundryItemFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Query(() => LaundryItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItem(
-    @LaundryItem()
-    LaundryItem: LaundryItem,
-    @LaundryItem() laundryitem: LaundryItem,
-  ): LaundryItem<LaundryItem | laundryitem> {
-    laundryitem laundryitem.LaundryItem.LaundryItem({
-      ...LaundryItem,
-      laundryitem: laundryitem.laundryitem,
+  laundryItemFindFirst(
+    @Args()
+    findFirstLaundryItemArgs: FindFirstLaundryItemArgs,
+    @Relations() relations: LaundryItemSelect,
+  ): Promise<LaundryItem | void> {
+    return this.laundryItemController.findFirst({
+      ...findFirstLaundryItemArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Mutation(() => LaundryItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitem LaundryItem(
-    @LaundryItem() LaundryItem: LaundryItem,
-    @LaundryItem() laundryitem: LaundryItem,
+  async laundryItemUpdateOne(
+    @Args() laundryItemUpdateOneArgs: UpdateOneLaundryItemArgs,
+    @Relations() relations: LaundryItemSelect,
   ) {
-    laundryitem laundryitem.LaundryItem.LaundryItem({
-      ...LaundryItem(LaundryItem),
-      laundryitem: laundryitem.laundryitem,
+    return this.laundryItemController.updateOne({
+      ...replaceNullWithUndefined(laundryItemUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Mutation(() => LaundryItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitem LaundryItem(@LaundryItem() LaundryItem: LaundryItem) {
-    laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async laundryItemUpdateMany(@Args() updateManyLaundryItemArgs: UpdateManyLaundryItemArgs) {
+    return this.laundryItemController.updateMany(updateManyLaundryItemArgs);
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitem LaundryItem(
-    @LaundryItem() LaundryItem: LaundryItem,
-    @LaundryItem() laundryitem: LaundryItem,
+  async laundryItemDelete(
+    @Args() deleteOneLaundryItemArgs: DeleteOneLaundryItemArgs,
+    @Relations() relations: LaundryItemSelect,
   ) {
-    laundryitem laundryitem.LaundryItem.laundryitem({
-      ...LaundryItem,
-      laundryitem: laundryitem.laundryitem,
+    return this.laundryItemController.delete({
+      ...deleteOneLaundryItemArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitem LaundryItem(@LaundryItem() LaundryItem: LaundryItem) {
-    laundryitem laundryitem.LaundryItem.LaundryItem(LaundryItem);
+  async laundryItemDeleteMany(@Args() deleteManyLaundryItemArgs: DeleteManyLaundryItemArgs) {
+    return this.laundryItemController.deleteMany(deleteManyLaundryItemArgs);
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Query(() => AggregateLaundryItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItem(@LaundryItem() LaundryItem: LaundryItem) {
-    laundryitem laundryitem.LaundryItem.laundryitem(LaundryItem);
+  laundryItemAggregate(@Args() laundryItemAggregateArgs: LaundryItemAggregateArgs) {
+    return this.laundryItemController.aggregate(laundryItemAggregateArgs);
   }
 
-  @LaundryItem(() => LaundryItem, {
-    laundryitem: laundryitem,
-    laundryitem: 'LaundryItem laundryitem laundryitem laundryitem',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItem(@LaundryItem() LaundryItem: LaundryItem) {
-    laundryitem laundryitem.LaundryItem.laundryitem(LaundryItem);
+  laundryItemCount(@Args() laundryItemCountAggregateInput: FindManyLaundryItemArgs) {
+    return this.laundryItemController.count(laundryItemCountAggregateInput);
   }
 }

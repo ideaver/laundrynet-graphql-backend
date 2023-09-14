@@ -1,160 +1,160 @@
-// @laundryitemrequest-laundryitemrequest
-laundryitemrequest { LaundryItemRequest, LaundryItemRequest, LaundryItemRequest, LaundryItemRequest, LaundryItemRequest } laundryitemrequest '@laundryitemrequest/laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest '@laundryitemrequest/laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest 'laundryitemrequest/laundryitemrequest/laundryitemrequest.laundryitemrequest';
-laundryitemrequest {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateLaundryItemRequest,
+  CreateManyLaundryItemRequestArgs,
+  CreateOneLaundryItemRequestArgs,
+  DeleteManyLaundryItemRequestArgs,
+  DeleteOneLaundryItemRequestArgs,
+  FindFirstLaundryItemRequestArgs,
+  FindManyLaundryItemRequestArgs,
+  FindUniqueLaundryItemRequestArgs,
   LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-  LaundryItemRequest,
-} laundryitemrequest 'laundryitemrequest/@laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest './laundryitemrequest.laundryitemrequest';
-laundryitemrequest { LaundryItemRequest } laundryitemrequest 'laundryitemrequest/laundryitemrequest/laundryitemrequest-laundryitemrequest-laundryitemrequest-laundryitemrequest.laundryitemrequest';
-laundryitemrequest LaundryItemRequest laundryitemrequest 'laundryitemrequest/laundryitemrequest/laundryitemrequest-laundryitemrequest.laundryitemrequest';
+  LaundryItemRequestAggregateArgs,
+  UpdateManyLaundryItemRequestArgs,
+  UpdateOneLaundryItemRequestArgs,
+} from 'src/@generated';
+import { LaundryItemRequestController } from './laundryItemRequest.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-laundryitemrequest LaundryItemRequest {
-  laundryitemrequest: LaundryItemRequest.LaundryItemRequest;
+interface LaundryItemRequestSelect {
+  select: Prisma.LaundryItemRequestSelect;
 }
 
-@LaundryItemRequest(() => LaundryItemRequest)
-laundryitemrequest laundryitemrequest LaundryItemRequest {
-  laundryitemrequest(laundryitemrequest laundryitemrequest LaundryItemRequest: LaundryItemRequest) {}
+@Resolver(() => LaundryItemRequest)
+export class LaundryItemRequestResolver {
+  constructor(private readonly laundryItemRequestController: LaundryItemRequestController) {}
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Mutation(() => LaundryItemRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemrequest LaundryItemRequest(
-    @LaundryItemRequest()
-    LaundryItemRequest: LaundryItemRequest,
-    @LaundryItemRequest() laundryitemrequest: LaundryItemRequest,
-  ): LaundryItemRequest<LaundryItemRequest | laundryitemrequest> {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest({
-      ...LaundryItemRequest,
-      laundryitemrequest: laundryitemrequest.laundryitemrequest,
+  async laundryItemRequestCreateOne(
+    @Args()
+    laundryItemRequestCreateArgs: CreateOneLaundryItemRequestArgs,
+    @Relations() relations: LaundryItemRequestSelect,
+  ): Promise<LaundryItemRequest | void> {
+    return await this.laundryItemRequestController.createOne({
+      ...laundryItemRequestCreateArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemrequest LaundryItemRequest(
-    @LaundryItemRequest()
-    LaundryItemRequest: LaundryItemRequest,
+  async laundryItemRequestCreateMany(
+    @Args()
+    createManyLaundryItemRequestArgs: CreateManyLaundryItemRequestArgs,
   ) {
-    laundryitemrequest laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+    return await this.laundryItemRequestController.createMany(createManyLaundryItemRequestArgs);
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Query(() => LaundryItemRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemRequest(
-    @LaundryItemRequest()
-    LaundryItemRequest: LaundryItemRequest,
-    @LaundryItemRequest() laundryitemrequest: LaundryItemRequest,
-  ): LaundryItemRequest<LaundryItemRequest | laundryitemrequest> {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest({
-      ...LaundryItemRequest,
-      laundryitemrequest: laundryitemrequest.laundryitemrequest,
+  laundryItemRequestFindOne(
+    @Args()
+    laundryItemRequestFindUniqueArgs: FindUniqueLaundryItemRequestArgs,
+    @Relations() relations: LaundryItemRequestSelect,
+  ): Promise<LaundryItemRequest | void> {
+    return this.laundryItemRequestController.findOne({
+      ...laundryItemRequestFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemRequest(() => [LaundryItemRequest], {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Query(() => [LaundryItemRequest], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemRequest(
-    @LaundryItemRequest() LaundryItemRequest: LaundryItemRequest,
-    @LaundryItemRequest() laundryitemrequest: LaundryItemRequest,
+  laundryItemRequestFindMany(
+    @Args() laundryItemRequestFindManyArgs: FindManyLaundryItemRequestArgs,
+    @Relations() relations: LaundryItemRequestSelect,
   ) {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest({
-      ...LaundryItemRequest,
-      laundryitemrequest: laundryitemrequest.laundryitemrequest,
+    return this.laundryItemRequestController.findMany({
+      ...laundryItemRequestFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Query(() => LaundryItemRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemRequest(
-    @LaundryItemRequest()
-    LaundryItemRequest: LaundryItemRequest,
-    @LaundryItemRequest() laundryitemrequest: LaundryItemRequest,
-  ): LaundryItemRequest<LaundryItemRequest | laundryitemrequest> {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest({
-      ...LaundryItemRequest,
-      laundryitemrequest: laundryitemrequest.laundryitemrequest,
+  laundryItemRequestFindFirst(
+    @Args()
+    findFirstLaundryItemRequestArgs: FindFirstLaundryItemRequestArgs,
+    @Relations() relations: LaundryItemRequestSelect,
+  ): Promise<LaundryItemRequest | void> {
+    return this.laundryItemRequestController.findFirst({
+      ...findFirstLaundryItemRequestArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Mutation(() => LaundryItemRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemrequest LaundryItemRequest(
-    @LaundryItemRequest() LaundryItemRequest: LaundryItemRequest,
-    @LaundryItemRequest() laundryitemrequest: LaundryItemRequest,
+  async laundryItemRequestUpdateOne(
+    @Args() laundryItemRequestUpdateOneArgs: UpdateOneLaundryItemRequestArgs,
+    @Relations() relations: LaundryItemRequestSelect,
   ) {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest({
-      ...LaundryItemRequest(LaundryItemRequest),
-      laundryitemrequest: laundryitemrequest.laundryitemrequest,
+    return this.laundryItemRequestController.updateOne({
+      ...replaceNullWithUndefined(laundryItemRequestUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Mutation(() => LaundryItemRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemrequest LaundryItemRequest(@LaundryItemRequest() LaundryItemRequest: LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async laundryItemRequestUpdateMany(@Args() updateManyLaundryItemRequestArgs: UpdateManyLaundryItemRequestArgs) {
+    return this.laundryItemRequestController.updateMany(updateManyLaundryItemRequestArgs);
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemrequest LaundryItemRequest(
-    @LaundryItemRequest() LaundryItemRequest: LaundryItemRequest,
-    @LaundryItemRequest() laundryitemrequest: LaundryItemRequest,
+  async laundryItemRequestDelete(
+    @Args() deleteOneLaundryItemRequestArgs: DeleteOneLaundryItemRequestArgs,
+    @Relations() relations: LaundryItemRequestSelect,
   ) {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.laundryitemrequest({
-      ...LaundryItemRequest,
-      laundryitemrequest: laundryitemrequest.laundryitemrequest,
+    return this.laundryItemRequestController.delete({
+      ...deleteOneLaundryItemRequestArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemrequest LaundryItemRequest(@LaundryItemRequest() LaundryItemRequest: LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.LaundryItemRequest(LaundryItemRequest);
+  async laundryItemRequestDeleteMany(@Args() deleteManyLaundryItemRequestArgs: DeleteManyLaundryItemRequestArgs) {
+    return this.laundryItemRequestController.deleteMany(deleteManyLaundryItemRequestArgs);
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Query(() => AggregateLaundryItemRequest, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemRequest(@LaundryItemRequest() LaundryItemRequest: LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.laundryitemrequest(LaundryItemRequest);
+  laundryItemRequestAggregate(@Args() laundryItemRequestAggregateArgs: LaundryItemRequestAggregateArgs) {
+    return this.laundryItemRequestController.aggregate(laundryItemRequestAggregateArgs);
   }
 
-  @LaundryItemRequest(() => LaundryItemRequest, {
-    laundryitemrequest: laundryitemrequest,
-    laundryitemrequest: 'LaundryItemRequest laundryitemrequest laundryitemrequest laundryitemrequest',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemRequest(@LaundryItemRequest() LaundryItemRequest: LaundryItemRequest) {
-    laundryitemrequest laundryitemrequest.LaundryItemRequest.laundryitemrequest(LaundryItemRequest);
+  laundryItemRequestCount(@Args() laundryItemRequestCountAggregateInput: FindManyLaundryItemRequestArgs) {
+    return this.laundryItemRequestController.count(laundryItemRequestCountAggregateInput);
   }
 }

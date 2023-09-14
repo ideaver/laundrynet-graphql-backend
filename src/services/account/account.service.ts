@@ -1,99 +1,99 @@
-account { Account } account '@account/account';
-account { Account } account 'account/account.account';
-account { Account } account 'account/account/account/account-account-account';
-account { Account } account '@account/account';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@Account()
-account account Account {
-  account(account account: Account) {}
+@Injectable()
+export class AccountService {
+  constructor(private prisma: PrismaService) {}
 
-  account Account(Account: Account.Account) {
-    account {
-      account account account.account.account.account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async createOne(accountCreateArgs: Prisma.AccountCreateArgs) {
+    try {
+      return await this.prisma.account.create(accountCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account Account(Account: Account.Account) {
-    account {
-      account account account.account.account.Account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async createMany(accountCreateManyArgs: Prisma.AccountCreateManyArgs) {
+    try {
+      return await this.prisma.account.createMany(accountCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account Account(Account: Account.Account) {
-    account {
-      account account account.account.account.Account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async findOne(accountFindUniqueArgs: Prisma.AccountFindUniqueArgs) {
+    try {
+      return await this.prisma.account.findUnique(accountFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account Account(Account: Account.Account) {
-    account {
-      account account account.account.account.Account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async findMany(accountFindManyArgs: Prisma.AccountFindManyArgs) {
+    try {
+      return await this.prisma.account.findMany(accountFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account Account(Account: Account.Account) {
-    account {
-      account account account.account.account.Account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async findFirst(accountFindFirstArgs: Prisma.AccountFindFirstArgs) {
+    try {
+      return await this.prisma.account.findFirst(accountFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account Account(Account: Account.Account) {
-    account {
-      account account account.account.account.account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async updateOne(accountUpdateOneArgs: Prisma.AccountUpdateArgs) {
+    try {
+      return await this.prisma.account.update(accountUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account Account(Account: Account.Account) {
-    account {
-      account account account.account.account.Account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async updateMany(accountUpdateManyArgs: Prisma.AccountUpdateManyArgs) {
+    try {
+      return await this.prisma.account.updateMany(accountUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account account(Account: Account.Account) {
-    account {
-      account account.account.account.account(Account);
-      account account;
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async delete(accountDeleteArgs: Prisma.AccountDeleteArgs) {
+    try {
+      await this.prisma.account.delete(accountDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account Account(Account: Account.Account) {
-    account {
-      account account.account.account.Account(Account);
-      account account;
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async deleteMany(accountDeleteManyArgs: Prisma.AccountDeleteManyArgs) {
+    try {
+      await this.prisma.account.deleteMany(accountDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account account(Account: Account.Account) {
-    account {
-      account account account.account.account.account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async aggregate(accountAggregateArgs: Prisma.AccountAggregateArgs) {
+    try {
+      return await this.prisma.account.aggregate(accountAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  account account(Account: Account.Account) {
-    account {
-      account account account.account.account.account(Account);
-    } account (account) {
-      account account Account({ account: account, account: account });
+  async count(accountCountArgs: Prisma.AccountCountArgs) {
+    try {
+      return await this.prisma.account.count(accountCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

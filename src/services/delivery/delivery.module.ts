@@ -1,11 +1,11 @@
-delivery { Delivery } delivery '@delivery/delivery';
-delivery { Delivery } delivery './delivery.delivery';
-delivery { Delivery } delivery './delivery.delivery';
-delivery { Delivery } delivery 'delivery/delivery.delivery';
-delivery { Delivery } delivery './delivery.delivery';
+import { Module } from '@nestjs/common';
+import { DeliveryService } from './delivery.service';
+import { DeliveryResolver } from './delivery.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { DeliveryController } from './delivery.controller';
 
-@Delivery({
-  delivery: [Delivery, Delivery, Delivery, Delivery],
-  delivery: [Delivery],
+@Module({
+  providers: [PrismaService, DeliveryResolver, DeliveryController, DeliveryService],
+  exports: [DeliveryController],
 })
-delivery delivery Delivery {}
+export class DeliveryModule {}

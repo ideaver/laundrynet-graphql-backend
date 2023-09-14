@@ -1,160 +1,160 @@
-// @machinecategory-machinecategory
-machinecategory { MachineCategory, MachineCategory, MachineCategory, MachineCategory, MachineCategory } machinecategory '@machinecategory/machinecategory';
-machinecategory { MachineCategory } machinecategory '@machinecategory/machinecategory';
-machinecategory { MachineCategory } machinecategory 'machinecategory/machinecategory/machinecategory.machinecategory';
-machinecategory {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateMachineCategory,
+  CreateManyMachineCategoryArgs,
+  CreateOneMachineCategoryArgs,
+  DeleteManyMachineCategoryArgs,
+  DeleteOneMachineCategoryArgs,
+  FindFirstMachineCategoryArgs,
+  FindManyMachineCategoryArgs,
+  FindUniqueMachineCategoryArgs,
   MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-  MachineCategory,
-} machinecategory 'machinecategory/@machinecategory';
-machinecategory { MachineCategory } machinecategory './machinecategory.machinecategory';
-machinecategory { MachineCategory } machinecategory 'machinecategory/machinecategory/machinecategory-machinecategory-machinecategory-machinecategory.machinecategory';
-machinecategory MachineCategory machinecategory 'machinecategory/machinecategory/machinecategory-machinecategory.machinecategory';
+  MachineCategoryAggregateArgs,
+  UpdateManyMachineCategoryArgs,
+  UpdateOneMachineCategoryArgs,
+} from 'src/@generated';
+import { MachineCategoryController } from './machineCategory.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-machinecategory MachineCategory {
-  machinecategory: MachineCategory.MachineCategory;
+interface MachineCategorySelect {
+  select: Prisma.MachineCategorySelect;
 }
 
-@MachineCategory(() => MachineCategory)
-machinecategory machinecategory MachineCategory {
-  machinecategory(machinecategory machinecategory MachineCategory: MachineCategory) {}
+@Resolver(() => MachineCategory)
+export class MachineCategoryResolver {
+  constructor(private readonly machineCategoryController: MachineCategoryController) {}
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Mutation(() => MachineCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinecategory MachineCategory(
-    @MachineCategory()
-    MachineCategory: MachineCategory,
-    @MachineCategory() machinecategory: MachineCategory,
-  ): MachineCategory<MachineCategory | machinecategory> {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory({
-      ...MachineCategory,
-      machinecategory: machinecategory.machinecategory,
+  async machineCategoryCreateOne(
+    @Args()
+    machineCategoryCreateArgs: CreateOneMachineCategoryArgs,
+    @Relations() relations: MachineCategorySelect,
+  ): Promise<MachineCategory | void> {
+    return await this.machineCategoryController.createOne({
+      ...machineCategoryCreateArgs,
+      select: relations.select,
     });
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinecategory MachineCategory(
-    @MachineCategory()
-    MachineCategory: MachineCategory,
+  async machineCategoryCreateMany(
+    @Args()
+    createManyMachineCategoryArgs: CreateManyMachineCategoryArgs,
   ) {
-    machinecategory machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+    return await this.machineCategoryController.createMany(createManyMachineCategoryArgs);
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Query(() => MachineCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineCategory(
-    @MachineCategory()
-    MachineCategory: MachineCategory,
-    @MachineCategory() machinecategory: MachineCategory,
-  ): MachineCategory<MachineCategory | machinecategory> {
-    machinecategory machinecategory.MachineCategory.MachineCategory({
-      ...MachineCategory,
-      machinecategory: machinecategory.machinecategory,
+  machineCategoryFindOne(
+    @Args()
+    machineCategoryFindUniqueArgs: FindUniqueMachineCategoryArgs,
+    @Relations() relations: MachineCategorySelect,
+  ): Promise<MachineCategory | void> {
+    return this.machineCategoryController.findOne({
+      ...machineCategoryFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @MachineCategory(() => [MachineCategory], {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Query(() => [MachineCategory], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineCategory(
-    @MachineCategory() MachineCategory: MachineCategory,
-    @MachineCategory() machinecategory: MachineCategory,
+  machineCategoryFindMany(
+    @Args() machineCategoryFindManyArgs: FindManyMachineCategoryArgs,
+    @Relations() relations: MachineCategorySelect,
   ) {
-    machinecategory machinecategory.MachineCategory.MachineCategory({
-      ...MachineCategory,
-      machinecategory: machinecategory.machinecategory,
+    return this.machineCategoryController.findMany({
+      ...machineCategoryFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Query(() => MachineCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineCategory(
-    @MachineCategory()
-    MachineCategory: MachineCategory,
-    @MachineCategory() machinecategory: MachineCategory,
-  ): MachineCategory<MachineCategory | machinecategory> {
-    machinecategory machinecategory.MachineCategory.MachineCategory({
-      ...MachineCategory,
-      machinecategory: machinecategory.machinecategory,
+  machineCategoryFindFirst(
+    @Args()
+    findFirstMachineCategoryArgs: FindFirstMachineCategoryArgs,
+    @Relations() relations: MachineCategorySelect,
+  ): Promise<MachineCategory | void> {
+    return this.machineCategoryController.findFirst({
+      ...findFirstMachineCategoryArgs,
+      select: relations.select,
     });
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Mutation(() => MachineCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinecategory MachineCategory(
-    @MachineCategory() MachineCategory: MachineCategory,
-    @MachineCategory() machinecategory: MachineCategory,
+  async machineCategoryUpdateOne(
+    @Args() machineCategoryUpdateOneArgs: UpdateOneMachineCategoryArgs,
+    @Relations() relations: MachineCategorySelect,
   ) {
-    machinecategory machinecategory.MachineCategory.MachineCategory({
-      ...MachineCategory(MachineCategory),
-      machinecategory: machinecategory.machinecategory,
+    return this.machineCategoryController.updateOne({
+      ...replaceNullWithUndefined(machineCategoryUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Mutation(() => MachineCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinecategory MachineCategory(@MachineCategory() MachineCategory: MachineCategory) {
-    machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async machineCategoryUpdateMany(@Args() updateManyMachineCategoryArgs: UpdateManyMachineCategoryArgs) {
+    return this.machineCategoryController.updateMany(updateManyMachineCategoryArgs);
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinecategory MachineCategory(
-    @MachineCategory() MachineCategory: MachineCategory,
-    @MachineCategory() machinecategory: MachineCategory,
+  async machineCategoryDelete(
+    @Args() deleteOneMachineCategoryArgs: DeleteOneMachineCategoryArgs,
+    @Relations() relations: MachineCategorySelect,
   ) {
-    machinecategory machinecategory.MachineCategory.machinecategory({
-      ...MachineCategory,
-      machinecategory: machinecategory.machinecategory,
+    return this.machineCategoryController.delete({
+      ...deleteOneMachineCategoryArgs,
+      select: relations.select,
     });
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  machinecategory MachineCategory(@MachineCategory() MachineCategory: MachineCategory) {
-    machinecategory machinecategory.MachineCategory.MachineCategory(MachineCategory);
+  async machineCategoryDeleteMany(@Args() deleteManyMachineCategoryArgs: DeleteManyMachineCategoryArgs) {
+    return this.machineCategoryController.deleteMany(deleteManyMachineCategoryArgs);
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Query(() => AggregateMachineCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineCategory(@MachineCategory() MachineCategory: MachineCategory) {
-    machinecategory machinecategory.MachineCategory.machinecategory(MachineCategory);
+  machineCategoryAggregate(@Args() machineCategoryAggregateArgs: MachineCategoryAggregateArgs) {
+    return this.machineCategoryController.aggregate(machineCategoryAggregateArgs);
   }
 
-  @MachineCategory(() => MachineCategory, {
-    machinecategory: machinecategory,
-    machinecategory: 'MachineCategory machinecategory machinecategory machinecategory',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MachineCategory(@MachineCategory() MachineCategory: MachineCategory) {
-    machinecategory machinecategory.MachineCategory.machinecategory(MachineCategory);
+  machineCategoryCount(@Args() machineCategoryCountAggregateInput: FindManyMachineCategoryArgs) {
+    return this.machineCategoryController.count(machineCategoryCountAggregateInput);
   }
 }

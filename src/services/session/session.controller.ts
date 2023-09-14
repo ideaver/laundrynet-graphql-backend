@@ -1,52 +1,52 @@
-session { Session } session '@session/session';
-session { Session } session '@session/session';
-session { Session } session './session.session';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { SessionService } from './session.service';
 
-@Session()
-session session Session {
-  session(session session Session: Session) {}
+@Injectable()
+export class SessionController {
+  constructor(private readonly sessionService: SessionService) {}
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async createOne(sessionCreateArgs: Prisma.SessionCreateArgs) {
+    return await this.sessionService.createOne(sessionCreateArgs);
   }
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async createMany(sessionCreateManyArgs: Prisma.SessionCreateManyArgs) {
+    return await this.sessionService.createMany(sessionCreateManyArgs);
   }
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async findOne(sessionFindUniqueArgs: Prisma.SessionFindUniqueArgs) {
+    return await this.sessionService.findOne(sessionFindUniqueArgs);
   }
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async findMany(sessionFindManyArgs: Prisma.SessionFindManyArgs) {
+    return await this.sessionService.findMany(sessionFindManyArgs);
   }
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async findFirst(sessionFindFirstArgs: Prisma.SessionFindFirstArgs) {
+    return await this.sessionService.findFirst(sessionFindFirstArgs);
   }
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async updateOne(sessionUpdateOneArgs: Prisma.SessionUpdateArgs) {
+    return await this.sessionService.updateOne(sessionUpdateOneArgs);
   }
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async updateMany(sessionUpdateManyArgs: Prisma.SessionUpdateManyArgs) {
+    return await this.sessionService.updateMany(sessionUpdateManyArgs);
   }
 
-  session session(Session: Session.Session) {
-    session session session.Session.session(Session);
+  async delete(sessionDeleteArgs: Prisma.SessionDeleteArgs) {
+    return await this.sessionService.delete(sessionDeleteArgs);
   }
 
-  session Session(Session: Session.Session) {
-    session session session.Session.Session(Session);
+  async deleteMany(sessionDeleteManyArgs: Prisma.SessionDeleteManyArgs) {
+    return await this.sessionService.deleteMany(sessionDeleteManyArgs);
   }
 
-  session session(Session: Session.Session) {
-    session session session.Session.session(Session);
+  async aggregate(sessionAggregateArgs: Prisma.SessionAggregateArgs) {
+    return await this.sessionService.aggregate(sessionAggregateArgs);
   }
 
-  session session(Session: Session.Session) {
-    session session session.Session.session(Session);
+  async count(sessionCountArgs: Prisma.SessionCountArgs) {
+    return await this.sessionService.count(sessionCountArgs);
   }
 }

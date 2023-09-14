@@ -1,52 +1,52 @@
-payment { Payment } payment '@payment/payment';
-payment { Payment } payment '@payment/payment';
-payment { Payment } payment './payment.payment';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { PaymentService } from './payment.service';
 
-@Payment()
-payment payment Payment {
-  payment(payment payment Payment: Payment) {}
+@Injectable()
+export class PaymentController {
+  constructor(private readonly paymentService: PaymentService) {}
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async createOne(paymentCreateArgs: Prisma.PaymentCreateArgs) {
+    return await this.paymentService.createOne(paymentCreateArgs);
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async createMany(paymentCreateManyArgs: Prisma.PaymentCreateManyArgs) {
+    return await this.paymentService.createMany(paymentCreateManyArgs);
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async findOne(paymentFindUniqueArgs: Prisma.PaymentFindUniqueArgs) {
+    return await this.paymentService.findOne(paymentFindUniqueArgs);
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async findMany(paymentFindManyArgs: Prisma.PaymentFindManyArgs) {
+    return await this.paymentService.findMany(paymentFindManyArgs);
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async findFirst(paymentFindFirstArgs: Prisma.PaymentFindFirstArgs) {
+    return await this.paymentService.findFirst(paymentFindFirstArgs);
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async updateOne(paymentUpdateOneArgs: Prisma.PaymentUpdateArgs) {
+    return await this.paymentService.updateOne(paymentUpdateOneArgs);
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async updateMany(paymentUpdateManyArgs: Prisma.PaymentUpdateManyArgs) {
+    return await this.paymentService.updateMany(paymentUpdateManyArgs);
   }
 
-  payment payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.payment(Payment);
+  async delete(paymentDeleteArgs: Prisma.PaymentDeleteArgs) {
+    return await this.paymentService.delete(paymentDeleteArgs);
   }
 
-  payment Payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.Payment(Payment);
+  async deleteMany(paymentDeleteManyArgs: Prisma.PaymentDeleteManyArgs) {
+    return await this.paymentService.deleteMany(paymentDeleteManyArgs);
   }
 
-  payment payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.payment(Payment);
+  async aggregate(paymentAggregateArgs: Prisma.PaymentAggregateArgs) {
+    return await this.paymentService.aggregate(paymentAggregateArgs);
   }
 
-  payment payment(Payment: Payment.Payment) {
-    payment payment payment.Payment.payment(Payment);
+  async count(paymentCountArgs: Prisma.PaymentCountArgs) {
+    return await this.paymentService.count(paymentCountArgs);
   }
 }

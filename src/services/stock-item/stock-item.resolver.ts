@@ -1,160 +1,160 @@
-// @stockitem-stockitem
-stockitem { StockItem, StockItem, StockItem, StockItem, StockItem } stockitem '@stockitem/stockitem';
-stockitem { StockItem } stockitem '@stockitem/stockitem';
-stockitem { StockItem } stockitem 'stockitem/stockitem/stockitem.stockitem';
-stockitem {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateStockItem,
+  CreateManyStockItemArgs,
+  CreateOneStockItemArgs,
+  DeleteManyStockItemArgs,
+  DeleteOneStockItemArgs,
+  FindFirstStockItemArgs,
+  FindManyStockItemArgs,
+  FindUniqueStockItemArgs,
   StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-  StockItem,
-} stockitem 'stockitem/@stockitem';
-stockitem { StockItem } stockitem './stockitem.stockitem';
-stockitem { StockItem } stockitem 'stockitem/stockitem/stockitem-stockitem-stockitem-stockitem.stockitem';
-stockitem StockItem stockitem 'stockitem/stockitem/stockitem-stockitem.stockitem';
+  StockItemAggregateArgs,
+  UpdateManyStockItemArgs,
+  UpdateOneStockItemArgs,
+} from 'src/@generated';
+import { StockItemController } from './stockItem.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-stockitem StockItem {
-  stockitem: StockItem.StockItem;
+interface StockItemSelect {
+  select: Prisma.StockItemSelect;
 }
 
-@StockItem(() => StockItem)
-stockitem stockitem StockItem {
-  stockitem(stockitem stockitem StockItem: StockItem) {}
+@Resolver(() => StockItem)
+export class StockItemResolver {
+  constructor(private readonly stockItemController: StockItemController) {}
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Mutation(() => StockItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stockitem StockItem(
-    @StockItem()
-    StockItem: StockItem,
-    @StockItem() stockitem: StockItem,
-  ): StockItem<StockItem | stockitem> {
-    stockitem stockitem stockitem.StockItem.StockItem({
-      ...StockItem,
-      stockitem: stockitem.stockitem,
+  async stockItemCreateOne(
+    @Args()
+    stockItemCreateArgs: CreateOneStockItemArgs,
+    @Relations() relations: StockItemSelect,
+  ): Promise<StockItem | void> {
+    return await this.stockItemController.createOne({
+      ...stockItemCreateArgs,
+      select: relations.select,
     });
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stockitem StockItem(
-    @StockItem()
-    StockItem: StockItem,
+  async stockItemCreateMany(
+    @Args()
+    createManyStockItemArgs: CreateManyStockItemArgs,
   ) {
-    stockitem stockitem stockitem.StockItem.StockItem(StockItem);
+    return await this.stockItemController.createMany(createManyStockItemArgs);
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Query(() => StockItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockItem(
-    @StockItem()
-    StockItem: StockItem,
-    @StockItem() stockitem: StockItem,
-  ): StockItem<StockItem | stockitem> {
-    stockitem stockitem.StockItem.StockItem({
-      ...StockItem,
-      stockitem: stockitem.stockitem,
+  stockItemFindOne(
+    @Args()
+    stockItemFindUniqueArgs: FindUniqueStockItemArgs,
+    @Relations() relations: StockItemSelect,
+  ): Promise<StockItem | void> {
+    return this.stockItemController.findOne({
+      ...stockItemFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @StockItem(() => [StockItem], {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Query(() => [StockItem], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockItem(
-    @StockItem() StockItem: StockItem,
-    @StockItem() stockitem: StockItem,
+  stockItemFindMany(
+    @Args() stockItemFindManyArgs: FindManyStockItemArgs,
+    @Relations() relations: StockItemSelect,
   ) {
-    stockitem stockitem.StockItem.StockItem({
-      ...StockItem,
-      stockitem: stockitem.stockitem,
+    return this.stockItemController.findMany({
+      ...stockItemFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Query(() => StockItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockItem(
-    @StockItem()
-    StockItem: StockItem,
-    @StockItem() stockitem: StockItem,
-  ): StockItem<StockItem | stockitem> {
-    stockitem stockitem.StockItem.StockItem({
-      ...StockItem,
-      stockitem: stockitem.stockitem,
+  stockItemFindFirst(
+    @Args()
+    findFirstStockItemArgs: FindFirstStockItemArgs,
+    @Relations() relations: StockItemSelect,
+  ): Promise<StockItem | void> {
+    return this.stockItemController.findFirst({
+      ...findFirstStockItemArgs,
+      select: relations.select,
     });
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Mutation(() => StockItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stockitem StockItem(
-    @StockItem() StockItem: StockItem,
-    @StockItem() stockitem: StockItem,
+  async stockItemUpdateOne(
+    @Args() stockItemUpdateOneArgs: UpdateOneStockItemArgs,
+    @Relations() relations: StockItemSelect,
   ) {
-    stockitem stockitem.StockItem.StockItem({
-      ...StockItem(StockItem),
-      stockitem: stockitem.stockitem,
+    return this.stockItemController.updateOne({
+      ...replaceNullWithUndefined(stockItemUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Mutation(() => StockItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  stockitem StockItem(@StockItem() StockItem: StockItem) {
-    stockitem stockitem.StockItem.StockItem(StockItem);
+  async stockItemUpdateMany(@Args() updateManyStockItemArgs: UpdateManyStockItemArgs) {
+    return this.stockItemController.updateMany(updateManyStockItemArgs);
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  stockitem StockItem(
-    @StockItem() StockItem: StockItem,
-    @StockItem() stockitem: StockItem,
+  async stockItemDelete(
+    @Args() deleteOneStockItemArgs: DeleteOneStockItemArgs,
+    @Relations() relations: StockItemSelect,
   ) {
-    stockitem stockitem.StockItem.stockitem({
-      ...StockItem,
-      stockitem: stockitem.stockitem,
+    return this.stockItemController.delete({
+      ...deleteOneStockItemArgs,
+      select: relations.select,
     });
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  stockitem StockItem(@StockItem() StockItem: StockItem) {
-    stockitem stockitem.StockItem.StockItem(StockItem);
+  async stockItemDeleteMany(@Args() deleteManyStockItemArgs: DeleteManyStockItemArgs) {
+    return this.stockItemController.deleteMany(deleteManyStockItemArgs);
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Query(() => AggregateStockItem, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockItem(@StockItem() StockItem: StockItem) {
-    stockitem stockitem.StockItem.stockitem(StockItem);
+  stockItemAggregate(@Args() stockItemAggregateArgs: StockItemAggregateArgs) {
+    return this.stockItemController.aggregate(stockItemAggregateArgs);
   }
 
-  @StockItem(() => StockItem, {
-    stockitem: stockitem,
-    stockitem: 'StockItem stockitem stockitem stockitem',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  StockItem(@StockItem() StockItem: StockItem) {
-    stockitem stockitem.StockItem.stockitem(StockItem);
+  stockItemCount(@Args() stockItemCountAggregateInput: FindManyStockItemArgs) {
+    return this.stockItemController.count(stockItemCountAggregateInput);
   }
 }

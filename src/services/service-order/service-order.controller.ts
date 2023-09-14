@@ -1,52 +1,52 @@
-serviceorder { ServiceOrder } serviceorder '@serviceorder/serviceorder';
-serviceorder { ServiceOrder } serviceorder '@serviceorder/serviceorder';
-serviceorder { ServiceOrder } serviceorder './serviceorder.serviceorder';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ServiceOrderService } from './serviceOrder.service';
 
-@ServiceOrder()
-serviceorder serviceorder ServiceOrder {
-  serviceorder(serviceorder serviceorder ServiceOrder: ServiceOrder) {}
+@Injectable()
+export class ServiceOrderController {
+  constructor(private readonly serviceOrderService: ServiceOrderService) {}
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async createOne(serviceOrderCreateArgs: Prisma.ServiceOrderCreateArgs) {
+    return await this.serviceOrderService.createOne(serviceOrderCreateArgs);
   }
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async createMany(serviceOrderCreateManyArgs: Prisma.ServiceOrderCreateManyArgs) {
+    return await this.serviceOrderService.createMany(serviceOrderCreateManyArgs);
   }
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async findOne(serviceOrderFindUniqueArgs: Prisma.ServiceOrderFindUniqueArgs) {
+    return await this.serviceOrderService.findOne(serviceOrderFindUniqueArgs);
   }
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async findMany(serviceOrderFindManyArgs: Prisma.ServiceOrderFindManyArgs) {
+    return await this.serviceOrderService.findMany(serviceOrderFindManyArgs);
   }
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async findFirst(serviceOrderFindFirstArgs: Prisma.ServiceOrderFindFirstArgs) {
+    return await this.serviceOrderService.findFirst(serviceOrderFindFirstArgs);
   }
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async updateOne(serviceOrderUpdateOneArgs: Prisma.ServiceOrderUpdateArgs) {
+    return await this.serviceOrderService.updateOne(serviceOrderUpdateOneArgs);
   }
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async updateMany(serviceOrderUpdateManyArgs: Prisma.ServiceOrderUpdateManyArgs) {
+    return await this.serviceOrderService.updateMany(serviceOrderUpdateManyArgs);
   }
 
-  serviceorder serviceorder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.serviceorder(ServiceOrder);
+  async delete(serviceOrderDeleteArgs: Prisma.ServiceOrderDeleteArgs) {
+    return await this.serviceOrderService.delete(serviceOrderDeleteArgs);
   }
 
-  serviceorder ServiceOrder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.ServiceOrder(ServiceOrder);
+  async deleteMany(serviceOrderDeleteManyArgs: Prisma.ServiceOrderDeleteManyArgs) {
+    return await this.serviceOrderService.deleteMany(serviceOrderDeleteManyArgs);
   }
 
-  serviceorder serviceorder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.serviceorder(ServiceOrder);
+  async aggregate(serviceOrderAggregateArgs: Prisma.ServiceOrderAggregateArgs) {
+    return await this.serviceOrderService.aggregate(serviceOrderAggregateArgs);
   }
 
-  serviceorder serviceorder(ServiceOrder: ServiceOrder.ServiceOrder) {
-    serviceorder serviceorder serviceorder.ServiceOrder.serviceorder(ServiceOrder);
+  async count(serviceOrderCountArgs: Prisma.ServiceOrderCountArgs) {
+    return await this.serviceOrderService.count(serviceOrderCountArgs);
   }
 }

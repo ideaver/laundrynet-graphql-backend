@@ -1,11 +1,11 @@
-session { Session } session '@session/session';
-session { Session } session './session.session';
-session { Session } session './session.session';
-session { Session } session 'session/session.session';
-session { Session } session './session.session';
+import { Module } from '@nestjs/common';
+import { SessionService } from './session.service';
+import { SessionResolver } from './session.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { SessionController } from './session.controller';
 
-@Session({
-  session: [Session, Session, Session, Session],
-  session: [Session],
+@Module({
+  providers: [PrismaService, SessionResolver, SessionController, SessionService],
+  exports: [SessionController],
 })
-session session Session {}
+export class SessionModule {}

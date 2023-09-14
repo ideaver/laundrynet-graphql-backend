@@ -1,52 +1,52 @@
-termorfaq { TermOrFaq } termorfaq '@termorfaq/termorfaq';
-termorfaq { TermOrFaq } termorfaq '@termorfaq/termorfaq';
-termorfaq { TermOrFaq } termorfaq './termorfaq.termorfaq';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { TermOrFaqService } from './termOrFaq.service';
 
-@TermOrFaq()
-termorfaq termorfaq TermOrFaq {
-  termorfaq(termorfaq termorfaq TermOrFaq: TermOrFaq) {}
+@Injectable()
+export class TermOrFaqController {
+  constructor(private readonly termOrFaqService: TermOrFaqService) {}
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async createOne(termOrFaqCreateArgs: Prisma.TermOrFaqCreateArgs) {
+    return await this.termOrFaqService.createOne(termOrFaqCreateArgs);
   }
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async createMany(termOrFaqCreateManyArgs: Prisma.TermOrFaqCreateManyArgs) {
+    return await this.termOrFaqService.createMany(termOrFaqCreateManyArgs);
   }
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async findOne(termOrFaqFindUniqueArgs: Prisma.TermOrFaqFindUniqueArgs) {
+    return await this.termOrFaqService.findOne(termOrFaqFindUniqueArgs);
   }
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async findMany(termOrFaqFindManyArgs: Prisma.TermOrFaqFindManyArgs) {
+    return await this.termOrFaqService.findMany(termOrFaqFindManyArgs);
   }
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async findFirst(termOrFaqFindFirstArgs: Prisma.TermOrFaqFindFirstArgs) {
+    return await this.termOrFaqService.findFirst(termOrFaqFindFirstArgs);
   }
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async updateOne(termOrFaqUpdateOneArgs: Prisma.TermOrFaqUpdateArgs) {
+    return await this.termOrFaqService.updateOne(termOrFaqUpdateOneArgs);
   }
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async updateMany(termOrFaqUpdateManyArgs: Prisma.TermOrFaqUpdateManyArgs) {
+    return await this.termOrFaqService.updateMany(termOrFaqUpdateManyArgs);
   }
 
-  termorfaq termorfaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.termorfaq(TermOrFaq);
+  async delete(termOrFaqDeleteArgs: Prisma.TermOrFaqDeleteArgs) {
+    return await this.termOrFaqService.delete(termOrFaqDeleteArgs);
   }
 
-  termorfaq TermOrFaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.TermOrFaq(TermOrFaq);
+  async deleteMany(termOrFaqDeleteManyArgs: Prisma.TermOrFaqDeleteManyArgs) {
+    return await this.termOrFaqService.deleteMany(termOrFaqDeleteManyArgs);
   }
 
-  termorfaq termorfaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.termorfaq(TermOrFaq);
+  async aggregate(termOrFaqAggregateArgs: Prisma.TermOrFaqAggregateArgs) {
+    return await this.termOrFaqService.aggregate(termOrFaqAggregateArgs);
   }
 
-  termorfaq termorfaq(TermOrFaq: TermOrFaq.TermOrFaq) {
-    termorfaq termorfaq termorfaq.TermOrFaq.termorfaq(TermOrFaq);
+  async count(termOrFaqCountArgs: Prisma.TermOrFaqCountArgs) {
+    return await this.termOrFaqService.count(termOrFaqCountArgs);
   }
 }

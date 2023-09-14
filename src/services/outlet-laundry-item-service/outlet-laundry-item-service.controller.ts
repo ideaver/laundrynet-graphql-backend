@@ -1,52 +1,52 @@
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice '@outletlaundryitemservice/outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice '@outletlaundryitemservice/outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice './outletlaundryitemservice.outletlaundryitemservice';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { OutletLaundryItemServiceService } from './outletLaundryItemService.service';
 
-@OutletLaundryItemService()
-outletlaundryitemservice outletlaundryitemservice OutletLaundryItemService {
-  outletlaundryitemservice(outletlaundryitemservice outletlaundryitemservice OutletLaundryItemService: OutletLaundryItemService) {}
+@Injectable()
+export class OutletLaundryItemServiceController {
+  constructor(private readonly outletLaundryItemServiceService: OutletLaundryItemServiceService) {}
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async createOne(outletLaundryItemServiceCreateArgs: Prisma.OutletLaundryItemServiceCreateArgs) {
+    return await this.outletLaundryItemServiceService.createOne(outletLaundryItemServiceCreateArgs);
   }
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async createMany(outletLaundryItemServiceCreateManyArgs: Prisma.OutletLaundryItemServiceCreateManyArgs) {
+    return await this.outletLaundryItemServiceService.createMany(outletLaundryItemServiceCreateManyArgs);
   }
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async findOne(outletLaundryItemServiceFindUniqueArgs: Prisma.OutletLaundryItemServiceFindUniqueArgs) {
+    return await this.outletLaundryItemServiceService.findOne(outletLaundryItemServiceFindUniqueArgs);
   }
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async findMany(outletLaundryItemServiceFindManyArgs: Prisma.OutletLaundryItemServiceFindManyArgs) {
+    return await this.outletLaundryItemServiceService.findMany(outletLaundryItemServiceFindManyArgs);
   }
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async findFirst(outletLaundryItemServiceFindFirstArgs: Prisma.OutletLaundryItemServiceFindFirstArgs) {
+    return await this.outletLaundryItemServiceService.findFirst(outletLaundryItemServiceFindFirstArgs);
   }
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async updateOne(outletLaundryItemServiceUpdateOneArgs: Prisma.OutletLaundryItemServiceUpdateArgs) {
+    return await this.outletLaundryItemServiceService.updateOne(outletLaundryItemServiceUpdateOneArgs);
   }
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async updateMany(outletLaundryItemServiceUpdateManyArgs: Prisma.OutletLaundryItemServiceUpdateManyArgs) {
+    return await this.outletLaundryItemServiceService.updateMany(outletLaundryItemServiceUpdateManyArgs);
   }
 
-  outletlaundryitemservice outletlaundryitemservice(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.outletlaundryitemservice(OutletLaundryItemService);
+  async delete(outletLaundryItemServiceDeleteArgs: Prisma.OutletLaundryItemServiceDeleteArgs) {
+    return await this.outletLaundryItemServiceService.delete(outletLaundryItemServiceDeleteArgs);
   }
 
-  outletlaundryitemservice OutletLaundryItemService(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.OutletLaundryItemService(OutletLaundryItemService);
+  async deleteMany(outletLaundryItemServiceDeleteManyArgs: Prisma.OutletLaundryItemServiceDeleteManyArgs) {
+    return await this.outletLaundryItemServiceService.deleteMany(outletLaundryItemServiceDeleteManyArgs);
   }
 
-  outletlaundryitemservice outletlaundryitemservice(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.outletlaundryitemservice(OutletLaundryItemService);
+  async aggregate(outletLaundryItemServiceAggregateArgs: Prisma.OutletLaundryItemServiceAggregateArgs) {
+    return await this.outletLaundryItemServiceService.aggregate(outletLaundryItemServiceAggregateArgs);
   }
 
-  outletlaundryitemservice outletlaundryitemservice(OutletLaundryItemService: OutletLaundryItemService.OutletLaundryItemService) {
-    outletlaundryitemservice outletlaundryitemservice outletlaundryitemservice.OutletLaundryItemService.outletlaundryitemservice(OutletLaundryItemService);
+  async count(outletLaundryItemServiceCountArgs: Prisma.OutletLaundryItemServiceCountArgs) {
+    return await this.outletLaundryItemServiceService.count(outletLaundryItemServiceCountArgs);
   }
 }

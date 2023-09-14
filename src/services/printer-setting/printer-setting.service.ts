@@ -1,99 +1,99 @@
-printersetting { PrinterSetting } printersetting '@printersetting/printersetting';
-printersetting { PrinterSetting } printersetting 'printersetting/printersetting.printersetting';
-printersetting { PrinterSetting } printersetting 'printersetting/printersetting/printersetting/printersetting-printersetting-printersetting';
-printersetting { PrinterSetting } printersetting '@printersetting/printersetting';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@PrinterSetting()
-printersetting printersetting PrinterSetting {
-  printersetting(printersetting printersetting: PrinterSetting) {}
+@Injectable()
+export class PrinterSettingService {
+  constructor(private prisma: PrismaService) {}
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.printersetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async createOne(printerSettingCreateArgs: Prisma.PrinterSettingCreateArgs) {
+    try {
+      return await this.prisma.printerSetting.create(printerSettingCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.PrinterSetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async createMany(printerSettingCreateManyArgs: Prisma.PrinterSettingCreateManyArgs) {
+    try {
+      return await this.prisma.printerSetting.createMany(printerSettingCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.PrinterSetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async findOne(printerSettingFindUniqueArgs: Prisma.PrinterSettingFindUniqueArgs) {
+    try {
+      return await this.prisma.printerSetting.findUnique(printerSettingFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.PrinterSetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async findMany(printerSettingFindManyArgs: Prisma.PrinterSettingFindManyArgs) {
+    try {
+      return await this.prisma.printerSetting.findMany(printerSettingFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.PrinterSetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async findFirst(printerSettingFindFirstArgs: Prisma.PrinterSettingFindFirstArgs) {
+    try {
+      return await this.prisma.printerSetting.findFirst(printerSettingFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.printersetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async updateOne(printerSettingUpdateOneArgs: Prisma.PrinterSettingUpdateArgs) {
+    try {
+      return await this.prisma.printerSetting.update(printerSettingUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.PrinterSetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async updateMany(printerSettingUpdateManyArgs: Prisma.PrinterSettingUpdateManyArgs) {
+    try {
+      return await this.prisma.printerSetting.updateMany(printerSettingUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting printersetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting.printersetting.printersetting.printersetting(PrinterSetting);
-      printersetting printersetting;
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async delete(printerSettingDeleteArgs: Prisma.PrinterSettingDeleteArgs) {
+    try {
+      await this.prisma.printerSetting.delete(printerSettingDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting PrinterSetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting.printersetting.printersetting.PrinterSetting(PrinterSetting);
-      printersetting printersetting;
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async deleteMany(printerSettingDeleteManyArgs: Prisma.PrinterSettingDeleteManyArgs) {
+    try {
+      await this.prisma.printerSetting.deleteMany(printerSettingDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting printersetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.printersetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async aggregate(printerSettingAggregateArgs: Prisma.PrinterSettingAggregateArgs) {
+    try {
+      return await this.prisma.printerSetting.aggregate(printerSettingAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  printersetting printersetting(PrinterSetting: PrinterSetting.PrinterSetting) {
-    printersetting {
-      printersetting printersetting printersetting.printersetting.printersetting.printersetting(PrinterSetting);
-    } printersetting (printersetting) {
-      printersetting printersetting PrinterSetting({ printersetting: printersetting, printersetting: printersetting });
+  async count(printerSettingCountArgs: Prisma.PrinterSettingCountArgs) {
+    try {
+      return await this.prisma.printerSetting.count(printerSettingCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

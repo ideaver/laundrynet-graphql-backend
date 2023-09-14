@@ -1,52 +1,52 @@
-accessrolepermission { AccessRolePermission } accessrolepermission '@accessrolepermission/accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission '@accessrolepermission/accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission './accessrolepermission.accessrolepermission';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { AccessRolePermissionService } from './accessRolePermission.service';
 
-@AccessRolePermission()
-accessrolepermission accessrolepermission AccessRolePermission {
-  accessrolepermission(accessrolepermission accessrolepermission AccessRolePermission: AccessRolePermission) {}
+@Injectable()
+export class AccessRolePermissionController {
+  constructor(private readonly accessRolePermissionService: AccessRolePermissionService) {}
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async createOne(accessRolePermissionCreateArgs: Prisma.AccessRolePermissionCreateArgs) {
+    return await this.accessRolePermissionService.createOne(accessRolePermissionCreateArgs);
   }
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async createMany(accessRolePermissionCreateManyArgs: Prisma.AccessRolePermissionCreateManyArgs) {
+    return await this.accessRolePermissionService.createMany(accessRolePermissionCreateManyArgs);
   }
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async findOne(accessRolePermissionFindUniqueArgs: Prisma.AccessRolePermissionFindUniqueArgs) {
+    return await this.accessRolePermissionService.findOne(accessRolePermissionFindUniqueArgs);
   }
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async findMany(accessRolePermissionFindManyArgs: Prisma.AccessRolePermissionFindManyArgs) {
+    return await this.accessRolePermissionService.findMany(accessRolePermissionFindManyArgs);
   }
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async findFirst(accessRolePermissionFindFirstArgs: Prisma.AccessRolePermissionFindFirstArgs) {
+    return await this.accessRolePermissionService.findFirst(accessRolePermissionFindFirstArgs);
   }
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async updateOne(accessRolePermissionUpdateOneArgs: Prisma.AccessRolePermissionUpdateArgs) {
+    return await this.accessRolePermissionService.updateOne(accessRolePermissionUpdateOneArgs);
   }
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async updateMany(accessRolePermissionUpdateManyArgs: Prisma.AccessRolePermissionUpdateManyArgs) {
+    return await this.accessRolePermissionService.updateMany(accessRolePermissionUpdateManyArgs);
   }
 
-  accessrolepermission accessrolepermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.accessrolepermission(AccessRolePermission);
+  async delete(accessRolePermissionDeleteArgs: Prisma.AccessRolePermissionDeleteArgs) {
+    return await this.accessRolePermissionService.delete(accessRolePermissionDeleteArgs);
   }
 
-  accessrolepermission AccessRolePermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.AccessRolePermission(AccessRolePermission);
+  async deleteMany(accessRolePermissionDeleteManyArgs: Prisma.AccessRolePermissionDeleteManyArgs) {
+    return await this.accessRolePermissionService.deleteMany(accessRolePermissionDeleteManyArgs);
   }
 
-  accessrolepermission accessrolepermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.accessrolepermission(AccessRolePermission);
+  async aggregate(accessRolePermissionAggregateArgs: Prisma.AccessRolePermissionAggregateArgs) {
+    return await this.accessRolePermissionService.aggregate(accessRolePermissionAggregateArgs);
   }
 
-  accessrolepermission accessrolepermission(AccessRolePermission: AccessRolePermission.AccessRolePermission) {
-    accessrolepermission accessrolepermission accessrolepermission.AccessRolePermission.accessrolepermission(AccessRolePermission);
+  async count(accessRolePermissionCountArgs: Prisma.AccessRolePermissionCountArgs) {
+    return await this.accessRolePermissionService.count(accessRolePermissionCountArgs);
   }
 }

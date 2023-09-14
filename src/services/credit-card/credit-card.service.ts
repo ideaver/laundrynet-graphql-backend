@@ -1,99 +1,99 @@
-creditcard { CreditCard } creditcard '@creditcard/creditcard';
-creditcard { CreditCard } creditcard 'creditcard/creditcard.creditcard';
-creditcard { CreditCard } creditcard 'creditcard/creditcard/creditcard/creditcard-creditcard-creditcard';
-creditcard { CreditCard } creditcard '@creditcard/creditcard';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@CreditCard()
-creditcard creditcard CreditCard {
-  creditcard(creditcard creditcard: CreditCard) {}
+@Injectable()
+export class CreditCardService {
+  constructor(private prisma: PrismaService) {}
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.creditcard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async createOne(creditCardCreateArgs: Prisma.CreditCardCreateArgs) {
+    try {
+      return await this.prisma.creditCard.create(creditCardCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.CreditCard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async createMany(creditCardCreateManyArgs: Prisma.CreditCardCreateManyArgs) {
+    try {
+      return await this.prisma.creditCard.createMany(creditCardCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.CreditCard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async findOne(creditCardFindUniqueArgs: Prisma.CreditCardFindUniqueArgs) {
+    try {
+      return await this.prisma.creditCard.findUnique(creditCardFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.CreditCard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async findMany(creditCardFindManyArgs: Prisma.CreditCardFindManyArgs) {
+    try {
+      return await this.prisma.creditCard.findMany(creditCardFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.CreditCard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async findFirst(creditCardFindFirstArgs: Prisma.CreditCardFindFirstArgs) {
+    try {
+      return await this.prisma.creditCard.findFirst(creditCardFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.creditcard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async updateOne(creditCardUpdateOneArgs: Prisma.CreditCardUpdateArgs) {
+    try {
+      return await this.prisma.creditCard.update(creditCardUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.CreditCard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async updateMany(creditCardUpdateManyArgs: Prisma.CreditCardUpdateManyArgs) {
+    try {
+      return await this.prisma.creditCard.updateMany(creditCardUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard creditcard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard.creditcard.creditcard.creditcard(CreditCard);
-      creditcard creditcard;
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async delete(creditCardDeleteArgs: Prisma.CreditCardDeleteArgs) {
+    try {
+      await this.prisma.creditCard.delete(creditCardDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard CreditCard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard.creditcard.creditcard.CreditCard(CreditCard);
-      creditcard creditcard;
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async deleteMany(creditCardDeleteManyArgs: Prisma.CreditCardDeleteManyArgs) {
+    try {
+      await this.prisma.creditCard.deleteMany(creditCardDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard creditcard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.creditcard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async aggregate(creditCardAggregateArgs: Prisma.CreditCardAggregateArgs) {
+    try {
+      return await this.prisma.creditCard.aggregate(creditCardAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  creditcard creditcard(CreditCard: CreditCard.CreditCard) {
-    creditcard {
-      creditcard creditcard creditcard.creditcard.creditcard.creditcard(CreditCard);
-    } creditcard (creditcard) {
-      creditcard creditcard CreditCard({ creditcard: creditcard, creditcard: creditcard });
+  async count(creditCardCountArgs: Prisma.CreditCardCountArgs) {
+    try {
+      return await this.prisma.creditCard.count(creditCardCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

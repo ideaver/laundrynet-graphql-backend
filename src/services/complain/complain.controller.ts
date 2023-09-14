@@ -1,52 +1,52 @@
-complain { Complain } complain '@complain/complain';
-complain { Complain } complain '@complain/complain';
-complain { Complain } complain './complain.complain';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { ComplainService } from './complain.service';
 
-@Complain()
-complain complain Complain {
-  complain(complain complain Complain: Complain) {}
+@Injectable()
+export class ComplainController {
+  constructor(private readonly complainService: ComplainService) {}
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async createOne(complainCreateArgs: Prisma.ComplainCreateArgs) {
+    return await this.complainService.createOne(complainCreateArgs);
   }
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async createMany(complainCreateManyArgs: Prisma.ComplainCreateManyArgs) {
+    return await this.complainService.createMany(complainCreateManyArgs);
   }
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async findOne(complainFindUniqueArgs: Prisma.ComplainFindUniqueArgs) {
+    return await this.complainService.findOne(complainFindUniqueArgs);
   }
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async findMany(complainFindManyArgs: Prisma.ComplainFindManyArgs) {
+    return await this.complainService.findMany(complainFindManyArgs);
   }
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async findFirst(complainFindFirstArgs: Prisma.ComplainFindFirstArgs) {
+    return await this.complainService.findFirst(complainFindFirstArgs);
   }
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async updateOne(complainUpdateOneArgs: Prisma.ComplainUpdateArgs) {
+    return await this.complainService.updateOne(complainUpdateOneArgs);
   }
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async updateMany(complainUpdateManyArgs: Prisma.ComplainUpdateManyArgs) {
+    return await this.complainService.updateMany(complainUpdateManyArgs);
   }
 
-  complain complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.complain(Complain);
+  async delete(complainDeleteArgs: Prisma.ComplainDeleteArgs) {
+    return await this.complainService.delete(complainDeleteArgs);
   }
 
-  complain Complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.Complain(Complain);
+  async deleteMany(complainDeleteManyArgs: Prisma.ComplainDeleteManyArgs) {
+    return await this.complainService.deleteMany(complainDeleteManyArgs);
   }
 
-  complain complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.complain(Complain);
+  async aggregate(complainAggregateArgs: Prisma.ComplainAggregateArgs) {
+    return await this.complainService.aggregate(complainAggregateArgs);
   }
 
-  complain complain(Complain: Complain.Complain) {
-    complain complain complain.Complain.complain(Complain);
+  async count(complainCountArgs: Prisma.ComplainCountArgs) {
+    return await this.complainService.count(complainCountArgs);
   }
 }

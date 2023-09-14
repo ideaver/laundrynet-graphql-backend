@@ -1,11 +1,11 @@
-orderstatus { OrderStatus } orderstatus '@orderstatus/orderstatus';
-orderstatus { OrderStatus } orderstatus './orderstatus.orderstatus';
-orderstatus { OrderStatus } orderstatus './orderstatus.orderstatus';
-orderstatus { OrderStatus } orderstatus 'orderstatus/orderstatus.orderstatus';
-orderstatus { OrderStatus } orderstatus './orderstatus.orderstatus';
+import { Module } from '@nestjs/common';
+import { OrderStatusService } from './orderStatus.service';
+import { OrderStatusResolver } from './orderStatus.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { OrderStatusController } from './orderStatus.controller';
 
-@OrderStatus({
-  orderstatus: [OrderStatus, OrderStatus, OrderStatus, OrderStatus],
-  orderstatus: [OrderStatus],
+@Module({
+  providers: [PrismaService, OrderStatusResolver, OrderStatusController, OrderStatusService],
+  exports: [OrderStatusController],
 })
-orderstatus orderstatus OrderStatus {}
+export class OrderStatusModule {}

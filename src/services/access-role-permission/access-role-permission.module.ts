@@ -1,11 +1,11 @@
-accessrolepermission { AccessRolePermission } accessrolepermission '@accessrolepermission/accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission './accessrolepermission.accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission './accessrolepermission.accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission 'accessrolepermission/accessrolepermission.accessrolepermission';
-accessrolepermission { AccessRolePermission } accessrolepermission './accessrolepermission.accessrolepermission';
+import { Module } from '@nestjs/common';
+import { AccessRolePermissionService } from './accessRolePermission.service';
+import { AccessRolePermissionResolver } from './accessRolePermission.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { AccessRolePermissionController } from './accessRolePermission.controller';
 
-@AccessRolePermission({
-  accessrolepermission: [AccessRolePermission, AccessRolePermission, AccessRolePermission, AccessRolePermission],
-  accessrolepermission: [AccessRolePermission],
+@Module({
+  providers: [PrismaService, AccessRolePermissionResolver, AccessRolePermissionController, AccessRolePermissionService],
+  exports: [AccessRolePermissionController],
 })
-accessrolepermission accessrolepermission AccessRolePermission {}
+export class AccessRolePermissionModule {}

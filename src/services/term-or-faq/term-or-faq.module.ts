@@ -1,11 +1,11 @@
-termorfaq { TermOrFaq } termorfaq '@termorfaq/termorfaq';
-termorfaq { TermOrFaq } termorfaq './termorfaq.termorfaq';
-termorfaq { TermOrFaq } termorfaq './termorfaq.termorfaq';
-termorfaq { TermOrFaq } termorfaq 'termorfaq/termorfaq.termorfaq';
-termorfaq { TermOrFaq } termorfaq './termorfaq.termorfaq';
+import { Module } from '@nestjs/common';
+import { TermOrFaqService } from './termOrFaq.service';
+import { TermOrFaqResolver } from './termOrFaq.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { TermOrFaqController } from './termOrFaq.controller';
 
-@TermOrFaq({
-  termorfaq: [TermOrFaq, TermOrFaq, TermOrFaq, TermOrFaq],
-  termorfaq: [TermOrFaq],
+@Module({
+  providers: [PrismaService, TermOrFaqResolver, TermOrFaqController, TermOrFaqService],
+  exports: [TermOrFaqController],
 })
-termorfaq termorfaq TermOrFaq {}
+export class TermOrFaqModule {}

@@ -1,160 +1,160 @@
-// @marketsalepricehistory-marketsalepricehistory
-marketsalepricehistory { MarketSalePriceHistory, MarketSalePriceHistory, MarketSalePriceHistory, MarketSalePriceHistory, MarketSalePriceHistory } marketsalepricehistory '@marketsalepricehistory/marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory '@marketsalepricehistory/marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory 'marketsalepricehistory/marketsalepricehistory/marketsalepricehistory.marketsalepricehistory';
-marketsalepricehistory {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateMarketSalePriceHistory,
+  CreateManyMarketSalePriceHistoryArgs,
+  CreateOneMarketSalePriceHistoryArgs,
+  DeleteManyMarketSalePriceHistoryArgs,
+  DeleteOneMarketSalePriceHistoryArgs,
+  FindFirstMarketSalePriceHistoryArgs,
+  FindManyMarketSalePriceHistoryArgs,
+  FindUniqueMarketSalePriceHistoryArgs,
   MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-  MarketSalePriceHistory,
-} marketsalepricehistory 'marketsalepricehistory/@marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory './marketsalepricehistory.marketsalepricehistory';
-marketsalepricehistory { MarketSalePriceHistory } marketsalepricehistory 'marketsalepricehistory/marketsalepricehistory/marketsalepricehistory-marketsalepricehistory-marketsalepricehistory-marketsalepricehistory.marketsalepricehistory';
-marketsalepricehistory MarketSalePriceHistory marketsalepricehistory 'marketsalepricehistory/marketsalepricehistory/marketsalepricehistory-marketsalepricehistory.marketsalepricehistory';
+  MarketSalePriceHistoryAggregateArgs,
+  UpdateManyMarketSalePriceHistoryArgs,
+  UpdateOneMarketSalePriceHistoryArgs,
+} from 'src/@generated';
+import { MarketSalePriceHistoryController } from './marketSalePriceHistory.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-marketsalepricehistory MarketSalePriceHistory {
-  marketsalepricehistory: MarketSalePriceHistory.MarketSalePriceHistory;
+interface MarketSalePriceHistorySelect {
+  select: Prisma.MarketSalePriceHistorySelect;
 }
 
-@MarketSalePriceHistory(() => MarketSalePriceHistory)
-marketsalepricehistory marketsalepricehistory MarketSalePriceHistory {
-  marketsalepricehistory(marketsalepricehistory marketsalepricehistory MarketSalePriceHistory: MarketSalePriceHistory) {}
+@Resolver(() => MarketSalePriceHistory)
+export class MarketSalePriceHistoryResolver {
+  constructor(private readonly marketSalePriceHistoryController: MarketSalePriceHistoryController) {}
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Mutation(() => MarketSalePriceHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  marketsalepricehistory MarketSalePriceHistory(
-    @MarketSalePriceHistory()
-    MarketSalePriceHistory: MarketSalePriceHistory,
-    @MarketSalePriceHistory() marketsalepricehistory: MarketSalePriceHistory,
-  ): MarketSalePriceHistory<MarketSalePriceHistory | marketsalepricehistory> {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory({
-      ...MarketSalePriceHistory,
-      marketsalepricehistory: marketsalepricehistory.marketsalepricehistory,
+  async marketSalePriceHistoryCreateOne(
+    @Args()
+    marketSalePriceHistoryCreateArgs: CreateOneMarketSalePriceHistoryArgs,
+    @Relations() relations: MarketSalePriceHistorySelect,
+  ): Promise<MarketSalePriceHistory | void> {
+    return await this.marketSalePriceHistoryController.createOne({
+      ...marketSalePriceHistoryCreateArgs,
+      select: relations.select,
     });
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  marketsalepricehistory MarketSalePriceHistory(
-    @MarketSalePriceHistory()
-    MarketSalePriceHistory: MarketSalePriceHistory,
+  async marketSalePriceHistoryCreateMany(
+    @Args()
+    createManyMarketSalePriceHistoryArgs: CreateManyMarketSalePriceHistoryArgs,
   ) {
-    marketsalepricehistory marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+    return await this.marketSalePriceHistoryController.createMany(createManyMarketSalePriceHistoryArgs);
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Query(() => MarketSalePriceHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MarketSalePriceHistory(
-    @MarketSalePriceHistory()
-    MarketSalePriceHistory: MarketSalePriceHistory,
-    @MarketSalePriceHistory() marketsalepricehistory: MarketSalePriceHistory,
-  ): MarketSalePriceHistory<MarketSalePriceHistory | marketsalepricehistory> {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory({
-      ...MarketSalePriceHistory,
-      marketsalepricehistory: marketsalepricehistory.marketsalepricehistory,
+  marketSalePriceHistoryFindOne(
+    @Args()
+    marketSalePriceHistoryFindUniqueArgs: FindUniqueMarketSalePriceHistoryArgs,
+    @Relations() relations: MarketSalePriceHistorySelect,
+  ): Promise<MarketSalePriceHistory | void> {
+    return this.marketSalePriceHistoryController.findOne({
+      ...marketSalePriceHistoryFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @MarketSalePriceHistory(() => [MarketSalePriceHistory], {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Query(() => [MarketSalePriceHistory], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MarketSalePriceHistory(
-    @MarketSalePriceHistory() MarketSalePriceHistory: MarketSalePriceHistory,
-    @MarketSalePriceHistory() marketsalepricehistory: MarketSalePriceHistory,
+  marketSalePriceHistoryFindMany(
+    @Args() marketSalePriceHistoryFindManyArgs: FindManyMarketSalePriceHistoryArgs,
+    @Relations() relations: MarketSalePriceHistorySelect,
   ) {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory({
-      ...MarketSalePriceHistory,
-      marketsalepricehistory: marketsalepricehistory.marketsalepricehistory,
+    return this.marketSalePriceHistoryController.findMany({
+      ...marketSalePriceHistoryFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Query(() => MarketSalePriceHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MarketSalePriceHistory(
-    @MarketSalePriceHistory()
-    MarketSalePriceHistory: MarketSalePriceHistory,
-    @MarketSalePriceHistory() marketsalepricehistory: MarketSalePriceHistory,
-  ): MarketSalePriceHistory<MarketSalePriceHistory | marketsalepricehistory> {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory({
-      ...MarketSalePriceHistory,
-      marketsalepricehistory: marketsalepricehistory.marketsalepricehistory,
+  marketSalePriceHistoryFindFirst(
+    @Args()
+    findFirstMarketSalePriceHistoryArgs: FindFirstMarketSalePriceHistoryArgs,
+    @Relations() relations: MarketSalePriceHistorySelect,
+  ): Promise<MarketSalePriceHistory | void> {
+    return this.marketSalePriceHistoryController.findFirst({
+      ...findFirstMarketSalePriceHistoryArgs,
+      select: relations.select,
     });
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Mutation(() => MarketSalePriceHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  marketsalepricehistory MarketSalePriceHistory(
-    @MarketSalePriceHistory() MarketSalePriceHistory: MarketSalePriceHistory,
-    @MarketSalePriceHistory() marketsalepricehistory: MarketSalePriceHistory,
+  async marketSalePriceHistoryUpdateOne(
+    @Args() marketSalePriceHistoryUpdateOneArgs: UpdateOneMarketSalePriceHistoryArgs,
+    @Relations() relations: MarketSalePriceHistorySelect,
   ) {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory({
-      ...MarketSalePriceHistory(MarketSalePriceHistory),
-      marketsalepricehistory: marketsalepricehistory.marketsalepricehistory,
+    return this.marketSalePriceHistoryController.updateOne({
+      ...replaceNullWithUndefined(marketSalePriceHistoryUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Mutation(() => MarketSalePriceHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  marketsalepricehistory MarketSalePriceHistory(@MarketSalePriceHistory() MarketSalePriceHistory: MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async marketSalePriceHistoryUpdateMany(@Args() updateManyMarketSalePriceHistoryArgs: UpdateManyMarketSalePriceHistoryArgs) {
+    return this.marketSalePriceHistoryController.updateMany(updateManyMarketSalePriceHistoryArgs);
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  marketsalepricehistory MarketSalePriceHistory(
-    @MarketSalePriceHistory() MarketSalePriceHistory: MarketSalePriceHistory,
-    @MarketSalePriceHistory() marketsalepricehistory: MarketSalePriceHistory,
+  async marketSalePriceHistoryDelete(
+    @Args() deleteOneMarketSalePriceHistoryArgs: DeleteOneMarketSalePriceHistoryArgs,
+    @Relations() relations: MarketSalePriceHistorySelect,
   ) {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.marketsalepricehistory({
-      ...MarketSalePriceHistory,
-      marketsalepricehistory: marketsalepricehistory.marketsalepricehistory,
+    return this.marketSalePriceHistoryController.delete({
+      ...deleteOneMarketSalePriceHistoryArgs,
+      select: relations.select,
     });
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  marketsalepricehistory MarketSalePriceHistory(@MarketSalePriceHistory() MarketSalePriceHistory: MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.MarketSalePriceHistory(MarketSalePriceHistory);
+  async marketSalePriceHistoryDeleteMany(@Args() deleteManyMarketSalePriceHistoryArgs: DeleteManyMarketSalePriceHistoryArgs) {
+    return this.marketSalePriceHistoryController.deleteMany(deleteManyMarketSalePriceHistoryArgs);
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Query(() => AggregateMarketSalePriceHistory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MarketSalePriceHistory(@MarketSalePriceHistory() MarketSalePriceHistory: MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.marketsalepricehistory(MarketSalePriceHistory);
+  marketSalePriceHistoryAggregate(@Args() marketSalePriceHistoryAggregateArgs: MarketSalePriceHistoryAggregateArgs) {
+    return this.marketSalePriceHistoryController.aggregate(marketSalePriceHistoryAggregateArgs);
   }
 
-  @MarketSalePriceHistory(() => MarketSalePriceHistory, {
-    marketsalepricehistory: marketsalepricehistory,
-    marketsalepricehistory: 'MarketSalePriceHistory marketsalepricehistory marketsalepricehistory marketsalepricehistory',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  MarketSalePriceHistory(@MarketSalePriceHistory() MarketSalePriceHistory: MarketSalePriceHistory) {
-    marketsalepricehistory marketsalepricehistory.MarketSalePriceHistory.marketsalepricehistory(MarketSalePriceHistory);
+  marketSalePriceHistoryCount(@Args() marketSalePriceHistoryCountAggregateInput: FindManyMarketSalePriceHistoryArgs) {
+    return this.marketSalePriceHistoryController.count(marketSalePriceHistoryCountAggregateInput);
   }
 }

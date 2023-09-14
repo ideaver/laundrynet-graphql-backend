@@ -1,99 +1,99 @@
-transaction { Transaction } transaction '@transaction/transaction';
-transaction { Transaction } transaction 'transaction/transaction.transaction';
-transaction { Transaction } transaction 'transaction/transaction/transaction/transaction-transaction-transaction';
-transaction { Transaction } transaction '@transaction/transaction';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@Transaction()
-transaction transaction Transaction {
-  transaction(transaction transaction: Transaction) {}
+@Injectable()
+export class TransactionService {
+  constructor(private prisma: PrismaService) {}
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async createOne(transactionCreateArgs: Prisma.TransactionCreateArgs) {
+    try {
+      return await this.prisma.transaction.create(transactionCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.Transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async createMany(transactionCreateManyArgs: Prisma.TransactionCreateManyArgs) {
+    try {
+      return await this.prisma.transaction.createMany(transactionCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.Transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async findOne(transactionFindUniqueArgs: Prisma.TransactionFindUniqueArgs) {
+    try {
+      return await this.prisma.transaction.findUnique(transactionFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.Transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async findMany(transactionFindManyArgs: Prisma.TransactionFindManyArgs) {
+    try {
+      return await this.prisma.transaction.findMany(transactionFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.Transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async findFirst(transactionFindFirstArgs: Prisma.TransactionFindFirstArgs) {
+    try {
+      return await this.prisma.transaction.findFirst(transactionFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async updateOne(transactionUpdateOneArgs: Prisma.TransactionUpdateArgs) {
+    try {
+      return await this.prisma.transaction.update(transactionUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.Transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async updateMany(transactionUpdateManyArgs: Prisma.TransactionUpdateManyArgs) {
+    try {
+      return await this.prisma.transaction.updateMany(transactionUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction.transaction.transaction.transaction(Transaction);
-      transaction transaction;
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async delete(transactionDeleteArgs: Prisma.TransactionDeleteArgs) {
+    try {
+      await this.prisma.transaction.delete(transactionDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction Transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction.transaction.transaction.Transaction(Transaction);
-      transaction transaction;
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async deleteMany(transactionDeleteManyArgs: Prisma.TransactionDeleteManyArgs) {
+    try {
+      await this.prisma.transaction.deleteMany(transactionDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async aggregate(transactionAggregateArgs: Prisma.TransactionAggregateArgs) {
+    try {
+      return await this.prisma.transaction.aggregate(transactionAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  transaction transaction(Transaction: Transaction.Transaction) {
-    transaction {
-      transaction transaction transaction.transaction.transaction.transaction(Transaction);
-    } transaction (transaction) {
-      transaction transaction Transaction({ transaction: transaction, transaction: transaction });
+  async count(transactionCountArgs: Prisma.TransactionCountArgs) {
+    try {
+      return await this.prisma.transaction.count(transactionCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

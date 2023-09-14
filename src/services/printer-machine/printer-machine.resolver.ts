@@ -1,160 +1,160 @@
-// @printermachine-printermachine
-printermachine { PrinterMachine, PrinterMachine, PrinterMachine, PrinterMachine, PrinterMachine } printermachine '@printermachine/printermachine';
-printermachine { PrinterMachine } printermachine '@printermachine/printermachine';
-printermachine { PrinterMachine } printermachine 'printermachine/printermachine/printermachine.printermachine';
-printermachine {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregatePrinterMachine,
+  CreateManyPrinterMachineArgs,
+  CreateOnePrinterMachineArgs,
+  DeleteManyPrinterMachineArgs,
+  DeleteOnePrinterMachineArgs,
+  FindFirstPrinterMachineArgs,
+  FindManyPrinterMachineArgs,
+  FindUniquePrinterMachineArgs,
   PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-  PrinterMachine,
-} printermachine 'printermachine/@printermachine';
-printermachine { PrinterMachine } printermachine './printermachine.printermachine';
-printermachine { PrinterMachine } printermachine 'printermachine/printermachine/printermachine-printermachine-printermachine-printermachine.printermachine';
-printermachine PrinterMachine printermachine 'printermachine/printermachine/printermachine-printermachine.printermachine';
+  PrinterMachineAggregateArgs,
+  UpdateManyPrinterMachineArgs,
+  UpdateOnePrinterMachineArgs,
+} from 'src/@generated';
+import { PrinterMachineController } from './printerMachine.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-printermachine PrinterMachine {
-  printermachine: PrinterMachine.PrinterMachine;
+interface PrinterMachineSelect {
+  select: Prisma.PrinterMachineSelect;
 }
 
-@PrinterMachine(() => PrinterMachine)
-printermachine printermachine PrinterMachine {
-  printermachine(printermachine printermachine PrinterMachine: PrinterMachine) {}
+@Resolver(() => PrinterMachine)
+export class PrinterMachineResolver {
+  constructor(private readonly printerMachineController: PrinterMachineController) {}
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Mutation(() => PrinterMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printermachine PrinterMachine(
-    @PrinterMachine()
-    PrinterMachine: PrinterMachine,
-    @PrinterMachine() printermachine: PrinterMachine,
-  ): PrinterMachine<PrinterMachine | printermachine> {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine({
-      ...PrinterMachine,
-      printermachine: printermachine.printermachine,
+  async printerMachineCreateOne(
+    @Args()
+    printerMachineCreateArgs: CreateOnePrinterMachineArgs,
+    @Relations() relations: PrinterMachineSelect,
+  ): Promise<PrinterMachine | void> {
+    return await this.printerMachineController.createOne({
+      ...printerMachineCreateArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printermachine PrinterMachine(
-    @PrinterMachine()
-    PrinterMachine: PrinterMachine,
+  async printerMachineCreateMany(
+    @Args()
+    createManyPrinterMachineArgs: CreateManyPrinterMachineArgs,
   ) {
-    printermachine printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+    return await this.printerMachineController.createMany(createManyPrinterMachineArgs);
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Query(() => PrinterMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterMachine(
-    @PrinterMachine()
-    PrinterMachine: PrinterMachine,
-    @PrinterMachine() printermachine: PrinterMachine,
-  ): PrinterMachine<PrinterMachine | printermachine> {
-    printermachine printermachine.PrinterMachine.PrinterMachine({
-      ...PrinterMachine,
-      printermachine: printermachine.printermachine,
+  printerMachineFindOne(
+    @Args()
+    printerMachineFindUniqueArgs: FindUniquePrinterMachineArgs,
+    @Relations() relations: PrinterMachineSelect,
+  ): Promise<PrinterMachine | void> {
+    return this.printerMachineController.findOne({
+      ...printerMachineFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterMachine(() => [PrinterMachine], {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Query(() => [PrinterMachine], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterMachine(
-    @PrinterMachine() PrinterMachine: PrinterMachine,
-    @PrinterMachine() printermachine: PrinterMachine,
+  printerMachineFindMany(
+    @Args() printerMachineFindManyArgs: FindManyPrinterMachineArgs,
+    @Relations() relations: PrinterMachineSelect,
   ) {
-    printermachine printermachine.PrinterMachine.PrinterMachine({
-      ...PrinterMachine,
-      printermachine: printermachine.printermachine,
+    return this.printerMachineController.findMany({
+      ...printerMachineFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Query(() => PrinterMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterMachine(
-    @PrinterMachine()
-    PrinterMachine: PrinterMachine,
-    @PrinterMachine() printermachine: PrinterMachine,
-  ): PrinterMachine<PrinterMachine | printermachine> {
-    printermachine printermachine.PrinterMachine.PrinterMachine({
-      ...PrinterMachine,
-      printermachine: printermachine.printermachine,
+  printerMachineFindFirst(
+    @Args()
+    findFirstPrinterMachineArgs: FindFirstPrinterMachineArgs,
+    @Relations() relations: PrinterMachineSelect,
+  ): Promise<PrinterMachine | void> {
+    return this.printerMachineController.findFirst({
+      ...findFirstPrinterMachineArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Mutation(() => PrinterMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printermachine PrinterMachine(
-    @PrinterMachine() PrinterMachine: PrinterMachine,
-    @PrinterMachine() printermachine: PrinterMachine,
+  async printerMachineUpdateOne(
+    @Args() printerMachineUpdateOneArgs: UpdateOnePrinterMachineArgs,
+    @Relations() relations: PrinterMachineSelect,
   ) {
-    printermachine printermachine.PrinterMachine.PrinterMachine({
-      ...PrinterMachine(PrinterMachine),
-      printermachine: printermachine.printermachine,
+    return this.printerMachineController.updateOne({
+      ...replaceNullWithUndefined(printerMachineUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Mutation(() => PrinterMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  printermachine PrinterMachine(@PrinterMachine() PrinterMachine: PrinterMachine) {
-    printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async printerMachineUpdateMany(@Args() updateManyPrinterMachineArgs: UpdateManyPrinterMachineArgs) {
+    return this.printerMachineController.updateMany(updateManyPrinterMachineArgs);
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  printermachine PrinterMachine(
-    @PrinterMachine() PrinterMachine: PrinterMachine,
-    @PrinterMachine() printermachine: PrinterMachine,
+  async printerMachineDelete(
+    @Args() deleteOnePrinterMachineArgs: DeleteOnePrinterMachineArgs,
+    @Relations() relations: PrinterMachineSelect,
   ) {
-    printermachine printermachine.PrinterMachine.printermachine({
-      ...PrinterMachine,
-      printermachine: printermachine.printermachine,
+    return this.printerMachineController.delete({
+      ...deleteOnePrinterMachineArgs,
+      select: relations.select,
     });
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  printermachine PrinterMachine(@PrinterMachine() PrinterMachine: PrinterMachine) {
-    printermachine printermachine.PrinterMachine.PrinterMachine(PrinterMachine);
+  async printerMachineDeleteMany(@Args() deleteManyPrinterMachineArgs: DeleteManyPrinterMachineArgs) {
+    return this.printerMachineController.deleteMany(deleteManyPrinterMachineArgs);
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Query(() => AggregatePrinterMachine, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterMachine(@PrinterMachine() PrinterMachine: PrinterMachine) {
-    printermachine printermachine.PrinterMachine.printermachine(PrinterMachine);
+  printerMachineAggregate(@Args() printerMachineAggregateArgs: PrinterMachineAggregateArgs) {
+    return this.printerMachineController.aggregate(printerMachineAggregateArgs);
   }
 
-  @PrinterMachine(() => PrinterMachine, {
-    printermachine: printermachine,
-    printermachine: 'PrinterMachine printermachine printermachine printermachine',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  PrinterMachine(@PrinterMachine() PrinterMachine: PrinterMachine) {
-    printermachine printermachine.PrinterMachine.printermachine(PrinterMachine);
+  printerMachineCount(@Args() printerMachineCountAggregateInput: FindManyPrinterMachineArgs) {
+    return this.printerMachineController.count(printerMachineCountAggregateInput);
   }
 }

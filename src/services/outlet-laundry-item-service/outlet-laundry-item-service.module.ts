@@ -1,11 +1,11 @@
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice '@outletlaundryitemservice/outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice './outletlaundryitemservice.outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice './outletlaundryitemservice.outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice 'outletlaundryitemservice/outletlaundryitemservice.outletlaundryitemservice';
-outletlaundryitemservice { OutletLaundryItemService } outletlaundryitemservice './outletlaundryitemservice.outletlaundryitemservice';
+import { Module } from '@nestjs/common';
+import { OutletLaundryItemServiceService } from './outletLaundryItemService.service';
+import { OutletLaundryItemServiceResolver } from './outletLaundryItemService.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { OutletLaundryItemServiceController } from './outletLaundryItemService.controller';
 
-@OutletLaundryItemService({
-  outletlaundryitemservice: [OutletLaundryItemService, OutletLaundryItemService, OutletLaundryItemService, OutletLaundryItemService],
-  outletlaundryitemservice: [OutletLaundryItemService],
+@Module({
+  providers: [PrismaService, OutletLaundryItemServiceResolver, OutletLaundryItemServiceController, OutletLaundryItemServiceService],
+  exports: [OutletLaundryItemServiceController],
 })
-outletlaundryitemservice outletlaundryitemservice OutletLaundryItemService {}
+export class OutletLaundryItemServiceModule {}

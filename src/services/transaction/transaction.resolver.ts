@@ -1,160 +1,160 @@
-// @transaction-transaction
-transaction { Transaction, Transaction, Transaction, Transaction, Transaction } transaction '@transaction/transaction';
-transaction { Transaction } transaction '@transaction/transaction';
-transaction { Transaction } transaction 'transaction/transaction/transaction.transaction';
-transaction {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateTransaction,
+  CreateManyTransactionArgs,
+  CreateOneTransactionArgs,
+  DeleteManyTransactionArgs,
+  DeleteOneTransactionArgs,
+  FindFirstTransactionArgs,
+  FindManyTransactionArgs,
+  FindUniqueTransactionArgs,
   Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-  Transaction,
-} transaction 'transaction/@transaction';
-transaction { Transaction } transaction './transaction.transaction';
-transaction { Transaction } transaction 'transaction/transaction/transaction-transaction-transaction-transaction.transaction';
-transaction Transaction transaction 'transaction/transaction/transaction-transaction.transaction';
+  TransactionAggregateArgs,
+  UpdateManyTransactionArgs,
+  UpdateOneTransactionArgs,
+} from 'src/@generated';
+import { TransactionController } from './transaction.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-transaction Transaction {
-  transaction: Transaction.Transaction;
+interface TransactionSelect {
+  select: Prisma.TransactionSelect;
 }
 
-@Transaction(() => Transaction)
-transaction transaction Transaction {
-  transaction(transaction transaction Transaction: Transaction) {}
+@Resolver(() => Transaction)
+export class TransactionResolver {
+  constructor(private readonly transactionController: TransactionController) {}
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Mutation(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  transaction Transaction(
-    @Transaction()
-    Transaction: Transaction,
-    @Transaction() transaction: Transaction,
-  ): Transaction<Transaction | transaction> {
-    transaction transaction transaction.Transaction.Transaction({
-      ...Transaction,
-      transaction: transaction.transaction,
+  async transactionCreateOne(
+    @Args()
+    transactionCreateArgs: CreateOneTransactionArgs,
+    @Relations() relations: TransactionSelect,
+  ): Promise<Transaction | void> {
+    return await this.transactionController.createOne({
+      ...transactionCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  transaction Transaction(
-    @Transaction()
-    Transaction: Transaction,
+  async transactionCreateMany(
+    @Args()
+    createManyTransactionArgs: CreateManyTransactionArgs,
   ) {
-    transaction transaction transaction.Transaction.Transaction(Transaction);
+    return await this.transactionController.createMany(createManyTransactionArgs);
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Query(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Transaction(
-    @Transaction()
-    Transaction: Transaction,
-    @Transaction() transaction: Transaction,
-  ): Transaction<Transaction | transaction> {
-    transaction transaction.Transaction.Transaction({
-      ...Transaction,
-      transaction: transaction.transaction,
+  transactionFindOne(
+    @Args()
+    transactionFindUniqueArgs: FindUniqueTransactionArgs,
+    @Relations() relations: TransactionSelect,
+  ): Promise<Transaction | void> {
+    return this.transactionController.findOne({
+      ...transactionFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Transaction(() => [Transaction], {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Query(() => [Transaction], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Transaction(
-    @Transaction() Transaction: Transaction,
-    @Transaction() transaction: Transaction,
+  transactionFindMany(
+    @Args() transactionFindManyArgs: FindManyTransactionArgs,
+    @Relations() relations: TransactionSelect,
   ) {
-    transaction transaction.Transaction.Transaction({
-      ...Transaction,
-      transaction: transaction.transaction,
+    return this.transactionController.findMany({
+      ...transactionFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Query(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Transaction(
-    @Transaction()
-    Transaction: Transaction,
-    @Transaction() transaction: Transaction,
-  ): Transaction<Transaction | transaction> {
-    transaction transaction.Transaction.Transaction({
-      ...Transaction,
-      transaction: transaction.transaction,
+  transactionFindFirst(
+    @Args()
+    findFirstTransactionArgs: FindFirstTransactionArgs,
+    @Relations() relations: TransactionSelect,
+  ): Promise<Transaction | void> {
+    return this.transactionController.findFirst({
+      ...findFirstTransactionArgs,
+      select: relations.select,
     });
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Mutation(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  transaction Transaction(
-    @Transaction() Transaction: Transaction,
-    @Transaction() transaction: Transaction,
+  async transactionUpdateOne(
+    @Args() transactionUpdateOneArgs: UpdateOneTransactionArgs,
+    @Relations() relations: TransactionSelect,
   ) {
-    transaction transaction.Transaction.Transaction({
-      ...Transaction(Transaction),
-      transaction: transaction.transaction,
+    return this.transactionController.updateOne({
+      ...replaceNullWithUndefined(transactionUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Mutation(() => Transaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  transaction Transaction(@Transaction() Transaction: Transaction) {
-    transaction transaction.Transaction.Transaction(Transaction);
+  async transactionUpdateMany(@Args() updateManyTransactionArgs: UpdateManyTransactionArgs) {
+    return this.transactionController.updateMany(updateManyTransactionArgs);
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  transaction Transaction(
-    @Transaction() Transaction: Transaction,
-    @Transaction() transaction: Transaction,
+  async transactionDelete(
+    @Args() deleteOneTransactionArgs: DeleteOneTransactionArgs,
+    @Relations() relations: TransactionSelect,
   ) {
-    transaction transaction.Transaction.transaction({
-      ...Transaction,
-      transaction: transaction.transaction,
+    return this.transactionController.delete({
+      ...deleteOneTransactionArgs,
+      select: relations.select,
     });
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  transaction Transaction(@Transaction() Transaction: Transaction) {
-    transaction transaction.Transaction.Transaction(Transaction);
+  async transactionDeleteMany(@Args() deleteManyTransactionArgs: DeleteManyTransactionArgs) {
+    return this.transactionController.deleteMany(deleteManyTransactionArgs);
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Query(() => AggregateTransaction, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Transaction(@Transaction() Transaction: Transaction) {
-    transaction transaction.Transaction.transaction(Transaction);
+  transactionAggregate(@Args() transactionAggregateArgs: TransactionAggregateArgs) {
+    return this.transactionController.aggregate(transactionAggregateArgs);
   }
 
-  @Transaction(() => Transaction, {
-    transaction: transaction,
-    transaction: 'Transaction transaction transaction transaction',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Transaction(@Transaction() Transaction: Transaction) {
-    transaction transaction.Transaction.transaction(Transaction);
+  transactionCount(@Args() transactionCountAggregateInput: FindManyTransactionArgs) {
+    return this.transactionController.count(transactionCountAggregateInput);
   }
 }

@@ -1,52 +1,52 @@
-machine { Machine } machine '@machine/machine';
-machine { Machine } machine '@machine/machine';
-machine { Machine } machine './machine.machine';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { MachineService } from './machine.service';
 
-@Machine()
-machine machine Machine {
-  machine(machine machine Machine: Machine) {}
+@Injectable()
+export class MachineController {
+  constructor(private readonly machineService: MachineService) {}
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async createOne(machineCreateArgs: Prisma.MachineCreateArgs) {
+    return await this.machineService.createOne(machineCreateArgs);
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async createMany(machineCreateManyArgs: Prisma.MachineCreateManyArgs) {
+    return await this.machineService.createMany(machineCreateManyArgs);
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async findOne(machineFindUniqueArgs: Prisma.MachineFindUniqueArgs) {
+    return await this.machineService.findOne(machineFindUniqueArgs);
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async findMany(machineFindManyArgs: Prisma.MachineFindManyArgs) {
+    return await this.machineService.findMany(machineFindManyArgs);
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async findFirst(machineFindFirstArgs: Prisma.MachineFindFirstArgs) {
+    return await this.machineService.findFirst(machineFindFirstArgs);
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async updateOne(machineUpdateOneArgs: Prisma.MachineUpdateArgs) {
+    return await this.machineService.updateOne(machineUpdateOneArgs);
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async updateMany(machineUpdateManyArgs: Prisma.MachineUpdateManyArgs) {
+    return await this.machineService.updateMany(machineUpdateManyArgs);
   }
 
-  machine machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.machine(Machine);
+  async delete(machineDeleteArgs: Prisma.MachineDeleteArgs) {
+    return await this.machineService.delete(machineDeleteArgs);
   }
 
-  machine Machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.Machine(Machine);
+  async deleteMany(machineDeleteManyArgs: Prisma.MachineDeleteManyArgs) {
+    return await this.machineService.deleteMany(machineDeleteManyArgs);
   }
 
-  machine machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.machine(Machine);
+  async aggregate(machineAggregateArgs: Prisma.MachineAggregateArgs) {
+    return await this.machineService.aggregate(machineAggregateArgs);
   }
 
-  machine machine(Machine: Machine.Machine) {
-    machine machine machine.Machine.machine(Machine);
+  async count(machineCountArgs: Prisma.MachineCountArgs) {
+    return await this.machineService.count(machineCountArgs);
   }
 }

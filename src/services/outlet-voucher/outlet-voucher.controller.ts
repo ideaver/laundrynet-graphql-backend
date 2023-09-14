@@ -1,52 +1,52 @@
-outletvoucher { OutletVoucher } outletvoucher '@outletvoucher/outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher '@outletvoucher/outletvoucher';
-outletvoucher { OutletVoucher } outletvoucher './outletvoucher.outletvoucher';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { OutletVoucherService } from './outletVoucher.service';
 
-@OutletVoucher()
-outletvoucher outletvoucher OutletVoucher {
-  outletvoucher(outletvoucher outletvoucher OutletVoucher: OutletVoucher) {}
+@Injectable()
+export class OutletVoucherController {
+  constructor(private readonly outletVoucherService: OutletVoucherService) {}
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async createOne(outletVoucherCreateArgs: Prisma.OutletVoucherCreateArgs) {
+    return await this.outletVoucherService.createOne(outletVoucherCreateArgs);
   }
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async createMany(outletVoucherCreateManyArgs: Prisma.OutletVoucherCreateManyArgs) {
+    return await this.outletVoucherService.createMany(outletVoucherCreateManyArgs);
   }
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async findOne(outletVoucherFindUniqueArgs: Prisma.OutletVoucherFindUniqueArgs) {
+    return await this.outletVoucherService.findOne(outletVoucherFindUniqueArgs);
   }
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async findMany(outletVoucherFindManyArgs: Prisma.OutletVoucherFindManyArgs) {
+    return await this.outletVoucherService.findMany(outletVoucherFindManyArgs);
   }
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async findFirst(outletVoucherFindFirstArgs: Prisma.OutletVoucherFindFirstArgs) {
+    return await this.outletVoucherService.findFirst(outletVoucherFindFirstArgs);
   }
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async updateOne(outletVoucherUpdateOneArgs: Prisma.OutletVoucherUpdateArgs) {
+    return await this.outletVoucherService.updateOne(outletVoucherUpdateOneArgs);
   }
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async updateMany(outletVoucherUpdateManyArgs: Prisma.OutletVoucherUpdateManyArgs) {
+    return await this.outletVoucherService.updateMany(outletVoucherUpdateManyArgs);
   }
 
-  outletvoucher outletvoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.outletvoucher(OutletVoucher);
+  async delete(outletVoucherDeleteArgs: Prisma.OutletVoucherDeleteArgs) {
+    return await this.outletVoucherService.delete(outletVoucherDeleteArgs);
   }
 
-  outletvoucher OutletVoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.OutletVoucher(OutletVoucher);
+  async deleteMany(outletVoucherDeleteManyArgs: Prisma.OutletVoucherDeleteManyArgs) {
+    return await this.outletVoucherService.deleteMany(outletVoucherDeleteManyArgs);
   }
 
-  outletvoucher outletvoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.outletvoucher(OutletVoucher);
+  async aggregate(outletVoucherAggregateArgs: Prisma.OutletVoucherAggregateArgs) {
+    return await this.outletVoucherService.aggregate(outletVoucherAggregateArgs);
   }
 
-  outletvoucher outletvoucher(OutletVoucher: OutletVoucher.OutletVoucher) {
-    outletvoucher outletvoucher outletvoucher.OutletVoucher.outletvoucher(OutletVoucher);
+  async count(outletVoucherCountArgs: Prisma.OutletVoucherCountArgs) {
+    return await this.outletVoucherService.count(outletVoucherCountArgs);
   }
 }

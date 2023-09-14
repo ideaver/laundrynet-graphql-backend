@@ -1,11 +1,11 @@
-machinesettings { MachineSettings } machinesettings '@machinesettings/machinesettings';
-machinesettings { MachineSettings } machinesettings './machinesettings.machinesettings';
-machinesettings { MachineSettings } machinesettings './machinesettings.machinesettings';
-machinesettings { MachineSettings } machinesettings 'machinesettings/machinesettings.machinesettings';
-machinesettings { MachineSettings } machinesettings './machinesettings.machinesettings';
+import { Module } from '@nestjs/common';
+import { MachineSettingsService } from './machineSettings.service';
+import { MachineSettingsResolver } from './machineSettings.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { MachineSettingsController } from './machineSettings.controller';
 
-@MachineSettings({
-  machinesettings: [MachineSettings, MachineSettings, MachineSettings, MachineSettings],
-  machinesettings: [MachineSettings],
+@Module({
+  providers: [PrismaService, MachineSettingsResolver, MachineSettingsController, MachineSettingsService],
+  exports: [MachineSettingsController],
 })
-machinesettings machinesettings MachineSettings {}
+export class MachineSettingsModule {}

@@ -1,11 +1,11 @@
-creditcard { CreditCard } creditcard '@creditcard/creditcard';
-creditcard { CreditCard } creditcard './creditcard.creditcard';
-creditcard { CreditCard } creditcard './creditcard.creditcard';
-creditcard { CreditCard } creditcard 'creditcard/creditcard.creditcard';
-creditcard { CreditCard } creditcard './creditcard.creditcard';
+import { Module } from '@nestjs/common';
+import { CreditCardService } from './creditCard.service';
+import { CreditCardResolver } from './creditCard.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { CreditCardController } from './creditCard.controller';
 
-@CreditCard({
-  creditcard: [CreditCard, CreditCard, CreditCard, CreditCard],
-  creditcard: [CreditCard],
+@Module({
+  providers: [PrismaService, CreditCardResolver, CreditCardController, CreditCardService],
+  exports: [CreditCardController],
 })
-creditcard creditcard CreditCard {}
+export class CreditCardModule {}

@@ -1,52 +1,52 @@
-platformitem { PlatformItem } platformitem '@platformitem/platformitem';
-platformitem { PlatformItem } platformitem '@platformitem/platformitem';
-platformitem { PlatformItem } platformitem './platformitem.platformitem';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { PlatformItemService } from './platformItem.service';
 
-@PlatformItem()
-platformitem platformitem PlatformItem {
-  platformitem(platformitem platformitem PlatformItem: PlatformItem) {}
+@Injectable()
+export class PlatformItemController {
+  constructor(private readonly platformItemService: PlatformItemService) {}
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async createOne(platformItemCreateArgs: Prisma.PlatformItemCreateArgs) {
+    return await this.platformItemService.createOne(platformItemCreateArgs);
   }
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async createMany(platformItemCreateManyArgs: Prisma.PlatformItemCreateManyArgs) {
+    return await this.platformItemService.createMany(platformItemCreateManyArgs);
   }
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async findOne(platformItemFindUniqueArgs: Prisma.PlatformItemFindUniqueArgs) {
+    return await this.platformItemService.findOne(platformItemFindUniqueArgs);
   }
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async findMany(platformItemFindManyArgs: Prisma.PlatformItemFindManyArgs) {
+    return await this.platformItemService.findMany(platformItemFindManyArgs);
   }
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async findFirst(platformItemFindFirstArgs: Prisma.PlatformItemFindFirstArgs) {
+    return await this.platformItemService.findFirst(platformItemFindFirstArgs);
   }
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async updateOne(platformItemUpdateOneArgs: Prisma.PlatformItemUpdateArgs) {
+    return await this.platformItemService.updateOne(platformItemUpdateOneArgs);
   }
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async updateMany(platformItemUpdateManyArgs: Prisma.PlatformItemUpdateManyArgs) {
+    return await this.platformItemService.updateMany(platformItemUpdateManyArgs);
   }
 
-  platformitem platformitem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.platformitem(PlatformItem);
+  async delete(platformItemDeleteArgs: Prisma.PlatformItemDeleteArgs) {
+    return await this.platformItemService.delete(platformItemDeleteArgs);
   }
 
-  platformitem PlatformItem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.PlatformItem(PlatformItem);
+  async deleteMany(platformItemDeleteManyArgs: Prisma.PlatformItemDeleteManyArgs) {
+    return await this.platformItemService.deleteMany(platformItemDeleteManyArgs);
   }
 
-  platformitem platformitem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.platformitem(PlatformItem);
+  async aggregate(platformItemAggregateArgs: Prisma.PlatformItemAggregateArgs) {
+    return await this.platformItemService.aggregate(platformItemAggregateArgs);
   }
 
-  platformitem platformitem(PlatformItem: PlatformItem.PlatformItem) {
-    platformitem platformitem platformitem.PlatformItem.platformitem(PlatformItem);
+  async count(platformItemCountArgs: Prisma.PlatformItemCountArgs) {
+    return await this.platformItemService.count(platformItemCountArgs);
   }
 }

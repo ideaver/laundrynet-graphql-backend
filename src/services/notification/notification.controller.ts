@@ -1,52 +1,52 @@
-notification { Notification } notification '@notification/notification';
-notification { Notification } notification '@notification/notification';
-notification { Notification } notification './notification.notification';
+import { Injectable } from '@nestjs/common';
+import { Prisma } from '@prisma/client';
+import { NotificationService } from './notification.service';
 
-@Notification()
-notification notification Notification {
-  notification(notification notification Notification: Notification) {}
+@Injectable()
+export class NotificationController {
+  constructor(private readonly notificationService: NotificationService) {}
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async createOne(notificationCreateArgs: Prisma.NotificationCreateArgs) {
+    return await this.notificationService.createOne(notificationCreateArgs);
   }
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async createMany(notificationCreateManyArgs: Prisma.NotificationCreateManyArgs) {
+    return await this.notificationService.createMany(notificationCreateManyArgs);
   }
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async findOne(notificationFindUniqueArgs: Prisma.NotificationFindUniqueArgs) {
+    return await this.notificationService.findOne(notificationFindUniqueArgs);
   }
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async findMany(notificationFindManyArgs: Prisma.NotificationFindManyArgs) {
+    return await this.notificationService.findMany(notificationFindManyArgs);
   }
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async findFirst(notificationFindFirstArgs: Prisma.NotificationFindFirstArgs) {
+    return await this.notificationService.findFirst(notificationFindFirstArgs);
   }
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async updateOne(notificationUpdateOneArgs: Prisma.NotificationUpdateArgs) {
+    return await this.notificationService.updateOne(notificationUpdateOneArgs);
   }
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async updateMany(notificationUpdateManyArgs: Prisma.NotificationUpdateManyArgs) {
+    return await this.notificationService.updateMany(notificationUpdateManyArgs);
   }
 
-  notification notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.notification(Notification);
+  async delete(notificationDeleteArgs: Prisma.NotificationDeleteArgs) {
+    return await this.notificationService.delete(notificationDeleteArgs);
   }
 
-  notification Notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.Notification(Notification);
+  async deleteMany(notificationDeleteManyArgs: Prisma.NotificationDeleteManyArgs) {
+    return await this.notificationService.deleteMany(notificationDeleteManyArgs);
   }
 
-  notification notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.notification(Notification);
+  async aggregate(notificationAggregateArgs: Prisma.NotificationAggregateArgs) {
+    return await this.notificationService.aggregate(notificationAggregateArgs);
   }
 
-  notification notification(Notification: Notification.Notification) {
-    notification notification notification.Notification.notification(Notification);
+  async count(notificationCountArgs: Prisma.NotificationCountArgs) {
+    return await this.notificationService.count(notificationCountArgs);
   }
 }

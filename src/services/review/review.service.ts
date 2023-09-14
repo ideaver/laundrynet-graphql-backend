@@ -1,99 +1,99 @@
-review { Review } review '@review/review';
-review { Review } review 'review/review.review';
-review { Review } review 'review/review/review/review-review-review';
-review { Review } review '@review/review';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@Review()
-review review Review {
-  review(review review: Review) {}
+@Injectable()
+export class ReviewService {
+  constructor(private prisma: PrismaService) {}
 
-  review Review(Review: Review.Review) {
-    review {
-      review review review.review.review.review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async createOne(reviewCreateArgs: Prisma.ReviewCreateArgs) {
+    try {
+      return await this.prisma.review.create(reviewCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review Review(Review: Review.Review) {
-    review {
-      review review review.review.review.Review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async createMany(reviewCreateManyArgs: Prisma.ReviewCreateManyArgs) {
+    try {
+      return await this.prisma.review.createMany(reviewCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review Review(Review: Review.Review) {
-    review {
-      review review review.review.review.Review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async findOne(reviewFindUniqueArgs: Prisma.ReviewFindUniqueArgs) {
+    try {
+      return await this.prisma.review.findUnique(reviewFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review Review(Review: Review.Review) {
-    review {
-      review review review.review.review.Review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async findMany(reviewFindManyArgs: Prisma.ReviewFindManyArgs) {
+    try {
+      return await this.prisma.review.findMany(reviewFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review Review(Review: Review.Review) {
-    review {
-      review review review.review.review.Review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async findFirst(reviewFindFirstArgs: Prisma.ReviewFindFirstArgs) {
+    try {
+      return await this.prisma.review.findFirst(reviewFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review Review(Review: Review.Review) {
-    review {
-      review review review.review.review.review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async updateOne(reviewUpdateOneArgs: Prisma.ReviewUpdateArgs) {
+    try {
+      return await this.prisma.review.update(reviewUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review Review(Review: Review.Review) {
-    review {
-      review review review.review.review.Review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async updateMany(reviewUpdateManyArgs: Prisma.ReviewUpdateManyArgs) {
+    try {
+      return await this.prisma.review.updateMany(reviewUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review review(Review: Review.Review) {
-    review {
-      review review.review.review.review(Review);
-      review review;
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async delete(reviewDeleteArgs: Prisma.ReviewDeleteArgs) {
+    try {
+      await this.prisma.review.delete(reviewDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review Review(Review: Review.Review) {
-    review {
-      review review.review.review.Review(Review);
-      review review;
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async deleteMany(reviewDeleteManyArgs: Prisma.ReviewDeleteManyArgs) {
+    try {
+      await this.prisma.review.deleteMany(reviewDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review review(Review: Review.Review) {
-    review {
-      review review review.review.review.review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async aggregate(reviewAggregateArgs: Prisma.ReviewAggregateArgs) {
+    try {
+      return await this.prisma.review.aggregate(reviewAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  review review(Review: Review.Review) {
-    review {
-      review review review.review.review.review(Review);
-    } review (review) {
-      review review Review({ review: review, review: review });
+  async count(reviewCountArgs: Prisma.ReviewCountArgs) {
+    try {
+      return await this.prisma.review.count(reviewCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

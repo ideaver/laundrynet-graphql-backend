@@ -1,160 +1,160 @@
-// @province-province
-province { Province, Province, Province, Province, Province } province '@province/province';
-province { Province } province '@province/province';
-province { Province } province 'province/province/province.province';
-province {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateProvince,
+  CreateManyProvinceArgs,
+  CreateOneProvinceArgs,
+  DeleteManyProvinceArgs,
+  DeleteOneProvinceArgs,
+  FindFirstProvinceArgs,
+  FindManyProvinceArgs,
+  FindUniqueProvinceArgs,
   Province,
-  Province,
-  Province,
-  Province,
-  Province,
-  Province,
-  Province,
-  Province,
-  Province,
-  Province,
-  Province,
-  Province,
-} province 'province/@province';
-province { Province } province './province.province';
-province { Province } province 'province/province/province-province-province-province.province';
-province Province province 'province/province/province-province.province';
+  ProvinceAggregateArgs,
+  UpdateManyProvinceArgs,
+  UpdateOneProvinceArgs,
+} from 'src/@generated';
+import { ProvinceController } from './province.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-province Province {
-  province: Province.Province;
+interface ProvinceSelect {
+  select: Prisma.ProvinceSelect;
 }
 
-@Province(() => Province)
-province province Province {
-  province(province province Province: Province) {}
+@Resolver(() => Province)
+export class ProvinceResolver {
+  constructor(private readonly provinceController: ProvinceController) {}
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Mutation(() => Province, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  province Province(
-    @Province()
-    Province: Province,
-    @Province() province: Province,
-  ): Province<Province | province> {
-    province province province.Province.Province({
-      ...Province,
-      province: province.province,
+  async provinceCreateOne(
+    @Args()
+    provinceCreateArgs: CreateOneProvinceArgs,
+    @Relations() relations: ProvinceSelect,
+  ): Promise<Province | void> {
+    return await this.provinceController.createOne({
+      ...provinceCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  province Province(
-    @Province()
-    Province: Province,
+  async provinceCreateMany(
+    @Args()
+    createManyProvinceArgs: CreateManyProvinceArgs,
   ) {
-    province province province.Province.Province(Province);
+    return await this.provinceController.createMany(createManyProvinceArgs);
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Query(() => Province, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Province(
-    @Province()
-    Province: Province,
-    @Province() province: Province,
-  ): Province<Province | province> {
-    province province.Province.Province({
-      ...Province,
-      province: province.province,
+  provinceFindOne(
+    @Args()
+    provinceFindUniqueArgs: FindUniqueProvinceArgs,
+    @Relations() relations: ProvinceSelect,
+  ): Promise<Province | void> {
+    return this.provinceController.findOne({
+      ...provinceFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Province(() => [Province], {
-    province: province,
-    province: 'Province province province province',
+  @Query(() => [Province], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Province(
-    @Province() Province: Province,
-    @Province() province: Province,
+  provinceFindMany(
+    @Args() provinceFindManyArgs: FindManyProvinceArgs,
+    @Relations() relations: ProvinceSelect,
   ) {
-    province province.Province.Province({
-      ...Province,
-      province: province.province,
+    return this.provinceController.findMany({
+      ...provinceFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Query(() => Province, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Province(
-    @Province()
-    Province: Province,
-    @Province() province: Province,
-  ): Province<Province | province> {
-    province province.Province.Province({
-      ...Province,
-      province: province.province,
+  provinceFindFirst(
+    @Args()
+    findFirstProvinceArgs: FindFirstProvinceArgs,
+    @Relations() relations: ProvinceSelect,
+  ): Promise<Province | void> {
+    return this.provinceController.findFirst({
+      ...findFirstProvinceArgs,
+      select: relations.select,
     });
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Mutation(() => Province, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  province Province(
-    @Province() Province: Province,
-    @Province() province: Province,
+  async provinceUpdateOne(
+    @Args() provinceUpdateOneArgs: UpdateOneProvinceArgs,
+    @Relations() relations: ProvinceSelect,
   ) {
-    province province.Province.Province({
-      ...Province(Province),
-      province: province.province,
+    return this.provinceController.updateOne({
+      ...replaceNullWithUndefined(provinceUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Mutation(() => Province, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  province Province(@Province() Province: Province) {
-    province province.Province.Province(Province);
+  async provinceUpdateMany(@Args() updateManyProvinceArgs: UpdateManyProvinceArgs) {
+    return this.provinceController.updateMany(updateManyProvinceArgs);
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  province Province(
-    @Province() Province: Province,
-    @Province() province: Province,
+  async provinceDelete(
+    @Args() deleteOneProvinceArgs: DeleteOneProvinceArgs,
+    @Relations() relations: ProvinceSelect,
   ) {
-    province province.Province.province({
-      ...Province,
-      province: province.province,
+    return this.provinceController.delete({
+      ...deleteOneProvinceArgs,
+      select: relations.select,
     });
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  province Province(@Province() Province: Province) {
-    province province.Province.Province(Province);
+  async provinceDeleteMany(@Args() deleteManyProvinceArgs: DeleteManyProvinceArgs) {
+    return this.provinceController.deleteMany(deleteManyProvinceArgs);
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Query(() => AggregateProvince, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Province(@Province() Province: Province) {
-    province province.Province.province(Province);
+  provinceAggregate(@Args() provinceAggregateArgs: ProvinceAggregateArgs) {
+    return this.provinceController.aggregate(provinceAggregateArgs);
   }
 
-  @Province(() => Province, {
-    province: province,
-    province: 'Province province province province',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Province(@Province() Province: Province) {
-    province province.Province.province(Province);
+  provinceCount(@Args() provinceCountAggregateInput: FindManyProvinceArgs) {
+    return this.provinceController.count(provinceCountAggregateInput);
   }
 }

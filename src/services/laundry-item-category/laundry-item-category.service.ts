@@ -1,99 +1,99 @@
-laundryitemcategory { LaundryItemCategory } laundryitemcategory '@laundryitemcategory/laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory 'laundryitemcategory/laundryitemcategory.laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory 'laundryitemcategory/laundryitemcategory/laundryitemcategory/laundryitemcategory-laundryitemcategory-laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory '@laundryitemcategory/laundryitemcategory';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@LaundryItemCategory()
-laundryitemcategory laundryitemcategory LaundryItemCategory {
-  laundryitemcategory(laundryitemcategory laundryitemcategory: LaundryItemCategory) {}
+@Injectable()
+export class LaundryItemCategoryService {
+  constructor(private prisma: PrismaService) {}
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.laundryitemcategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async createOne(laundryItemCategoryCreateArgs: Prisma.LaundryItemCategoryCreateArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.create(laundryItemCategoryCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.LaundryItemCategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async createMany(laundryItemCategoryCreateManyArgs: Prisma.LaundryItemCategoryCreateManyArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.createMany(laundryItemCategoryCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.LaundryItemCategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async findOne(laundryItemCategoryFindUniqueArgs: Prisma.LaundryItemCategoryFindUniqueArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.findUnique(laundryItemCategoryFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.LaundryItemCategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async findMany(laundryItemCategoryFindManyArgs: Prisma.LaundryItemCategoryFindManyArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.findMany(laundryItemCategoryFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.LaundryItemCategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async findFirst(laundryItemCategoryFindFirstArgs: Prisma.LaundryItemCategoryFindFirstArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.findFirst(laundryItemCategoryFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.laundryitemcategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async updateOne(laundryItemCategoryUpdateOneArgs: Prisma.LaundryItemCategoryUpdateArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.update(laundryItemCategoryUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.LaundryItemCategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async updateMany(laundryItemCategoryUpdateManyArgs: Prisma.LaundryItemCategoryUpdateManyArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.updateMany(laundryItemCategoryUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory laundryitemcategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.laundryitemcategory(LaundryItemCategory);
-      laundryitemcategory laundryitemcategory;
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async delete(laundryItemCategoryDeleteArgs: Prisma.LaundryItemCategoryDeleteArgs) {
+    try {
+      await this.prisma.laundryItemCategory.delete(laundryItemCategoryDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory LaundryItemCategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.LaundryItemCategory(LaundryItemCategory);
-      laundryitemcategory laundryitemcategory;
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async deleteMany(laundryItemCategoryDeleteManyArgs: Prisma.LaundryItemCategoryDeleteManyArgs) {
+    try {
+      await this.prisma.laundryItemCategory.deleteMany(laundryItemCategoryDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory laundryitemcategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.laundryitemcategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async aggregate(laundryItemCategoryAggregateArgs: Prisma.LaundryItemCategoryAggregateArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.aggregate(laundryItemCategoryAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  laundryitemcategory laundryitemcategory(LaundryItemCategory: LaundryItemCategory.LaundryItemCategory) {
-    laundryitemcategory {
-      laundryitemcategory laundryitemcategory laundryitemcategory.laundryitemcategory.laundryitemcategory.laundryitemcategory(LaundryItemCategory);
-    } laundryitemcategory (laundryitemcategory) {
-      laundryitemcategory laundryitemcategory LaundryItemCategory({ laundryitemcategory: laundryitemcategory, laundryitemcategory: laundryitemcategory });
+  async count(laundryItemCategoryCountArgs: Prisma.LaundryItemCategoryCountArgs) {
+    try {
+      return await this.prisma.laundryItemCategory.count(laundryItemCategoryCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

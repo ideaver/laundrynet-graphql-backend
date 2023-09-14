@@ -1,160 +1,160 @@
-// @chatroom-chatroom
-chatroom { ChatRoom, ChatRoom, ChatRoom, ChatRoom, ChatRoom } chatroom '@chatroom/chatroom';
-chatroom { ChatRoom } chatroom '@chatroom/chatroom';
-chatroom { ChatRoom } chatroom 'chatroom/chatroom/chatroom.chatroom';
-chatroom {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateChatRoom,
+  CreateManyChatRoomArgs,
+  CreateOneChatRoomArgs,
+  DeleteManyChatRoomArgs,
+  DeleteOneChatRoomArgs,
+  FindFirstChatRoomArgs,
+  FindManyChatRoomArgs,
+  FindUniqueChatRoomArgs,
   ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-  ChatRoom,
-} chatroom 'chatroom/@chatroom';
-chatroom { ChatRoom } chatroom './chatroom.chatroom';
-chatroom { ChatRoom } chatroom 'chatroom/chatroom/chatroom-chatroom-chatroom-chatroom.chatroom';
-chatroom ChatRoom chatroom 'chatroom/chatroom/chatroom-chatroom.chatroom';
+  ChatRoomAggregateArgs,
+  UpdateManyChatRoomArgs,
+  UpdateOneChatRoomArgs,
+} from 'src/@generated';
+import { ChatRoomController } from './chatRoom.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-chatroom ChatRoom {
-  chatroom: ChatRoom.ChatRoom;
+interface ChatRoomSelect {
+  select: Prisma.ChatRoomSelect;
 }
 
-@ChatRoom(() => ChatRoom)
-chatroom chatroom ChatRoom {
-  chatroom(chatroom chatroom ChatRoom: ChatRoom) {}
+@Resolver(() => ChatRoom)
+export class ChatRoomResolver {
+  constructor(private readonly chatRoomController: ChatRoomController) {}
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Mutation(() => ChatRoom, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  chatroom ChatRoom(
-    @ChatRoom()
-    ChatRoom: ChatRoom,
-    @ChatRoom() chatroom: ChatRoom,
-  ): ChatRoom<ChatRoom | chatroom> {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom({
-      ...ChatRoom,
-      chatroom: chatroom.chatroom,
+  async chatRoomCreateOne(
+    @Args()
+    chatRoomCreateArgs: CreateOneChatRoomArgs,
+    @Relations() relations: ChatRoomSelect,
+  ): Promise<ChatRoom | void> {
+    return await this.chatRoomController.createOne({
+      ...chatRoomCreateArgs,
+      select: relations.select,
     });
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  chatroom ChatRoom(
-    @ChatRoom()
-    ChatRoom: ChatRoom,
+  async chatRoomCreateMany(
+    @Args()
+    createManyChatRoomArgs: CreateManyChatRoomArgs,
   ) {
-    chatroom chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+    return await this.chatRoomController.createMany(createManyChatRoomArgs);
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Query(() => ChatRoom, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ChatRoom(
-    @ChatRoom()
-    ChatRoom: ChatRoom,
-    @ChatRoom() chatroom: ChatRoom,
-  ): ChatRoom<ChatRoom | chatroom> {
-    chatroom chatroom.ChatRoom.ChatRoom({
-      ...ChatRoom,
-      chatroom: chatroom.chatroom,
+  chatRoomFindOne(
+    @Args()
+    chatRoomFindUniqueArgs: FindUniqueChatRoomArgs,
+    @Relations() relations: ChatRoomSelect,
+  ): Promise<ChatRoom | void> {
+    return this.chatRoomController.findOne({
+      ...chatRoomFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @ChatRoom(() => [ChatRoom], {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Query(() => [ChatRoom], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ChatRoom(
-    @ChatRoom() ChatRoom: ChatRoom,
-    @ChatRoom() chatroom: ChatRoom,
+  chatRoomFindMany(
+    @Args() chatRoomFindManyArgs: FindManyChatRoomArgs,
+    @Relations() relations: ChatRoomSelect,
   ) {
-    chatroom chatroom.ChatRoom.ChatRoom({
-      ...ChatRoom,
-      chatroom: chatroom.chatroom,
+    return this.chatRoomController.findMany({
+      ...chatRoomFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Query(() => ChatRoom, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ChatRoom(
-    @ChatRoom()
-    ChatRoom: ChatRoom,
-    @ChatRoom() chatroom: ChatRoom,
-  ): ChatRoom<ChatRoom | chatroom> {
-    chatroom chatroom.ChatRoom.ChatRoom({
-      ...ChatRoom,
-      chatroom: chatroom.chatroom,
+  chatRoomFindFirst(
+    @Args()
+    findFirstChatRoomArgs: FindFirstChatRoomArgs,
+    @Relations() relations: ChatRoomSelect,
+  ): Promise<ChatRoom | void> {
+    return this.chatRoomController.findFirst({
+      ...findFirstChatRoomArgs,
+      select: relations.select,
     });
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Mutation(() => ChatRoom, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  chatroom ChatRoom(
-    @ChatRoom() ChatRoom: ChatRoom,
-    @ChatRoom() chatroom: ChatRoom,
+  async chatRoomUpdateOne(
+    @Args() chatRoomUpdateOneArgs: UpdateOneChatRoomArgs,
+    @Relations() relations: ChatRoomSelect,
   ) {
-    chatroom chatroom.ChatRoom.ChatRoom({
-      ...ChatRoom(ChatRoom),
-      chatroom: chatroom.chatroom,
+    return this.chatRoomController.updateOne({
+      ...replaceNullWithUndefined(chatRoomUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Mutation(() => ChatRoom, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  chatroom ChatRoom(@ChatRoom() ChatRoom: ChatRoom) {
-    chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async chatRoomUpdateMany(@Args() updateManyChatRoomArgs: UpdateManyChatRoomArgs) {
+    return this.chatRoomController.updateMany(updateManyChatRoomArgs);
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  chatroom ChatRoom(
-    @ChatRoom() ChatRoom: ChatRoom,
-    @ChatRoom() chatroom: ChatRoom,
+  async chatRoomDelete(
+    @Args() deleteOneChatRoomArgs: DeleteOneChatRoomArgs,
+    @Relations() relations: ChatRoomSelect,
   ) {
-    chatroom chatroom.ChatRoom.chatroom({
-      ...ChatRoom,
-      chatroom: chatroom.chatroom,
+    return this.chatRoomController.delete({
+      ...deleteOneChatRoomArgs,
+      select: relations.select,
     });
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  chatroom ChatRoom(@ChatRoom() ChatRoom: ChatRoom) {
-    chatroom chatroom.ChatRoom.ChatRoom(ChatRoom);
+  async chatRoomDeleteMany(@Args() deleteManyChatRoomArgs: DeleteManyChatRoomArgs) {
+    return this.chatRoomController.deleteMany(deleteManyChatRoomArgs);
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Query(() => AggregateChatRoom, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ChatRoom(@ChatRoom() ChatRoom: ChatRoom) {
-    chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  chatRoomAggregate(@Args() chatRoomAggregateArgs: ChatRoomAggregateArgs) {
+    return this.chatRoomController.aggregate(chatRoomAggregateArgs);
   }
 
-  @ChatRoom(() => ChatRoom, {
-    chatroom: chatroom,
-    chatroom: 'ChatRoom chatroom chatroom chatroom',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  ChatRoom(@ChatRoom() ChatRoom: ChatRoom) {
-    chatroom chatroom.ChatRoom.chatroom(ChatRoom);
+  chatRoomCount(@Args() chatRoomCountAggregateInput: FindManyChatRoomArgs) {
+    return this.chatRoomController.count(chatRoomCountAggregateInput);
   }
 }

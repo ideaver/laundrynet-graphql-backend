@@ -1,99 +1,99 @@
-platformorder { PlatformOrder } platformorder '@platformorder/platformorder';
-platformorder { PlatformOrder } platformorder 'platformorder/platformorder.platformorder';
-platformorder { PlatformOrder } platformorder 'platformorder/platformorder/platformorder/platformorder-platformorder-platformorder';
-platformorder { PlatformOrder } platformorder '@platformorder/platformorder';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@PlatformOrder()
-platformorder platformorder PlatformOrder {
-  platformorder(platformorder platformorder: PlatformOrder) {}
+@Injectable()
+export class PlatformOrderService {
+  constructor(private prisma: PrismaService) {}
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.platformorder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async createOne(platformOrderCreateArgs: Prisma.PlatformOrderCreateArgs) {
+    try {
+      return await this.prisma.platformOrder.create(platformOrderCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.PlatformOrder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async createMany(platformOrderCreateManyArgs: Prisma.PlatformOrderCreateManyArgs) {
+    try {
+      return await this.prisma.platformOrder.createMany(platformOrderCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.PlatformOrder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async findOne(platformOrderFindUniqueArgs: Prisma.PlatformOrderFindUniqueArgs) {
+    try {
+      return await this.prisma.platformOrder.findUnique(platformOrderFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.PlatformOrder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async findMany(platformOrderFindManyArgs: Prisma.PlatformOrderFindManyArgs) {
+    try {
+      return await this.prisma.platformOrder.findMany(platformOrderFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.PlatformOrder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async findFirst(platformOrderFindFirstArgs: Prisma.PlatformOrderFindFirstArgs) {
+    try {
+      return await this.prisma.platformOrder.findFirst(platformOrderFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.platformorder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async updateOne(platformOrderUpdateOneArgs: Prisma.PlatformOrderUpdateArgs) {
+    try {
+      return await this.prisma.platformOrder.update(platformOrderUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.PlatformOrder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async updateMany(platformOrderUpdateManyArgs: Prisma.PlatformOrderUpdateManyArgs) {
+    try {
+      return await this.prisma.platformOrder.updateMany(platformOrderUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder platformorder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder.platformorder.platformorder.platformorder(PlatformOrder);
-      platformorder platformorder;
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async delete(platformOrderDeleteArgs: Prisma.PlatformOrderDeleteArgs) {
+    try {
+      await this.prisma.platformOrder.delete(platformOrderDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder PlatformOrder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder.platformorder.platformorder.PlatformOrder(PlatformOrder);
-      platformorder platformorder;
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async deleteMany(platformOrderDeleteManyArgs: Prisma.PlatformOrderDeleteManyArgs) {
+    try {
+      await this.prisma.platformOrder.deleteMany(platformOrderDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder platformorder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.platformorder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async aggregate(platformOrderAggregateArgs: Prisma.PlatformOrderAggregateArgs) {
+    try {
+      return await this.prisma.platformOrder.aggregate(platformOrderAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  platformorder platformorder(PlatformOrder: PlatformOrder.PlatformOrder) {
-    platformorder {
-      platformorder platformorder platformorder.platformorder.platformorder.platformorder(PlatformOrder);
-    } platformorder (platformorder) {
-      platformorder platformorder PlatformOrder({ platformorder: platformorder, platformorder: platformorder });
+  async count(platformOrderCountArgs: Prisma.PlatformOrderCountArgs) {
+    try {
+      return await this.prisma.platformOrder.count(platformOrderCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

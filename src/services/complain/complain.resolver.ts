@@ -1,160 +1,160 @@
-// @complain-complain
-complain { Complain, Complain, Complain, Complain, Complain } complain '@complain/complain';
-complain { Complain } complain '@complain/complain';
-complain { Complain } complain 'complain/complain/complain.complain';
-complain {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateComplain,
+  CreateManyComplainArgs,
+  CreateOneComplainArgs,
+  DeleteManyComplainArgs,
+  DeleteOneComplainArgs,
+  FindFirstComplainArgs,
+  FindManyComplainArgs,
+  FindUniqueComplainArgs,
   Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-  Complain,
-} complain 'complain/@complain';
-complain { Complain } complain './complain.complain';
-complain { Complain } complain 'complain/complain/complain-complain-complain-complain.complain';
-complain Complain complain 'complain/complain/complain-complain.complain';
+  ComplainAggregateArgs,
+  UpdateManyComplainArgs,
+  UpdateOneComplainArgs,
+} from 'src/@generated';
+import { ComplainController } from './complain.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-complain Complain {
-  complain: Complain.Complain;
+interface ComplainSelect {
+  select: Prisma.ComplainSelect;
 }
 
-@Complain(() => Complain)
-complain complain Complain {
-  complain(complain complain Complain: Complain) {}
+@Resolver(() => Complain)
+export class ComplainResolver {
+  constructor(private readonly complainController: ComplainController) {}
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Mutation(() => Complain, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  complain Complain(
-    @Complain()
-    Complain: Complain,
-    @Complain() complain: Complain,
-  ): Complain<Complain | complain> {
-    complain complain complain.Complain.Complain({
-      ...Complain,
-      complain: complain.complain,
+  async complainCreateOne(
+    @Args()
+    complainCreateArgs: CreateOneComplainArgs,
+    @Relations() relations: ComplainSelect,
+  ): Promise<Complain | void> {
+    return await this.complainController.createOne({
+      ...complainCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  complain Complain(
-    @Complain()
-    Complain: Complain,
+  async complainCreateMany(
+    @Args()
+    createManyComplainArgs: CreateManyComplainArgs,
   ) {
-    complain complain complain.Complain.Complain(Complain);
+    return await this.complainController.createMany(createManyComplainArgs);
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Query(() => Complain, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Complain(
-    @Complain()
-    Complain: Complain,
-    @Complain() complain: Complain,
-  ): Complain<Complain | complain> {
-    complain complain.Complain.Complain({
-      ...Complain,
-      complain: complain.complain,
+  complainFindOne(
+    @Args()
+    complainFindUniqueArgs: FindUniqueComplainArgs,
+    @Relations() relations: ComplainSelect,
+  ): Promise<Complain | void> {
+    return this.complainController.findOne({
+      ...complainFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Complain(() => [Complain], {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Query(() => [Complain], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Complain(
-    @Complain() Complain: Complain,
-    @Complain() complain: Complain,
+  complainFindMany(
+    @Args() complainFindManyArgs: FindManyComplainArgs,
+    @Relations() relations: ComplainSelect,
   ) {
-    complain complain.Complain.Complain({
-      ...Complain,
-      complain: complain.complain,
+    return this.complainController.findMany({
+      ...complainFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Query(() => Complain, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Complain(
-    @Complain()
-    Complain: Complain,
-    @Complain() complain: Complain,
-  ): Complain<Complain | complain> {
-    complain complain.Complain.Complain({
-      ...Complain,
-      complain: complain.complain,
+  complainFindFirst(
+    @Args()
+    findFirstComplainArgs: FindFirstComplainArgs,
+    @Relations() relations: ComplainSelect,
+  ): Promise<Complain | void> {
+    return this.complainController.findFirst({
+      ...findFirstComplainArgs,
+      select: relations.select,
     });
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Mutation(() => Complain, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  complain Complain(
-    @Complain() Complain: Complain,
-    @Complain() complain: Complain,
+  async complainUpdateOne(
+    @Args() complainUpdateOneArgs: UpdateOneComplainArgs,
+    @Relations() relations: ComplainSelect,
   ) {
-    complain complain.Complain.Complain({
-      ...Complain(Complain),
-      complain: complain.complain,
+    return this.complainController.updateOne({
+      ...replaceNullWithUndefined(complainUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Mutation(() => Complain, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  complain Complain(@Complain() Complain: Complain) {
-    complain complain.Complain.Complain(Complain);
+  async complainUpdateMany(@Args() updateManyComplainArgs: UpdateManyComplainArgs) {
+    return this.complainController.updateMany(updateManyComplainArgs);
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  complain Complain(
-    @Complain() Complain: Complain,
-    @Complain() complain: Complain,
+  async complainDelete(
+    @Args() deleteOneComplainArgs: DeleteOneComplainArgs,
+    @Relations() relations: ComplainSelect,
   ) {
-    complain complain.Complain.complain({
-      ...Complain,
-      complain: complain.complain,
+    return this.complainController.delete({
+      ...deleteOneComplainArgs,
+      select: relations.select,
     });
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  complain Complain(@Complain() Complain: Complain) {
-    complain complain.Complain.Complain(Complain);
+  async complainDeleteMany(@Args() deleteManyComplainArgs: DeleteManyComplainArgs) {
+    return this.complainController.deleteMany(deleteManyComplainArgs);
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Query(() => AggregateComplain, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Complain(@Complain() Complain: Complain) {
-    complain complain.Complain.complain(Complain);
+  complainAggregate(@Args() complainAggregateArgs: ComplainAggregateArgs) {
+    return this.complainController.aggregate(complainAggregateArgs);
   }
 
-  @Complain(() => Complain, {
-    complain: complain,
-    complain: 'Complain complain complain complain',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Complain(@Complain() Complain: Complain) {
-    complain complain.Complain.complain(Complain);
+  complainCount(@Args() complainCountAggregateInput: FindManyComplainArgs) {
+    return this.complainController.count(complainCountAggregateInput);
   }
 }

@@ -1,11 +1,11 @@
-serviceorder { ServiceOrder } serviceorder '@serviceorder/serviceorder';
-serviceorder { ServiceOrder } serviceorder './serviceorder.serviceorder';
-serviceorder { ServiceOrder } serviceorder './serviceorder.serviceorder';
-serviceorder { ServiceOrder } serviceorder 'serviceorder/serviceorder.serviceorder';
-serviceorder { ServiceOrder } serviceorder './serviceorder.serviceorder';
+import { Module } from '@nestjs/common';
+import { ServiceOrderService } from './serviceOrder.service';
+import { ServiceOrderResolver } from './serviceOrder.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { ServiceOrderController } from './serviceOrder.controller';
 
-@ServiceOrder({
-  serviceorder: [ServiceOrder, ServiceOrder, ServiceOrder, ServiceOrder],
-  serviceorder: [ServiceOrder],
+@Module({
+  providers: [PrismaService, ServiceOrderResolver, ServiceOrderController, ServiceOrderService],
+  exports: [ServiceOrderController],
 })
-serviceorder serviceorder ServiceOrder {}
+export class ServiceOrderModule {}

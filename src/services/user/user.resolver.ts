@@ -1,160 +1,160 @@
-// @user-user
-user { User, User, User, User, User } user '@user/user';
-user { User } user '@user/user';
-user { User } user 'user/user/user.user';
-user {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateUser,
+  CreateManyUserArgs,
+  CreateOneUserArgs,
+  DeleteManyUserArgs,
+  DeleteOneUserArgs,
+  FindFirstUserArgs,
+  FindManyUserArgs,
+  FindUniqueUserArgs,
   User,
-  User,
-  User,
-  User,
-  User,
-  User,
-  User,
-  User,
-  User,
-  User,
-  User,
-  User,
-} user 'user/@user';
-user { User } user './user.user';
-user { User } user 'user/user/user-user-user-user.user';
-user User user 'user/user/user-user.user';
+  UserAggregateArgs,
+  UpdateManyUserArgs,
+  UpdateOneUserArgs,
+} from 'src/@generated';
+import { UserController } from './user.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-user User {
-  user: User.User;
+interface UserSelect {
+  select: Prisma.UserSelect;
 }
 
-@User(() => User)
-user user User {
-  user(user user User: User) {}
+@Resolver(() => User)
+export class UserResolver {
+  constructor(private readonly userController: UserController) {}
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Mutation(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  user User(
-    @User()
-    User: User,
-    @User() user: User,
-  ): User<User | user> {
-    user user user.User.User({
-      ...User,
-      user: user.user,
+  async userCreateOne(
+    @Args()
+    userCreateArgs: CreateOneUserArgs,
+    @Relations() relations: UserSelect,
+  ): Promise<User | void> {
+    return await this.userController.createOne({
+      ...userCreateArgs,
+      select: relations.select,
     });
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  user User(
-    @User()
-    User: User,
+  async userCreateMany(
+    @Args()
+    createManyUserArgs: CreateManyUserArgs,
   ) {
-    user user user.User.User(User);
+    return await this.userController.createMany(createManyUserArgs);
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Query(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  User(
-    @User()
-    User: User,
-    @User() user: User,
-  ): User<User | user> {
-    user user.User.User({
-      ...User,
-      user: user.user,
+  userFindOne(
+    @Args()
+    userFindUniqueArgs: FindUniqueUserArgs,
+    @Relations() relations: UserSelect,
+  ): Promise<User | void> {
+    return this.userController.findOne({
+      ...userFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @User(() => [User], {
-    user: user,
-    user: 'User user user user',
+  @Query(() => [User], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  User(
-    @User() User: User,
-    @User() user: User,
+  userFindMany(
+    @Args() userFindManyArgs: FindManyUserArgs,
+    @Relations() relations: UserSelect,
   ) {
-    user user.User.User({
-      ...User,
-      user: user.user,
+    return this.userController.findMany({
+      ...userFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Query(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  User(
-    @User()
-    User: User,
-    @User() user: User,
-  ): User<User | user> {
-    user user.User.User({
-      ...User,
-      user: user.user,
+  userFindFirst(
+    @Args()
+    findFirstUserArgs: FindFirstUserArgs,
+    @Relations() relations: UserSelect,
+  ): Promise<User | void> {
+    return this.userController.findFirst({
+      ...findFirstUserArgs,
+      select: relations.select,
     });
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Mutation(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  user User(
-    @User() User: User,
-    @User() user: User,
+  async userUpdateOne(
+    @Args() userUpdateOneArgs: UpdateOneUserArgs,
+    @Relations() relations: UserSelect,
   ) {
-    user user.User.User({
-      ...User(User),
-      user: user.user,
+    return this.userController.updateOne({
+      ...replaceNullWithUndefined(userUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Mutation(() => User, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  user User(@User() User: User) {
-    user user.User.User(User);
+  async userUpdateMany(@Args() updateManyUserArgs: UpdateManyUserArgs) {
+    return this.userController.updateMany(updateManyUserArgs);
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  user User(
-    @User() User: User,
-    @User() user: User,
+  async userDelete(
+    @Args() deleteOneUserArgs: DeleteOneUserArgs,
+    @Relations() relations: UserSelect,
   ) {
-    user user.User.user({
-      ...User,
-      user: user.user,
+    return this.userController.delete({
+      ...deleteOneUserArgs,
+      select: relations.select,
     });
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  user User(@User() User: User) {
-    user user.User.User(User);
+  async userDeleteMany(@Args() deleteManyUserArgs: DeleteManyUserArgs) {
+    return this.userController.deleteMany(deleteManyUserArgs);
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Query(() => AggregateUser, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  User(@User() User: User) {
-    user user.User.user(User);
+  userAggregate(@Args() userAggregateArgs: UserAggregateArgs) {
+    return this.userController.aggregate(userAggregateArgs);
   }
 
-  @User(() => User, {
-    user: user,
-    user: 'User user user user',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  User(@User() User: User) {
-    user user.User.user(User);
+  userCount(@Args() userCountAggregateInput: FindManyUserArgs) {
+    return this.userController.count(userCountAggregateInput);
   }
 }

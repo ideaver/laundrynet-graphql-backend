@@ -1,160 +1,160 @@
-// @customer-customer
-customer { Customer, Customer, Customer, Customer, Customer } customer '@customer/customer';
-customer { Customer } customer '@customer/customer';
-customer { Customer } customer 'customer/customer/customer.customer';
-customer {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateCustomer,
+  CreateManyCustomerArgs,
+  CreateOneCustomerArgs,
+  DeleteManyCustomerArgs,
+  DeleteOneCustomerArgs,
+  FindFirstCustomerArgs,
+  FindManyCustomerArgs,
+  FindUniqueCustomerArgs,
   Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-  Customer,
-} customer 'customer/@customer';
-customer { Customer } customer './customer.customer';
-customer { Customer } customer 'customer/customer/customer-customer-customer-customer.customer';
-customer Customer customer 'customer/customer/customer-customer.customer';
+  CustomerAggregateArgs,
+  UpdateManyCustomerArgs,
+  UpdateOneCustomerArgs,
+} from 'src/@generated';
+import { CustomerController } from './customer.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-customer Customer {
-  customer: Customer.Customer;
+interface CustomerSelect {
+  select: Prisma.CustomerSelect;
 }
 
-@Customer(() => Customer)
-customer customer Customer {
-  customer(customer customer Customer: Customer) {}
+@Resolver(() => Customer)
+export class CustomerResolver {
+  constructor(private readonly customerController: CustomerController) {}
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Mutation(() => Customer, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  customer Customer(
-    @Customer()
-    Customer: Customer,
-    @Customer() customer: Customer,
-  ): Customer<Customer | customer> {
-    customer customer customer.Customer.Customer({
-      ...Customer,
-      customer: customer.customer,
+  async customerCreateOne(
+    @Args()
+    customerCreateArgs: CreateOneCustomerArgs,
+    @Relations() relations: CustomerSelect,
+  ): Promise<Customer | void> {
+    return await this.customerController.createOne({
+      ...customerCreateArgs,
+      select: relations.select,
     });
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  customer Customer(
-    @Customer()
-    Customer: Customer,
+  async customerCreateMany(
+    @Args()
+    createManyCustomerArgs: CreateManyCustomerArgs,
   ) {
-    customer customer customer.Customer.Customer(Customer);
+    return await this.customerController.createMany(createManyCustomerArgs);
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Query(() => Customer, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Customer(
-    @Customer()
-    Customer: Customer,
-    @Customer() customer: Customer,
-  ): Customer<Customer | customer> {
-    customer customer.Customer.Customer({
-      ...Customer,
-      customer: customer.customer,
+  customerFindOne(
+    @Args()
+    customerFindUniqueArgs: FindUniqueCustomerArgs,
+    @Relations() relations: CustomerSelect,
+  ): Promise<Customer | void> {
+    return this.customerController.findOne({
+      ...customerFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @Customer(() => [Customer], {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Query(() => [Customer], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Customer(
-    @Customer() Customer: Customer,
-    @Customer() customer: Customer,
+  customerFindMany(
+    @Args() customerFindManyArgs: FindManyCustomerArgs,
+    @Relations() relations: CustomerSelect,
   ) {
-    customer customer.Customer.Customer({
-      ...Customer,
-      customer: customer.customer,
+    return this.customerController.findMany({
+      ...customerFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Query(() => Customer, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Customer(
-    @Customer()
-    Customer: Customer,
-    @Customer() customer: Customer,
-  ): Customer<Customer | customer> {
-    customer customer.Customer.Customer({
-      ...Customer,
-      customer: customer.customer,
+  customerFindFirst(
+    @Args()
+    findFirstCustomerArgs: FindFirstCustomerArgs,
+    @Relations() relations: CustomerSelect,
+  ): Promise<Customer | void> {
+    return this.customerController.findFirst({
+      ...findFirstCustomerArgs,
+      select: relations.select,
     });
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Mutation(() => Customer, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  customer Customer(
-    @Customer() Customer: Customer,
-    @Customer() customer: Customer,
+  async customerUpdateOne(
+    @Args() customerUpdateOneArgs: UpdateOneCustomerArgs,
+    @Relations() relations: CustomerSelect,
   ) {
-    customer customer.Customer.Customer({
-      ...Customer(Customer),
-      customer: customer.customer,
+    return this.customerController.updateOne({
+      ...replaceNullWithUndefined(customerUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Mutation(() => Customer, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  customer Customer(@Customer() Customer: Customer) {
-    customer customer.Customer.Customer(Customer);
+  async customerUpdateMany(@Args() updateManyCustomerArgs: UpdateManyCustomerArgs) {
+    return this.customerController.updateMany(updateManyCustomerArgs);
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  customer Customer(
-    @Customer() Customer: Customer,
-    @Customer() customer: Customer,
+  async customerDelete(
+    @Args() deleteOneCustomerArgs: DeleteOneCustomerArgs,
+    @Relations() relations: CustomerSelect,
   ) {
-    customer customer.Customer.customer({
-      ...Customer,
-      customer: customer.customer,
+    return this.customerController.delete({
+      ...deleteOneCustomerArgs,
+      select: relations.select,
     });
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  customer Customer(@Customer() Customer: Customer) {
-    customer customer.Customer.Customer(Customer);
+  async customerDeleteMany(@Args() deleteManyCustomerArgs: DeleteManyCustomerArgs) {
+    return this.customerController.deleteMany(deleteManyCustomerArgs);
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Query(() => AggregateCustomer, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Customer(@Customer() Customer: Customer) {
-    customer customer.Customer.customer(Customer);
+  customerAggregate(@Args() customerAggregateArgs: CustomerAggregateArgs) {
+    return this.customerController.aggregate(customerAggregateArgs);
   }
 
-  @Customer(() => Customer, {
-    customer: customer,
-    customer: 'Customer customer customer customer',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  Customer(@Customer() Customer: Customer) {
-    customer customer.Customer.customer(Customer);
+  customerCount(@Args() customerCountAggregateInput: FindManyCustomerArgs) {
+    return this.customerController.count(customerCountAggregateInput);
   }
 }

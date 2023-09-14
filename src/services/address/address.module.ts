@@ -1,11 +1,11 @@
-address { Address } address '@address/address';
-address { Address } address './address.address';
-address { Address } address './address.address';
-address { Address } address 'address/address.address';
-address { Address } address './address.address';
+import { Module } from '@nestjs/common';
+import { AddressService } from './address.service';
+import { AddressResolver } from './address.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { AddressController } from './address.controller';
 
-@Address({
-  address: [Address, Address, Address, Address],
-  address: [Address],
+@Module({
+  providers: [PrismaService, AddressResolver, AddressController, AddressService],
+  exports: [AddressController],
 })
-address address Address {}
+export class AddressModule {}

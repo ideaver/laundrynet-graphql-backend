@@ -1,11 +1,11 @@
-district { District } district '@district/district';
-district { District } district './district.district';
-district { District } district './district.district';
-district { District } district 'district/district.district';
-district { District } district './district.district';
+import { Module } from '@nestjs/common';
+import { DistrictService } from './district.service';
+import { DistrictResolver } from './district.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { DistrictController } from './district.controller';
 
-@District({
-  district: [District, District, District, District],
-  district: [District],
+@Module({
+  providers: [PrismaService, DistrictResolver, DistrictController, DistrictService],
+  exports: [DistrictController],
 })
-district district District {}
+export class DistrictModule {}

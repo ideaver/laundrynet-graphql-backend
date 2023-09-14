@@ -1,160 +1,160 @@
-// @laundryitemcategory-laundryitemcategory
-laundryitemcategory { LaundryItemCategory, LaundryItemCategory, LaundryItemCategory, LaundryItemCategory, LaundryItemCategory } laundryitemcategory '@laundryitemcategory/laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory '@laundryitemcategory/laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory 'laundryitemcategory/laundryitemcategory/laundryitemcategory.laundryitemcategory';
-laundryitemcategory {
+// @ts-nocheck
+import { Resolver, Query, Mutation, Args, Float } from '@nestjs/graphql';
+import { Prisma } from '@prisma/client';
+import { Relations } from 'src/utils/relations.decorator';
+import {
+  AggregateLaundryItemCategory,
+  CreateManyLaundryItemCategoryArgs,
+  CreateOneLaundryItemCategoryArgs,
+  DeleteManyLaundryItemCategoryArgs,
+  DeleteOneLaundryItemCategoryArgs,
+  FindFirstLaundryItemCategoryArgs,
+  FindManyLaundryItemCategoryArgs,
+  FindUniqueLaundryItemCategoryArgs,
   LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-  LaundryItemCategory,
-} laundryitemcategory 'laundryitemcategory/@laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory './laundryitemcategory.laundryitemcategory';
-laundryitemcategory { LaundryItemCategory } laundryitemcategory 'laundryitemcategory/laundryitemcategory/laundryitemcategory-laundryitemcategory-laundryitemcategory-laundryitemcategory.laundryitemcategory';
-laundryitemcategory LaundryItemCategory laundryitemcategory 'laundryitemcategory/laundryitemcategory/laundryitemcategory-laundryitemcategory.laundryitemcategory';
+  LaundryItemCategoryAggregateArgs,
+  UpdateManyLaundryItemCategoryArgs,
+  UpdateOneLaundryItemCategoryArgs,
+} from 'src/@generated';
+import { LaundryItemCategoryController } from './laundryItemCategory.controller';
+import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
+import BatchPayload from 'src/model/batch-payload.model';
 
-laundryitemcategory LaundryItemCategory {
-  laundryitemcategory: LaundryItemCategory.LaundryItemCategory;
+interface LaundryItemCategorySelect {
+  select: Prisma.LaundryItemCategorySelect;
 }
 
-@LaundryItemCategory(() => LaundryItemCategory)
-laundryitemcategory laundryitemcategory LaundryItemCategory {
-  laundryitemcategory(laundryitemcategory laundryitemcategory LaundryItemCategory: LaundryItemCategory) {}
+@Resolver(() => LaundryItemCategory)
+export class LaundryItemCategoryResolver {
+  constructor(private readonly laundryItemCategoryController: LaundryItemCategoryController) {}
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Mutation(() => LaundryItemCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemcategory LaundryItemCategory(
-    @LaundryItemCategory()
-    LaundryItemCategory: LaundryItemCategory,
-    @LaundryItemCategory() laundryitemcategory: LaundryItemCategory,
-  ): LaundryItemCategory<LaundryItemCategory | laundryitemcategory> {
-    laundryitemcategory laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory({
-      ...LaundryItemCategory,
-      laundryitemcategory: laundryitemcategory.laundryitemcategory,
+  async laundryItemCategoryCreateOne(
+    @Args()
+    laundryItemCategoryCreateArgs: CreateOneLaundryItemCategoryArgs,
+    @Relations() relations: LaundryItemCategorySelect,
+  ): Promise<LaundryItemCategory | void> {
+    return await this.laundryItemCategoryController.createOne({
+      ...laundryItemCategoryCreateArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Mutation(() => BatchPayload, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemcategory LaundryItemCategory(
-    @LaundryItemCategory()
-    LaundryItemCategory: LaundryItemCategory,
+  async laundryItemCategoryCreateMany(
+    @Args()
+    createManyLaundryItemCategoryArgs: CreateManyLaundryItemCategoryArgs,
   ) {
-    laundryitemcategory laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory(LaundryItemCategory);
+    return await this.laundryItemCategoryController.createMany(createManyLaundryItemCategoryArgs);
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Query(() => LaundryItemCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemCategory(
-    @LaundryItemCategory()
-    LaundryItemCategory: LaundryItemCategory,
-    @LaundryItemCategory() laundryitemcategory: LaundryItemCategory,
-  ): LaundryItemCategory<LaundryItemCategory | laundryitemcategory> {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory({
-      ...LaundryItemCategory,
-      laundryitemcategory: laundryitemcategory.laundryitemcategory,
+  laundryItemCategoryFindOne(
+    @Args()
+    laundryItemCategoryFindUniqueArgs: FindUniqueLaundryItemCategoryArgs,
+    @Relations() relations: LaundryItemCategorySelect,
+  ): Promise<LaundryItemCategory | void> {
+    return this.laundryItemCategoryController.findOne({
+      ...laundryItemCategoryFindUniqueArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemCategory(() => [LaundryItemCategory], {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Query(() => [LaundryItemCategory], {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemCategory(
-    @LaundryItemCategory() LaundryItemCategory: LaundryItemCategory,
-    @LaundryItemCategory() laundryitemcategory: LaundryItemCategory,
+  laundryItemCategoryFindMany(
+    @Args() laundryItemCategoryFindManyArgs: FindManyLaundryItemCategoryArgs,
+    @Relations() relations: LaundryItemCategorySelect,
   ) {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory({
-      ...LaundryItemCategory,
-      laundryitemcategory: laundryitemcategory.laundryitemcategory,
+    return this.laundryItemCategoryController.findMany({
+      ...laundryItemCategoryFindManyArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Query(() => LaundryItemCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemCategory(
-    @LaundryItemCategory()
-    LaundryItemCategory: LaundryItemCategory,
-    @LaundryItemCategory() laundryitemcategory: LaundryItemCategory,
-  ): LaundryItemCategory<LaundryItemCategory | laundryitemcategory> {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory({
-      ...LaundryItemCategory,
-      laundryitemcategory: laundryitemcategory.laundryitemcategory,
+  laundryItemCategoryFindFirst(
+    @Args()
+    findFirstLaundryItemCategoryArgs: FindFirstLaundryItemCategoryArgs,
+    @Relations() relations: LaundryItemCategorySelect,
+  ): Promise<LaundryItemCategory | void> {
+    return this.laundryItemCategoryController.findFirst({
+      ...findFirstLaundryItemCategoryArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Mutation(() => LaundryItemCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemcategory LaundryItemCategory(
-    @LaundryItemCategory() LaundryItemCategory: LaundryItemCategory,
-    @LaundryItemCategory() laundryitemcategory: LaundryItemCategory,
+  async laundryItemCategoryUpdateOne(
+    @Args() laundryItemCategoryUpdateOneArgs: UpdateOneLaundryItemCategoryArgs,
+    @Relations() relations: LaundryItemCategorySelect,
   ) {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory({
-      ...LaundryItemCategory(LaundryItemCategory),
-      laundryitemcategory: laundryitemcategory.laundryitemcategory,
+    return this.laundryItemCategoryController.updateOne({
+      ...replaceNullWithUndefined(laundryItemCategoryUpdateOneArgs),
+      select: relations.select,
     });
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Mutation(() => LaundryItemCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemcategory LaundryItemCategory(@LaundryItemCategory() LaundryItemCategory: LaundryItemCategory) {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory(LaundryItemCategory);
+  async laundryItemCategoryUpdateMany(@Args() updateManyLaundryItemCategoryArgs: UpdateManyLaundryItemCategoryArgs) {
+    return this.laundryItemCategoryController.updateMany(updateManyLaundryItemCategoryArgs);
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemcategory LaundryItemCategory(
-    @LaundryItemCategory() LaundryItemCategory: LaundryItemCategory,
-    @LaundryItemCategory() laundryitemcategory: LaundryItemCategory,
+  async laundryItemCategoryDelete(
+    @Args() deleteOneLaundryItemCategoryArgs: DeleteOneLaundryItemCategoryArgs,
+    @Relations() relations: LaundryItemCategorySelect,
   ) {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.laundryitemcategory({
-      ...LaundryItemCategory,
-      laundryitemcategory: laundryitemcategory.laundryitemcategory,
+    return this.laundryItemCategoryController.delete({
+      ...deleteOneLaundryItemCategoryArgs,
+      select: relations.select,
     });
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Mutation(() => Boolean, {
+    nullable: false,
+    description: 'Deskripsinya ada disini loh',
   })
-  laundryitemcategory LaundryItemCategory(@LaundryItemCategory() LaundryItemCategory: LaundryItemCategory) {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.LaundryItemCategory(LaundryItemCategory);
+  async laundryItemCategoryDeleteMany(@Args() deleteManyLaundryItemCategoryArgs: DeleteManyLaundryItemCategoryArgs) {
+    return this.laundryItemCategoryController.deleteMany(deleteManyLaundryItemCategoryArgs);
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Query(() => AggregateLaundryItemCategory, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemCategory(@LaundryItemCategory() LaundryItemCategory: LaundryItemCategory) {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.laundryitemcategory(LaundryItemCategory);
+  laundryItemCategoryAggregate(@Args() laundryItemCategoryAggregateArgs: LaundryItemCategoryAggregateArgs) {
+    return this.laundryItemCategoryController.aggregate(laundryItemCategoryAggregateArgs);
   }
 
-  @LaundryItemCategory(() => LaundryItemCategory, {
-    laundryitemcategory: laundryitemcategory,
-    laundryitemcategory: 'LaundryItemCategory laundryitemcategory laundryitemcategory laundryitemcategory',
+  @Query(() => Float, {
+    nullable: true,
+    description: 'Deskripsinya ada disini loh',
   })
-  LaundryItemCategory(@LaundryItemCategory() LaundryItemCategory: LaundryItemCategory) {
-    laundryitemcategory laundryitemcategory.LaundryItemCategory.laundryitemcategory(LaundryItemCategory);
+  laundryItemCategoryCount(@Args() laundryItemCategoryCountAggregateInput: FindManyLaundryItemCategoryArgs) {
+    return this.laundryItemCategoryController.count(laundryItemCategoryCountAggregateInput);
   }
 }

@@ -1,99 +1,99 @@
-phonecountrycode { PhoneCountryCode } phonecountrycode '@phonecountrycode/phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode 'phonecountrycode/phonecountrycode.phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode 'phonecountrycode/phonecountrycode/phonecountrycode/phonecountrycode-phonecountrycode-phonecountrycode';
-phonecountrycode { PhoneCountryCode } phonecountrycode '@phonecountrycode/phonecountrycode';
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'prisma/prisma.service';
+import { IGraphQLError } from 'src/utils/exception/custom-graphql-error';
+import { Prisma } from '@prisma/client';
 
-@PhoneCountryCode()
-phonecountrycode phonecountrycode PhoneCountryCode {
-  phonecountrycode(phonecountrycode phonecountrycode: PhoneCountryCode) {}
+@Injectable()
+export class PhoneCountryCodeService {
+  constructor(private prisma: PrismaService) {}
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.phonecountrycode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async createOne(phoneCountryCodeCreateArgs: Prisma.PhoneCountryCodeCreateArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.create(phoneCountryCodeCreateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.PhoneCountryCode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async createMany(phoneCountryCodeCreateManyArgs: Prisma.PhoneCountryCodeCreateManyArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.createMany(phoneCountryCodeCreateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.PhoneCountryCode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async findOne(phoneCountryCodeFindUniqueArgs: Prisma.PhoneCountryCodeFindUniqueArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.findUnique(phoneCountryCodeFindUniqueArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.PhoneCountryCode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async findMany(phoneCountryCodeFindManyArgs: Prisma.PhoneCountryCodeFindManyArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.findMany(phoneCountryCodeFindManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.PhoneCountryCode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async findFirst(phoneCountryCodeFindFirstArgs: Prisma.PhoneCountryCodeFindFirstArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.findFirst(phoneCountryCodeFindFirstArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.phonecountrycode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async updateOne(phoneCountryCodeUpdateOneArgs: Prisma.PhoneCountryCodeUpdateArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.update(phoneCountryCodeUpdateOneArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.PhoneCountryCode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async updateMany(phoneCountryCodeUpdateManyArgs: Prisma.PhoneCountryCodeUpdateManyArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.updateMany(phoneCountryCodeUpdateManyArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode phonecountrycode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.phonecountrycode(PhoneCountryCode);
-      phonecountrycode phonecountrycode;
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async delete(phoneCountryCodeDeleteArgs: Prisma.PhoneCountryCodeDeleteArgs) {
+    try {
+      await this.prisma.phoneCountryCode.delete(phoneCountryCodeDeleteArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode PhoneCountryCode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.PhoneCountryCode(PhoneCountryCode);
-      phonecountrycode phonecountrycode;
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async deleteMany(phoneCountryCodeDeleteManyArgs: Prisma.PhoneCountryCodeDeleteManyArgs) {
+    try {
+      await this.prisma.phoneCountryCode.deleteMany(phoneCountryCodeDeleteManyArgs);
+      return true;
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode phonecountrycode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.phonecountrycode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async aggregate(phoneCountryCodeAggregateArgs: Prisma.PhoneCountryCodeAggregateArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.aggregate(phoneCountryCodeAggregateArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 
-  phonecountrycode phonecountrycode(PhoneCountryCode: PhoneCountryCode.PhoneCountryCode) {
-    phonecountrycode {
-      phonecountrycode phonecountrycode phonecountrycode.phonecountrycode.phonecountrycode.phonecountrycode(PhoneCountryCode);
-    } phonecountrycode (phonecountrycode) {
-      phonecountrycode phonecountrycode PhoneCountryCode({ phonecountrycode: phonecountrycode, phonecountrycode: phonecountrycode });
+  async count(phoneCountryCodeCountArgs: Prisma.PhoneCountryCodeCountArgs) {
+    try {
+      return await this.prisma.phoneCountryCode.count(phoneCountryCodeCountArgs);
+    } catch (err) {
+      throw new IGraphQLError({ code: 123456, err: err });
     }
   }
 }

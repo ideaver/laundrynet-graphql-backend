@@ -1,11 +1,11 @@
-stockitem { StockItem } stockitem '@stockitem/stockitem';
-stockitem { StockItem } stockitem './stockitem.stockitem';
-stockitem { StockItem } stockitem './stockitem.stockitem';
-stockitem { StockItem } stockitem 'stockitem/stockitem.stockitem';
-stockitem { StockItem } stockitem './stockitem.stockitem';
+import { Module } from '@nestjs/common';
+import { StockItemService } from './stockItem.service';
+import { StockItemResolver } from './stockItem.resolver';
+import { PrismaService } from 'prisma/prisma.service';
+import { StockItemController } from './stockItem.controller';
 
-@StockItem({
-  stockitem: [StockItem, StockItem, StockItem, StockItem],
-  stockitem: [StockItem],
+@Module({
+  providers: [PrismaService, StockItemResolver, StockItemController, StockItemService],
+  exports: [StockItemController],
 })
-stockitem stockitem StockItem {}
+export class StockItemModule {}
