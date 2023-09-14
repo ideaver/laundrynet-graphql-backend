@@ -1,116 +1,122 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import {
+  readFileSync,
+  writeFileSync,
+  readdirSync,
+  mkdirSync,
+  existsSync,
+  statSync,
+} from 'fs';
+import { join, basename } from 'path';
 
-// Function to parse Prisma schema file and extract model names
-function extractModelsFromSchema(schemaPath: string): string[] {
+// Extract model names from the Prisma schema
+const extractModelsFromSchema = (schemaPath: string): string[] => {
   try {
-    const schemaContent = fs.readFileSync(schemaPath, 'utf-8');
-    const modelRegex = /model (\w+)/g;
-    const matches = [...schemaContent.matchAll(modelRegex)];
-    return matches.map((match) => match[1]);
+    const schemaContent = readFileSync(schemaPath, 'utf-8');
+    return Array.from(
+      schemaContent.matchAll(/model (\w+)/g),
+      (match) => match[1],
+    );
   } catch (error) {
-    console.error('Error parsing Prisma schema:', error);
+    console.error('Error parsing Prisma schema:', error.message);
     return [];
   }
-}
+};
 
-// Function to convert a string to lowercase with hyphens
-function convertToLowerCaseWithHyphens(input: string) {
-  return input
-    .replace(/\s+/g, '-') // Replace spaces with hyphens
-    .replace(/([a-z])([A-Z])/g, '$1-$2') // Insert hyphen between lowercase and uppercase letters
-    .toLowerCase(); // Convert the entire string to lowercase
-}
+// Convert string to lowercase with hyphens
+const toKebabCase = (input: string): string =>
+  input
+    .replace(/\s+/g, '-')
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .toLowerCase();
 
-// Function to replace words in a string while maintaining casing
-function replaceWithCasePreservation(input, target, replacement) {
-  let regex = new RegExp(target, 'ig'); // Case-insensitive global match
-  return input.replace(regex, (match) => {
-    let newStr = replacement;
-
-    // Check if the match starts with a capital letter
-    if (match[0] === match[0].toUpperCase()) {
-      // Capitalize the first letter of the replacement string
-      newStr = newStr.charAt(0).toUpperCase() + newStr.slice(1);
-    } else {
-      // Make the first letter of the replacement string lowercase
-      newStr = newStr.charAt(0).toLowerCase() + newStr.slice(1);
-    }
-
-    return newStr;
-  });
-}
-
-function replacePathsWithHyphens(input) {
-  // Match import statements with paths and replace the paths with the hyphenated version
-  return input.replace(
-    /(['"])((?:[^'"]|\\.)+)(['"])/g,
-    (match, startQuote, path, endQuote) => {
-      return startQuote + convertToLowerCaseWithHyphens(path) + endQuote;
-    },
+// Replace words in a string while preserving case
+const replacePreservingCase = (
+  input: string,
+  target: string,
+  replacement: string,
+): string =>
+  input.replace(
+    new RegExp(target, 'ig'),
+    (match) =>
+      (match.charAt(0).toUpperCase() === match.charAt(0)
+        ? replacement.charAt(0).toUpperCase()
+        : replacement.charAt(0).toLowerCase()) + replacement.slice(1),
   );
-}
 
-// Updated function to duplicate a folder recursively
-function duplicateFolder(
+// Replace paths with hyphens in import statements
+const replacePathsWithHyphens = (input: string): string =>
+  input.replace(
+    /(['"])((?:[^'"]|\\.)+)(['"])/g,
+    (match, startQuote, path, endQuote) =>
+      startQuote + toKebabCase(path) + endQuote,
+  );
+
+// Duplicate a folder recursively
+const duplicateFolder = (
   sourceDir: string,
   targetDir: string,
   modelName: string,
-) {
-  if (!fs.existsSync(targetDir)) {
-    fs.mkdirSync(targetDir);
-  }
+): void => {
+  if (!existsSync(targetDir)) mkdirSync(targetDir);
 
-  const files = fs.readdirSync(sourceDir);
-
-  for (const file of files) {
-    const sourceFilePath = path.join(sourceDir, file);
-    const targetFilePath = path.join(
+  const files = readdirSync(sourceDir);
+  files.forEach((file) => {
+    const sourceFilePath = join(sourceDir, file);
+    const targetFilePath = join(
       targetDir,
-      convertToLowerCaseWithHyphens(modelName) +
-        '.' +
-        file.split('.').slice(1).join('.'),
+      `${toKebabCase(modelName)}.${file.split('.').slice(1).join('.')}`,
     );
 
-    if (fs.statSync(sourceFilePath).isDirectory()) {
+    if (statSync(sourceFilePath).isDirectory()) {
       duplicateFolder(sourceFilePath, targetDir, modelName);
     } else {
-      const fileContent = fs.readFileSync(sourceFilePath, 'utf8');
-      const replacedContent = replacePathsWithHyphens(
-        replaceWithCasePreservation(
-          fileContent,
-          path.basename(sourceDir).toLocaleLowerCase(),
-          modelName,
-        ),
-      );
-
-      fs.writeFileSync(targetFilePath, replacedContent);
+      if (!existsSync(targetFilePath)) {
+        try {
+          const content = readFileSync(sourceFilePath, 'utf8');
+          const newContent = replacePathsWithHyphens(
+            replacePreservingCase(
+              content,
+              basename(sourceDir).toLowerCase(),
+              modelName,
+            ),
+          );
+          writeFileSync(targetFilePath, newContent);
+        } catch (error) {
+          console.error(
+            `Error duplicating file ${sourceFilePath}:`,
+            error.message,
+          );
+        }
+      }
     }
-  }
-}
+  });
+};
 
-// Example usage
-const schemaPath = './prisma/schema.prisma'; // Replace with your Prisma schema path
-const sourceFolder = './prisma/template/file'; // Replace with your source folder path
-const outputBaseFolder = './src/services'; // Replace with your output base folder path
-const prismaModels = extractModelsFromSchema(schemaPath);
+// Main execution
+const main = (): void => {
+  const schemaPath = './prisma/schema.prisma';
+  const sourceFolder = './prisma/template/file';
+  const outputBaseFolder = './src/services';
 
-// Check if the output base folder exists, and create it if it doesn't
-if (!fs.existsSync(outputBaseFolder)) {
-  fs.mkdirSync(outputBaseFolder, { recursive: true });
-}
+  if (!existsSync(outputBaseFolder))
+    mkdirSync(outputBaseFolder, { recursive: true });
 
-console.log(
-  prismaModels.length + ' Models found in Prisma schema:',
-  prismaModels,
-);
-for (const modelName of prismaModels) {
-  const targetFolder = path.join(
-    outputBaseFolder,
-    convertToLowerCaseWithHyphens(modelName), // Use the updated function
+  const prismaModels = extractModelsFromSchema(schemaPath);
+  console.log(
+    `${prismaModels.length} Models found in Prisma schema:`,
+    prismaModels,
   );
-  duplicateFolder(sourceFolder, targetFolder, modelName);
-  //   console.log(`Duplicated folder for model ${modelName}`);
-}
 
-console.log(prismaModels.length + ' Models Duplication completed.');
+  prismaModels.forEach((modelName) => {
+    const targetFolder = join(outputBaseFolder, toKebabCase(modelName));
+    duplicateFolder(sourceFolder, targetFolder, modelName);
+  });
+
+  console.log(`${prismaModels.length} Models Duplication completed.`);
+};
+
+try {
+  main();
+} catch (error) {
+  console.error('Error:', error.message);
+}
