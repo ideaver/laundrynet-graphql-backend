@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { VoucherSettingService } from './voucher-setting.service';
-import { VoucherSettingResolver } from './voucher-setting.resolver';
+import { VoucherSettingService } from './voucherSetting.service';
+import { VoucherSettingResolver } from './voucherSetting.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { VoucherSettingController } from './voucher-setting.controller';
+import { VoucherSettingController } from './voucherSetting.controller';
 
 @Module({
   providers: [PrismaService, VoucherSettingResolver, VoucherSettingController, VoucherSettingService],

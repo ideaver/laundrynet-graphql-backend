@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { TermOrFaqService } from './term-or-faq.service';
+import { TermOrFaqService } from './termOrFaq.service';
 
 @Injectable()
 export class TermOrFaqController {

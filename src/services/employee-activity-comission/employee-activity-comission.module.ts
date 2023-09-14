@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { EmployeeActivityComissionService } from './employee-activity-comission.service';
-import { EmployeeActivityComissionResolver } from './employee-activity-comission.resolver';
+import { EmployeeActivityComissionService } from './employeeActivityComission.service';
+import { EmployeeActivityComissionResolver } from './employeeActivityComission.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { EmployeeActivityComissionController } from './employee-activity-comission.controller';
+import { EmployeeActivityComissionController } from './employeeActivityComission.controller';
 
 @Module({
   providers: [PrismaService, EmployeeActivityComissionResolver, EmployeeActivityComissionController, EmployeeActivityComissionService],

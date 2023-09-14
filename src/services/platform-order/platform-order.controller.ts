@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PlatformOrderService } from './platform-order.service';
+import { PlatformOrderService } from './platformOrder.service';
 
 @Injectable()
 export class PlatformOrderController {

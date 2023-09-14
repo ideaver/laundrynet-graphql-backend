@@ -16,7 +16,7 @@ import {
   UpdateManyIndonesianBankArgs,
   UpdateOneIndonesianBankArgs,
 } from 'src/@generated';
-import { IndonesianBankController } from './indonesian-bank.controller';
+import { IndonesianBankController } from './indonesianBank.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class IndonesianBankResolver {
 
   @Mutation(() => IndonesianBank, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async indonesianBankCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class IndonesianBankResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async indonesianBankCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class IndonesianBankResolver {
 
   @Query(() => IndonesianBank, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   indonesianBankFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class IndonesianBankResolver {
 
   @Query(() => [IndonesianBank], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   indonesianBankFindMany(
     @Args() indonesianBankFindManyArgs: FindManyIndonesianBankArgs,
@@ -85,7 +85,7 @@ export class IndonesianBankResolver {
 
   @Query(() => IndonesianBank, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   indonesianBankFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class IndonesianBankResolver {
 
   @Mutation(() => IndonesianBank, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async indonesianBankUpdateOne(
     @Args() indonesianBankUpdateOneArgs: UpdateOneIndonesianBankArgs,
@@ -114,7 +114,7 @@ export class IndonesianBankResolver {
 
   @Mutation(() => IndonesianBank, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async indonesianBankUpdateMany(@Args() updateManyIndonesianBankArgs: UpdateManyIndonesianBankArgs) {
     return this.indonesianBankController.updateMany(updateManyIndonesianBankArgs);
@@ -122,7 +122,7 @@ export class IndonesianBankResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async indonesianBankDelete(
     @Args() deleteOneIndonesianBankArgs: DeleteOneIndonesianBankArgs,
@@ -136,7 +136,7 @@ export class IndonesianBankResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async indonesianBankDeleteMany(@Args() deleteManyIndonesianBankArgs: DeleteManyIndonesianBankArgs) {
     return this.indonesianBankController.deleteMany(deleteManyIndonesianBankArgs);
@@ -144,7 +144,7 @@ export class IndonesianBankResolver {
 
   @Query(() => AggregateIndonesianBank, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   indonesianBankAggregate(@Args() indonesianBankAggregateArgs: IndonesianBankAggregateArgs) {
     return this.indonesianBankController.aggregate(indonesianBankAggregateArgs);
@@ -152,7 +152,7 @@ export class IndonesianBankResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   indonesianBankCount(@Args() indonesianBankCountAggregateInput: FindManyIndonesianBankArgs) {
     return this.indonesianBankController.count(indonesianBankCountAggregateInput);

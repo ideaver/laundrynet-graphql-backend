@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { OrderStatusService } from './order-status.service';
-import { OrderStatusResolver } from './order-status.resolver';
+import { OrderStatusService } from './orderStatus.service';
+import { OrderStatusResolver } from './orderStatus.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { OrderStatusController } from './order-status.controller';
+import { OrderStatusController } from './orderStatus.controller';
 
 @Module({
   providers: [PrismaService, OrderStatusResolver, OrderStatusController, OrderStatusService],

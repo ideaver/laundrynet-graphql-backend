@@ -16,7 +16,7 @@ import {
   UpdateManyCreditCardArgs,
   UpdateOneCreditCardArgs,
 } from 'src/@generated';
-import { CreditCardController } from './credit-card.controller';
+import { CreditCardController } from './creditCard.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class CreditCardResolver {
 
   @Mutation(() => CreditCard, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async creditCardCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class CreditCardResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async creditCardCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class CreditCardResolver {
 
   @Query(() => CreditCard, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   creditCardFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class CreditCardResolver {
 
   @Query(() => [CreditCard], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   creditCardFindMany(
     @Args() creditCardFindManyArgs: FindManyCreditCardArgs,
@@ -85,7 +85,7 @@ export class CreditCardResolver {
 
   @Query(() => CreditCard, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   creditCardFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class CreditCardResolver {
 
   @Mutation(() => CreditCard, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async creditCardUpdateOne(
     @Args() creditCardUpdateOneArgs: UpdateOneCreditCardArgs,
@@ -114,7 +114,7 @@ export class CreditCardResolver {
 
   @Mutation(() => CreditCard, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async creditCardUpdateMany(@Args() updateManyCreditCardArgs: UpdateManyCreditCardArgs) {
     return this.creditCardController.updateMany(updateManyCreditCardArgs);
@@ -122,7 +122,7 @@ export class CreditCardResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async creditCardDelete(
     @Args() deleteOneCreditCardArgs: DeleteOneCreditCardArgs,
@@ -136,7 +136,7 @@ export class CreditCardResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async creditCardDeleteMany(@Args() deleteManyCreditCardArgs: DeleteManyCreditCardArgs) {
     return this.creditCardController.deleteMany(deleteManyCreditCardArgs);
@@ -144,7 +144,7 @@ export class CreditCardResolver {
 
   @Query(() => AggregateCreditCard, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   creditCardAggregate(@Args() creditCardAggregateArgs: CreditCardAggregateArgs) {
     return this.creditCardController.aggregate(creditCardAggregateArgs);
@@ -152,7 +152,7 @@ export class CreditCardResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   creditCardCount(@Args() creditCardCountAggregateInput: FindManyCreditCardArgs) {
     return this.creditCardController.count(creditCardCountAggregateInput);

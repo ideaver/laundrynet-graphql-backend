@@ -16,7 +16,7 @@ import {
   UpdateManyChatRoomArgs,
   UpdateOneChatRoomArgs,
 } from 'src/@generated';
-import { ChatRoomController } from './chat-room.controller';
+import { ChatRoomController } from './chatRoom.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class ChatRoomResolver {
 
   @Mutation(() => ChatRoom, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async chatRoomCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class ChatRoomResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async chatRoomCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class ChatRoomResolver {
 
   @Query(() => ChatRoom, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   chatRoomFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class ChatRoomResolver {
 
   @Query(() => [ChatRoom], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   chatRoomFindMany(
     @Args() chatRoomFindManyArgs: FindManyChatRoomArgs,
@@ -85,7 +85,7 @@ export class ChatRoomResolver {
 
   @Query(() => ChatRoom, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   chatRoomFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class ChatRoomResolver {
 
   @Mutation(() => ChatRoom, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async chatRoomUpdateOne(
     @Args() chatRoomUpdateOneArgs: UpdateOneChatRoomArgs,
@@ -114,7 +114,7 @@ export class ChatRoomResolver {
 
   @Mutation(() => ChatRoom, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async chatRoomUpdateMany(@Args() updateManyChatRoomArgs: UpdateManyChatRoomArgs) {
     return this.chatRoomController.updateMany(updateManyChatRoomArgs);
@@ -122,7 +122,7 @@ export class ChatRoomResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async chatRoomDelete(
     @Args() deleteOneChatRoomArgs: DeleteOneChatRoomArgs,
@@ -136,7 +136,7 @@ export class ChatRoomResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async chatRoomDeleteMany(@Args() deleteManyChatRoomArgs: DeleteManyChatRoomArgs) {
     return this.chatRoomController.deleteMany(deleteManyChatRoomArgs);
@@ -144,7 +144,7 @@ export class ChatRoomResolver {
 
   @Query(() => AggregateChatRoom, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   chatRoomAggregate(@Args() chatRoomAggregateArgs: ChatRoomAggregateArgs) {
     return this.chatRoomController.aggregate(chatRoomAggregateArgs);
@@ -152,7 +152,7 @@ export class ChatRoomResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   chatRoomCount(@Args() chatRoomCountAggregateInput: FindManyChatRoomArgs) {
     return this.chatRoomController.count(chatRoomCountAggregateInput);

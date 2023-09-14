@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { UnitOfMeasureService } from './unit-of-measure.service';
+import { UnitOfMeasureService } from './unitOfMeasure.service';
 
 @Injectable()
 export class UnitOfMeasureController {

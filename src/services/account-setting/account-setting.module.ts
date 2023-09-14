@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AccountSettingService } from './account-setting.service';
-import { AccountSettingResolver } from './account-setting.resolver';
+import { AccountSettingService } from './accountSetting.service';
+import { AccountSettingResolver } from './accountSetting.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { AccountSettingController } from './account-setting.controller';
+import { AccountSettingController } from './accountSetting.controller';
 
 @Module({
   providers: [PrismaService, AccountSettingResolver, AccountSettingController, AccountSettingService],

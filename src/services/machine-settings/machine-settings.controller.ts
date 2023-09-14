@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { MachineSettingsService } from './machine-settings.service';
+import { MachineSettingsService } from './machineSettings.service';
 
 @Injectable()
 export class MachineSettingsController {

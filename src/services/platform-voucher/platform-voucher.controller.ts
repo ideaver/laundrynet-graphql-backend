@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PlatformVoucherService } from './platform-voucher.service';
+import { PlatformVoucherService } from './platformVoucher.service';
 
 @Injectable()
 export class PlatformVoucherController {

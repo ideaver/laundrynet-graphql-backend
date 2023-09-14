@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UnitOfMeasureService } from './unit-of-measure.service';
-import { UnitOfMeasureResolver } from './unit-of-measure.resolver';
+import { UnitOfMeasureService } from './unitOfMeasure.service';
+import { UnitOfMeasureResolver } from './unitOfMeasure.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { UnitOfMeasureController } from './unit-of-measure.controller';
+import { UnitOfMeasureController } from './unitOfMeasure.controller';
 
 @Module({
   providers: [PrismaService, UnitOfMeasureResolver, UnitOfMeasureController, UnitOfMeasureService],

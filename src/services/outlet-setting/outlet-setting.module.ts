@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { OutletSettingService } from './outlet-setting.service';
-import { OutletSettingResolver } from './outlet-setting.resolver';
+import { OutletSettingService } from './outletSetting.service';
+import { OutletSettingResolver } from './outletSetting.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { OutletSettingController } from './outlet-setting.controller';
+import { OutletSettingController } from './outletSetting.controller';
 
 @Module({
   providers: [PrismaService, OutletSettingResolver, OutletSettingController, OutletSettingService],

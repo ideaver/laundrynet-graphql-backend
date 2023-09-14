@@ -16,7 +16,7 @@ import {
   UpdateManyOutletSettingArgs,
   UpdateOneOutletSettingArgs,
 } from 'src/@generated';
-import { OutletSettingController } from './outlet-setting.controller';
+import { OutletSettingController } from './outletSetting.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class OutletSettingResolver {
 
   @Mutation(() => OutletSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletSettingCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class OutletSettingResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletSettingCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class OutletSettingResolver {
 
   @Query(() => OutletSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletSettingFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class OutletSettingResolver {
 
   @Query(() => [OutletSetting], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletSettingFindMany(
     @Args() outletSettingFindManyArgs: FindManyOutletSettingArgs,
@@ -85,7 +85,7 @@ export class OutletSettingResolver {
 
   @Query(() => OutletSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletSettingFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class OutletSettingResolver {
 
   @Mutation(() => OutletSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletSettingUpdateOne(
     @Args() outletSettingUpdateOneArgs: UpdateOneOutletSettingArgs,
@@ -114,7 +114,7 @@ export class OutletSettingResolver {
 
   @Mutation(() => OutletSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletSettingUpdateMany(@Args() updateManyOutletSettingArgs: UpdateManyOutletSettingArgs) {
     return this.outletSettingController.updateMany(updateManyOutletSettingArgs);
@@ -122,7 +122,7 @@ export class OutletSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletSettingDelete(
     @Args() deleteOneOutletSettingArgs: DeleteOneOutletSettingArgs,
@@ -136,7 +136,7 @@ export class OutletSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletSettingDeleteMany(@Args() deleteManyOutletSettingArgs: DeleteManyOutletSettingArgs) {
     return this.outletSettingController.deleteMany(deleteManyOutletSettingArgs);
@@ -144,7 +144,7 @@ export class OutletSettingResolver {
 
   @Query(() => AggregateOutletSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletSettingAggregate(@Args() outletSettingAggregateArgs: OutletSettingAggregateArgs) {
     return this.outletSettingController.aggregate(outletSettingAggregateArgs);
@@ -152,7 +152,7 @@ export class OutletSettingResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletSettingCount(@Args() outletSettingCountAggregateInput: FindManyOutletSettingArgs) {
     return this.outletSettingController.count(outletSettingCountAggregateInput);

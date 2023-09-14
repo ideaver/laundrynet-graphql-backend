@@ -30,7 +30,7 @@ export class AccountResolver {
 
   @Mutation(() => Account, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class AccountResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class AccountResolver {
 
   @Query(() => Account, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class AccountResolver {
 
   @Query(() => [Account], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountFindMany(
     @Args() accountFindManyArgs: FindManyAccountArgs,
@@ -85,7 +85,7 @@ export class AccountResolver {
 
   @Query(() => Account, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class AccountResolver {
 
   @Mutation(() => Account, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountUpdateOne(
     @Args() accountUpdateOneArgs: UpdateOneAccountArgs,
@@ -114,7 +114,7 @@ export class AccountResolver {
 
   @Mutation(() => Account, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountUpdateMany(@Args() updateManyAccountArgs: UpdateManyAccountArgs) {
     return this.accountController.updateMany(updateManyAccountArgs);
@@ -122,7 +122,7 @@ export class AccountResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountDelete(
     @Args() deleteOneAccountArgs: DeleteOneAccountArgs,
@@ -136,7 +136,7 @@ export class AccountResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountDeleteMany(@Args() deleteManyAccountArgs: DeleteManyAccountArgs) {
     return this.accountController.deleteMany(deleteManyAccountArgs);
@@ -144,7 +144,7 @@ export class AccountResolver {
 
   @Query(() => AggregateAccount, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountAggregate(@Args() accountAggregateArgs: AccountAggregateArgs) {
     return this.accountController.aggregate(accountAggregateArgs);
@@ -152,7 +152,7 @@ export class AccountResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountCount(@Args() accountCountAggregateInput: FindManyAccountArgs) {
     return this.accountController.count(accountCountAggregateInput);

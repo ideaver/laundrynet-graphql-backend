@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { BusinessHourService } from './business-hour.service';
+import { BusinessHourService } from './businessHour.service';
 
 @Injectable()
 export class BusinessHourController {

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { PhoneCountryCodeService } from './phone-country-code.service';
-import { PhoneCountryCodeResolver } from './phone-country-code.resolver';
+import { PhoneCountryCodeService } from './phoneCountryCode.service';
+import { PhoneCountryCodeResolver } from './phoneCountryCode.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { PhoneCountryCodeController } from './phone-country-code.controller';
+import { PhoneCountryCodeController } from './phoneCountryCode.controller';
 
 @Module({
   providers: [PrismaService, PhoneCountryCodeResolver, PhoneCountryCodeController, PhoneCountryCodeService],

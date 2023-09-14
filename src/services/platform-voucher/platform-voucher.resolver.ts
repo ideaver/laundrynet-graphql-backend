@@ -16,7 +16,7 @@ import {
   UpdateManyPlatformVoucherArgs,
   UpdateOnePlatformVoucherArgs,
 } from 'src/@generated';
-import { PlatformVoucherController } from './platform-voucher.controller';
+import { PlatformVoucherController } from './platformVoucher.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class PlatformVoucherResolver {
 
   @Mutation(() => PlatformVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformVoucherCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class PlatformVoucherResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformVoucherCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class PlatformVoucherResolver {
 
   @Query(() => PlatformVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformVoucherFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class PlatformVoucherResolver {
 
   @Query(() => [PlatformVoucher], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformVoucherFindMany(
     @Args() platformVoucherFindManyArgs: FindManyPlatformVoucherArgs,
@@ -85,7 +85,7 @@ export class PlatformVoucherResolver {
 
   @Query(() => PlatformVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformVoucherFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class PlatformVoucherResolver {
 
   @Mutation(() => PlatformVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformVoucherUpdateOne(
     @Args() platformVoucherUpdateOneArgs: UpdateOnePlatformVoucherArgs,
@@ -114,7 +114,7 @@ export class PlatformVoucherResolver {
 
   @Mutation(() => PlatformVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformVoucherUpdateMany(@Args() updateManyPlatformVoucherArgs: UpdateManyPlatformVoucherArgs) {
     return this.platformVoucherController.updateMany(updateManyPlatformVoucherArgs);
@@ -122,7 +122,7 @@ export class PlatformVoucherResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformVoucherDelete(
     @Args() deleteOnePlatformVoucherArgs: DeleteOnePlatformVoucherArgs,
@@ -136,7 +136,7 @@ export class PlatformVoucherResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformVoucherDeleteMany(@Args() deleteManyPlatformVoucherArgs: DeleteManyPlatformVoucherArgs) {
     return this.platformVoucherController.deleteMany(deleteManyPlatformVoucherArgs);
@@ -144,7 +144,7 @@ export class PlatformVoucherResolver {
 
   @Query(() => AggregatePlatformVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformVoucherAggregate(@Args() platformVoucherAggregateArgs: PlatformVoucherAggregateArgs) {
     return this.platformVoucherController.aggregate(platformVoucherAggregateArgs);
@@ -152,7 +152,7 @@ export class PlatformVoucherResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformVoucherCount(@Args() platformVoucherCountAggregateInput: FindManyPlatformVoucherArgs) {
     return this.platformVoucherController.count(platformVoucherCountAggregateInput);

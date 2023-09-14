@@ -30,7 +30,7 @@ export class OwnerResolver {
 
   @Mutation(() => Owner, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async ownerCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class OwnerResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async ownerCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class OwnerResolver {
 
   @Query(() => Owner, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   ownerFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class OwnerResolver {
 
   @Query(() => [Owner], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   ownerFindMany(
     @Args() ownerFindManyArgs: FindManyOwnerArgs,
@@ -85,7 +85,7 @@ export class OwnerResolver {
 
   @Query(() => Owner, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   ownerFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class OwnerResolver {
 
   @Mutation(() => Owner, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async ownerUpdateOne(
     @Args() ownerUpdateOneArgs: UpdateOneOwnerArgs,
@@ -114,7 +114,7 @@ export class OwnerResolver {
 
   @Mutation(() => Owner, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async ownerUpdateMany(@Args() updateManyOwnerArgs: UpdateManyOwnerArgs) {
     return this.ownerController.updateMany(updateManyOwnerArgs);
@@ -122,7 +122,7 @@ export class OwnerResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async ownerDelete(
     @Args() deleteOneOwnerArgs: DeleteOneOwnerArgs,
@@ -136,7 +136,7 @@ export class OwnerResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async ownerDeleteMany(@Args() deleteManyOwnerArgs: DeleteManyOwnerArgs) {
     return this.ownerController.deleteMany(deleteManyOwnerArgs);
@@ -144,7 +144,7 @@ export class OwnerResolver {
 
   @Query(() => AggregateOwner, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   ownerAggregate(@Args() ownerAggregateArgs: OwnerAggregateArgs) {
     return this.ownerController.aggregate(ownerAggregateArgs);
@@ -152,7 +152,7 @@ export class OwnerResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   ownerCount(@Args() ownerCountAggregateInput: FindManyOwnerArgs) {
     return this.ownerController.count(ownerCountAggregateInput);

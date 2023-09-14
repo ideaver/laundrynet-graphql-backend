@@ -16,7 +16,7 @@ import {
   UpdateManyOutletVoucherArgs,
   UpdateOneOutletVoucherArgs,
 } from 'src/@generated';
-import { OutletVoucherController } from './outlet-voucher.controller';
+import { OutletVoucherController } from './outletVoucher.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class OutletVoucherResolver {
 
   @Mutation(() => OutletVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletVoucherCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class OutletVoucherResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletVoucherCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class OutletVoucherResolver {
 
   @Query(() => OutletVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletVoucherFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class OutletVoucherResolver {
 
   @Query(() => [OutletVoucher], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletVoucherFindMany(
     @Args() outletVoucherFindManyArgs: FindManyOutletVoucherArgs,
@@ -85,7 +85,7 @@ export class OutletVoucherResolver {
 
   @Query(() => OutletVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletVoucherFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class OutletVoucherResolver {
 
   @Mutation(() => OutletVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletVoucherUpdateOne(
     @Args() outletVoucherUpdateOneArgs: UpdateOneOutletVoucherArgs,
@@ -114,7 +114,7 @@ export class OutletVoucherResolver {
 
   @Mutation(() => OutletVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletVoucherUpdateMany(@Args() updateManyOutletVoucherArgs: UpdateManyOutletVoucherArgs) {
     return this.outletVoucherController.updateMany(updateManyOutletVoucherArgs);
@@ -122,7 +122,7 @@ export class OutletVoucherResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletVoucherDelete(
     @Args() deleteOneOutletVoucherArgs: DeleteOneOutletVoucherArgs,
@@ -136,7 +136,7 @@ export class OutletVoucherResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletVoucherDeleteMany(@Args() deleteManyOutletVoucherArgs: DeleteManyOutletVoucherArgs) {
     return this.outletVoucherController.deleteMany(deleteManyOutletVoucherArgs);
@@ -144,7 +144,7 @@ export class OutletVoucherResolver {
 
   @Query(() => AggregateOutletVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletVoucherAggregate(@Args() outletVoucherAggregateArgs: OutletVoucherAggregateArgs) {
     return this.outletVoucherController.aggregate(outletVoucherAggregateArgs);
@@ -152,7 +152,7 @@ export class OutletVoucherResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletVoucherCount(@Args() outletVoucherCountAggregateInput: FindManyOutletVoucherArgs) {
     return this.outletVoucherController.count(outletVoucherCountAggregateInput);

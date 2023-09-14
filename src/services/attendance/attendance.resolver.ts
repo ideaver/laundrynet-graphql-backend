@@ -30,7 +30,7 @@ export class AttendanceResolver {
 
   @Mutation(() => Attendance, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async attendanceCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class AttendanceResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async attendanceCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class AttendanceResolver {
 
   @Query(() => Attendance, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   attendanceFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class AttendanceResolver {
 
   @Query(() => [Attendance], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   attendanceFindMany(
     @Args() attendanceFindManyArgs: FindManyAttendanceArgs,
@@ -85,7 +85,7 @@ export class AttendanceResolver {
 
   @Query(() => Attendance, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   attendanceFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class AttendanceResolver {
 
   @Mutation(() => Attendance, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async attendanceUpdateOne(
     @Args() attendanceUpdateOneArgs: UpdateOneAttendanceArgs,
@@ -114,7 +114,7 @@ export class AttendanceResolver {
 
   @Mutation(() => Attendance, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async attendanceUpdateMany(@Args() updateManyAttendanceArgs: UpdateManyAttendanceArgs) {
     return this.attendanceController.updateMany(updateManyAttendanceArgs);
@@ -122,7 +122,7 @@ export class AttendanceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async attendanceDelete(
     @Args() deleteOneAttendanceArgs: DeleteOneAttendanceArgs,
@@ -136,7 +136,7 @@ export class AttendanceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async attendanceDeleteMany(@Args() deleteManyAttendanceArgs: DeleteManyAttendanceArgs) {
     return this.attendanceController.deleteMany(deleteManyAttendanceArgs);
@@ -144,7 +144,7 @@ export class AttendanceResolver {
 
   @Query(() => AggregateAttendance, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   attendanceAggregate(@Args() attendanceAggregateArgs: AttendanceAggregateArgs) {
     return this.attendanceController.aggregate(attendanceAggregateArgs);
@@ -152,7 +152,7 @@ export class AttendanceResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   attendanceCount(@Args() attendanceCountAggregateInput: FindManyAttendanceArgs) {
     return this.attendanceController.count(attendanceCountAggregateInput);

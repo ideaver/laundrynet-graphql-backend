@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { AccountSettingService } from './account-setting.service';
+import { AccountSettingService } from './accountSetting.service';
 
 @Injectable()
 export class AccountSettingController {

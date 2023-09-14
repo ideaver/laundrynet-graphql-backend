@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { MarketSalePriceHistoryService } from './market-sale-price-history.service';
+import { MarketSalePriceHistoryService } from './marketSalePriceHistory.service';
 
 @Injectable()
 export class MarketSalePriceHistoryController {

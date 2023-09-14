@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { MachineSettingsService } from './machine-settings.service';
-import { MachineSettingsResolver } from './machine-settings.resolver';
+import { MachineSettingsService } from './machineSettings.service';
+import { MachineSettingsResolver } from './machineSettings.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { MachineSettingsController } from './machine-settings.controller';
+import { MachineSettingsController } from './machineSettings.controller';
 
 @Module({
   providers: [PrismaService, MachineSettingsResolver, MachineSettingsController, MachineSettingsService],

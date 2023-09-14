@@ -16,7 +16,7 @@ import {
   UpdateManyOutletLaundryItemServiceArgs,
   UpdateOneOutletLaundryItemServiceArgs,
 } from 'src/@generated';
-import { OutletLaundryItemServiceController } from './outlet-laundry-item-service.controller';
+import { OutletLaundryItemServiceController } from './outletLaundryItemService.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Mutation(() => OutletLaundryItemService, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletLaundryItemServiceCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletLaundryItemServiceCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Query(() => OutletLaundryItemService, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletLaundryItemServiceFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Query(() => [OutletLaundryItemService], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletLaundryItemServiceFindMany(
     @Args() outletLaundryItemServiceFindManyArgs: FindManyOutletLaundryItemServiceArgs,
@@ -85,7 +85,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Query(() => OutletLaundryItemService, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletLaundryItemServiceFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Mutation(() => OutletLaundryItemService, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletLaundryItemServiceUpdateOne(
     @Args() outletLaundryItemServiceUpdateOneArgs: UpdateOneOutletLaundryItemServiceArgs,
@@ -114,7 +114,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Mutation(() => OutletLaundryItemService, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletLaundryItemServiceUpdateMany(@Args() updateManyOutletLaundryItemServiceArgs: UpdateManyOutletLaundryItemServiceArgs) {
     return this.outletLaundryItemServiceController.updateMany(updateManyOutletLaundryItemServiceArgs);
@@ -122,7 +122,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletLaundryItemServiceDelete(
     @Args() deleteOneOutletLaundryItemServiceArgs: DeleteOneOutletLaundryItemServiceArgs,
@@ -136,7 +136,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async outletLaundryItemServiceDeleteMany(@Args() deleteManyOutletLaundryItemServiceArgs: DeleteManyOutletLaundryItemServiceArgs) {
     return this.outletLaundryItemServiceController.deleteMany(deleteManyOutletLaundryItemServiceArgs);
@@ -144,7 +144,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Query(() => AggregateOutletLaundryItemService, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletLaundryItemServiceAggregate(@Args() outletLaundryItemServiceAggregateArgs: OutletLaundryItemServiceAggregateArgs) {
     return this.outletLaundryItemServiceController.aggregate(outletLaundryItemServiceAggregateArgs);
@@ -152,7 +152,7 @@ export class OutletLaundryItemServiceResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   outletLaundryItemServiceCount(@Args() outletLaundryItemServiceCountAggregateInput: FindManyOutletLaundryItemServiceArgs) {
     return this.outletLaundryItemServiceController.count(outletLaundryItemServiceCountAggregateInput);

@@ -16,7 +16,7 @@ import {
   UpdateManyLaundryItemRequestArgs,
   UpdateOneLaundryItemRequestArgs,
 } from 'src/@generated';
-import { LaundryItemRequestController } from './laundry-item-request.controller';
+import { LaundryItemRequestController } from './laundryItemRequest.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class LaundryItemRequestResolver {
 
   @Mutation(() => LaundryItemRequest, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemRequestCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class LaundryItemRequestResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemRequestCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class LaundryItemRequestResolver {
 
   @Query(() => LaundryItemRequest, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemRequestFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class LaundryItemRequestResolver {
 
   @Query(() => [LaundryItemRequest], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemRequestFindMany(
     @Args() laundryItemRequestFindManyArgs: FindManyLaundryItemRequestArgs,
@@ -85,7 +85,7 @@ export class LaundryItemRequestResolver {
 
   @Query(() => LaundryItemRequest, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemRequestFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class LaundryItemRequestResolver {
 
   @Mutation(() => LaundryItemRequest, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemRequestUpdateOne(
     @Args() laundryItemRequestUpdateOneArgs: UpdateOneLaundryItemRequestArgs,
@@ -114,7 +114,7 @@ export class LaundryItemRequestResolver {
 
   @Mutation(() => LaundryItemRequest, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemRequestUpdateMany(@Args() updateManyLaundryItemRequestArgs: UpdateManyLaundryItemRequestArgs) {
     return this.laundryItemRequestController.updateMany(updateManyLaundryItemRequestArgs);
@@ -122,7 +122,7 @@ export class LaundryItemRequestResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemRequestDelete(
     @Args() deleteOneLaundryItemRequestArgs: DeleteOneLaundryItemRequestArgs,
@@ -136,7 +136,7 @@ export class LaundryItemRequestResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemRequestDeleteMany(@Args() deleteManyLaundryItemRequestArgs: DeleteManyLaundryItemRequestArgs) {
     return this.laundryItemRequestController.deleteMany(deleteManyLaundryItemRequestArgs);
@@ -144,7 +144,7 @@ export class LaundryItemRequestResolver {
 
   @Query(() => AggregateLaundryItemRequest, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemRequestAggregate(@Args() laundryItemRequestAggregateArgs: LaundryItemRequestAggregateArgs) {
     return this.laundryItemRequestController.aggregate(laundryItemRequestAggregateArgs);
@@ -152,7 +152,7 @@ export class LaundryItemRequestResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemRequestCount(@Args() laundryItemRequestCountAggregateInput: FindManyLaundryItemRequestArgs) {
     return this.laundryItemRequestController.count(laundryItemRequestCountAggregateInput);

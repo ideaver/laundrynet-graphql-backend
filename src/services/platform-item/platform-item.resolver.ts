@@ -16,7 +16,7 @@ import {
   UpdateManyPlatformItemArgs,
   UpdateOnePlatformItemArgs,
 } from 'src/@generated';
-import { PlatformItemController } from './platform-item.controller';
+import { PlatformItemController } from './platformItem.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class PlatformItemResolver {
 
   @Mutation(() => PlatformItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformItemCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class PlatformItemResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformItemCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class PlatformItemResolver {
 
   @Query(() => PlatformItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformItemFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class PlatformItemResolver {
 
   @Query(() => [PlatformItem], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformItemFindMany(
     @Args() platformItemFindManyArgs: FindManyPlatformItemArgs,
@@ -85,7 +85,7 @@ export class PlatformItemResolver {
 
   @Query(() => PlatformItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformItemFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class PlatformItemResolver {
 
   @Mutation(() => PlatformItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformItemUpdateOne(
     @Args() platformItemUpdateOneArgs: UpdateOnePlatformItemArgs,
@@ -114,7 +114,7 @@ export class PlatformItemResolver {
 
   @Mutation(() => PlatformItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformItemUpdateMany(@Args() updateManyPlatformItemArgs: UpdateManyPlatformItemArgs) {
     return this.platformItemController.updateMany(updateManyPlatformItemArgs);
@@ -122,7 +122,7 @@ export class PlatformItemResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformItemDelete(
     @Args() deleteOnePlatformItemArgs: DeleteOnePlatformItemArgs,
@@ -136,7 +136,7 @@ export class PlatformItemResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async platformItemDeleteMany(@Args() deleteManyPlatformItemArgs: DeleteManyPlatformItemArgs) {
     return this.platformItemController.deleteMany(deleteManyPlatformItemArgs);
@@ -144,7 +144,7 @@ export class PlatformItemResolver {
 
   @Query(() => AggregatePlatformItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformItemAggregate(@Args() platformItemAggregateArgs: PlatformItemAggregateArgs) {
     return this.platformItemController.aggregate(platformItemAggregateArgs);
@@ -152,7 +152,7 @@ export class PlatformItemResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   platformItemCount(@Args() platformItemCountAggregateInput: FindManyPlatformItemArgs) {
     return this.platformItemController.count(platformItemCountAggregateInput);

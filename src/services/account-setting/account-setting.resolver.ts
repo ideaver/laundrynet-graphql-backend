@@ -16,7 +16,7 @@ import {
   UpdateManyAccountSettingArgs,
   UpdateOneAccountSettingArgs,
 } from 'src/@generated';
-import { AccountSettingController } from './account-setting.controller';
+import { AccountSettingController } from './accountSetting.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class AccountSettingResolver {
 
   @Mutation(() => AccountSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountSettingCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class AccountSettingResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountSettingCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class AccountSettingResolver {
 
   @Query(() => AccountSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountSettingFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class AccountSettingResolver {
 
   @Query(() => [AccountSetting], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountSettingFindMany(
     @Args() accountSettingFindManyArgs: FindManyAccountSettingArgs,
@@ -85,7 +85,7 @@ export class AccountSettingResolver {
 
   @Query(() => AccountSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountSettingFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class AccountSettingResolver {
 
   @Mutation(() => AccountSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountSettingUpdateOne(
     @Args() accountSettingUpdateOneArgs: UpdateOneAccountSettingArgs,
@@ -114,7 +114,7 @@ export class AccountSettingResolver {
 
   @Mutation(() => AccountSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountSettingUpdateMany(@Args() updateManyAccountSettingArgs: UpdateManyAccountSettingArgs) {
     return this.accountSettingController.updateMany(updateManyAccountSettingArgs);
@@ -122,7 +122,7 @@ export class AccountSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountSettingDelete(
     @Args() deleteOneAccountSettingArgs: DeleteOneAccountSettingArgs,
@@ -136,7 +136,7 @@ export class AccountSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async accountSettingDeleteMany(@Args() deleteManyAccountSettingArgs: DeleteManyAccountSettingArgs) {
     return this.accountSettingController.deleteMany(deleteManyAccountSettingArgs);
@@ -144,7 +144,7 @@ export class AccountSettingResolver {
 
   @Query(() => AggregateAccountSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountSettingAggregate(@Args() accountSettingAggregateArgs: AccountSettingAggregateArgs) {
     return this.accountSettingController.aggregate(accountSettingAggregateArgs);
@@ -152,7 +152,7 @@ export class AccountSettingResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   accountSettingCount(@Args() accountSettingCountAggregateInput: FindManyAccountSettingArgs) {
     return this.accountSettingController.count(accountSettingCountAggregateInput);

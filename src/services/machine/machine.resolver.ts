@@ -30,7 +30,7 @@ export class MachineResolver {
 
   @Mutation(() => Machine, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async machineCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class MachineResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async machineCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class MachineResolver {
 
   @Query(() => Machine, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   machineFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class MachineResolver {
 
   @Query(() => [Machine], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   machineFindMany(
     @Args() machineFindManyArgs: FindManyMachineArgs,
@@ -85,7 +85,7 @@ export class MachineResolver {
 
   @Query(() => Machine, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   machineFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class MachineResolver {
 
   @Mutation(() => Machine, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async machineUpdateOne(
     @Args() machineUpdateOneArgs: UpdateOneMachineArgs,
@@ -114,7 +114,7 @@ export class MachineResolver {
 
   @Mutation(() => Machine, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async machineUpdateMany(@Args() updateManyMachineArgs: UpdateManyMachineArgs) {
     return this.machineController.updateMany(updateManyMachineArgs);
@@ -122,7 +122,7 @@ export class MachineResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async machineDelete(
     @Args() deleteOneMachineArgs: DeleteOneMachineArgs,
@@ -136,7 +136,7 @@ export class MachineResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async machineDeleteMany(@Args() deleteManyMachineArgs: DeleteManyMachineArgs) {
     return this.machineController.deleteMany(deleteManyMachineArgs);
@@ -144,7 +144,7 @@ export class MachineResolver {
 
   @Query(() => AggregateMachine, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   machineAggregate(@Args() machineAggregateArgs: MachineAggregateArgs) {
     return this.machineController.aggregate(machineAggregateArgs);
@@ -152,7 +152,7 @@ export class MachineResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   machineCount(@Args() machineCountAggregateInput: FindManyMachineArgs) {
     return this.machineController.count(machineCountAggregateInput);

@@ -22,6 +22,23 @@ const extractModelsFromSchema = (schemaPath: string): string[] => {
   }
 };
 
+function duplicateFile(
+  sourceFilePath: string,
+  sourceDir: string,
+  modelName: string,
+  targetFilePath: string,
+) {
+  const content = readFileSync(sourceFilePath, 'utf8');
+  const newContent = replacePathsWithHyphens(
+    replacePreservingCase(
+      content,
+      basename(sourceDir).toLowerCase(),
+      modelName,
+    ),
+  );
+  writeFileSync(targetFilePath, newContent);
+}
+
 // Convert string to lowercase with hyphens
 const toKebabCase = (input: string): string =>
   input
@@ -46,7 +63,7 @@ const replacePreservingCase = (
 // Replace paths with hyphens in import statements
 const replacePathsWithHyphens = (input: string): string =>
   input.replace(
-    /(['"])((?:[^'"]|\\.)+)(['"])/g,
+    /(['"])(import\s+|require\s*\(\s*)((?:[^'"]|\\.)+)(['"]\s*\))/g,
     (match, startQuote, path, endQuote) =>
       startQuote + toKebabCase(path) + endQuote,
   );
@@ -72,15 +89,7 @@ const duplicateFolder = (
     } else {
       if (!existsSync(targetFilePath)) {
         try {
-          const content = readFileSync(sourceFilePath, 'utf8');
-          const newContent = replacePathsWithHyphens(
-            replacePreservingCase(
-              content,
-              basename(sourceDir).toLowerCase(),
-              modelName,
-            ),
-          );
-          writeFileSync(targetFilePath, newContent);
+          duplicateFile(sourceFilePath, sourceDir, modelName, targetFilePath);
         } catch (error) {
           console.error(
             `Error duplicating file ${sourceFilePath}:`,
@@ -93,13 +102,13 @@ const duplicateFolder = (
 };
 
 // Main execution
-// Main execution
 const main = (): void => {
-  const schemaPath = './prisma/schema.prisma';
-  const sourceFolder = './prisma/template/file';
-  const outputBaseFolder = './src/services';
-  const excludedModels = ['Address', 'Payment']; // Add model names to be excluded here
+  const schemaPath: string = './prisma/schema.prisma';
+  const sourceFolder: string = './prisma/template/file';
+  const outputBaseFolder: string = './src/services';
+  const excludedModels: string[] = []; // Add model names to be excluded here
 
+  //
   if (!existsSync(outputBaseFolder))
     mkdirSync(outputBaseFolder, { recursive: true });
 
@@ -111,7 +120,7 @@ const main = (): void => {
   );
 
   console.log(
-    `${prismaModels.length} Models found in Prisma schema:`,
+    `${prismaModels.length} minus ${excludedModels.length} Models found in Prisma schema:`,
     prismaModels,
   );
 
@@ -120,7 +129,7 @@ const main = (): void => {
     duplicateFolder(sourceFolder, targetFolder, modelName);
   });
 
-  console.log(`${prismaModels.length} Models Duplication completed.`);
+  console.log(`Models Duplication completed.`);
 };
 
 try {

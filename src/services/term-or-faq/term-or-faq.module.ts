@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { TermOrFaqService } from './term-or-faq.service';
-import { TermOrFaqResolver } from './term-or-faq.resolver';
+import { TermOrFaqService } from './termOrFaq.service';
+import { TermOrFaqResolver } from './termOrFaq.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { TermOrFaqController } from './term-or-faq.controller';
+import { TermOrFaqController } from './termOrFaq.controller';
 
 @Module({
   providers: [PrismaService, TermOrFaqResolver, TermOrFaqController, TermOrFaqService],

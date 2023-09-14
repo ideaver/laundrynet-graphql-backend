@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { OutletVoucherService } from './outlet-voucher.service';
-import { OutletVoucherResolver } from './outlet-voucher.resolver';
+import { OutletVoucherService } from './outletVoucher.service';
+import { OutletVoucherResolver } from './outletVoucher.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { OutletVoucherController } from './outlet-voucher.controller';
+import { OutletVoucherController } from './outletVoucher.controller';
 
 @Module({
   providers: [PrismaService, OutletVoucherResolver, OutletVoucherController, OutletVoucherService],

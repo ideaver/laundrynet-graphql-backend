@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { PrinterMachineService } from './printer-machine.service';
-import { PrinterMachineResolver } from './printer-machine.resolver';
+import { PrinterMachineService } from './printerMachine.service';
+import { PrinterMachineResolver } from './printerMachine.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { PrinterMachineController } from './printer-machine.controller';
+import { PrinterMachineController } from './printerMachine.controller';
 
 @Module({
   providers: [PrismaService, PrinterMachineResolver, PrinterMachineController, PrinterMachineService],

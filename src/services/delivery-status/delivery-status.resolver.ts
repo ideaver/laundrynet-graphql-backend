@@ -16,7 +16,7 @@ import {
   UpdateManyDeliveryStatusArgs,
   UpdateOneDeliveryStatusArgs,
 } from 'src/@generated';
-import { DeliveryStatusController } from './delivery-status.controller';
+import { DeliveryStatusController } from './deliveryStatus.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class DeliveryStatusResolver {
 
   @Mutation(() => DeliveryStatus, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async deliveryStatusCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class DeliveryStatusResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async deliveryStatusCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class DeliveryStatusResolver {
 
   @Query(() => DeliveryStatus, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   deliveryStatusFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class DeliveryStatusResolver {
 
   @Query(() => [DeliveryStatus], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   deliveryStatusFindMany(
     @Args() deliveryStatusFindManyArgs: FindManyDeliveryStatusArgs,
@@ -85,7 +85,7 @@ export class DeliveryStatusResolver {
 
   @Query(() => DeliveryStatus, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   deliveryStatusFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class DeliveryStatusResolver {
 
   @Mutation(() => DeliveryStatus, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async deliveryStatusUpdateOne(
     @Args() deliveryStatusUpdateOneArgs: UpdateOneDeliveryStatusArgs,
@@ -114,7 +114,7 @@ export class DeliveryStatusResolver {
 
   @Mutation(() => DeliveryStatus, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async deliveryStatusUpdateMany(@Args() updateManyDeliveryStatusArgs: UpdateManyDeliveryStatusArgs) {
     return this.deliveryStatusController.updateMany(updateManyDeliveryStatusArgs);
@@ -122,7 +122,7 @@ export class DeliveryStatusResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async deliveryStatusDelete(
     @Args() deleteOneDeliveryStatusArgs: DeleteOneDeliveryStatusArgs,
@@ -136,7 +136,7 @@ export class DeliveryStatusResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async deliveryStatusDeleteMany(@Args() deleteManyDeliveryStatusArgs: DeleteManyDeliveryStatusArgs) {
     return this.deliveryStatusController.deleteMany(deleteManyDeliveryStatusArgs);
@@ -144,7 +144,7 @@ export class DeliveryStatusResolver {
 
   @Query(() => AggregateDeliveryStatus, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   deliveryStatusAggregate(@Args() deliveryStatusAggregateArgs: DeliveryStatusAggregateArgs) {
     return this.deliveryStatusController.aggregate(deliveryStatusAggregateArgs);
@@ -152,7 +152,7 @@ export class DeliveryStatusResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   deliveryStatusCount(@Args() deliveryStatusCountAggregateInput: FindManyDeliveryStatusArgs) {
     return this.deliveryStatusController.count(deliveryStatusCountAggregateInput);

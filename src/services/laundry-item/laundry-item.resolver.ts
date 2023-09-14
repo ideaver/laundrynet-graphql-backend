@@ -16,7 +16,7 @@ import {
   UpdateManyLaundryItemArgs,
   UpdateOneLaundryItemArgs,
 } from 'src/@generated';
-import { LaundryItemController } from './laundry-item.controller';
+import { LaundryItemController } from './laundryItem.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class LaundryItemResolver {
 
   @Mutation(() => LaundryItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class LaundryItemResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class LaundryItemResolver {
 
   @Query(() => LaundryItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class LaundryItemResolver {
 
   @Query(() => [LaundryItem], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemFindMany(
     @Args() laundryItemFindManyArgs: FindManyLaundryItemArgs,
@@ -85,7 +85,7 @@ export class LaundryItemResolver {
 
   @Query(() => LaundryItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class LaundryItemResolver {
 
   @Mutation(() => LaundryItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemUpdateOne(
     @Args() laundryItemUpdateOneArgs: UpdateOneLaundryItemArgs,
@@ -114,7 +114,7 @@ export class LaundryItemResolver {
 
   @Mutation(() => LaundryItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemUpdateMany(@Args() updateManyLaundryItemArgs: UpdateManyLaundryItemArgs) {
     return this.laundryItemController.updateMany(updateManyLaundryItemArgs);
@@ -122,7 +122,7 @@ export class LaundryItemResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemDelete(
     @Args() deleteOneLaundryItemArgs: DeleteOneLaundryItemArgs,
@@ -136,7 +136,7 @@ export class LaundryItemResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemDeleteMany(@Args() deleteManyLaundryItemArgs: DeleteManyLaundryItemArgs) {
     return this.laundryItemController.deleteMany(deleteManyLaundryItemArgs);
@@ -144,7 +144,7 @@ export class LaundryItemResolver {
 
   @Query(() => AggregateLaundryItem, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemAggregate(@Args() laundryItemAggregateArgs: LaundryItemAggregateArgs) {
     return this.laundryItemController.aggregate(laundryItemAggregateArgs);
@@ -152,7 +152,7 @@ export class LaundryItemResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemCount(@Args() laundryItemCountAggregateInput: FindManyLaundryItemArgs) {
     return this.laundryItemController.count(laundryItemCountAggregateInput);

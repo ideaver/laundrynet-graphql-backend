@@ -16,7 +16,7 @@ import {
   UpdateManyTermOrFaqArgs,
   UpdateOneTermOrFaqArgs,
 } from 'src/@generated';
-import { TermOrFaqController } from './term-or-faq.controller';
+import { TermOrFaqController } from './termOrFaq.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class TermOrFaqResolver {
 
   @Mutation(() => TermOrFaq, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async termOrFaqCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class TermOrFaqResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async termOrFaqCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class TermOrFaqResolver {
 
   @Query(() => TermOrFaq, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   termOrFaqFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class TermOrFaqResolver {
 
   @Query(() => [TermOrFaq], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   termOrFaqFindMany(
     @Args() termOrFaqFindManyArgs: FindManyTermOrFaqArgs,
@@ -85,7 +85,7 @@ export class TermOrFaqResolver {
 
   @Query(() => TermOrFaq, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   termOrFaqFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class TermOrFaqResolver {
 
   @Mutation(() => TermOrFaq, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async termOrFaqUpdateOne(
     @Args() termOrFaqUpdateOneArgs: UpdateOneTermOrFaqArgs,
@@ -114,7 +114,7 @@ export class TermOrFaqResolver {
 
   @Mutation(() => TermOrFaq, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async termOrFaqUpdateMany(@Args() updateManyTermOrFaqArgs: UpdateManyTermOrFaqArgs) {
     return this.termOrFaqController.updateMany(updateManyTermOrFaqArgs);
@@ -122,7 +122,7 @@ export class TermOrFaqResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async termOrFaqDelete(
     @Args() deleteOneTermOrFaqArgs: DeleteOneTermOrFaqArgs,
@@ -136,7 +136,7 @@ export class TermOrFaqResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async termOrFaqDeleteMany(@Args() deleteManyTermOrFaqArgs: DeleteManyTermOrFaqArgs) {
     return this.termOrFaqController.deleteMany(deleteManyTermOrFaqArgs);
@@ -144,7 +144,7 @@ export class TermOrFaqResolver {
 
   @Query(() => AggregateTermOrFaq, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   termOrFaqAggregate(@Args() termOrFaqAggregateArgs: TermOrFaqAggregateArgs) {
     return this.termOrFaqController.aggregate(termOrFaqAggregateArgs);
@@ -152,7 +152,7 @@ export class TermOrFaqResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   termOrFaqCount(@Args() termOrFaqCountAggregateInput: FindManyTermOrFaqArgs) {
     return this.termOrFaqController.count(termOrFaqCountAggregateInput);

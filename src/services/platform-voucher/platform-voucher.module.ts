@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { PlatformVoucherService } from './platform-voucher.service';
-import { PlatformVoucherResolver } from './platform-voucher.resolver';
+import { PlatformVoucherService } from './platformVoucher.service';
+import { PlatformVoucherResolver } from './platformVoucher.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { PlatformVoucherController } from './platform-voucher.controller';
+import { PlatformVoucherController } from './platformVoucher.controller';
 
 @Module({
   providers: [PrismaService, PlatformVoucherResolver, PlatformVoucherController, PlatformVoucherService],

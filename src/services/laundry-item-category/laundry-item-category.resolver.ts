@@ -16,7 +16,7 @@ import {
   UpdateManyLaundryItemCategoryArgs,
   UpdateOneLaundryItemCategoryArgs,
 } from 'src/@generated';
-import { LaundryItemCategoryController } from './laundry-item-category.controller';
+import { LaundryItemCategoryController } from './laundryItemCategory.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class LaundryItemCategoryResolver {
 
   @Mutation(() => LaundryItemCategory, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCategoryCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class LaundryItemCategoryResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCategoryCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class LaundryItemCategoryResolver {
 
   @Query(() => LaundryItemCategory, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemCategoryFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class LaundryItemCategoryResolver {
 
   @Query(() => [LaundryItemCategory], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemCategoryFindMany(
     @Args() laundryItemCategoryFindManyArgs: FindManyLaundryItemCategoryArgs,
@@ -85,7 +85,7 @@ export class LaundryItemCategoryResolver {
 
   @Query(() => LaundryItemCategory, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemCategoryFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class LaundryItemCategoryResolver {
 
   @Mutation(() => LaundryItemCategory, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCategoryUpdateOne(
     @Args() laundryItemCategoryUpdateOneArgs: UpdateOneLaundryItemCategoryArgs,
@@ -114,7 +114,7 @@ export class LaundryItemCategoryResolver {
 
   @Mutation(() => LaundryItemCategory, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCategoryUpdateMany(@Args() updateManyLaundryItemCategoryArgs: UpdateManyLaundryItemCategoryArgs) {
     return this.laundryItemCategoryController.updateMany(updateManyLaundryItemCategoryArgs);
@@ -122,7 +122,7 @@ export class LaundryItemCategoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCategoryDelete(
     @Args() deleteOneLaundryItemCategoryArgs: DeleteOneLaundryItemCategoryArgs,
@@ -136,7 +136,7 @@ export class LaundryItemCategoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async laundryItemCategoryDeleteMany(@Args() deleteManyLaundryItemCategoryArgs: DeleteManyLaundryItemCategoryArgs) {
     return this.laundryItemCategoryController.deleteMany(deleteManyLaundryItemCategoryArgs);
@@ -144,7 +144,7 @@ export class LaundryItemCategoryResolver {
 
   @Query(() => AggregateLaundryItemCategory, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemCategoryAggregate(@Args() laundryItemCategoryAggregateArgs: LaundryItemCategoryAggregateArgs) {
     return this.laundryItemCategoryController.aggregate(laundryItemCategoryAggregateArgs);
@@ -152,7 +152,7 @@ export class LaundryItemCategoryResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   laundryItemCategoryCount(@Args() laundryItemCategoryCountAggregateInput: FindManyLaundryItemCategoryArgs) {
     return this.laundryItemCategoryController.count(laundryItemCategoryCountAggregateInput);

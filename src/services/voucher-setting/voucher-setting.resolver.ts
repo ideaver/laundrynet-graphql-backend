@@ -16,7 +16,7 @@ import {
   UpdateManyVoucherSettingArgs,
   UpdateOneVoucherSettingArgs,
 } from 'src/@generated';
-import { VoucherSettingController } from './voucher-setting.controller';
+import { VoucherSettingController } from './voucherSetting.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class VoucherSettingResolver {
 
   @Mutation(() => VoucherSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherSettingCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class VoucherSettingResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherSettingCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class VoucherSettingResolver {
 
   @Query(() => VoucherSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherSettingFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class VoucherSettingResolver {
 
   @Query(() => [VoucherSetting], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherSettingFindMany(
     @Args() voucherSettingFindManyArgs: FindManyVoucherSettingArgs,
@@ -85,7 +85,7 @@ export class VoucherSettingResolver {
 
   @Query(() => VoucherSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherSettingFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class VoucherSettingResolver {
 
   @Mutation(() => VoucherSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherSettingUpdateOne(
     @Args() voucherSettingUpdateOneArgs: UpdateOneVoucherSettingArgs,
@@ -114,7 +114,7 @@ export class VoucherSettingResolver {
 
   @Mutation(() => VoucherSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherSettingUpdateMany(@Args() updateManyVoucherSettingArgs: UpdateManyVoucherSettingArgs) {
     return this.voucherSettingController.updateMany(updateManyVoucherSettingArgs);
@@ -122,7 +122,7 @@ export class VoucherSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherSettingDelete(
     @Args() deleteOneVoucherSettingArgs: DeleteOneVoucherSettingArgs,
@@ -136,7 +136,7 @@ export class VoucherSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherSettingDeleteMany(@Args() deleteManyVoucherSettingArgs: DeleteManyVoucherSettingArgs) {
     return this.voucherSettingController.deleteMany(deleteManyVoucherSettingArgs);
@@ -144,7 +144,7 @@ export class VoucherSettingResolver {
 
   @Query(() => AggregateVoucherSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherSettingAggregate(@Args() voucherSettingAggregateArgs: VoucherSettingAggregateArgs) {
     return this.voucherSettingController.aggregate(voucherSettingAggregateArgs);
@@ -152,7 +152,7 @@ export class VoucherSettingResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherSettingCount(@Args() voucherSettingCountAggregateInput: FindManyVoucherSettingArgs) {
     return this.voucherSettingController.count(voucherSettingCountAggregateInput);

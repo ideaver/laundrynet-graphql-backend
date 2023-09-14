@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { DeliveryLocationHistoryService } from './delivery-location-history.service';
+import { DeliveryLocationHistoryService } from './deliveryLocationHistory.service';
 
 @Injectable()
 export class DeliveryLocationHistoryController {

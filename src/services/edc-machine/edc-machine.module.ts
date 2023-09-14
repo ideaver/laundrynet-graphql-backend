@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { EdcMachineService } from './edc-machine.service';
-import { EdcMachineResolver } from './edc-machine.resolver';
+import { EdcMachineService } from './edcMachine.service';
+import { EdcMachineResolver } from './edcMachine.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { EdcMachineController } from './edc-machine.controller';
+import { EdcMachineController } from './edcMachine.controller';
 
 @Module({
   providers: [PrismaService, EdcMachineResolver, EdcMachineController, EdcMachineService],

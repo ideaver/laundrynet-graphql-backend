@@ -30,7 +30,7 @@ export class VoucherResolver {
 
   @Mutation(() => Voucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class VoucherResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class VoucherResolver {
 
   @Query(() => Voucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class VoucherResolver {
 
   @Query(() => [Voucher], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherFindMany(
     @Args() voucherFindManyArgs: FindManyVoucherArgs,
@@ -85,7 +85,7 @@ export class VoucherResolver {
 
   @Query(() => Voucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class VoucherResolver {
 
   @Mutation(() => Voucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherUpdateOne(
     @Args() voucherUpdateOneArgs: UpdateOneVoucherArgs,
@@ -114,7 +114,7 @@ export class VoucherResolver {
 
   @Mutation(() => Voucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherUpdateMany(@Args() updateManyVoucherArgs: UpdateManyVoucherArgs) {
     return this.voucherController.updateMany(updateManyVoucherArgs);
@@ -122,7 +122,7 @@ export class VoucherResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherDelete(
     @Args() deleteOneVoucherArgs: DeleteOneVoucherArgs,
@@ -136,7 +136,7 @@ export class VoucherResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async voucherDeleteMany(@Args() deleteManyVoucherArgs: DeleteManyVoucherArgs) {
     return this.voucherController.deleteMany(deleteManyVoucherArgs);
@@ -144,7 +144,7 @@ export class VoucherResolver {
 
   @Query(() => AggregateVoucher, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherAggregate(@Args() voucherAggregateArgs: VoucherAggregateArgs) {
     return this.voucherController.aggregate(voucherAggregateArgs);
@@ -152,7 +152,7 @@ export class VoucherResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   voucherCount(@Args() voucherCountAggregateInput: FindManyVoucherArgs) {
     return this.voucherController.count(voucherCountAggregateInput);

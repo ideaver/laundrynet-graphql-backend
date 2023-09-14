@@ -30,7 +30,7 @@ export class CartResolver {
 
   @Mutation(() => Cart, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async cartCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class CartResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async cartCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class CartResolver {
 
   @Query(() => Cart, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   cartFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class CartResolver {
 
   @Query(() => [Cart], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   cartFindMany(
     @Args() cartFindManyArgs: FindManyCartArgs,
@@ -85,7 +85,7 @@ export class CartResolver {
 
   @Query(() => Cart, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   cartFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class CartResolver {
 
   @Mutation(() => Cart, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async cartUpdateOne(
     @Args() cartUpdateOneArgs: UpdateOneCartArgs,
@@ -114,7 +114,7 @@ export class CartResolver {
 
   @Mutation(() => Cart, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async cartUpdateMany(@Args() updateManyCartArgs: UpdateManyCartArgs) {
     return this.cartController.updateMany(updateManyCartArgs);
@@ -122,7 +122,7 @@ export class CartResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async cartDelete(
     @Args() deleteOneCartArgs: DeleteOneCartArgs,
@@ -136,7 +136,7 @@ export class CartResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async cartDeleteMany(@Args() deleteManyCartArgs: DeleteManyCartArgs) {
     return this.cartController.deleteMany(deleteManyCartArgs);
@@ -144,7 +144,7 @@ export class CartResolver {
 
   @Query(() => AggregateCart, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   cartAggregate(@Args() cartAggregateArgs: CartAggregateArgs) {
     return this.cartController.aggregate(cartAggregateArgs);
@@ -152,7 +152,7 @@ export class CartResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   cartCount(@Args() cartCountAggregateInput: FindManyCartArgs) {
     return this.cartController.count(cartCountAggregateInput);

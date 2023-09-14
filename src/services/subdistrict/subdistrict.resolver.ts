@@ -30,7 +30,7 @@ export class SubdistrictResolver {
 
   @Mutation(() => Subdistrict, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async subdistrictCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class SubdistrictResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async subdistrictCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class SubdistrictResolver {
 
   @Query(() => Subdistrict, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   subdistrictFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class SubdistrictResolver {
 
   @Query(() => [Subdistrict], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   subdistrictFindMany(
     @Args() subdistrictFindManyArgs: FindManySubdistrictArgs,
@@ -85,7 +85,7 @@ export class SubdistrictResolver {
 
   @Query(() => Subdistrict, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   subdistrictFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class SubdistrictResolver {
 
   @Mutation(() => Subdistrict, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async subdistrictUpdateOne(
     @Args() subdistrictUpdateOneArgs: UpdateOneSubdistrictArgs,
@@ -114,7 +114,7 @@ export class SubdistrictResolver {
 
   @Mutation(() => Subdistrict, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async subdistrictUpdateMany(@Args() updateManySubdistrictArgs: UpdateManySubdistrictArgs) {
     return this.subdistrictController.updateMany(updateManySubdistrictArgs);
@@ -122,7 +122,7 @@ export class SubdistrictResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async subdistrictDelete(
     @Args() deleteOneSubdistrictArgs: DeleteOneSubdistrictArgs,
@@ -136,7 +136,7 @@ export class SubdistrictResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async subdistrictDeleteMany(@Args() deleteManySubdistrictArgs: DeleteManySubdistrictArgs) {
     return this.subdistrictController.deleteMany(deleteManySubdistrictArgs);
@@ -144,7 +144,7 @@ export class SubdistrictResolver {
 
   @Query(() => AggregateSubdistrict, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   subdistrictAggregate(@Args() subdistrictAggregateArgs: SubdistrictAggregateArgs) {
     return this.subdistrictController.aggregate(subdistrictAggregateArgs);
@@ -152,7 +152,7 @@ export class SubdistrictResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   subdistrictCount(@Args() subdistrictCountAggregateInput: FindManySubdistrictArgs) {
     return this.subdistrictController.count(subdistrictCountAggregateInput);

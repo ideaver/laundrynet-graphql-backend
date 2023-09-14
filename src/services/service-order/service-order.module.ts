@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { ServiceOrderService } from './service-order.service';
-import { ServiceOrderResolver } from './service-order.resolver';
+import { ServiceOrderService } from './serviceOrder.service';
+import { ServiceOrderResolver } from './serviceOrder.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { ServiceOrderController } from './service-order.controller';
+import { ServiceOrderController } from './serviceOrder.controller';
 
 @Module({
   providers: [PrismaService, ServiceOrderResolver, ServiceOrderController, ServiceOrderService],

@@ -30,7 +30,7 @@ export class ReviewResolver {
 
   @Mutation(() => Review, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async reviewCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class ReviewResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async reviewCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class ReviewResolver {
 
   @Query(() => Review, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   reviewFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class ReviewResolver {
 
   @Query(() => [Review], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   reviewFindMany(
     @Args() reviewFindManyArgs: FindManyReviewArgs,
@@ -85,7 +85,7 @@ export class ReviewResolver {
 
   @Query(() => Review, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   reviewFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class ReviewResolver {
 
   @Mutation(() => Review, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async reviewUpdateOne(
     @Args() reviewUpdateOneArgs: UpdateOneReviewArgs,
@@ -114,7 +114,7 @@ export class ReviewResolver {
 
   @Mutation(() => Review, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async reviewUpdateMany(@Args() updateManyReviewArgs: UpdateManyReviewArgs) {
     return this.reviewController.updateMany(updateManyReviewArgs);
@@ -122,7 +122,7 @@ export class ReviewResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async reviewDelete(
     @Args() deleteOneReviewArgs: DeleteOneReviewArgs,
@@ -136,7 +136,7 @@ export class ReviewResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async reviewDeleteMany(@Args() deleteManyReviewArgs: DeleteManyReviewArgs) {
     return this.reviewController.deleteMany(deleteManyReviewArgs);
@@ -144,7 +144,7 @@ export class ReviewResolver {
 
   @Query(() => AggregateReview, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   reviewAggregate(@Args() reviewAggregateArgs: ReviewAggregateArgs) {
     return this.reviewController.aggregate(reviewAggregateArgs);
@@ -152,7 +152,7 @@ export class ReviewResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   reviewCount(@Args() reviewCountAggregateInput: FindManyReviewArgs) {
     return this.reviewController.count(reviewCountAggregateInput);

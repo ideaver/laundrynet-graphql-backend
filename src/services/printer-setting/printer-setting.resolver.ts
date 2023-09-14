@@ -16,7 +16,7 @@ import {
   UpdateManyPrinterSettingArgs,
   UpdateOnePrinterSettingArgs,
 } from 'src/@generated';
-import { PrinterSettingController } from './printer-setting.controller';
+import { PrinterSettingController } from './printerSetting.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class PrinterSettingResolver {
 
   @Mutation(() => PrinterSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async printerSettingCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class PrinterSettingResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async printerSettingCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class PrinterSettingResolver {
 
   @Query(() => PrinterSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   printerSettingFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class PrinterSettingResolver {
 
   @Query(() => [PrinterSetting], {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   printerSettingFindMany(
     @Args() printerSettingFindManyArgs: FindManyPrinterSettingArgs,
@@ -85,7 +85,7 @@ export class PrinterSettingResolver {
 
   @Query(() => PrinterSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   printerSettingFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class PrinterSettingResolver {
 
   @Mutation(() => PrinterSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async printerSettingUpdateOne(
     @Args() printerSettingUpdateOneArgs: UpdateOnePrinterSettingArgs,
@@ -114,7 +114,7 @@ export class PrinterSettingResolver {
 
   @Mutation(() => PrinterSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async printerSettingUpdateMany(@Args() updateManyPrinterSettingArgs: UpdateManyPrinterSettingArgs) {
     return this.printerSettingController.updateMany(updateManyPrinterSettingArgs);
@@ -122,7 +122,7 @@ export class PrinterSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async printerSettingDelete(
     @Args() deleteOnePrinterSettingArgs: DeleteOnePrinterSettingArgs,
@@ -136,7 +136,7 @@ export class PrinterSettingResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   async printerSettingDeleteMany(@Args() deleteManyPrinterSettingArgs: DeleteManyPrinterSettingArgs) {
     return this.printerSettingController.deleteMany(deleteManyPrinterSettingArgs);
@@ -144,7 +144,7 @@ export class PrinterSettingResolver {
 
   @Query(() => AggregatePrinterSetting, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   printerSettingAggregate(@Args() printerSettingAggregateArgs: PrinterSettingAggregateArgs) {
     return this.printerSettingController.aggregate(printerSettingAggregateArgs);
@@ -152,7 +152,7 @@ export class PrinterSettingResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'deskripsinya-ada-disini-loh',
+    description: 'Deskripsinya ada disini loh',
   })
   printerSettingCount(@Args() printerSettingCountAggregateInput: FindManyPrinterSettingArgs) {
     return this.printerSettingController.count(printerSettingCountAggregateInput);
