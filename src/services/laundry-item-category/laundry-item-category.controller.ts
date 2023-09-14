@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { LaundryItemCategoryService } from './laundryItemCategory.service';
+import { LaundryItemCategoryService } from './laundry-item-category.service';
 
 @Injectable()
 export class LaundryItemCategoryController {

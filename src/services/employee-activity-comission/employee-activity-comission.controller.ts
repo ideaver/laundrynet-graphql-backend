@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { EmployeeActivityComissionService } from './employeeActivityComission.service';
+import { EmployeeActivityComissionService } from './employee-activity-comission.service';
 
 @Injectable()
 export class EmployeeActivityComissionController {

@@ -30,7 +30,7 @@ export class DeliveryResolver {
 
   @Mutation(() => Delivery, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class DeliveryResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class DeliveryResolver {
 
   @Query(() => Delivery, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class DeliveryResolver {
 
   @Query(() => [Delivery], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryFindMany(
     @Args() deliveryFindManyArgs: FindManyDeliveryArgs,
@@ -85,7 +85,7 @@ export class DeliveryResolver {
 
   @Query(() => Delivery, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class DeliveryResolver {
 
   @Mutation(() => Delivery, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryUpdateOne(
     @Args() deliveryUpdateOneArgs: UpdateOneDeliveryArgs,
@@ -114,7 +114,7 @@ export class DeliveryResolver {
 
   @Mutation(() => Delivery, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryUpdateMany(@Args() updateManyDeliveryArgs: UpdateManyDeliveryArgs) {
     return this.deliveryController.updateMany(updateManyDeliveryArgs);
@@ -122,7 +122,7 @@ export class DeliveryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryDelete(
     @Args() deleteOneDeliveryArgs: DeleteOneDeliveryArgs,
@@ -136,7 +136,7 @@ export class DeliveryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryDeleteMany(@Args() deleteManyDeliveryArgs: DeleteManyDeliveryArgs) {
     return this.deliveryController.deleteMany(deleteManyDeliveryArgs);
@@ -144,7 +144,7 @@ export class DeliveryResolver {
 
   @Query(() => AggregateDelivery, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryAggregate(@Args() deliveryAggregateArgs: DeliveryAggregateArgs) {
     return this.deliveryController.aggregate(deliveryAggregateArgs);
@@ -152,7 +152,7 @@ export class DeliveryResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryCount(@Args() deliveryCountAggregateInput: FindManyDeliveryArgs) {
     return this.deliveryController.count(deliveryCountAggregateInput);

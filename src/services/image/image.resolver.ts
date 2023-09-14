@@ -30,7 +30,7 @@ export class ImageResolver {
 
   @Mutation(() => Image, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async imageCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class ImageResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async imageCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class ImageResolver {
 
   @Query(() => Image, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   imageFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class ImageResolver {
 
   @Query(() => [Image], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   imageFindMany(
     @Args() imageFindManyArgs: FindManyImageArgs,
@@ -85,7 +85,7 @@ export class ImageResolver {
 
   @Query(() => Image, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   imageFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class ImageResolver {
 
   @Mutation(() => Image, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async imageUpdateOne(
     @Args() imageUpdateOneArgs: UpdateOneImageArgs,
@@ -114,7 +114,7 @@ export class ImageResolver {
 
   @Mutation(() => Image, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async imageUpdateMany(@Args() updateManyImageArgs: UpdateManyImageArgs) {
     return this.imageController.updateMany(updateManyImageArgs);
@@ -122,7 +122,7 @@ export class ImageResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async imageDelete(
     @Args() deleteOneImageArgs: DeleteOneImageArgs,
@@ -136,7 +136,7 @@ export class ImageResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async imageDeleteMany(@Args() deleteManyImageArgs: DeleteManyImageArgs) {
     return this.imageController.deleteMany(deleteManyImageArgs);
@@ -144,7 +144,7 @@ export class ImageResolver {
 
   @Query(() => AggregateImage, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   imageAggregate(@Args() imageAggregateArgs: ImageAggregateArgs) {
     return this.imageController.aggregate(imageAggregateArgs);
@@ -152,7 +152,7 @@ export class ImageResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   imageCount(@Args() imageCountAggregateInput: FindManyImageArgs) {
     return this.imageController.count(imageCountAggregateInput);

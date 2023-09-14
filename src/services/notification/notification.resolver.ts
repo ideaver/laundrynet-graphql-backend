@@ -30,7 +30,7 @@ export class NotificationResolver {
 
   @Mutation(() => Notification, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async notificationCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class NotificationResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async notificationCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class NotificationResolver {
 
   @Query(() => Notification, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   notificationFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class NotificationResolver {
 
   @Query(() => [Notification], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   notificationFindMany(
     @Args() notificationFindManyArgs: FindManyNotificationArgs,
@@ -85,7 +85,7 @@ export class NotificationResolver {
 
   @Query(() => Notification, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   notificationFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class NotificationResolver {
 
   @Mutation(() => Notification, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async notificationUpdateOne(
     @Args() notificationUpdateOneArgs: UpdateOneNotificationArgs,
@@ -114,7 +114,7 @@ export class NotificationResolver {
 
   @Mutation(() => Notification, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async notificationUpdateMany(@Args() updateManyNotificationArgs: UpdateManyNotificationArgs) {
     return this.notificationController.updateMany(updateManyNotificationArgs);
@@ -122,7 +122,7 @@ export class NotificationResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async notificationDelete(
     @Args() deleteOneNotificationArgs: DeleteOneNotificationArgs,
@@ -136,7 +136,7 @@ export class NotificationResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async notificationDeleteMany(@Args() deleteManyNotificationArgs: DeleteManyNotificationArgs) {
     return this.notificationController.deleteMany(deleteManyNotificationArgs);
@@ -144,7 +144,7 @@ export class NotificationResolver {
 
   @Query(() => AggregateNotification, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   notificationAggregate(@Args() notificationAggregateArgs: NotificationAggregateArgs) {
     return this.notificationController.aggregate(notificationAggregateArgs);
@@ -152,7 +152,7 @@ export class NotificationResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   notificationCount(@Args() notificationCountAggregateInput: FindManyNotificationArgs) {
     return this.notificationController.count(notificationCountAggregateInput);

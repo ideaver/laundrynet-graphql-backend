@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { StockItemService } from './stockItem.service';
-import { StockItemResolver } from './stockItem.resolver';
+import { StockItemService } from './stock-item.service';
+import { StockItemResolver } from './stock-item.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { StockItemController } from './stockItem.controller';
+import { StockItemController } from './stock-item.controller';
 
 @Module({
   providers: [PrismaService, StockItemResolver, StockItemController, StockItemService],

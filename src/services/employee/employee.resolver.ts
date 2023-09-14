@@ -30,7 +30,7 @@ export class EmployeeResolver {
 
   @Mutation(() => Employee, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class EmployeeResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class EmployeeResolver {
 
   @Query(() => Employee, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class EmployeeResolver {
 
   @Query(() => [Employee], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeFindMany(
     @Args() employeeFindManyArgs: FindManyEmployeeArgs,
@@ -85,7 +85,7 @@ export class EmployeeResolver {
 
   @Query(() => Employee, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class EmployeeResolver {
 
   @Mutation(() => Employee, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeUpdateOne(
     @Args() employeeUpdateOneArgs: UpdateOneEmployeeArgs,
@@ -114,7 +114,7 @@ export class EmployeeResolver {
 
   @Mutation(() => Employee, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeUpdateMany(@Args() updateManyEmployeeArgs: UpdateManyEmployeeArgs) {
     return this.employeeController.updateMany(updateManyEmployeeArgs);
@@ -122,7 +122,7 @@ export class EmployeeResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeDelete(
     @Args() deleteOneEmployeeArgs: DeleteOneEmployeeArgs,
@@ -136,7 +136,7 @@ export class EmployeeResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeDeleteMany(@Args() deleteManyEmployeeArgs: DeleteManyEmployeeArgs) {
     return this.employeeController.deleteMany(deleteManyEmployeeArgs);
@@ -144,7 +144,7 @@ export class EmployeeResolver {
 
   @Query(() => AggregateEmployee, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeAggregate(@Args() employeeAggregateArgs: EmployeeAggregateArgs) {
     return this.employeeController.aggregate(employeeAggregateArgs);
@@ -152,7 +152,7 @@ export class EmployeeResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeCount(@Args() employeeCountAggregateInput: FindManyEmployeeArgs) {
     return this.employeeController.count(employeeCountAggregateInput);

@@ -16,7 +16,7 @@ import {
   UpdateManyPhoneCountryCodeArgs,
   UpdateOnePhoneCountryCodeArgs,
 } from 'src/@generated';
-import { PhoneCountryCodeController } from './phoneCountryCode.controller';
+import { PhoneCountryCodeController } from './phone-country-code.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class PhoneCountryCodeResolver {
 
   @Mutation(() => PhoneCountryCode, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async phoneCountryCodeCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class PhoneCountryCodeResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async phoneCountryCodeCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class PhoneCountryCodeResolver {
 
   @Query(() => PhoneCountryCode, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   phoneCountryCodeFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class PhoneCountryCodeResolver {
 
   @Query(() => [PhoneCountryCode], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   phoneCountryCodeFindMany(
     @Args() phoneCountryCodeFindManyArgs: FindManyPhoneCountryCodeArgs,
@@ -85,7 +85,7 @@ export class PhoneCountryCodeResolver {
 
   @Query(() => PhoneCountryCode, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   phoneCountryCodeFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class PhoneCountryCodeResolver {
 
   @Mutation(() => PhoneCountryCode, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async phoneCountryCodeUpdateOne(
     @Args() phoneCountryCodeUpdateOneArgs: UpdateOnePhoneCountryCodeArgs,
@@ -114,7 +114,7 @@ export class PhoneCountryCodeResolver {
 
   @Mutation(() => PhoneCountryCode, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async phoneCountryCodeUpdateMany(@Args() updateManyPhoneCountryCodeArgs: UpdateManyPhoneCountryCodeArgs) {
     return this.phoneCountryCodeController.updateMany(updateManyPhoneCountryCodeArgs);
@@ -122,7 +122,7 @@ export class PhoneCountryCodeResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async phoneCountryCodeDelete(
     @Args() deleteOnePhoneCountryCodeArgs: DeleteOnePhoneCountryCodeArgs,
@@ -136,7 +136,7 @@ export class PhoneCountryCodeResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async phoneCountryCodeDeleteMany(@Args() deleteManyPhoneCountryCodeArgs: DeleteManyPhoneCountryCodeArgs) {
     return this.phoneCountryCodeController.deleteMany(deleteManyPhoneCountryCodeArgs);
@@ -144,7 +144,7 @@ export class PhoneCountryCodeResolver {
 
   @Query(() => AggregatePhoneCountryCode, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   phoneCountryCodeAggregate(@Args() phoneCountryCodeAggregateArgs: PhoneCountryCodeAggregateArgs) {
     return this.phoneCountryCodeController.aggregate(phoneCountryCodeAggregateArgs);
@@ -152,7 +152,7 @@ export class PhoneCountryCodeResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   phoneCountryCodeCount(@Args() phoneCountryCodeCountAggregateInput: FindManyPhoneCountryCodeArgs) {
     return this.phoneCountryCodeController.count(phoneCountryCodeCountAggregateInput);

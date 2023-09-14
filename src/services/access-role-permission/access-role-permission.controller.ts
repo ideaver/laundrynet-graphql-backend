@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { AccessRolePermissionService } from './accessRolePermission.service';
+import { AccessRolePermissionService } from './access-role-permission.service';
 
 @Injectable()
 export class AccessRolePermissionController {

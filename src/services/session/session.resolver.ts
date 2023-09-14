@@ -30,7 +30,7 @@ export class SessionResolver {
 
   @Mutation(() => Session, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async sessionCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class SessionResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async sessionCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class SessionResolver {
 
   @Query(() => Session, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   sessionFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class SessionResolver {
 
   @Query(() => [Session], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   sessionFindMany(
     @Args() sessionFindManyArgs: FindManySessionArgs,
@@ -85,7 +85,7 @@ export class SessionResolver {
 
   @Query(() => Session, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   sessionFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class SessionResolver {
 
   @Mutation(() => Session, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async sessionUpdateOne(
     @Args() sessionUpdateOneArgs: UpdateOneSessionArgs,
@@ -114,7 +114,7 @@ export class SessionResolver {
 
   @Mutation(() => Session, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async sessionUpdateMany(@Args() updateManySessionArgs: UpdateManySessionArgs) {
     return this.sessionController.updateMany(updateManySessionArgs);
@@ -122,7 +122,7 @@ export class SessionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async sessionDelete(
     @Args() deleteOneSessionArgs: DeleteOneSessionArgs,
@@ -136,7 +136,7 @@ export class SessionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async sessionDeleteMany(@Args() deleteManySessionArgs: DeleteManySessionArgs) {
     return this.sessionController.deleteMany(deleteManySessionArgs);
@@ -144,7 +144,7 @@ export class SessionResolver {
 
   @Query(() => AggregateSession, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   sessionAggregate(@Args() sessionAggregateArgs: SessionAggregateArgs) {
     return this.sessionController.aggregate(sessionAggregateArgs);
@@ -152,7 +152,7 @@ export class SessionResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   sessionCount(@Args() sessionCountAggregateInput: FindManySessionArgs) {
     return this.sessionController.count(sessionCountAggregateInput);

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { LaundryItemRequestService } from './laundryItemRequest.service';
-import { LaundryItemRequestResolver } from './laundryItemRequest.resolver';
+import { LaundryItemRequestService } from './laundry-item-request.service';
+import { LaundryItemRequestResolver } from './laundry-item-request.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { LaundryItemRequestController } from './laundryItemRequest.controller';
+import { LaundryItemRequestController } from './laundry-item-request.controller';
 
 @Module({
   providers: [PrismaService, LaundryItemRequestResolver, LaundryItemRequestController, LaundryItemRequestService],

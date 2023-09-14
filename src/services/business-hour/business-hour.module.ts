@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { BusinessHourService } from './businessHour.service';
-import { BusinessHourResolver } from './businessHour.resolver';
+import { BusinessHourService } from './business-hour.service';
+import { BusinessHourResolver } from './business-hour.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { BusinessHourController } from './businessHour.controller';
+import { BusinessHourController } from './business-hour.controller';
 
 @Module({
   providers: [PrismaService, BusinessHourResolver, BusinessHourController, BusinessHourService],

@@ -30,7 +30,7 @@ export class OutletResolver {
 
   @Mutation(() => Outlet, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async outletCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class OutletResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async outletCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class OutletResolver {
 
   @Query(() => Outlet, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   outletFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class OutletResolver {
 
   @Query(() => [Outlet], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   outletFindMany(
     @Args() outletFindManyArgs: FindManyOutletArgs,
@@ -85,7 +85,7 @@ export class OutletResolver {
 
   @Query(() => Outlet, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   outletFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class OutletResolver {
 
   @Mutation(() => Outlet, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async outletUpdateOne(
     @Args() outletUpdateOneArgs: UpdateOneOutletArgs,
@@ -114,7 +114,7 @@ export class OutletResolver {
 
   @Mutation(() => Outlet, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async outletUpdateMany(@Args() updateManyOutletArgs: UpdateManyOutletArgs) {
     return this.outletController.updateMany(updateManyOutletArgs);
@@ -122,7 +122,7 @@ export class OutletResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async outletDelete(
     @Args() deleteOneOutletArgs: DeleteOneOutletArgs,
@@ -136,7 +136,7 @@ export class OutletResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async outletDeleteMany(@Args() deleteManyOutletArgs: DeleteManyOutletArgs) {
     return this.outletController.deleteMany(deleteManyOutletArgs);
@@ -144,7 +144,7 @@ export class OutletResolver {
 
   @Query(() => AggregateOutlet, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   outletAggregate(@Args() outletAggregateArgs: OutletAggregateArgs) {
     return this.outletController.aggregate(outletAggregateArgs);
@@ -152,7 +152,7 @@ export class OutletResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   outletCount(@Args() outletCountAggregateInput: FindManyOutletArgs) {
     return this.outletController.count(outletCountAggregateInput);

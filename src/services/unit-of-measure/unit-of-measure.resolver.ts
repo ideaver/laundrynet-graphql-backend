@@ -16,7 +16,7 @@ import {
   UpdateManyUnitOfMeasureArgs,
   UpdateOneUnitOfMeasureArgs,
 } from 'src/@generated';
-import { UnitOfMeasureController } from './unitOfMeasure.controller';
+import { UnitOfMeasureController } from './unit-of-measure.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class UnitOfMeasureResolver {
 
   @Mutation(() => UnitOfMeasure, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async unitOfMeasureCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class UnitOfMeasureResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async unitOfMeasureCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class UnitOfMeasureResolver {
 
   @Query(() => UnitOfMeasure, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   unitOfMeasureFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class UnitOfMeasureResolver {
 
   @Query(() => [UnitOfMeasure], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   unitOfMeasureFindMany(
     @Args() unitOfMeasureFindManyArgs: FindManyUnitOfMeasureArgs,
@@ -85,7 +85,7 @@ export class UnitOfMeasureResolver {
 
   @Query(() => UnitOfMeasure, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   unitOfMeasureFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class UnitOfMeasureResolver {
 
   @Mutation(() => UnitOfMeasure, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async unitOfMeasureUpdateOne(
     @Args() unitOfMeasureUpdateOneArgs: UpdateOneUnitOfMeasureArgs,
@@ -114,7 +114,7 @@ export class UnitOfMeasureResolver {
 
   @Mutation(() => UnitOfMeasure, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async unitOfMeasureUpdateMany(@Args() updateManyUnitOfMeasureArgs: UpdateManyUnitOfMeasureArgs) {
     return this.unitOfMeasureController.updateMany(updateManyUnitOfMeasureArgs);
@@ -122,7 +122,7 @@ export class UnitOfMeasureResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async unitOfMeasureDelete(
     @Args() deleteOneUnitOfMeasureArgs: DeleteOneUnitOfMeasureArgs,
@@ -136,7 +136,7 @@ export class UnitOfMeasureResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async unitOfMeasureDeleteMany(@Args() deleteManyUnitOfMeasureArgs: DeleteManyUnitOfMeasureArgs) {
     return this.unitOfMeasureController.deleteMany(deleteManyUnitOfMeasureArgs);
@@ -144,7 +144,7 @@ export class UnitOfMeasureResolver {
 
   @Query(() => AggregateUnitOfMeasure, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   unitOfMeasureAggregate(@Args() unitOfMeasureAggregateArgs: UnitOfMeasureAggregateArgs) {
     return this.unitOfMeasureController.aggregate(unitOfMeasureAggregateArgs);
@@ -152,7 +152,7 @@ export class UnitOfMeasureResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   unitOfMeasureCount(@Args() unitOfMeasureCountAggregateInput: FindManyUnitOfMeasureArgs) {
     return this.unitOfMeasureController.count(unitOfMeasureCountAggregateInput);

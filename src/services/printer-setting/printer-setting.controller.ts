@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PrinterSettingService } from './printerSetting.service';
+import { PrinterSettingService } from './printer-setting.service';
 
 @Injectable()
 export class PrinterSettingController {

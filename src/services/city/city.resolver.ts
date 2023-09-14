@@ -30,7 +30,7 @@ export class CityResolver {
 
   @Mutation(() => City, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async cityCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class CityResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async cityCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class CityResolver {
 
   @Query(() => City, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   cityFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class CityResolver {
 
   @Query(() => [City], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   cityFindMany(
     @Args() cityFindManyArgs: FindManyCityArgs,
@@ -85,7 +85,7 @@ export class CityResolver {
 
   @Query(() => City, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   cityFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class CityResolver {
 
   @Mutation(() => City, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async cityUpdateOne(
     @Args() cityUpdateOneArgs: UpdateOneCityArgs,
@@ -114,7 +114,7 @@ export class CityResolver {
 
   @Mutation(() => City, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async cityUpdateMany(@Args() updateManyCityArgs: UpdateManyCityArgs) {
     return this.cityController.updateMany(updateManyCityArgs);
@@ -122,7 +122,7 @@ export class CityResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async cityDelete(
     @Args() deleteOneCityArgs: DeleteOneCityArgs,
@@ -136,7 +136,7 @@ export class CityResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async cityDeleteMany(@Args() deleteManyCityArgs: DeleteManyCityArgs) {
     return this.cityController.deleteMany(deleteManyCityArgs);
@@ -144,7 +144,7 @@ export class CityResolver {
 
   @Query(() => AggregateCity, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   cityAggregate(@Args() cityAggregateArgs: CityAggregateArgs) {
     return this.cityController.aggregate(cityAggregateArgs);
@@ -152,7 +152,7 @@ export class CityResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   cityCount(@Args() cityCountAggregateInput: FindManyCityArgs) {
     return this.cityController.count(cityCountAggregateInput);

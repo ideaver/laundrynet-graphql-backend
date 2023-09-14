@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PhoneCountryCodeService } from './phoneCountryCode.service';
+import { PhoneCountryCodeService } from './phone-country-code.service';
 
 @Injectable()
 export class PhoneCountryCodeController {

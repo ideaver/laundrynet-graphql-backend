@@ -30,7 +30,7 @@ export class FileResolver {
 
   @Mutation(() => File, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async fileCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class FileResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async fileCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class FileResolver {
 
   @Query(() => File, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   fileFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class FileResolver {
 
   @Query(() => [File], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   fileFindMany(
     @Args() fileFindManyArgs: FindManyFileArgs,
@@ -85,7 +85,7 @@ export class FileResolver {
 
   @Query(() => File, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   fileFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class FileResolver {
 
   @Mutation(() => File, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async fileUpdateOne(
     @Args() fileUpdateOneArgs: UpdateOneFileArgs,
@@ -114,7 +114,7 @@ export class FileResolver {
 
   @Mutation(() => File, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async fileUpdateMany(@Args() updateManyFileArgs: UpdateManyFileArgs) {
     return this.fileController.updateMany(updateManyFileArgs);
@@ -122,7 +122,7 @@ export class FileResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async fileDelete(
     @Args() deleteOneFileArgs: DeleteOneFileArgs,
@@ -136,7 +136,7 @@ export class FileResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async fileDeleteMany(@Args() deleteManyFileArgs: DeleteManyFileArgs) {
     return this.fileController.deleteMany(deleteManyFileArgs);
@@ -144,7 +144,7 @@ export class FileResolver {
 
   @Query(() => AggregateFile, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   fileAggregate(@Args() fileAggregateArgs: FileAggregateArgs) {
     return this.fileController.aggregate(fileAggregateArgs);
@@ -152,7 +152,7 @@ export class FileResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   fileCount(@Args() fileCountAggregateInput: FindManyFileArgs) {
     return this.fileController.count(fileCountAggregateInput);

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { LaundryItemCategoryService } from './laundryItemCategory.service';
-import { LaundryItemCategoryResolver } from './laundryItemCategory.resolver';
+import { LaundryItemCategoryService } from './laundry-item-category.service';
+import { LaundryItemCategoryResolver } from './laundry-item-category.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { LaundryItemCategoryController } from './laundryItemCategory.controller';
+import { LaundryItemCategoryController } from './laundry-item-category.controller';
 
 @Module({
   providers: [PrismaService, LaundryItemCategoryResolver, LaundryItemCategoryController, LaundryItemCategoryService],

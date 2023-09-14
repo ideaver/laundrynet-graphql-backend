@@ -27,15 +27,28 @@ function replaceWithCasePreservation(input, target, replacement) {
   let regex = new RegExp(target, 'ig'); // Case-insensitive global match
   return input.replace(regex, (match) => {
     let newStr = replacement;
+
+    // Check if the match starts with a capital letter
     if (match[0] === match[0].toUpperCase()) {
-      // The first letter is uppercase; capitalize the replacement string
+      // Capitalize the first letter of the replacement string
       newStr = newStr.charAt(0).toUpperCase() + newStr.slice(1);
     } else {
-      // The first letter is lowercase; make the replacement string lowercase
+      // Make the first letter of the replacement string lowercase
       newStr = newStr.charAt(0).toLowerCase() + newStr.slice(1);
     }
+
     return newStr;
   });
+}
+
+function replacePathsWithHyphens(input) {
+  // Match import statements with paths and replace the paths with the hyphenated version
+  return input.replace(
+    /(['"])((?:[^'"]|\\.)+)(['"])/g,
+    (match, startQuote, path, endQuote) => {
+      return startQuote + convertToLowerCaseWithHyphens(path) + endQuote;
+    },
+  );
 }
 
 // Updated function to duplicate a folder recursively
@@ -63,10 +76,12 @@ function duplicateFolder(
       duplicateFolder(sourceFilePath, targetDir, modelName);
     } else {
       const fileContent = fs.readFileSync(sourceFilePath, 'utf8');
-      const replacedContent = replaceWithCasePreservation(
-        fileContent,
-        path.basename(sourceDir).toLocaleLowerCase(),
-        modelName,
+      const replacedContent = replacePathsWithHyphens(
+        replaceWithCasePreservation(
+          fileContent,
+          path.basename(sourceDir).toLocaleLowerCase(),
+          modelName,
+        ),
       );
 
       fs.writeFileSync(targetFilePath, replacedContent);

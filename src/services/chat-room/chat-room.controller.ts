@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { ChatRoomService } from './chatRoom.service';
+import { ChatRoomService } from './chat-room.service';
 
 @Injectable()
 export class ChatRoomController {

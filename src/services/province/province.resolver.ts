@@ -30,7 +30,7 @@ export class ProvinceResolver {
 
   @Mutation(() => Province, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async provinceCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class ProvinceResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async provinceCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class ProvinceResolver {
 
   @Query(() => Province, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   provinceFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class ProvinceResolver {
 
   @Query(() => [Province], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   provinceFindMany(
     @Args() provinceFindManyArgs: FindManyProvinceArgs,
@@ -85,7 +85,7 @@ export class ProvinceResolver {
 
   @Query(() => Province, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   provinceFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class ProvinceResolver {
 
   @Mutation(() => Province, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async provinceUpdateOne(
     @Args() provinceUpdateOneArgs: UpdateOneProvinceArgs,
@@ -114,7 +114,7 @@ export class ProvinceResolver {
 
   @Mutation(() => Province, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async provinceUpdateMany(@Args() updateManyProvinceArgs: UpdateManyProvinceArgs) {
     return this.provinceController.updateMany(updateManyProvinceArgs);
@@ -122,7 +122,7 @@ export class ProvinceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async provinceDelete(
     @Args() deleteOneProvinceArgs: DeleteOneProvinceArgs,
@@ -136,7 +136,7 @@ export class ProvinceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async provinceDeleteMany(@Args() deleteManyProvinceArgs: DeleteManyProvinceArgs) {
     return this.provinceController.deleteMany(deleteManyProvinceArgs);
@@ -144,7 +144,7 @@ export class ProvinceResolver {
 
   @Query(() => AggregateProvince, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   provinceAggregate(@Args() provinceAggregateArgs: ProvinceAggregateArgs) {
     return this.provinceController.aggregate(provinceAggregateArgs);
@@ -152,7 +152,7 @@ export class ProvinceResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   provinceCount(@Args() provinceCountAggregateInput: FindManyProvinceArgs) {
     return this.provinceController.count(provinceCountAggregateInput);

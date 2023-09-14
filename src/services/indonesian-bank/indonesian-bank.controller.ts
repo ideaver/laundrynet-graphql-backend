@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { IndonesianBankService } from './indonesianBank.service';
+import { IndonesianBankService } from './indonesian-bank.service';
 
 @Injectable()
 export class IndonesianBankController {

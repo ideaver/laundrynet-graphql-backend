@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { MachineCategoryService } from './machineCategory.service';
+import { MachineCategoryService } from './machine-category.service';
 
 @Injectable()
 export class MachineCategoryController {

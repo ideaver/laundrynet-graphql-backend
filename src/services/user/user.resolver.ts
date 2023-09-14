@@ -30,7 +30,7 @@ export class UserResolver {
 
   @Mutation(() => User, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async userCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class UserResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async userCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class UserResolver {
 
   @Query(() => User, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   userFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class UserResolver {
 
   @Query(() => [User], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   userFindMany(
     @Args() userFindManyArgs: FindManyUserArgs,
@@ -85,7 +85,7 @@ export class UserResolver {
 
   @Query(() => User, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   userFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class UserResolver {
 
   @Mutation(() => User, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async userUpdateOne(
     @Args() userUpdateOneArgs: UpdateOneUserArgs,
@@ -114,7 +114,7 @@ export class UserResolver {
 
   @Mutation(() => User, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async userUpdateMany(@Args() updateManyUserArgs: UpdateManyUserArgs) {
     return this.userController.updateMany(updateManyUserArgs);
@@ -122,7 +122,7 @@ export class UserResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async userDelete(
     @Args() deleteOneUserArgs: DeleteOneUserArgs,
@@ -136,7 +136,7 @@ export class UserResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async userDeleteMany(@Args() deleteManyUserArgs: DeleteManyUserArgs) {
     return this.userController.deleteMany(deleteManyUserArgs);
@@ -144,7 +144,7 @@ export class UserResolver {
 
   @Query(() => AggregateUser, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   userAggregate(@Args() userAggregateArgs: UserAggregateArgs) {
     return this.userController.aggregate(userAggregateArgs);
@@ -152,7 +152,7 @@ export class UserResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   userCount(@Args() userCountAggregateInput: FindManyUserArgs) {
     return this.userController.count(userCountAggregateInput);

@@ -30,7 +30,7 @@ export class ComplainResolver {
 
   @Mutation(() => Complain, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async complainCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class ComplainResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async complainCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class ComplainResolver {
 
   @Query(() => Complain, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   complainFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class ComplainResolver {
 
   @Query(() => [Complain], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   complainFindMany(
     @Args() complainFindManyArgs: FindManyComplainArgs,
@@ -85,7 +85,7 @@ export class ComplainResolver {
 
   @Query(() => Complain, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   complainFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class ComplainResolver {
 
   @Mutation(() => Complain, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async complainUpdateOne(
     @Args() complainUpdateOneArgs: UpdateOneComplainArgs,
@@ -114,7 +114,7 @@ export class ComplainResolver {
 
   @Mutation(() => Complain, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async complainUpdateMany(@Args() updateManyComplainArgs: UpdateManyComplainArgs) {
     return this.complainController.updateMany(updateManyComplainArgs);
@@ -122,7 +122,7 @@ export class ComplainResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async complainDelete(
     @Args() deleteOneComplainArgs: DeleteOneComplainArgs,
@@ -136,7 +136,7 @@ export class ComplainResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async complainDeleteMany(@Args() deleteManyComplainArgs: DeleteManyComplainArgs) {
     return this.complainController.deleteMany(deleteManyComplainArgs);
@@ -144,7 +144,7 @@ export class ComplainResolver {
 
   @Query(() => AggregateComplain, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   complainAggregate(@Args() complainAggregateArgs: ComplainAggregateArgs) {
     return this.complainController.aggregate(complainAggregateArgs);
@@ -152,7 +152,7 @@ export class ComplainResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   complainCount(@Args() complainCountAggregateInput: FindManyComplainArgs) {
     return this.complainController.count(complainCountAggregateInput);

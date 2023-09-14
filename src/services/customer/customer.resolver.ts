@@ -30,7 +30,7 @@ export class CustomerResolver {
 
   @Mutation(() => Customer, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async customerCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class CustomerResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async customerCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class CustomerResolver {
 
   @Query(() => Customer, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   customerFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class CustomerResolver {
 
   @Query(() => [Customer], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   customerFindMany(
     @Args() customerFindManyArgs: FindManyCustomerArgs,
@@ -85,7 +85,7 @@ export class CustomerResolver {
 
   @Query(() => Customer, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   customerFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class CustomerResolver {
 
   @Mutation(() => Customer, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async customerUpdateOne(
     @Args() customerUpdateOneArgs: UpdateOneCustomerArgs,
@@ -114,7 +114,7 @@ export class CustomerResolver {
 
   @Mutation(() => Customer, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async customerUpdateMany(@Args() updateManyCustomerArgs: UpdateManyCustomerArgs) {
     return this.customerController.updateMany(updateManyCustomerArgs);
@@ -122,7 +122,7 @@ export class CustomerResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async customerDelete(
     @Args() deleteOneCustomerArgs: DeleteOneCustomerArgs,
@@ -136,7 +136,7 @@ export class CustomerResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async customerDeleteMany(@Args() deleteManyCustomerArgs: DeleteManyCustomerArgs) {
     return this.customerController.deleteMany(deleteManyCustomerArgs);
@@ -144,7 +144,7 @@ export class CustomerResolver {
 
   @Query(() => AggregateCustomer, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   customerAggregate(@Args() customerAggregateArgs: CustomerAggregateArgs) {
     return this.customerController.aggregate(customerAggregateArgs);
@@ -152,7 +152,7 @@ export class CustomerResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   customerCount(@Args() customerCountAggregateInput: FindManyCustomerArgs) {
     return this.customerController.count(customerCountAggregateInput);

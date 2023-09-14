@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AccessRolePermissionService } from './accessRolePermission.service';
-import { AccessRolePermissionResolver } from './accessRolePermission.resolver';
+import { AccessRolePermissionService } from './access-role-permission.service';
+import { AccessRolePermissionResolver } from './access-role-permission.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { AccessRolePermissionController } from './accessRolePermission.controller';
+import { AccessRolePermissionController } from './access-role-permission.controller';
 
 @Module({
   providers: [PrismaService, AccessRolePermissionResolver, AccessRolePermissionController, AccessRolePermissionService],

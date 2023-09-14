@@ -16,7 +16,7 @@ import {
   UpdateManyDeliveryLocationHistoryArgs,
   UpdateOneDeliveryLocationHistoryArgs,
 } from 'src/@generated';
-import { DeliveryLocationHistoryController } from './deliveryLocationHistory.controller';
+import { DeliveryLocationHistoryController } from './delivery-location-history.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Mutation(() => DeliveryLocationHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryLocationHistoryCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryLocationHistoryCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Query(() => DeliveryLocationHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryLocationHistoryFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Query(() => [DeliveryLocationHistory], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryLocationHistoryFindMany(
     @Args() deliveryLocationHistoryFindManyArgs: FindManyDeliveryLocationHistoryArgs,
@@ -85,7 +85,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Query(() => DeliveryLocationHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryLocationHistoryFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Mutation(() => DeliveryLocationHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryLocationHistoryUpdateOne(
     @Args() deliveryLocationHistoryUpdateOneArgs: UpdateOneDeliveryLocationHistoryArgs,
@@ -114,7 +114,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Mutation(() => DeliveryLocationHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryLocationHistoryUpdateMany(@Args() updateManyDeliveryLocationHistoryArgs: UpdateManyDeliveryLocationHistoryArgs) {
     return this.deliveryLocationHistoryController.updateMany(updateManyDeliveryLocationHistoryArgs);
@@ -122,7 +122,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryLocationHistoryDelete(
     @Args() deleteOneDeliveryLocationHistoryArgs: DeleteOneDeliveryLocationHistoryArgs,
@@ -136,7 +136,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async deliveryLocationHistoryDeleteMany(@Args() deleteManyDeliveryLocationHistoryArgs: DeleteManyDeliveryLocationHistoryArgs) {
     return this.deliveryLocationHistoryController.deleteMany(deleteManyDeliveryLocationHistoryArgs);
@@ -144,7 +144,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Query(() => AggregateDeliveryLocationHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryLocationHistoryAggregate(@Args() deliveryLocationHistoryAggregateArgs: DeliveryLocationHistoryAggregateArgs) {
     return this.deliveryLocationHistoryController.aggregate(deliveryLocationHistoryAggregateArgs);
@@ -152,7 +152,7 @@ export class DeliveryLocationHistoryResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   deliveryLocationHistoryCount(@Args() deliveryLocationHistoryCountAggregateInput: FindManyDeliveryLocationHistoryArgs) {
     return this.deliveryLocationHistoryController.count(deliveryLocationHistoryCountAggregateInput);

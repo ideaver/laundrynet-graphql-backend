@@ -16,7 +16,7 @@ import {
   UpdateManyMachineCategoryArgs,
   UpdateOneMachineCategoryArgs,
 } from 'src/@generated';
-import { MachineCategoryController } from './machineCategory.controller';
+import { MachineCategoryController } from './machine-category.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class MachineCategoryResolver {
 
   @Mutation(() => MachineCategory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineCategoryCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class MachineCategoryResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineCategoryCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class MachineCategoryResolver {
 
   @Query(() => MachineCategory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineCategoryFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class MachineCategoryResolver {
 
   @Query(() => [MachineCategory], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineCategoryFindMany(
     @Args() machineCategoryFindManyArgs: FindManyMachineCategoryArgs,
@@ -85,7 +85,7 @@ export class MachineCategoryResolver {
 
   @Query(() => MachineCategory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineCategoryFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class MachineCategoryResolver {
 
   @Mutation(() => MachineCategory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineCategoryUpdateOne(
     @Args() machineCategoryUpdateOneArgs: UpdateOneMachineCategoryArgs,
@@ -114,7 +114,7 @@ export class MachineCategoryResolver {
 
   @Mutation(() => MachineCategory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineCategoryUpdateMany(@Args() updateManyMachineCategoryArgs: UpdateManyMachineCategoryArgs) {
     return this.machineCategoryController.updateMany(updateManyMachineCategoryArgs);
@@ -122,7 +122,7 @@ export class MachineCategoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineCategoryDelete(
     @Args() deleteOneMachineCategoryArgs: DeleteOneMachineCategoryArgs,
@@ -136,7 +136,7 @@ export class MachineCategoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineCategoryDeleteMany(@Args() deleteManyMachineCategoryArgs: DeleteManyMachineCategoryArgs) {
     return this.machineCategoryController.deleteMany(deleteManyMachineCategoryArgs);
@@ -144,7 +144,7 @@ export class MachineCategoryResolver {
 
   @Query(() => AggregateMachineCategory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineCategoryAggregate(@Args() machineCategoryAggregateArgs: MachineCategoryAggregateArgs) {
     return this.machineCategoryController.aggregate(machineCategoryAggregateArgs);
@@ -152,7 +152,7 @@ export class MachineCategoryResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineCategoryCount(@Args() machineCategoryCountAggregateInput: FindManyMachineCategoryArgs) {
     return this.machineCategoryController.count(machineCategoryCountAggregateInput);

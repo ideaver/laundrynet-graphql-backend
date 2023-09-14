@@ -30,7 +30,7 @@ export class ScheduleResolver {
 
   @Mutation(() => Schedule, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async scheduleCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class ScheduleResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async scheduleCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class ScheduleResolver {
 
   @Query(() => Schedule, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   scheduleFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class ScheduleResolver {
 
   @Query(() => [Schedule], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   scheduleFindMany(
     @Args() scheduleFindManyArgs: FindManyScheduleArgs,
@@ -85,7 +85,7 @@ export class ScheduleResolver {
 
   @Query(() => Schedule, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   scheduleFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class ScheduleResolver {
 
   @Mutation(() => Schedule, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async scheduleUpdateOne(
     @Args() scheduleUpdateOneArgs: UpdateOneScheduleArgs,
@@ -114,7 +114,7 @@ export class ScheduleResolver {
 
   @Mutation(() => Schedule, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async scheduleUpdateMany(@Args() updateManyScheduleArgs: UpdateManyScheduleArgs) {
     return this.scheduleController.updateMany(updateManyScheduleArgs);
@@ -122,7 +122,7 @@ export class ScheduleResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async scheduleDelete(
     @Args() deleteOneScheduleArgs: DeleteOneScheduleArgs,
@@ -136,7 +136,7 @@ export class ScheduleResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async scheduleDeleteMany(@Args() deleteManyScheduleArgs: DeleteManyScheduleArgs) {
     return this.scheduleController.deleteMany(deleteManyScheduleArgs);
@@ -144,7 +144,7 @@ export class ScheduleResolver {
 
   @Query(() => AggregateSchedule, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   scheduleAggregate(@Args() scheduleAggregateArgs: ScheduleAggregateArgs) {
     return this.scheduleController.aggregate(scheduleAggregateArgs);
@@ -152,7 +152,7 @@ export class ScheduleResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   scheduleCount(@Args() scheduleCountAggregateInput: FindManyScheduleArgs) {
     return this.scheduleController.count(scheduleCountAggregateInput);

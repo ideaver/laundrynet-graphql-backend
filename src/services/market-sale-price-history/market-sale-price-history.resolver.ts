@@ -16,7 +16,7 @@ import {
   UpdateManyMarketSalePriceHistoryArgs,
   UpdateOneMarketSalePriceHistoryArgs,
 } from 'src/@generated';
-import { MarketSalePriceHistoryController } from './marketSalePriceHistory.controller';
+import { MarketSalePriceHistoryController } from './market-sale-price-history.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Mutation(() => MarketSalePriceHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async marketSalePriceHistoryCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async marketSalePriceHistoryCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Query(() => MarketSalePriceHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   marketSalePriceHistoryFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Query(() => [MarketSalePriceHistory], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   marketSalePriceHistoryFindMany(
     @Args() marketSalePriceHistoryFindManyArgs: FindManyMarketSalePriceHistoryArgs,
@@ -85,7 +85,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Query(() => MarketSalePriceHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   marketSalePriceHistoryFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Mutation(() => MarketSalePriceHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async marketSalePriceHistoryUpdateOne(
     @Args() marketSalePriceHistoryUpdateOneArgs: UpdateOneMarketSalePriceHistoryArgs,
@@ -114,7 +114,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Mutation(() => MarketSalePriceHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async marketSalePriceHistoryUpdateMany(@Args() updateManyMarketSalePriceHistoryArgs: UpdateManyMarketSalePriceHistoryArgs) {
     return this.marketSalePriceHistoryController.updateMany(updateManyMarketSalePriceHistoryArgs);
@@ -122,7 +122,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async marketSalePriceHistoryDelete(
     @Args() deleteOneMarketSalePriceHistoryArgs: DeleteOneMarketSalePriceHistoryArgs,
@@ -136,7 +136,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async marketSalePriceHistoryDeleteMany(@Args() deleteManyMarketSalePriceHistoryArgs: DeleteManyMarketSalePriceHistoryArgs) {
     return this.marketSalePriceHistoryController.deleteMany(deleteManyMarketSalePriceHistoryArgs);
@@ -144,7 +144,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Query(() => AggregateMarketSalePriceHistory, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   marketSalePriceHistoryAggregate(@Args() marketSalePriceHistoryAggregateArgs: MarketSalePriceHistoryAggregateArgs) {
     return this.marketSalePriceHistoryController.aggregate(marketSalePriceHistoryAggregateArgs);
@@ -152,7 +152,7 @@ export class MarketSalePriceHistoryResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   marketSalePriceHistoryCount(@Args() marketSalePriceHistoryCountAggregateInput: FindManyMarketSalePriceHistoryArgs) {
     return this.marketSalePriceHistoryController.count(marketSalePriceHistoryCountAggregateInput);

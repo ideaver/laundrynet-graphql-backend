@@ -16,7 +16,7 @@ import {
   UpdateManyAccessRolePermissionArgs,
   UpdateOneAccessRolePermissionArgs,
 } from 'src/@generated';
-import { AccessRolePermissionController } from './accessRolePermission.controller';
+import { AccessRolePermissionController } from './access-role-permission.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class AccessRolePermissionResolver {
 
   @Mutation(() => AccessRolePermission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async accessRolePermissionCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class AccessRolePermissionResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async accessRolePermissionCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class AccessRolePermissionResolver {
 
   @Query(() => AccessRolePermission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   accessRolePermissionFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class AccessRolePermissionResolver {
 
   @Query(() => [AccessRolePermission], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   accessRolePermissionFindMany(
     @Args() accessRolePermissionFindManyArgs: FindManyAccessRolePermissionArgs,
@@ -85,7 +85,7 @@ export class AccessRolePermissionResolver {
 
   @Query(() => AccessRolePermission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   accessRolePermissionFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class AccessRolePermissionResolver {
 
   @Mutation(() => AccessRolePermission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async accessRolePermissionUpdateOne(
     @Args() accessRolePermissionUpdateOneArgs: UpdateOneAccessRolePermissionArgs,
@@ -114,7 +114,7 @@ export class AccessRolePermissionResolver {
 
   @Mutation(() => AccessRolePermission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async accessRolePermissionUpdateMany(@Args() updateManyAccessRolePermissionArgs: UpdateManyAccessRolePermissionArgs) {
     return this.accessRolePermissionController.updateMany(updateManyAccessRolePermissionArgs);
@@ -122,7 +122,7 @@ export class AccessRolePermissionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async accessRolePermissionDelete(
     @Args() deleteOneAccessRolePermissionArgs: DeleteOneAccessRolePermissionArgs,
@@ -136,7 +136,7 @@ export class AccessRolePermissionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async accessRolePermissionDeleteMany(@Args() deleteManyAccessRolePermissionArgs: DeleteManyAccessRolePermissionArgs) {
     return this.accessRolePermissionController.deleteMany(deleteManyAccessRolePermissionArgs);
@@ -144,7 +144,7 @@ export class AccessRolePermissionResolver {
 
   @Query(() => AggregateAccessRolePermission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   accessRolePermissionAggregate(@Args() accessRolePermissionAggregateArgs: AccessRolePermissionAggregateArgs) {
     return this.accessRolePermissionController.aggregate(accessRolePermissionAggregateArgs);
@@ -152,7 +152,7 @@ export class AccessRolePermissionResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   accessRolePermissionCount(@Args() accessRolePermissionCountAggregateInput: FindManyAccessRolePermissionArgs) {
     return this.accessRolePermissionController.count(accessRolePermissionCountAggregateInput);

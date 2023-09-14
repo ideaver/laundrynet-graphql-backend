@@ -30,7 +30,7 @@ export class InvoiceResolver {
 
   @Mutation(() => Invoice, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async invoiceCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class InvoiceResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async invoiceCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class InvoiceResolver {
 
   @Query(() => Invoice, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   invoiceFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class InvoiceResolver {
 
   @Query(() => [Invoice], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   invoiceFindMany(
     @Args() invoiceFindManyArgs: FindManyInvoiceArgs,
@@ -85,7 +85,7 @@ export class InvoiceResolver {
 
   @Query(() => Invoice, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   invoiceFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class InvoiceResolver {
 
   @Mutation(() => Invoice, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async invoiceUpdateOne(
     @Args() invoiceUpdateOneArgs: UpdateOneInvoiceArgs,
@@ -114,7 +114,7 @@ export class InvoiceResolver {
 
   @Mutation(() => Invoice, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async invoiceUpdateMany(@Args() updateManyInvoiceArgs: UpdateManyInvoiceArgs) {
     return this.invoiceController.updateMany(updateManyInvoiceArgs);
@@ -122,7 +122,7 @@ export class InvoiceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async invoiceDelete(
     @Args() deleteOneInvoiceArgs: DeleteOneInvoiceArgs,
@@ -136,7 +136,7 @@ export class InvoiceResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async invoiceDeleteMany(@Args() deleteManyInvoiceArgs: DeleteManyInvoiceArgs) {
     return this.invoiceController.deleteMany(deleteManyInvoiceArgs);
@@ -144,7 +144,7 @@ export class InvoiceResolver {
 
   @Query(() => AggregateInvoice, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   invoiceAggregate(@Args() invoiceAggregateArgs: InvoiceAggregateArgs) {
     return this.invoiceController.aggregate(invoiceAggregateArgs);
@@ -152,7 +152,7 @@ export class InvoiceResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   invoiceCount(@Args() invoiceCountAggregateInput: FindManyInvoiceArgs) {
     return this.invoiceController.count(invoiceCountAggregateInput);

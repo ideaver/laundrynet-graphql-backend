@@ -16,7 +16,7 @@ import {
   UpdateManyServiceOrderArgs,
   UpdateOneServiceOrderArgs,
 } from 'src/@generated';
-import { ServiceOrderController } from './serviceOrder.controller';
+import { ServiceOrderController } from './service-order.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class ServiceOrderResolver {
 
   @Mutation(() => ServiceOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async serviceOrderCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class ServiceOrderResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async serviceOrderCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class ServiceOrderResolver {
 
   @Query(() => ServiceOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   serviceOrderFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class ServiceOrderResolver {
 
   @Query(() => [ServiceOrder], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   serviceOrderFindMany(
     @Args() serviceOrderFindManyArgs: FindManyServiceOrderArgs,
@@ -85,7 +85,7 @@ export class ServiceOrderResolver {
 
   @Query(() => ServiceOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   serviceOrderFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class ServiceOrderResolver {
 
   @Mutation(() => ServiceOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async serviceOrderUpdateOne(
     @Args() serviceOrderUpdateOneArgs: UpdateOneServiceOrderArgs,
@@ -114,7 +114,7 @@ export class ServiceOrderResolver {
 
   @Mutation(() => ServiceOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async serviceOrderUpdateMany(@Args() updateManyServiceOrderArgs: UpdateManyServiceOrderArgs) {
     return this.serviceOrderController.updateMany(updateManyServiceOrderArgs);
@@ -122,7 +122,7 @@ export class ServiceOrderResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async serviceOrderDelete(
     @Args() deleteOneServiceOrderArgs: DeleteOneServiceOrderArgs,
@@ -136,7 +136,7 @@ export class ServiceOrderResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async serviceOrderDeleteMany(@Args() deleteManyServiceOrderArgs: DeleteManyServiceOrderArgs) {
     return this.serviceOrderController.deleteMany(deleteManyServiceOrderArgs);
@@ -144,7 +144,7 @@ export class ServiceOrderResolver {
 
   @Query(() => AggregateServiceOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   serviceOrderAggregate(@Args() serviceOrderAggregateArgs: ServiceOrderAggregateArgs) {
     return this.serviceOrderController.aggregate(serviceOrderAggregateArgs);
@@ -152,7 +152,7 @@ export class ServiceOrderResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   serviceOrderCount(@Args() serviceOrderCountAggregateInput: FindManyServiceOrderArgs) {
     return this.serviceOrderController.count(serviceOrderCountAggregateInput);

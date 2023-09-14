@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { EdcMachineService } from './edcMachine.service';
+import { EdcMachineService } from './edc-machine.service';
 
 @Injectable()
 export class EdcMachineController {

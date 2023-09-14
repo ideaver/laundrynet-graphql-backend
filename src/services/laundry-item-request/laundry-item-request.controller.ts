@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { LaundryItemRequestService } from './laundryItemRequest.service';
+import { LaundryItemRequestService } from './laundry-item-request.service';
 
 @Injectable()
 export class LaundryItemRequestController {

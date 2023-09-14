@@ -16,7 +16,7 @@ import {
   UpdateManyStockItemArgs,
   UpdateOneStockItemArgs,
 } from 'src/@generated';
-import { StockItemController } from './stockItem.controller';
+import { StockItemController } from './stock-item.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class StockItemResolver {
 
   @Mutation(() => StockItem, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockItemCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class StockItemResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockItemCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class StockItemResolver {
 
   @Query(() => StockItem, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockItemFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class StockItemResolver {
 
   @Query(() => [StockItem], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockItemFindMany(
     @Args() stockItemFindManyArgs: FindManyStockItemArgs,
@@ -85,7 +85,7 @@ export class StockItemResolver {
 
   @Query(() => StockItem, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockItemFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class StockItemResolver {
 
   @Mutation(() => StockItem, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockItemUpdateOne(
     @Args() stockItemUpdateOneArgs: UpdateOneStockItemArgs,
@@ -114,7 +114,7 @@ export class StockItemResolver {
 
   @Mutation(() => StockItem, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockItemUpdateMany(@Args() updateManyStockItemArgs: UpdateManyStockItemArgs) {
     return this.stockItemController.updateMany(updateManyStockItemArgs);
@@ -122,7 +122,7 @@ export class StockItemResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockItemDelete(
     @Args() deleteOneStockItemArgs: DeleteOneStockItemArgs,
@@ -136,7 +136,7 @@ export class StockItemResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockItemDeleteMany(@Args() deleteManyStockItemArgs: DeleteManyStockItemArgs) {
     return this.stockItemController.deleteMany(deleteManyStockItemArgs);
@@ -144,7 +144,7 @@ export class StockItemResolver {
 
   @Query(() => AggregateStockItem, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockItemAggregate(@Args() stockItemAggregateArgs: StockItemAggregateArgs) {
     return this.stockItemController.aggregate(stockItemAggregateArgs);
@@ -152,7 +152,7 @@ export class StockItemResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockItemCount(@Args() stockItemCountAggregateInput: FindManyStockItemArgs) {
     return this.stockItemController.count(stockItemCountAggregateInput);

@@ -30,7 +30,7 @@ export class MessageResolver {
 
   @Mutation(() => Message, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async messageCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class MessageResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async messageCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class MessageResolver {
 
   @Query(() => Message, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   messageFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class MessageResolver {
 
   @Query(() => [Message], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   messageFindMany(
     @Args() messageFindManyArgs: FindManyMessageArgs,
@@ -85,7 +85,7 @@ export class MessageResolver {
 
   @Query(() => Message, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   messageFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class MessageResolver {
 
   @Mutation(() => Message, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async messageUpdateOne(
     @Args() messageUpdateOneArgs: UpdateOneMessageArgs,
@@ -114,7 +114,7 @@ export class MessageResolver {
 
   @Mutation(() => Message, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async messageUpdateMany(@Args() updateManyMessageArgs: UpdateManyMessageArgs) {
     return this.messageController.updateMany(updateManyMessageArgs);
@@ -122,7 +122,7 @@ export class MessageResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async messageDelete(
     @Args() deleteOneMessageArgs: DeleteOneMessageArgs,
@@ -136,7 +136,7 @@ export class MessageResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async messageDeleteMany(@Args() deleteManyMessageArgs: DeleteManyMessageArgs) {
     return this.messageController.deleteMany(deleteManyMessageArgs);
@@ -144,7 +144,7 @@ export class MessageResolver {
 
   @Query(() => AggregateMessage, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   messageAggregate(@Args() messageAggregateArgs: MessageAggregateArgs) {
     return this.messageController.aggregate(messageAggregateArgs);
@@ -152,7 +152,7 @@ export class MessageResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   messageCount(@Args() messageCountAggregateInput: FindManyMessageArgs) {
     return this.messageController.count(messageCountAggregateInput);

@@ -16,7 +16,7 @@ import {
   UpdateManyPlatformOrderArgs,
   UpdateOnePlatformOrderArgs,
 } from 'src/@generated';
-import { PlatformOrderController } from './platformOrder.controller';
+import { PlatformOrderController } from './platform-order.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class PlatformOrderResolver {
 
   @Mutation(() => PlatformOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async platformOrderCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class PlatformOrderResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async platformOrderCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class PlatformOrderResolver {
 
   @Query(() => PlatformOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   platformOrderFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class PlatformOrderResolver {
 
   @Query(() => [PlatformOrder], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   platformOrderFindMany(
     @Args() platformOrderFindManyArgs: FindManyPlatformOrderArgs,
@@ -85,7 +85,7 @@ export class PlatformOrderResolver {
 
   @Query(() => PlatformOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   platformOrderFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class PlatformOrderResolver {
 
   @Mutation(() => PlatformOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async platformOrderUpdateOne(
     @Args() platformOrderUpdateOneArgs: UpdateOnePlatformOrderArgs,
@@ -114,7 +114,7 @@ export class PlatformOrderResolver {
 
   @Mutation(() => PlatformOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async platformOrderUpdateMany(@Args() updateManyPlatformOrderArgs: UpdateManyPlatformOrderArgs) {
     return this.platformOrderController.updateMany(updateManyPlatformOrderArgs);
@@ -122,7 +122,7 @@ export class PlatformOrderResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async platformOrderDelete(
     @Args() deleteOnePlatformOrderArgs: DeleteOnePlatformOrderArgs,
@@ -136,7 +136,7 @@ export class PlatformOrderResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async platformOrderDeleteMany(@Args() deleteManyPlatformOrderArgs: DeleteManyPlatformOrderArgs) {
     return this.platformOrderController.deleteMany(deleteManyPlatformOrderArgs);
@@ -144,7 +144,7 @@ export class PlatformOrderResolver {
 
   @Query(() => AggregatePlatformOrder, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   platformOrderAggregate(@Args() platformOrderAggregateArgs: PlatformOrderAggregateArgs) {
     return this.platformOrderController.aggregate(platformOrderAggregateArgs);
@@ -152,7 +152,7 @@ export class PlatformOrderResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   platformOrderCount(@Args() platformOrderCountAggregateInput: FindManyPlatformOrderArgs) {
     return this.platformOrderController.count(platformOrderCountAggregateInput);

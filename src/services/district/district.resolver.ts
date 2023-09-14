@@ -30,7 +30,7 @@ export class DistrictResolver {
 
   @Mutation(() => District, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async districtCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class DistrictResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async districtCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class DistrictResolver {
 
   @Query(() => District, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   districtFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class DistrictResolver {
 
   @Query(() => [District], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   districtFindMany(
     @Args() districtFindManyArgs: FindManyDistrictArgs,
@@ -85,7 +85,7 @@ export class DistrictResolver {
 
   @Query(() => District, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   districtFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class DistrictResolver {
 
   @Mutation(() => District, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async districtUpdateOne(
     @Args() districtUpdateOneArgs: UpdateOneDistrictArgs,
@@ -114,7 +114,7 @@ export class DistrictResolver {
 
   @Mutation(() => District, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async districtUpdateMany(@Args() updateManyDistrictArgs: UpdateManyDistrictArgs) {
     return this.districtController.updateMany(updateManyDistrictArgs);
@@ -122,7 +122,7 @@ export class DistrictResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async districtDelete(
     @Args() deleteOneDistrictArgs: DeleteOneDistrictArgs,
@@ -136,7 +136,7 @@ export class DistrictResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async districtDeleteMany(@Args() deleteManyDistrictArgs: DeleteManyDistrictArgs) {
     return this.districtController.deleteMany(deleteManyDistrictArgs);
@@ -144,7 +144,7 @@ export class DistrictResolver {
 
   @Query(() => AggregateDistrict, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   districtAggregate(@Args() districtAggregateArgs: DistrictAggregateArgs) {
     return this.districtController.aggregate(districtAggregateArgs);
@@ -152,7 +152,7 @@ export class DistrictResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   districtCount(@Args() districtCountAggregateInput: FindManyDistrictArgs) {
     return this.districtController.count(districtCountAggregateInput);

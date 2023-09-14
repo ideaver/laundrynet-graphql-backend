@@ -16,7 +16,7 @@ import {
   UpdateManyOrderStatusArgs,
   UpdateOneOrderStatusArgs,
 } from 'src/@generated';
-import { OrderStatusController } from './orderStatus.controller';
+import { OrderStatusController } from './order-status.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class OrderStatusResolver {
 
   @Mutation(() => OrderStatus, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async orderStatusCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class OrderStatusResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async orderStatusCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class OrderStatusResolver {
 
   @Query(() => OrderStatus, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   orderStatusFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class OrderStatusResolver {
 
   @Query(() => [OrderStatus], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   orderStatusFindMany(
     @Args() orderStatusFindManyArgs: FindManyOrderStatusArgs,
@@ -85,7 +85,7 @@ export class OrderStatusResolver {
 
   @Query(() => OrderStatus, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   orderStatusFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class OrderStatusResolver {
 
   @Mutation(() => OrderStatus, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async orderStatusUpdateOne(
     @Args() orderStatusUpdateOneArgs: UpdateOneOrderStatusArgs,
@@ -114,7 +114,7 @@ export class OrderStatusResolver {
 
   @Mutation(() => OrderStatus, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async orderStatusUpdateMany(@Args() updateManyOrderStatusArgs: UpdateManyOrderStatusArgs) {
     return this.orderStatusController.updateMany(updateManyOrderStatusArgs);
@@ -122,7 +122,7 @@ export class OrderStatusResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async orderStatusDelete(
     @Args() deleteOneOrderStatusArgs: DeleteOneOrderStatusArgs,
@@ -136,7 +136,7 @@ export class OrderStatusResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async orderStatusDeleteMany(@Args() deleteManyOrderStatusArgs: DeleteManyOrderStatusArgs) {
     return this.orderStatusController.deleteMany(deleteManyOrderStatusArgs);
@@ -144,7 +144,7 @@ export class OrderStatusResolver {
 
   @Query(() => AggregateOrderStatus, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   orderStatusAggregate(@Args() orderStatusAggregateArgs: OrderStatusAggregateArgs) {
     return this.orderStatusController.aggregate(orderStatusAggregateArgs);
@@ -152,7 +152,7 @@ export class OrderStatusResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   orderStatusCount(@Args() orderStatusCountAggregateInput: FindManyOrderStatusArgs) {
     return this.orderStatusController.count(orderStatusCountAggregateInput);

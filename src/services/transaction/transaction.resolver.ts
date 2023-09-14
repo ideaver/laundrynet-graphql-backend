@@ -30,7 +30,7 @@ export class TransactionResolver {
 
   @Mutation(() => Transaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async transactionCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class TransactionResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async transactionCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class TransactionResolver {
 
   @Query(() => Transaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   transactionFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class TransactionResolver {
 
   @Query(() => [Transaction], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   transactionFindMany(
     @Args() transactionFindManyArgs: FindManyTransactionArgs,
@@ -85,7 +85,7 @@ export class TransactionResolver {
 
   @Query(() => Transaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   transactionFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class TransactionResolver {
 
   @Mutation(() => Transaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async transactionUpdateOne(
     @Args() transactionUpdateOneArgs: UpdateOneTransactionArgs,
@@ -114,7 +114,7 @@ export class TransactionResolver {
 
   @Mutation(() => Transaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async transactionUpdateMany(@Args() updateManyTransactionArgs: UpdateManyTransactionArgs) {
     return this.transactionController.updateMany(updateManyTransactionArgs);
@@ -122,7 +122,7 @@ export class TransactionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async transactionDelete(
     @Args() deleteOneTransactionArgs: DeleteOneTransactionArgs,
@@ -136,7 +136,7 @@ export class TransactionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async transactionDeleteMany(@Args() deleteManyTransactionArgs: DeleteManyTransactionArgs) {
     return this.transactionController.deleteMany(deleteManyTransactionArgs);
@@ -144,7 +144,7 @@ export class TransactionResolver {
 
   @Query(() => AggregateTransaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   transactionAggregate(@Args() transactionAggregateArgs: TransactionAggregateArgs) {
     return this.transactionController.aggregate(transactionAggregateArgs);
@@ -152,7 +152,7 @@ export class TransactionResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   transactionCount(@Args() transactionCountAggregateInput: FindManyTransactionArgs) {
     return this.transactionController.count(transactionCountAggregateInput);

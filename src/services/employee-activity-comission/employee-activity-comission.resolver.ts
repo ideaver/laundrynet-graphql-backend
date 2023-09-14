@@ -16,7 +16,7 @@ import {
   UpdateManyEmployeeActivityComissionArgs,
   UpdateOneEmployeeActivityComissionArgs,
 } from 'src/@generated';
-import { EmployeeActivityComissionController } from './employeeActivityComission.controller';
+import { EmployeeActivityComissionController } from './employee-activity-comission.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class EmployeeActivityComissionResolver {
 
   @Mutation(() => EmployeeActivityComission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeActivityComissionCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class EmployeeActivityComissionResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeActivityComissionCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class EmployeeActivityComissionResolver {
 
   @Query(() => EmployeeActivityComission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeActivityComissionFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class EmployeeActivityComissionResolver {
 
   @Query(() => [EmployeeActivityComission], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeActivityComissionFindMany(
     @Args() employeeActivityComissionFindManyArgs: FindManyEmployeeActivityComissionArgs,
@@ -85,7 +85,7 @@ export class EmployeeActivityComissionResolver {
 
   @Query(() => EmployeeActivityComission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeActivityComissionFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class EmployeeActivityComissionResolver {
 
   @Mutation(() => EmployeeActivityComission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeActivityComissionUpdateOne(
     @Args() employeeActivityComissionUpdateOneArgs: UpdateOneEmployeeActivityComissionArgs,
@@ -114,7 +114,7 @@ export class EmployeeActivityComissionResolver {
 
   @Mutation(() => EmployeeActivityComission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeActivityComissionUpdateMany(@Args() updateManyEmployeeActivityComissionArgs: UpdateManyEmployeeActivityComissionArgs) {
     return this.employeeActivityComissionController.updateMany(updateManyEmployeeActivityComissionArgs);
@@ -122,7 +122,7 @@ export class EmployeeActivityComissionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeActivityComissionDelete(
     @Args() deleteOneEmployeeActivityComissionArgs: DeleteOneEmployeeActivityComissionArgs,
@@ -136,7 +136,7 @@ export class EmployeeActivityComissionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async employeeActivityComissionDeleteMany(@Args() deleteManyEmployeeActivityComissionArgs: DeleteManyEmployeeActivityComissionArgs) {
     return this.employeeActivityComissionController.deleteMany(deleteManyEmployeeActivityComissionArgs);
@@ -144,7 +144,7 @@ export class EmployeeActivityComissionResolver {
 
   @Query(() => AggregateEmployeeActivityComission, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeActivityComissionAggregate(@Args() employeeActivityComissionAggregateArgs: EmployeeActivityComissionAggregateArgs) {
     return this.employeeActivityComissionController.aggregate(employeeActivityComissionAggregateArgs);
@@ -152,7 +152,7 @@ export class EmployeeActivityComissionResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   employeeActivityComissionCount(@Args() employeeActivityComissionCountAggregateInput: FindManyEmployeeActivityComissionArgs) {
     return this.employeeActivityComissionController.count(employeeActivityComissionCountAggregateInput);

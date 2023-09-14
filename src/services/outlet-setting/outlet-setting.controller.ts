@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { OutletSettingService } from './outletSetting.service';
+import { OutletSettingService } from './outlet-setting.service';
 
 @Injectable()
 export class OutletSettingController {

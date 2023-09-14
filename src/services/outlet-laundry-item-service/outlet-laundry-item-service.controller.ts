@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { OutletLaundryItemServiceService } from './outletLaundryItemService.service';
+import { OutletLaundryItemServiceService } from './outlet-laundry-item-service.service';
 
 @Injectable()
 export class OutletLaundryItemServiceController {

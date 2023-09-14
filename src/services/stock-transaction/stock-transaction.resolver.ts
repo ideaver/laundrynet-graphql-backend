@@ -16,7 +16,7 @@ import {
   UpdateManyStockTransactionArgs,
   UpdateOneStockTransactionArgs,
 } from 'src/@generated';
-import { StockTransactionController } from './stockTransaction.controller';
+import { StockTransactionController } from './stock-transaction.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class StockTransactionResolver {
 
   @Mutation(() => StockTransaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockTransactionCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class StockTransactionResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockTransactionCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class StockTransactionResolver {
 
   @Query(() => StockTransaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockTransactionFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class StockTransactionResolver {
 
   @Query(() => [StockTransaction], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockTransactionFindMany(
     @Args() stockTransactionFindManyArgs: FindManyStockTransactionArgs,
@@ -85,7 +85,7 @@ export class StockTransactionResolver {
 
   @Query(() => StockTransaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockTransactionFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class StockTransactionResolver {
 
   @Mutation(() => StockTransaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockTransactionUpdateOne(
     @Args() stockTransactionUpdateOneArgs: UpdateOneStockTransactionArgs,
@@ -114,7 +114,7 @@ export class StockTransactionResolver {
 
   @Mutation(() => StockTransaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockTransactionUpdateMany(@Args() updateManyStockTransactionArgs: UpdateManyStockTransactionArgs) {
     return this.stockTransactionController.updateMany(updateManyStockTransactionArgs);
@@ -122,7 +122,7 @@ export class StockTransactionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockTransactionDelete(
     @Args() deleteOneStockTransactionArgs: DeleteOneStockTransactionArgs,
@@ -136,7 +136,7 @@ export class StockTransactionResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async stockTransactionDeleteMany(@Args() deleteManyStockTransactionArgs: DeleteManyStockTransactionArgs) {
     return this.stockTransactionController.deleteMany(deleteManyStockTransactionArgs);
@@ -144,7 +144,7 @@ export class StockTransactionResolver {
 
   @Query(() => AggregateStockTransaction, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockTransactionAggregate(@Args() stockTransactionAggregateArgs: StockTransactionAggregateArgs) {
     return this.stockTransactionController.aggregate(stockTransactionAggregateArgs);
@@ -152,7 +152,7 @@ export class StockTransactionResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   stockTransactionCount(@Args() stockTransactionCountAggregateInput: FindManyStockTransactionArgs) {
     return this.stockTransactionController.count(stockTransactionCountAggregateInput);

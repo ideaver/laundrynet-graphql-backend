@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { CreditCardService } from './creditCard.service';
+import { CreditCardService } from './credit-card.service';
 
 @Injectable()
 export class CreditCardController {

@@ -16,7 +16,7 @@ import {
   UpdateManyMachineSettingsArgs,
   UpdateOneMachineSettingsArgs,
 } from 'src/@generated';
-import { MachineSettingsController } from './machineSettings.controller';
+import { MachineSettingsController } from './machine-settings.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class MachineSettingsResolver {
 
   @Mutation(() => MachineSettings, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineSettingsCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class MachineSettingsResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineSettingsCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class MachineSettingsResolver {
 
   @Query(() => MachineSettings, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineSettingsFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class MachineSettingsResolver {
 
   @Query(() => [MachineSettings], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineSettingsFindMany(
     @Args() machineSettingsFindManyArgs: FindManyMachineSettingsArgs,
@@ -85,7 +85,7 @@ export class MachineSettingsResolver {
 
   @Query(() => MachineSettings, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineSettingsFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class MachineSettingsResolver {
 
   @Mutation(() => MachineSettings, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineSettingsUpdateOne(
     @Args() machineSettingsUpdateOneArgs: UpdateOneMachineSettingsArgs,
@@ -114,7 +114,7 @@ export class MachineSettingsResolver {
 
   @Mutation(() => MachineSettings, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineSettingsUpdateMany(@Args() updateManyMachineSettingsArgs: UpdateManyMachineSettingsArgs) {
     return this.machineSettingsController.updateMany(updateManyMachineSettingsArgs);
@@ -122,7 +122,7 @@ export class MachineSettingsResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineSettingsDelete(
     @Args() deleteOneMachineSettingsArgs: DeleteOneMachineSettingsArgs,
@@ -136,7 +136,7 @@ export class MachineSettingsResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async machineSettingsDeleteMany(@Args() deleteManyMachineSettingsArgs: DeleteManyMachineSettingsArgs) {
     return this.machineSettingsController.deleteMany(deleteManyMachineSettingsArgs);
@@ -144,7 +144,7 @@ export class MachineSettingsResolver {
 
   @Query(() => AggregateMachineSettings, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineSettingsAggregate(@Args() machineSettingsAggregateArgs: MachineSettingsAggregateArgs) {
     return this.machineSettingsController.aggregate(machineSettingsAggregateArgs);
@@ -152,7 +152,7 @@ export class MachineSettingsResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   machineSettingsCount(@Args() machineSettingsCountAggregateInput: FindManyMachineSettingsArgs) {
     return this.machineSettingsController.count(machineSettingsCountAggregateInput);

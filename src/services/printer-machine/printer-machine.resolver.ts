@@ -16,7 +16,7 @@ import {
   UpdateManyPrinterMachineArgs,
   UpdateOnePrinterMachineArgs,
 } from 'src/@generated';
-import { PrinterMachineController } from './printerMachine.controller';
+import { PrinterMachineController } from './printer-machine.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class PrinterMachineResolver {
 
   @Mutation(() => PrinterMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async printerMachineCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class PrinterMachineResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async printerMachineCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class PrinterMachineResolver {
 
   @Query(() => PrinterMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   printerMachineFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class PrinterMachineResolver {
 
   @Query(() => [PrinterMachine], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   printerMachineFindMany(
     @Args() printerMachineFindManyArgs: FindManyPrinterMachineArgs,
@@ -85,7 +85,7 @@ export class PrinterMachineResolver {
 
   @Query(() => PrinterMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   printerMachineFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class PrinterMachineResolver {
 
   @Mutation(() => PrinterMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async printerMachineUpdateOne(
     @Args() printerMachineUpdateOneArgs: UpdateOnePrinterMachineArgs,
@@ -114,7 +114,7 @@ export class PrinterMachineResolver {
 
   @Mutation(() => PrinterMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async printerMachineUpdateMany(@Args() updateManyPrinterMachineArgs: UpdateManyPrinterMachineArgs) {
     return this.printerMachineController.updateMany(updateManyPrinterMachineArgs);
@@ -122,7 +122,7 @@ export class PrinterMachineResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async printerMachineDelete(
     @Args() deleteOnePrinterMachineArgs: DeleteOnePrinterMachineArgs,
@@ -136,7 +136,7 @@ export class PrinterMachineResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async printerMachineDeleteMany(@Args() deleteManyPrinterMachineArgs: DeleteManyPrinterMachineArgs) {
     return this.printerMachineController.deleteMany(deleteManyPrinterMachineArgs);
@@ -144,7 +144,7 @@ export class PrinterMachineResolver {
 
   @Query(() => AggregatePrinterMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   printerMachineAggregate(@Args() printerMachineAggregateArgs: PrinterMachineAggregateArgs) {
     return this.printerMachineController.aggregate(printerMachineAggregateArgs);
@@ -152,7 +152,7 @@ export class PrinterMachineResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   printerMachineCount(@Args() printerMachineCountAggregateInput: FindManyPrinterMachineArgs) {
     return this.printerMachineController.count(printerMachineCountAggregateInput);

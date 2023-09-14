@@ -16,7 +16,7 @@ import {
   UpdateManyBusinessHourArgs,
   UpdateOneBusinessHourArgs,
 } from 'src/@generated';
-import { BusinessHourController } from './businessHour.controller';
+import { BusinessHourController } from './business-hour.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class BusinessHourResolver {
 
   @Mutation(() => BusinessHour, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async businessHourCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class BusinessHourResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async businessHourCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class BusinessHourResolver {
 
   @Query(() => BusinessHour, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   businessHourFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class BusinessHourResolver {
 
   @Query(() => [BusinessHour], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   businessHourFindMany(
     @Args() businessHourFindManyArgs: FindManyBusinessHourArgs,
@@ -85,7 +85,7 @@ export class BusinessHourResolver {
 
   @Query(() => BusinessHour, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   businessHourFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class BusinessHourResolver {
 
   @Mutation(() => BusinessHour, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async businessHourUpdateOne(
     @Args() businessHourUpdateOneArgs: UpdateOneBusinessHourArgs,
@@ -114,7 +114,7 @@ export class BusinessHourResolver {
 
   @Mutation(() => BusinessHour, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async businessHourUpdateMany(@Args() updateManyBusinessHourArgs: UpdateManyBusinessHourArgs) {
     return this.businessHourController.updateMany(updateManyBusinessHourArgs);
@@ -122,7 +122,7 @@ export class BusinessHourResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async businessHourDelete(
     @Args() deleteOneBusinessHourArgs: DeleteOneBusinessHourArgs,
@@ -136,7 +136,7 @@ export class BusinessHourResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async businessHourDeleteMany(@Args() deleteManyBusinessHourArgs: DeleteManyBusinessHourArgs) {
     return this.businessHourController.deleteMany(deleteManyBusinessHourArgs);
@@ -144,7 +144,7 @@ export class BusinessHourResolver {
 
   @Query(() => AggregateBusinessHour, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   businessHourAggregate(@Args() businessHourAggregateArgs: BusinessHourAggregateArgs) {
     return this.businessHourController.aggregate(businessHourAggregateArgs);
@@ -152,7 +152,7 @@ export class BusinessHourResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   businessHourCount(@Args() businessHourCountAggregateInput: FindManyBusinessHourArgs) {
     return this.businessHourController.count(businessHourCountAggregateInput);

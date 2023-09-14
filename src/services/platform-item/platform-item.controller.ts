@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PlatformItemService } from './platformItem.service';
+import { PlatformItemService } from './platform-item.service';
 
 @Injectable()
 export class PlatformItemController {

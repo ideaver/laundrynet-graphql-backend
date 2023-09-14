@@ -30,7 +30,7 @@ export class AddressResolver {
 
   @Mutation(() => Address, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async addressCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class AddressResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async addressCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class AddressResolver {
 
   @Query(() => Address, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   addressFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class AddressResolver {
 
   @Query(() => [Address], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   addressFindMany(
     @Args() addressFindManyArgs: FindManyAddressArgs,
@@ -85,7 +85,7 @@ export class AddressResolver {
 
   @Query(() => Address, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   addressFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class AddressResolver {
 
   @Mutation(() => Address, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async addressUpdateOne(
     @Args() addressUpdateOneArgs: UpdateOneAddressArgs,
@@ -114,7 +114,7 @@ export class AddressResolver {
 
   @Mutation(() => Address, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async addressUpdateMany(@Args() updateManyAddressArgs: UpdateManyAddressArgs) {
     return this.addressController.updateMany(updateManyAddressArgs);
@@ -122,7 +122,7 @@ export class AddressResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async addressDelete(
     @Args() deleteOneAddressArgs: DeleteOneAddressArgs,
@@ -136,7 +136,7 @@ export class AddressResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async addressDeleteMany(@Args() deleteManyAddressArgs: DeleteManyAddressArgs) {
     return this.addressController.deleteMany(deleteManyAddressArgs);
@@ -144,7 +144,7 @@ export class AddressResolver {
 
   @Query(() => AggregateAddress, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   addressAggregate(@Args() addressAggregateArgs: AddressAggregateArgs) {
     return this.addressController.aggregate(addressAggregateArgs);
@@ -152,7 +152,7 @@ export class AddressResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   addressCount(@Args() addressCountAggregateInput: FindManyAddressArgs) {
     return this.addressController.count(addressCountAggregateInput);

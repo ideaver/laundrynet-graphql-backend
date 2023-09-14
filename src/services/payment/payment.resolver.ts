@@ -30,7 +30,7 @@ export class PaymentResolver {
 
   @Mutation(() => Payment, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async paymentCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class PaymentResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async paymentCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class PaymentResolver {
 
   @Query(() => Payment, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   paymentFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class PaymentResolver {
 
   @Query(() => [Payment], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   paymentFindMany(
     @Args() paymentFindManyArgs: FindManyPaymentArgs,
@@ -85,7 +85,7 @@ export class PaymentResolver {
 
   @Query(() => Payment, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   paymentFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class PaymentResolver {
 
   @Mutation(() => Payment, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async paymentUpdateOne(
     @Args() paymentUpdateOneArgs: UpdateOnePaymentArgs,
@@ -114,7 +114,7 @@ export class PaymentResolver {
 
   @Mutation(() => Payment, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async paymentUpdateMany(@Args() updateManyPaymentArgs: UpdateManyPaymentArgs) {
     return this.paymentController.updateMany(updateManyPaymentArgs);
@@ -122,7 +122,7 @@ export class PaymentResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async paymentDelete(
     @Args() deleteOnePaymentArgs: DeleteOnePaymentArgs,
@@ -136,7 +136,7 @@ export class PaymentResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async paymentDeleteMany(@Args() deleteManyPaymentArgs: DeleteManyPaymentArgs) {
     return this.paymentController.deleteMany(deleteManyPaymentArgs);
@@ -144,7 +144,7 @@ export class PaymentResolver {
 
   @Query(() => AggregatePayment, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   paymentAggregate(@Args() paymentAggregateArgs: PaymentAggregateArgs) {
     return this.paymentController.aggregate(paymentAggregateArgs);
@@ -152,7 +152,7 @@ export class PaymentResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   paymentCount(@Args() paymentCountAggregateInput: FindManyPaymentArgs) {
     return this.paymentController.count(paymentCountAggregateInput);

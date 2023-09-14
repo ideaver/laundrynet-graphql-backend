@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { VoucherSettingService } from './voucherSetting.service';
+import { VoucherSettingService } from './voucher-setting.service';
 
 @Injectable()
 export class VoucherSettingController {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { ServiceOrderService } from './serviceOrder.service';
+import { ServiceOrderService } from './service-order.service';
 
 @Injectable()
 export class ServiceOrderController {

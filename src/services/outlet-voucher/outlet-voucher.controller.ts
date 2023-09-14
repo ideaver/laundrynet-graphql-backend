@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { OutletVoucherService } from './outletVoucher.service';
+import { OutletVoucherService } from './outlet-voucher.service';
 
 @Injectable()
 export class OutletVoucherController {

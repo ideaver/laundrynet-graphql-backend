@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { DeliveryStatusService } from './deliveryStatus.service';
+import { DeliveryStatusService } from './delivery-status.service';
 
 @Injectable()
 export class DeliveryStatusController {

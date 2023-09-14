@@ -16,7 +16,7 @@ import {
   UpdateManyEdcMachineArgs,
   UpdateOneEdcMachineArgs,
 } from 'src/@generated';
-import { EdcMachineController } from './edcMachine.controller';
+import { EdcMachineController } from './edc-machine.controller';
 import { replaceNullWithUndefined } from 'src/utils/replace-null-with-undefined.function';
 import BatchPayload from 'src/model/batch-payload.model';
 
@@ -30,7 +30,7 @@ export class EdcMachineResolver {
 
   @Mutation(() => EdcMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async edcMachineCreateOne(
     @Args()
@@ -45,7 +45,7 @@ export class EdcMachineResolver {
 
   @Mutation(() => BatchPayload, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async edcMachineCreateMany(
     @Args()
@@ -56,7 +56,7 @@ export class EdcMachineResolver {
 
   @Query(() => EdcMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   edcMachineFindOne(
     @Args()
@@ -71,7 +71,7 @@ export class EdcMachineResolver {
 
   @Query(() => [EdcMachine], {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   edcMachineFindMany(
     @Args() edcMachineFindManyArgs: FindManyEdcMachineArgs,
@@ -85,7 +85,7 @@ export class EdcMachineResolver {
 
   @Query(() => EdcMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   edcMachineFindFirst(
     @Args()
@@ -100,7 +100,7 @@ export class EdcMachineResolver {
 
   @Mutation(() => EdcMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async edcMachineUpdateOne(
     @Args() edcMachineUpdateOneArgs: UpdateOneEdcMachineArgs,
@@ -114,7 +114,7 @@ export class EdcMachineResolver {
 
   @Mutation(() => EdcMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async edcMachineUpdateMany(@Args() updateManyEdcMachineArgs: UpdateManyEdcMachineArgs) {
     return this.edcMachineController.updateMany(updateManyEdcMachineArgs);
@@ -122,7 +122,7 @@ export class EdcMachineResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async edcMachineDelete(
     @Args() deleteOneEdcMachineArgs: DeleteOneEdcMachineArgs,
@@ -136,7 +136,7 @@ export class EdcMachineResolver {
 
   @Mutation(() => Boolean, {
     nullable: false,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   async edcMachineDeleteMany(@Args() deleteManyEdcMachineArgs: DeleteManyEdcMachineArgs) {
     return this.edcMachineController.deleteMany(deleteManyEdcMachineArgs);
@@ -144,7 +144,7 @@ export class EdcMachineResolver {
 
   @Query(() => AggregateEdcMachine, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   edcMachineAggregate(@Args() edcMachineAggregateArgs: EdcMachineAggregateArgs) {
     return this.edcMachineController.aggregate(edcMachineAggregateArgs);
@@ -152,7 +152,7 @@ export class EdcMachineResolver {
 
   @Query(() => Float, {
     nullable: true,
-    description: 'Deskripsinya ada disini loh',
+    description: 'deskripsinya-ada-disini-loh',
   })
   edcMachineCount(@Args() edcMachineCountAggregateInput: FindManyEdcMachineArgs) {
     return this.edcMachineController.count(edcMachineCountAggregateInput);

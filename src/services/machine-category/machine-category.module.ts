@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { MachineCategoryService } from './machineCategory.service';
-import { MachineCategoryResolver } from './machineCategory.resolver';
+import { MachineCategoryService } from './machine-category.service';
+import { MachineCategoryResolver } from './machine-category.resolver';
 import { PrismaService } from 'prisma/prisma.service';
-import { MachineCategoryController } from './machineCategory.controller';
+import { MachineCategoryController } from './machine-category.controller';
 
 @Module({
   providers: [PrismaService, MachineCategoryResolver, MachineCategoryController, MachineCategoryService],
