@@ -93,15 +93,23 @@ const duplicateFolder = (
 };
 
 // Main execution
+// Main execution
 const main = (): void => {
   const schemaPath = './prisma/schema.prisma';
   const sourceFolder = './prisma/template/file';
   const outputBaseFolder = './src/services';
+  const excludedModels = ['Address', 'Payment']; // Add model names to be excluded here
 
   if (!existsSync(outputBaseFolder))
     mkdirSync(outputBaseFolder, { recursive: true });
 
-  const prismaModels = extractModelsFromSchema(schemaPath);
+  let prismaModels = extractModelsFromSchema(schemaPath);
+
+  // Filter out excluded models
+  prismaModels = prismaModels.filter(
+    (model) => !excludedModels.includes(model),
+  );
+
   console.log(
     `${prismaModels.length} Models found in Prisma schema:`,
     prismaModels,
