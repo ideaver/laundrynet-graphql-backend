@@ -63,7 +63,8 @@ const replacePreservingCase = (
 // Replace paths with hyphens in import statements
 const replacePathsWithHyphens = (input: string): string =>
   input.replace(
-    /(['"])(import\s+|require\s*\(\s*)((?:[^'"]|\\.)+)(['"]\s*\))/g,
+    /(['"])((?:[^'"]|\\.)+)(['"])(?<=from\s)/g,
+    //   /(['"])((?:[^'"]|\\.)+)(['"])/g,
     (match, startQuote, path, endQuote) =>
       startQuote + toKebabCase(path) + endQuote,
   );
@@ -101,12 +102,19 @@ const duplicateFolder = (
   });
 };
 
+//bun run prisma/nestjs-services-generator.ts ./prisma/schema.prisma ./prisma/template/file ./src/services modelName1 modelName2
 // Main execution
 const main = (): void => {
-  const schemaPath: string = './prisma/schema.prisma';
-  const sourceFolder: string = './prisma/template/file';
-  const outputBaseFolder: string = './src/services';
-  const excludedModels: string[] = []; // Add model names to be excluded here
+  // Access command line arguments
+  const [schemaPath, sourceFolder, outputBaseFolder, ...excludedModels] =
+    process.argv.slice(2);
+
+  if (!schemaPath || !sourceFolder || !outputBaseFolder) {
+    console.error(
+      'Usage: bun run duplicatePrismaModels.ts <script> <schemaPath> <sourceFolder> <outputBaseFolder> [excludedModels]',
+    );
+    return;
+  }
 
   //
   if (!existsSync(outputBaseFolder))
